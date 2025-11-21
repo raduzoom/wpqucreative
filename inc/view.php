@@ -823,7 +823,6 @@ function qucreative_view_footerEnqueueScripts() {
 
 
 include_once 'php/view/generate-footer-for-portfolio-item.php';
-include_once 'php/view/generate-sidebar.php';
 include_once 'php/view/generate-qu-nav.php';
 include_once 'php/view/generate-search-icons.php';
 include_once 'php/view/generate-social-icons.php';

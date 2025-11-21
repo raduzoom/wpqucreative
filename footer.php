@@ -30,11 +30,12 @@ if ($qucreative_main->theme_data['post_for_meta']) {
 qucreative_view_generateFooterForPortfolioItem($poForMeta);
 
 
-$quSidebar = qucreative_get_sidebar();
+$quSidebar = $qucreative_main->quCreativeView->sidebar_get();
 if ($quSidebar) {
   echo '</div><! -- end .col-content -->';
 }
-qucreative_view_generateSidebar($poForMeta);;
+
+$qucreative_main->quCreativeView->sidebar_generate($poForMeta);;
 
 
 

@@ -108,7 +108,7 @@ do_action('qucreative_hook_before_html');
 
 
 
-  $quSidebar = qucreative_get_sidebar();
+  $quSidebar = $qucreative_main->quCreativeView->sidebar_get();
 
   ?>
 </head>
