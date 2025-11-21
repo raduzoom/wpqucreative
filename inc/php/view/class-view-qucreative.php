@@ -481,7 +481,7 @@ class QuCreativeView {
 
     $sidebars_widgets = wp_get_sidebars_widgets();
     if (isset($sidebars_widgets[$sidebar]) && count((array)$sidebars_widgets[$sidebar]) == 0) {
-      return '';
+      $sidebar = null;
     }
 
 
@@ -511,6 +511,7 @@ class QuCreativeView {
         ?>
         <?php
 
+        $GLOBALS['sidebar'] = $sidebar;
         get_sidebar();
         ?>
         <?php

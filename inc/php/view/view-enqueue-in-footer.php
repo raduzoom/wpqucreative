@@ -31,6 +31,7 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
 
     wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog.css');
     wp_enqueue_style('qu-blog-single', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog-single.css');
+    wp_enqueue_style('qu-blog--shared', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog--shared.css');
   }
 
 

@@ -56,6 +56,7 @@ function qucreative_view_enqueue_in_head(QuCreativeView $quView){
   if ($quView->quMain->theme_data['view_loop_data']['loop_type'] === 'loop') {
 
     wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog.css');
+    wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog--shared.css');
   }
 
 

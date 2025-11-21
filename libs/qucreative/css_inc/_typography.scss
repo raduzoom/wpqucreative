@@ -251,7 +251,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px
+  margin-bottom: var(--qu-spacing--medium);
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -376,11 +376,11 @@ img.alignnone {
 }
 
 figure.wp-caption.alignright, img.alignright {
-  margin: 5px 0 5px 20px;
+  margin: 5px 0 5px var(--qu-spacing--medium);
 }
 
 figure.wp-caption.alignleft, img.alignleft {
-  margin: 5px 20px 5px 0;
+  margin: 5px var(--qu-spacing--medium) 5px 0;
 }
 
 
@@ -464,7 +464,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 20px;
+  margin-bottom: var(--qu-spacing--medium);
 }
 
 h1,.h1,h2,.h2, h3, .h3, h4, .h4{
@@ -475,7 +475,7 @@ h1,.h1,h2,.h2, h3, .h3, h4, .h4{
 h1, .h1 {
   font-size: 70px;
   margin-top: 38px;
-  margin-bottom: 20px;
+  margin-bottom: var(--qu-spacing--medium);
   font-weight: 700;
 }
 
@@ -526,7 +526,7 @@ button {
 
 dl {
   dt, dd {
-    margin-left: 20px;
+    margin-left: var(--qu-spacing--medium);
   }
 
   dt {

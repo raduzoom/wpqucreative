@@ -513,8 +513,6 @@ function qucreative_init() {
 
 
 
-    wp_enqueue_style('qucreative.checkbox', QUCREATIVE_THEME_URL . 'assets/dzscheckbox/dzscheckbox.css');
-
     wp_enqueue_style('faiconselector', QUCREATIVE_THEME_URL . 'assets/dzsiconselector/dzsiconselector.css');
     wp_enqueue_script('faiconselector', QUCREATIVE_THEME_URL . 'assets/dzsiconselector/dzsiconselector.js', array('jquery'));
     wp_enqueue_script('farbtastic', array('jquery'));

@@ -342,12 +342,9 @@ function qucreative_view_generateContentPortfolio($qucreative_main) {
 
     if ($product_image_gallery) {
 
-
+      qucreative_view_enqueue_zoombox();
       $attachments = array_filter(explode(',', $product_image_gallery));
 
-
-      wp_enqueue_script('qucreative_lightbox', QUCREATIVE_THEME_URL . 'libs/zoombox/zoombox.js');
-      wp_enqueue_style('qucreative_lightbox', QUCREATIVE_THEME_URL . 'libs/zoombox/zoombox.css');
 
       if ($attachments) {
 
@@ -781,6 +778,13 @@ function qucreative_view_enqueue_fontAwesome() {
   wp_enqueue_style('fontawesome', $fontAwesomeLink);
 }
 include_once 'php/view/generate-logo.php';
+function qucreative_view_enqueue_zoombox() {
+
+
+  wp_enqueue_script('qucreative_lightbox', QUCREATIVE_THEME_URL . 'libs/zoombox/zoombox.js');
+  wp_enqueue_style('qucreative_lightbox', QUCREATIVE_THEME_URL . 'libs/zoombox/zoombox.css');
+
+}
 /**
  * used for bg
  * @return void

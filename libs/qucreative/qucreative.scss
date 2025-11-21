@@ -10,6 +10,8 @@
   --qu-content-color-borders: #eeeeee;
   --qu-content-color-lines: #dddddd;
 
+  --qu-spacing--medium: 20px;
+  --qu-spacing--small: 10px;
   --qu-font-headings: "Lato", arial, serif;
 }
 /*
@@ -28,7 +30,6 @@
  * 4.0 - Content
  *   4.1 - Homepage
  *   4.2 - Portfolio
- *   4.3 - Blog
  *   4.4 - Elements
  *   4.6 - Gallery with Thumbs
  * 5.0 - Sidebar
@@ -43,6 +44,7 @@
  * ----------------------------------------------------------------------------
  */
 
+@import "css_inc/reset";
 @import "css_inc/layout";
 
 
