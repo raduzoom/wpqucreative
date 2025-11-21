@@ -1,0 +1,232 @@
+@import "../../TOKENS";
+
+
+body.content-align-left.menu-type-3,
+body.content-align-left.menu-type-4 {
+  .the-content-con {
+    left: 230px;
+  }
+}
+
+body.menu-type-3,
+body.menu-type-4 {
+  .qucreative--nav-con {
+    width: 230px;
+
+    .translucent-overlay {
+      background-color: #191919;
+    }
+
+    ul.the-actual-nav {
+      text-align: left;
+      margin-bottom: 30px;
+
+      li {
+        > a {
+          color: #777777;
+          font-family: "Lato", arial, serif;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        ul {
+          min-width: 190px;
+
+          li {
+            position: relative;
+
+            > a {
+              padding: 13px 20px;
+            }
+          }
+        }
+      }
+
+      li:hover {
+        > a {
+          color: #FFFFFF;
+        }
+      }
+
+      > li {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 18px;
+        position: relative;
+
+        > .sub-menu-indicator {
+          position: absolute;
+          right: 30px;
+          top: 50%;
+          transform: translate(0%, -50%);
+          color: #444444;
+          font-size: 14px;
+          pointer-events: none;
+          $transition-property: color;
+          $transition-duration: 0.3s;
+          $transition-timing: ease-out;
+          @include apply_transition($transition-property, $transition-duration, $transition-timing);
+        }
+
+        > a {
+          border-bottom: 1px solid #333333;
+          padding-left: 10px;
+          background-color: transparent;
+          padding-bottom: 4px;
+          padding-top: 4px;
+        }
+
+        ul {
+          border: 1px solid #333333;
+          background-color: #191919;
+          top: -14px;
+
+          ul {
+            top: -11px;
+          }
+
+          > li:first-child {
+            margin-top: 10px;
+          }
+
+          > li:last-child {
+            margin-bottom: 10px;
+          }
+
+          li {
+            > a {
+              background-color: transparent;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            }
+          }
+
+          li.current-menu-ancestor,
+          li.current-menu-item,
+          li:hover {
+            > a {
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+
+      > li.current-menu-ancestor,
+      > li:hover,
+      > li.current-menu-item {
+        > a {
+          background-color: #333333;
+          color: #FFFFFF;
+        }
+
+        > .sub-menu-indicator {
+          color: #222222;
+        }
+      }
+    }
+
+    .translucent-con .translucent-overlay {
+      //      background-color: rgba(255,255,255,0.3);
+    }
+
+    p {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-social-con {
+      position: static;
+      right: auto;
+      bottom: auto;
+      text-align: left;
+      padding-left: 29px;
+
+      i {
+      }
+
+      .social-icons {
+        position: relative;
+      }
+    }
+
+    .social-icons {
+      i {
+        color: #777777;
+      }
+
+      a:hover {
+        i {
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+    }
+
+    .copyright-text {
+      position: absolute;
+      bottom: 25px;
+      text-align: left;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-bottom: 0;
+      color: #666666;
+      font-size: 10px;
+      font-weight: bold;
+      width: 100%;
+      left: 0;
+      opacity: 1;
+    }
+  }
+}
+
+
+
+
+body.menu-type-3,
+body.menu-type-4 {
+  .main-container .the-content-con.fullit {
+    padding-left: 230px;
+  }
+
+  .big-revslider-con.fullwidth {
+
+    .rev_slider_wrapper {
+      padding-left: 230px !important;
+    }
+  }
+}
+
+body.semi-responsive-mode.menu-type-3,
+body.semi-responsive-mode.menu-type-4 {
+  .main-container {
+    overflow-x: visible;
+  }
+
+  .the-content-con:not(.fullit) {
+    max-width: none;
+    width: calc(100% - 290px);
+    left: 260px;
+    margin-left: 0;
+    position: relative;
+    top: 0;
+    right: auto;
+    float: none;
+  }
+}
+
+body.menu-type-3,
+body.menu-type-4 {
+  .qucreative--nav-con.menu-overflows-height {
+    .copyright-text {
+
+      margin-left: 0;
+      margin-top: 20px;
+      padding-left: 0;
+      position: relative;
+    }
+  }
+
+  // .the-content-con.page-portfolio.fullit .the-content .the-content-inner>.selector-con:first-child{
+  //   left: 230px;
+  //   width: calc(100% - 230px);
+  // }
+}

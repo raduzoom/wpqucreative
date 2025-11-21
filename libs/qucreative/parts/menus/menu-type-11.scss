@@ -1,0 +1,90 @@
+@import "../../TOKENS";
+
+@import "menu-type-11-and-12";
+
+body.menu-type-11 {
+  .the-content-con {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-social-con p.copyright-text {
+    opacity: 1;
+  }
+
+  nav.qucreative--nav-con {
+
+    .translucent-overlay {
+      background-color: transparent;
+    }
+
+    .logo-con {
+      height: 100px;
+      text-align: left;
+      margin-left: 30px;
+      margin-top: 30px;
+
+      img {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        -webkit-transform: none;
+      }
+    }
+
+    .nav-social-con {
+      text-align: left;
+    }
+  }
+
+  i.fa.fa-bars {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    color: #FFFFFF;
+    transform: translate(0, -50%);
+    font-size: 42px;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, .99);
+    cursor: pointer;
+    $transition-property: all;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  i.fa.fa-bars:hover {
+    opacity: 0.5;
+  }
+
+  nav.qucreative--nav-con:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  .nav-social-con {
+    left: 30px;
+    right: auto;
+
+    .social-icons {
+      a {
+        i {
+          text-shadow: 1px 2px 0 rgba(0, 0, 0, .99);
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+body.menu-type-11,{
+  .main-container:not(.a) .the-content-con.fullit {
+    padding-left: 290px;
+
+    .portfolio-single-liquid-title {
+      left: 290px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../TOKENS";
+
+
+
+// -- not responsive
+@media all and (min-width: 1001px) {
+  body.qucreative-vertical-menu {
+
+    .big-revslider-con.fullwidth:not(.b) {
+
+      .rev_slider_wrapper {
+        padding-left: 230px !important;
+      }
+    }
+
+    .the-content {
+
+      .the-content-inner + .footer-conglomerate {
+        margin-top: 30px;
+
+
+      }
+    }
+  }
+
+
+}
+body.qucreative-vertical-menu.semi-responsive-mode.page-gallery-w-thumbs,
+body.semi-responsive-mode.menu-type-1.page-gallery-w-thumbs {
+  .the-content-con {
+    left: 0;
+  }
+}

@@ -1,0 +1,21 @@
+body.page-title-align-center {
+  .the-content-con {
+    .main-page-title {
+      right: auto;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+}
+
+
+body.page-title-align-left {
+  .the-content-con {
+    .main-page-title {
+      right: auto;
+      left: 0%;
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+}

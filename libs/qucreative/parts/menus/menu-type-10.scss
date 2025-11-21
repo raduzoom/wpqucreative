@@ -1,0 +1,74 @@
+@import "../../TOKENS";
+
+
+@import "menu-type-9-and-10";
+
+
+body.menu-type-8 {
+  .qucreative--nav-con {
+    .translucent-overlay {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+      /* W3C */
+    }
+
+    ul.the-actual-nav > li ul {
+      background-color: #222222;
+    }
+
+    ul.the-actual-nav {
+      li > a {
+        color: #222222;
+      }
+    }
+
+    ul.the-actual-nav:after,
+    ul.the-actual-nav:before {
+      background-color: #222222;
+    }
+
+    ul.the-actual-nav > li > a {
+    }
+
+    ul.the-actual-nav > li > .sub-menu-indicator {
+      color: #ebebeb;
+    }
+
+    ul.the-actual-nav > li.current-menu-ancestor > a,
+    ul.the-actual-nav > li.current-menu-item > a,
+    ul.the-actual-nav > li:hover > a {
+      background-color: #222222;
+      color: #FFFFFF;
+    }
+
+    ul.the-actual-nav > li > .sub-menu-indicator {
+      color: rgba(0, 0, 0, .4);
+    }
+
+    ul.the-actual-nav > li.current-menu-ancestor > .sub-menu-indicator,
+    ul.the-actual-nav > li.current-menu-item > .sub-menu-indicator,
+    ul.the-actual-nav > li:hover > .sub-menu-indicator {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    ul.the-actual-nav {
+      > li ul li.current-menu-ancestor > a,
+      > li ul li:hover > a,
+      > li ul li.current-menu-item > a {
+        color: #FFFFFF;
+      }
+
+      > li ul {
+      }
+    }
+
+    .social-icons {
+      i {
+        color: #222222;
+      }
+    }
+  }
+
+  .qucreative--nav-con:after {
+    border-top-color: rgba(255, 255, 255, .9);
+  }
+}

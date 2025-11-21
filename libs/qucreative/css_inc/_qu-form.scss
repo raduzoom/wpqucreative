@@ -1,0 +1,187 @@
+
+input.input-style-sharp,
+textarea.input-style-sharp {
+  padding: 12px 15px;
+  width: 100%;
+  line-height: 1;
+  $transition-property: all;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  color: #868686;
+  font-size: 14px;
+  font-weight: 600;
+  outline: 0;
+  box-sizing: border-box;
+  border: 1px solid #222222;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0) inset;
+}
+
+.input-style-sharp:focus,
+.input-style-sharp:hover {
+  box-shadow: 0 0 0 1px #222222 inset;
+}
+
+.input-style-sharp::-webkit-input-placeholder {
+  line-height: 1;
+  position: relative;
+  top: 2px;
+}
+
+.input-style-sharp[type=email]:focus,
+.input-style-sharp[type=email]:hover,
+.input-style-sharp[type=text]:focus,
+.input-style-sharp[type=text]:hover {
+  //      box-shadow:  0 0 0 2px #222222;
+  box-shadow: 0 0 0 1px #222222 inset;
+}
+
+textarea.input-style-sharp {
+  line-height: 1.5;
+  border: 1px solid #222222;
+  //      box-shadow:  0 0 0 1px #222222;
+  padding: 12px 15px;
+  width: 100%;
+  color: #868686;
+  font-size: 14px;
+  font-weight: 600;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0) inset;
+  $transition-property: all;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+textarea.input-style-sharp:focus,
+textarea.input-style-sharp:hover {
+  box-shadow: 0 0 0 1px #222222 inset;
+  outline: 0;
+  //      border:2px solid #222222;
+}
+
+.input-style-sharp:focus,
+.input-style-sharp:hover {
+  background-color: #ffffff;
+}
+
+.input-style-sharp.needs-attention {
+  background-color: #ff9999;
+  color: #ffffff;
+}
+
+body .input-style-cosco {
+  background: #eeeeee;
+  padding: 8px 14px;
+  color: #888888;
+  font-size: 14px;
+  display: inline-block;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .1);
+  font-weight: 600;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, .06);
+  $transition-property: background;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+input.input-style-cosco {
+  padding: 10px 14px;
+}
+
+.input-style-cosco:focus,
+.input-style-cosco:hover {
+  background-color: #ffffff;
+}
+
+.input-style-cosco.needs-attention {
+  background-color: #ff9999;
+  color: #ffffff;
+}
+
+textarea.input-style-cosco {
+}
+
+
+form.style-cosco {
+  .input-style-cosco {
+    width: 100%;
+  }
+
+  textarea.input-style-cosco {
+    display: block;
+  }
+
+  .row {
+    margin-bottom: 10px;
+
+    div[class^="col-md-"] {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  .half-width {
+  }
+
+  .rounded.style-black {
+    width: 100%;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+  }
+}
+
+
+input[type=text] {
+  color: #222;
+  background-color: transparent;
+  padding: 13px 15px;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #222;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+textarea {
+  color: #FFFFFF;
+  background-color: transparent;
+  padding: 10px 15px;
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #FFFFFF;
+  resize: none;
+  display: block;
+}
+
+textarea::-moz-placeholder {
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+
+.form-bg-overlay {
+
+  background-color: rgba(0, 0, 0, .6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.form-overlay {
+  color: #FFFFFF;
+  position: relative;
+  background-color: rgba(0, 0, 0, .6);
+  padding: 40px 30px;
+}

@@ -1,0 +1,28 @@
+@import "../../TOKENS";
+
+@import "./transitions-common";
+.main-container.transition-fade {
+  .the-content-con {
+    opacity: 0;
+    visibility: hidden;
+    $transition-property: opacity, visibility;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .the-content-con.transitioning-out {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // TODO: try
+  // .the-content-con.currContent:not(.transitioning-out) {
+  //     opacity: 1;
+  //     visibility: visible;
+  // }
+  .the-content-con:not(.transitioning-out):not(.ceva) {
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,137 @@
+
+.row-pricing-tables {
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+
+.row-pricing-tables.row-pricing-tables-smaller-margin {
+  margin-bottom: 5px;
+}
+
+.qucreative-pricing-table {
+  border: 1px solid #cccccc;
+  text-align: center;
+  color: #444444;
+  margin-top: 10px;
+  background-color: #ffffff;
+
+  .the-variable-heading {
+    position: relative;
+    left: -10px;
+    background-color: #EEEEEE;
+    border: 1px solid #cccccc;
+    padding: 15px 0 15px 20px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .the-variable-heading:before {
+    content: "";
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -1px;
+    width: 0;
+    height: 0;
+    border-top: 0 solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #cccccc;
+  }
+
+  .price {
+    color: #222222;
+    margin-top: 11px;
+    margin-bottom: 0;
+  }
+
+  .price-date {
+    margin-bottom: 16px;
+    color: #999999;
+  }
+
+  a.signup-button {
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 22px;
+    padding: 6px 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none !important;
+    $transition-property: border, background, color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  a.signup-button:hover {
+    background-color: $color_highlight;
+    color: #FFFFFF;
+    border: 2px solid transparent;
+    text-decoration: none;
+  }
+
+  ul.table-features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
+
+    li {
+      padding: 7px;
+    }
+
+    li:nth-child(odd) {
+      background-color: #f9f9f9;
+      border-top: 1px solid var(--qu-content-color-lines);
+      border-bottom: 1px solid var(--qu-content-color-lines);
+    }
+
+    li {
+    }
+  }
+}
+
+.the-content-sheet-dark {
+
+  .qucreative-pricing-table {
+    background-color: #191919;
+  }
+
+  .bullet-feature-style-1 {
+
+  }
+}
+
+
+.qucreative-pricing-table.featured {
+  border: 1px solid #222222;
+  margin-top: 0;
+
+  h4 {
+    margin-top: 30px;
+    border: 1px solid #222222;
+  }
+
+  h4:before {
+    border-top: 0 solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #222;
+  }
+
+  a.signup-button {
+    margin-bottom: 20px;
+  }
+
+
+  .the-variable-heading {
+    border-color: #222;
+  }
+
+  .the-variable-heading:before {
+    border-right-color: #222;
+  }
+}
+
+

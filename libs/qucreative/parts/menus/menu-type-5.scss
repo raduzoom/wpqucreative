@@ -1,0 +1,18 @@
+@import "../../TOKENS";
+
+body.menu-type-5 {
+  .the-content-con.content-align-right {
+    > .the-content:not(.ceva) {
+      margin-right: 0;
+    }
+  }
+}
+
+
+body.semi-responsive-mode.menu-type-5 {
+  .the-content-con {
+    left: 0;
+  }
+}
+
+@import "menu-type-5-and-6";

@@ -1,0 +1,31 @@
+@mixin apply_transition($transition-property, $transition-duration, $transition-timing) {
+  transition-property: $transition-property;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing;
+
+}
+@mixin boxsizing() {
+  box-sizing: border-box;
+}
+@mixin center_it() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+$color_bg: #111111;
+$color_headings: #222222;
+$color_headings2: #222222;
+$color_menu_bg: #ffffff;
+$animation_defaultDuration: 0.4s;
+$qu_animation_duration: 0.4s;
+$color_menu_bg2: #f5f5f5;
+$color_menu_text: #999999;
+$color_paragraph: #777777;
+$color_hr2: #222222;
+$color_menu_activebg: #444444;
+$color_button_hover: #555555;
+$color_feature_box_bg: #d1b97e;
+$color_meta_day_bg: #000000;
+$color_highlight: #97c1cf;
+

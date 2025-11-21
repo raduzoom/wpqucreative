@@ -1,0 +1,129 @@
+@import "../../TOKENS";
+
+@import "./transitions-common";
+body.bg_transition-fade {
+  .translucent-con.drawn {
+
+    opacity: 1;
+    $transition-property: opacity ;
+    // $transition-property: height;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    &.transitioning-out {
+      opacity: 0;
+    }
+  }
+
+  .the-content-con {
+    &.transitioning {
+
+      // opacity: 1;
+      // visibility: visible;
+    }
+
+    &.js-transitioning-out {
+      z-index: 4;
+    }
+  }
+
+  .the-actual-nav, .the-content-con.page-homepage {
+    z-index: 7;
+  }
+
+  .qucreative--nav-con {
+    z-index: 4;
+  }
+
+  .main-bg-con {
+
+    &.for-remove {
+      z-index: 3 !important;
+    }
+
+    opacity: 0;
+
+    $transition-property: opacity ;
+    // $transition-property: height;
+    $transition-duration: 0.4s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    .main-bg-image {
+    }
+  }
+
+  .translucent-con {
+    &.drawn {
+
+    }
+  }
+
+  .qucreative--nav-con {
+    > .logo-con, > .the-actual-nav, > .nav-social-con {
+      z-index: 6;
+    }
+  }
+
+  .translucent-con {
+
+    &.js-transitioning-out {
+      z-index: 4;
+    }
+  }
+
+  .translucent-con .translucent-canvas {
+    opacity: 1;
+    $transition-property: opacity;
+    // $transition-property: height;
+    $transition-duration: 0.4s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    &.preparing-to-transition {
+      opacity: 0;
+    }
+
+    .main-bg-con {
+    }
+
+    &.transitioning-in {
+      opacity: 1;
+    }
+
+    &.transitioning-out {
+      opacity: 0;
+    }
+
+
+  }
+
+  .main-bg-con.preparing-to-transition, .main-bg-con.transitioning-out
+    //,.main-bg-con.for-remove
+  {
+    opacity: 0;
+
+    > .main-bg-image {
+      // top:90%;
+    }
+  }
+
+  .main-bg-con.transitioning-in:not(.transitioning-out) {
+    opacity: 1;
+  }
+
+  .translucent-con--for-nav-con.preparing-to-transition, .translucent-con--for-nav-con.transitioning-out {
+    opacity: 0;
+  }
+
+  &.first-transition {
+    .main-bg-con.preparing-to-transition {
+      opacity: 0;
+    }
+
+    .translucent-con--for-nav-con.preparing-to-transition {
+      opacity: 0;
+    }
+  }
+}

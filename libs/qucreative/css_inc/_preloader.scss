@@ -1,0 +1,168 @@
+
+.preloader-con {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  $transition-property: opacity, visibility;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  > i {
+    font-size: 30px;
+  }
+}
+$size: 60px;
+.cube-preloader,
+.gallery-preloader span:first-of-type,
+.zoombox-maincon.skin-darkfull .css-preloader .the-icon,
+.zoombox-maincon.skin-whitefull .css-preloader .the-icon {
+  width: $size;
+  height: $size;
+  background-color: #fff;
+  -webkit-animation: cube-preloader-animation 1.2s infinite ease-in-out;
+  animation: cube-preloader-animation 1.2s infinite ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc($size/-2);
+  margin-left: calc($size/-2);
+}
+
+
+.ajax-preloader {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  bottom: -200px;
+  right: -200px;
+  z-index: 15;
+  $transition-property: bottom, right;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+.ajax-preloader:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 200px 200px;
+  border-color: transparent transparent transparent transparent;
+  border-bottom-color: $color_highlight;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.preloader-wandering-cubes {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.preloader-wandering-cubes .preloader-cube {
+  background-color: #FFFFFF;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: preloader-cubes-animation 1.8s ease-in-out -1.8s infinite both;
+  animation: preloader-cubes-animation 1.8s ease-in-out -1.8s infinite both;
+}
+
+.preloader-wandering-cubes .preloader-cube2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.ajax-preloader .loader {
+  font-size: 10px;
+  text-indent: -9999em;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  -webkit-animation: load3 1s infinite linear;
+  animation: load3 1s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+
+.ajax-preloader .loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+.ajax-preloader .loader:after {
+  background: $color_highlight;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+body.no-preloading {
+  .the-content-con {
+    opacity: 1;
+  }
+
+  .preloader-con {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  nav.qucreative--nav-con {
+    opacity: 1;
+  }
+}
+
+.lazyloading-transition-fade {
+  opacity: 0;
+
+
+  max-height: 300px;
+
+  $transition-property: opacity, max-height;
+  $transition-duration: 0.15s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+
+.lazyloading-transition-fade.loaded {
+  opacity: 1;
+  max-height: 1000px;
+}
+
+
+body.q-inited-bg {
+  .preloader-con {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,18 @@
+@import "../TOKENS";
+@import "../css_inc/revSlider";
+
+.qucreative-vertical-menu {
+
+  .big-revslider-con {
+
+    &.fullscreen {
+
+      .forcefullwidth_wrapper_tp_banner {
+        > .rev_slider_wrapper {
+
+          height: 100vh !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,609 @@
+@import "TOKENS";
+
+:root{
+  --qucreative-view-animation-duration: #{$qu_animation_duration};
+  --qu-colors-hightlight-text: #{$color_highlight};
+  --qu-colors-primary-text: #{$color_paragraph};
+  --qu-colors-headings: #{$color_headings};
+  --qu-content-color-bg: #{$color_menu_bg};
+  --qu-content-color-headings: #{$color_headings};
+  --qu-content-color-borders: #eeeeee;
+  --qu-content-color-lines: #dddddd;
+
+  --qu-font-headings: "Lato", arial, serif;
+}
+/*
+
+
+*/
+/**
+ * Table of Contents:
+ *
+ * 1.0 - Repeatable Patterns
+ * 2.0 - Basic Structure
+ * 3.0 - Header
+ *   3.1 - Site Header
+ *   3.2 - Navigation
+ *   3.3 - Menu Types
+ * 4.0 - Content
+ *   4.1 - Homepage
+ *   4.2 - Portfolio
+ *   4.3 - Blog
+ *   4.4 - Elements
+ *   4.6 - Gallery with Thumbs
+ * 5.0 - Sidebar
+ * 6.0 - Footer
+ * 7.0 - Media Queries
+ * 8.0 - Cross-Browser Hacks
+ * 9.0 - Cross-Browser Hacks
+ * ----------------------------------------------------------------------------
+ */
+/**
+ * 1.0 Repeatable Patterns
+ * ----------------------------------------------------------------------------
+ */
+
+@import "css_inc/layout";
+
+
+
+
+
+.custom-a,
+.custom-a:hover {
+  text-decoration: none;
+}
+@import "css_inc/headings";
+
+
+
+.the-content-inner p {
+  > strong:first-child {
+    color: var(--qu-content-color-headings);
+  }
+}
+
+
+
+
+
+
+
+
+img {
+  // pointer-events: none;
+}
+
+.divimage {
+  background-size: cover;
+  background-position: center center;
+}
+
+
+
+
+
+
+.qucreative-option-feed {
+  display: none;
+}
+
+
+.the-content-sheet-text:empty {
+  display: none;
+}
+
+/* headings END */
+
+
+.paragraph-text-for-light {
+  p {
+    color: inherit !important;
+
+  }
+}
+
+
+
+@import "css_inc/colorsOnText";
+
+
+
+
+
+
+
+
+
+.tall-img {
+  margin-top: -50%;
+  width: 100%;
+}
+
+.wide-img {
+  margin-left: -50%;
+  height: 100%;
+}
+
+.subtitle {
+  text-align: center;
+  color: $color_menu_text;
+  margin-top: 0;
+}
+
+
+
+
+.main-container {
+
+
+
+
+
+
+
+  // -- h4
+  .social-meta-con .the-variable-heading-circle-label {
+    color: #ffffff;
+  }
+
+  // -- h4
+  .social-meta-con h3 {
+
+  }
+
+
+}
+
+
+$color_bg: #fff;
+$color_text: #111;
+
+
+$transition-property: all;
+$transition-duration: 0.3s;
+$transition-timing: ease-out;
+
+
+
+
+// body.with-border {
+//     .main-container {
+//         border: 15px solid #FFFFFF;
+//         transform: translate3d(0,0,0);
+//         position: fixed;
+//         width: 100%;
+//         height: 100%;
+//     }
+// }
+
+
+body.with-border {
+
+}
+
+
+
+
+
+/* -- dividers END */
+/**
+ * 2.0 Basic Structure
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+// -- temp
+.main-container {
+  // opacity: 1!important;
+}
+
+body.q-inited-bg .main-container {
+  opacity: 1;
+}
+
+
+
+
+
+.main-bg-con,
+.translucent-con--for-nav-con {
+  // transform: translate3d(0,0,0);
+}
+
+.transitionduration0 {
+  transition-duration: 0s !important;
+}
+
+.main-bg-image.is-image {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+
+@import "css_inc/transitions/transitions";
+
+
+
+//@-webkit-keyframes androidBugfix {from { padding: 0; } to { padding: 0; }}
+//body { -webkit-animation: androidBugfix infinite 1s; }
+
+
+
+
+
+@import "css_inc/qu-bg";
+
+
+
+
+// todo: separate
+@import "css_inc/body-style-light";
+@import "css_inc/content-align-right";
+@import "css_inc/content-align-left";
+
+
+
+
+
+
+
+
+
+
+
+
+@import "css_inc/animations";
+
+@import "css_inc/qu-structure/qu-structure";
+
+
+.the-content-inner {
+  img {
+    max-width: 100%;
+  }
+}
+
+// todo: separate
+@import "css_inc/pageTitleAlign";
+
+
+
+
+
+
+
+
+
+.no-categories {
+  .zfolio-item {
+    // transform: translate3d(0,0,0)!important;
+  }
+}
+
+
+
+
+
+
+// todo: separate
+body.qucreative-vertical-menu {
+  .logo-con.divlogo:not(custom-position-x) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
+
+@import "css_inc/translucent";
+
+
+// todo: separate
+.main-container {
+  .section-number {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: "Lato", arial, serif;
+    font-size: 130px;
+    font-weight: 900;
+    color: var(--qu-content-color-borders);
+    line-height: 1;
+  }
+}
+
+
+
+$bg_color: #191919;
+
+.the-content-sheet.the-content-sheet-dark p, .the-content-sheet.the-content-sheet-dark .paragraph-text:not(.paragraph-text-for-light), .qucreative-secondary-content p, .qucreative-secondary-content .paragraph-text {
+  color: #fff;
+}
+
+
+/**
+ * 3.0 Header
+ * ----------------------------------------------------------------------------
+ */
+/**
+ * 3.1 Site Header
+ * ----------------------------------------------------------------------------
+ */
+@import "css_inc/responsiveMenu";
+
+
+
+
+@import "css_inc/qu-structure/nav";
+/* - the navigation */
+
+
+
+
+
+/**
+ * 3.3 Menu Types
+ * ----------------------------------------------------------------------------
+ */
+
+// todo: separate
+@import "css_inc/menu-types";
+
+
+.nav-social-con {
+  .copyright-text {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+}
+
+
+
+
+.copyright-text {
+  color: #fff;
+}
+
+article.the-content-sheet.sticky {
+  background-color: #f7f5f5;
+
+  border-top: 5px solid #e85555;
+}
+
+@import "header";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "css_inc/menu-types";
+
+
+@import "css_inc/typography";
+
+
+
+
+/**
+ * 4.4 Elements
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+
+
+
+
+
+
+
+
+// body #wpadminbar {
+//     top: -32px;
+//     background: rgba(35, 40, 45, 0.5);
+//     $transition-property: top;
+//     $transition-duration: 0.3s;
+//     $transition-timing: ease-out;
+//     @include apply_transition($transition-property, $transition-duration, $transition-timing);
+// }
+// #wpadminbar.active {
+//     top: 0;
+//     $transition-property: top;
+//     $transition-duration: 0.3s;
+//     $transition-timing: ease-out;
+//     @include apply_transition($transition-property, $transition-duration, $transition-timing);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.feature-content {
+  flex: 100;
+}
+
+
+// todo: separate
+.searched-query {
+  background-color: var(--qu-content-color-bg);
+  color: var(--qu-content-color-headings);
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 30px;
+
+  &.h3 {
+    margin-top: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$transition-property: all;
+$transition-duration: 0.3s;
+$transition-timing: ease-out;
+
+$size: 60px;
+
+// todo: analyze
+@import "css_inc/preloader";
+
+
+
+body {
+
+}
+
+/* -- elements END */
+
+
+
+
+
+
+
+/**
+ * 5.0 Sidebar
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+
+
+/**
+ * 7.0 Media Queries
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+
+
+
+
+
+
+@import "css_inc/fontGroup";
+
+$transition-property: all;
+$transition-duration: 0.3s;
+$transition-timing: ease-out;
+$classmain: ".scroller-con";
+
+/*  functional styling*/
+
+
+
+
+/*
+
+-- uncomment this for no preloading
+
+body{
+  .the-content-con{
+    opacity: 1;
+  }
+
+  .preloader-con{
+    opacity:0;
+    visibility: hidden;
+  }
+
+  nav.qucreative--nav-con{
+    opacity: 1;
+  }
+}
+
+*/
+
+
+/**
+ * 10.0 Responsive
+ * ----------------------------------------------------------------------------
+ */
+
+// todo: separate what is to separate
+@import 'responsive';

@@ -1,0 +1,22 @@
+@import "../TOKENS";
+
+
+@import "../css_inc/testimonial";
+body .main-container div.advancedscroller.testimonial-ascroller .thumbsClip .testimonial-col-name {
+  .testimonial-subtitle {
+    margin-bottom: 0;
+  }
+}
+
+body .main-container div.advancedscroller.testimonial-ascroller .thumbsClip .testimonial-col-quote {
+  right: 0;
+  white-space: normal;
+}
+
+.testimonial-col-quote {
+  text-align: right;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}

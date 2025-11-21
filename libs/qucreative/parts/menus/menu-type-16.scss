@@ -1,0 +1,17 @@
+@import "../../TOKENS";
+
+
+
+@import "menu-type-13-18";
+@import "menu-type-15-and-16";
+
+
+
+body.menu-type-16 {
+  nav.qucreative--nav-con {
+    .translucent-overlay {
+      background-image: none;
+      background-color: rgba(255,255,255,.8);
+    }
+  }
+}

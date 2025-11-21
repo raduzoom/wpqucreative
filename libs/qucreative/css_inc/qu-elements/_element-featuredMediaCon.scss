@@ -1,0 +1,56 @@
+.featured-media-con {
+  width: 100%;
+  height: auto;
+  position: relative;
+
+  > .featured-media--image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  > .vplayer-tobe,
+  .vplayer,
+  > .vplayer {
+    margin-bottom: 0;
+  }
+
+  &.as-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+
+.featured-media-con.featured-media-absolute {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.featured-media-con.is-real-content {
+  position: relative;
+}
+
+body.responsive-mode-sc {
+  .featured-media-con {
+    // why
+    // position: static;
+  }
+}
+
+body .featured-media-con {
+  .section-featured-media {
+    position: relative;
+  }
+}

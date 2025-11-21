@@ -1,0 +1,16 @@
+@import "../TOKENS";
+
+.element-clients-list {
+  list-style: none;
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+
+  > li {
+    display: inline-block;
+    width: 16.6666%;
+    padding: 0 10px;
+  }
+}

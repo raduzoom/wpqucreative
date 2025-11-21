@@ -1,0 +1,51 @@
+@import "../../TOKENS";
+
+
+@import "./transitions-common";
+body.bg_transition-slidedown {
+  .main-bg-con {
+    .main-bg-image {
+      top: 0;
+    }
+  }
+
+  .main-bg-con.transitioning-in {
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
+  }
+
+  .translucent-con--for-nav-con {
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
+    $transition-property: transform, opacity;
+    $transition-duration: var(--qucreative-view-animation-duration);
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .main-bg-con.preparing-to-transition {
+    transform: translate3d(0, -100vh, 0);
+    opacity: 1;
+
+    > .main-bg-image {
+      // top:90%;
+    }
+  }
+
+  .translucent-con--for-nav-con.preparing-to-transition {
+    transform: translate3d(0, -100vh, 0);
+    opacity: 1;
+  }
+
+  &.first-transition {
+    .main-bg-con.preparing-to-transition {
+      transform: translate3d(0, -150px, 0);
+      opacity: 0;
+    }
+
+    .translucent-con--for-nav-con.preparing-to-transition {
+      transform: translate3d(0, -150px, 0);
+      opacity: 0;
+    }
+  }
+}

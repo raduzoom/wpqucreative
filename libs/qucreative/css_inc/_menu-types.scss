@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+
+
+
+
+
+body.menu-scroll-method-scroll {
+  .qucreative--nav-con.menu-overflows-height .logo-con {
+    $transition-property: margin;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

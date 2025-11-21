@@ -1,0 +1,217 @@
+
+.the-content-con.page-homepage {
+  .scroller-con.type-scrollTop {
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+  }
+
+  .main-bg-image,
+  .main-gallery--desc .translucent-con .translucent-canvas {
+    //transform: translate3d(0px, 0, 0px)!important;
+  }
+
+  & {
+    margin: 0;
+  }
+}
+
+
+.main-gallery--descs {
+  position: fixed;
+  top: 50%;
+  bottom: auto;
+  right: 0;
+  left: auto;
+  white-space: nowrap;
+  transform: translate(0%, -50%);
+  -webkit-transform: translate(0%, -50%);
+  text-align: right;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  $transition-property: width, opacity;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  .main-gallery--desc {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+
+    .desc-inner {
+      padding: 15px 0;
+    }
+
+    .big-desc {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      line-height: 1.2;
+      font-family: "Lato", sans-sarif;
+      font-weight: 900;
+      margin-right: 30px;
+      font-size: 50px;
+      color: $color_menu_bg;
+      text-align: right;
+      margin-left: 30px;
+    }
+
+    .big-number {
+      position: relative;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 135px;
+      font-family: "Lato", sans-sarif;
+      font-weight: 900;
+      margin-right: 30px;
+      color: $color_highlight;
+    }
+  }
+
+  .main-gallery--desc.active {
+    display: block;
+  }
+}
+
+.main-gallery--descs.style2 {
+  text-align: left;
+  top: auto;
+  bottom: 30px;
+  left: 280px;
+  right: auto;
+
+  .main-gallery--desc {
+    left: 0;
+    right: auto;
+  }
+
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transform: translate3d(0%, 0%, 0);
+}
+@media (max-width: 909px) {
+  body.page-homepage .responsive-info-btn-con {
+    display: block;
+  }
+}
+
+.main-gallery-buttons-con {
+  position: fixed;
+  bottom: -30px;
+  right: 30px;
+  text-align: right;
+  opacity: 0;
+  $transition-property: opacity;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  > * {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .next-btn-con {
+    top: -126px;
+
+    i {
+      margin-left: -5px;
+    }
+  }
+
+  .prev-btn-con {
+    figure {
+      background-color: transparent;
+    }
+  }
+
+  .btn-text {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: $color_menu_bg;
+  }
+
+  figure {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    position: relative;
+    margin-left: 15px;
+    border: 2px solid $color_menu_bg;
+    background-color: #222222;
+    border-radius: 50%;
+    $transition-property: background-color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    i {
+      color: $color_menu_bg;
+      font-size: 40px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -20px;
+      //      transform: translate(-50%, -50%);
+      //      -webkit-transform: translate(-50%, -50%);
+    }
+  }
+
+  .btn-text,
+  figure {
+    vertical-align: middle;
+  }
+
+  > *:hover {
+    figure {
+      background-color: $color_highlight;
+    }
+  }
+}
+
+
+.main-gallery-buttons-con.style2 {
+  bottom: 30px;
+
+  .main-gallery--desc {
+    right: auto;
+    left: 0;
+  }
+
+  i {
+    text-shadow: 2px 3px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  figure {
+    box-shadow: 2px 3px 1px rgba(0, 0, 0, .3), inset 0 1px 1px rgba(0, 0, 0, .3);
+  }
+
+  .btn-text {
+    display: none;
+  }
+
+  .prev-btn-con {
+    display: inline-block;
+  }
+
+  .next-btn-con {
+    display: inline-block;
+    vertical-align: top;
+    top: 0;
+
+    figure {
+      background-color: transparent;
+    }
+  }
+
+  .next-btn-con:hover figure,
+  .prev-btn-con:hover figure {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,0 +1,99 @@
+.qucreative-pagination {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+  padding-left: 0;
+  color: #FFFFFF;
+  // font-size: 14px;
+  // font-weight: bold;
+  // font-family: "Lato",arial;
+  > li {
+    display: inline-block;
+    color: #ffffff;
+
+    > a {
+      display: inline-flex;
+      padding: 13px 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: inherit;
+
+      position: relative;
+
+      width: 40px;
+      height: 40px;
+
+      > .the-number {
+        @include center_it();
+      }
+
+      $transition-property: background;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  > li:hover,
+  > li.active {
+    > a {
+      text-decoration: none;
+    }
+  }
+}
+
+
+.qucreative-pagination--wp_link_pages {
+  text-align: center;
+  font-size: 0;
+
+  margin-top: 7px;
+  margin-bottom: 17px;
+
+  .the-number-con {
+
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+
+    background-color: #ddd;
+
+    $transition-property: background;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+
+    > .the-number {
+      color: #fff;
+      @include center_it();
+    }
+
+    &:hover {
+
+      background-color: $color_highlight;
+    }
+  }
+
+  > .the-number-con {
+    background-color: $color_highlight;
+  }
+}
+
+.main-container{
+
+  .qucreative-pagination {
+
+    > li:hover,
+    > li.active {
+      > a {
+        background-color: $color_highlight;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "../TOKENS";
+
+
+@import "../css_inc/servicesLightbox";
+.row.services-lightbox-content {
+  position: relative;
+  padding: 0;
+
+  > .services-lightbox-content--content {
+    opacity: 1;
+    top: 0;
+
+    h2 {
+      margin-top: 15px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+
+/* -- horizontal lines END */
+.color-highlight {
+  color: var(--qu-colors-hightlight-text);
+}
+
+a.color-highlight {
+
+  color: var(--qu-colors-hightlight-text);
+}
+
+.color-border-bottom-on-hover:hover {
+  border-bottom-color: var(--qu-colors-hightlight-text);
+}
+.color-highlight-on-hover:hover {
+
+  &, > i {
+
+    color: var(--qucreative-view-animation-duration) !important;
+  }
+}
+
+.bg-highlight {
+  background-color: var(--qucreative-view-animation-duration);
+}

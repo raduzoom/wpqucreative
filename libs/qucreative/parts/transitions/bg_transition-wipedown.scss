@@ -1,0 +1,78 @@
+@import "../../TOKENS";
+
+@import "./transitions-common";
+body.bg_transition-wipedown {
+  .main-bg-con {
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+    height: 0;
+    $transition-property: height, transform;
+    // $transition-property: height;
+    $transition-duration: 0.4s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    .main-bg-image {
+      top: 0;
+      max-width: none;
+      // $transition-property: top;
+      // // $transition-property: height;
+      // $transition-duration: 0.3s;
+      // $transition-timing: ease-out;
+      // @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+  }
+
+  .main-bg-con.transitioning-in {
+    height: 107vh !important;
+    overflow: hidden;
+    opacity: 1;
+
+    > .main-bg-image {
+      top: 0;
+    }
+  }
+
+
+  &:not(.qucreative-horizontal-menu):not(.qucreative-ribbon-menu) {
+
+    .translucent-con--for-nav-con {
+      height: 107vh;
+    }
+  }
+
+  .translucent-con--for-nav-con {
+    transform: translate3d(0, 0px, 0);
+    $transition-property: height, transform;
+    // $transition-property: height;
+    $transition-duration: 0.4s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  }
+
+  .main-bg-con.preparing-to-transition {
+    height: 0 !important;
+    transform: translate3d(0, -100px, 0);
+
+    > .main-bg-image {
+      // top:-150px;;
+    }
+  }
+
+  .translucent-con--for-nav-con.preparing-to-transition:not(.ceva) {
+    transform: translate3d(0, -100px, 0);
+    height: 0;
+
+  }
+
+  &.first-transition {
+    .main-bg-con.preparing-to-transition {
+      height: 107vh;
+    }
+
+    .translucent-con--for-nav-con.preparing-to-transition {
+      height: 107vh;
+    }
+  }
+}

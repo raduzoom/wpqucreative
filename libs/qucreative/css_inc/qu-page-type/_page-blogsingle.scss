@@ -1,0 +1,222 @@
+body.page-blogsingle {
+  .featured-media-con:not(.as-background) {
+    height: auto;
+
+
+    img {
+
+      max-height: 800px;
+      object-fit: cover;
+    }
+  }
+
+
+  .post-meta-below {
+    background-color: #EEEEEE;
+    padding: 30px 30px 20px;
+    font-size: 11px;
+    font-weight: 900;
+
+    a {
+      color: inherit;
+      $transition-property: color;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+
+    a:hover {
+      color: $color_highlight;
+      text-decoration: none;
+    }
+
+
+    .post-meta-below--meta {
+      // text-transform: uppercase;
+      margin-top: -6px;
+      position: relative;
+
+      .separator-line {
+        position: absolute;
+        width: 1px;
+        background-color: #cccccc;
+        height: calc(100% - 4px);
+        left: 98px;
+        top: 0;
+      }
+
+      .meta-left {
+        width: 98px;
+        float: left;
+        text-align: right;
+        padding-right: 10px;
+        color: #222222;
+        margin-bottom: 4px;
+        line-height: 1.5 !important;
+
+        white-space: nowrap;
+      }
+
+      .meta-right {
+        padding-left: 10px;
+        overflow: hidden;
+        line-height: 1.5 !important;
+
+        text-transform: uppercase;
+      }
+    }
+
+    .social-con + .post-meta-below--meta {
+      margin-top: 16px;
+    }
+  }
+
+  .blog-link-con {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+
+    .portfolio-link--title {
+      padding: 10px;
+      font-size: 11px;
+      font-weight: 900;
+      // text-transform: uppercase;
+      line-height: 1.4;
+      color: #777777;
+      position: relative;
+      $transition-property: background, color;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+      .link-thumb {
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-position: center center;
+        margin-left: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0) inset;
+        $transition-property: all;
+        $transition-duration: 0.3s;
+        $transition-timing: ease-out;
+        @include apply_transition($transition-property, $transition-duration, $transition-timing);
+      }
+
+      .link-title {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.6;
+
+        text-transform: uppercase;
+      }
+    }
+
+    .portfolio-link--title.left-td:before {
+    }
+
+    .portfolio-link--title.left-td {
+      text-align: right;
+
+      .link-thumb {
+        display: block;
+        float: right;
+      }
+
+      .link-title {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        width: calc(100% - 70px);
+        transform: translate(0, -50%);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .portfolio-link--title.left-td,
+    .portfolio-link--title.right-td {
+      text-align: right;
+      background-color: #FFFFFF;
+    }
+
+    .portfolio-link--title.right-td:before {
+    }
+
+    .portfolio-link--title.right-td {
+      text-align: left;
+
+      .link-thumb {
+        margin-left: 0;
+        margin-right: 10px;
+      }
+
+      .link-thumb {
+        display: block;
+        float: left;
+      }
+
+      .link-title {
+        position: absolute;
+        left: 60px;
+        top: 50%;
+        width: calc(100% - 70px);
+        transform: translate(0, -50%);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .portfolio-link--toback.center-td {
+      text-align: center;
+      width: 80px;
+      height: 60px;
+
+      > a {
+        display: block;
+        width: 60px;
+        height: 60px;
+        background-color: #FFFFFF;
+        color: #222222;
+        position: relative;
+        margin-left: 10px;
+        margin-right: 10px;
+        $transition-property: color, background;
+        $transition-duration: 0.3s;
+        $transition-timing: ease-out;
+        @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+        i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: inherit;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .portfolio-link--toback.center-td:hover {
+      > a {
+        background-color: $color_highlight;
+        color: #FFFFFF;
+      }
+    }
+
+    .portfolio-link--title:hover {
+      background-color: $color_highlight;
+      color: #FFFFFF;
+      text-decoration: none;
+
+      .link-thumb {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+      }
+
+      h5 {
+        color: #FFFFFF;
+      }
+    }
+  }
+}

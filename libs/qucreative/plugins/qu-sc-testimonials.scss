@@ -1,0 +1,15 @@
+@import "../TOKENS";
+
+
+body:not(.responsive-mode-sc) {
+
+
+  .antfarm-sc-testimonials {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+  }
+}

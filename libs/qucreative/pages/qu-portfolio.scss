@@ -1,0 +1,79 @@
+@import "../TOKENS";
+
+
+
+
+.the-content-sheet-post-type-antfarm_port_items {
+  .social-con {
+    position: absolute;
+    left: 45px;
+    bottom: 33px;
+  }
+}
+
+
+.col-md-8.from-antfarm_port_items-meta {
+  min-height: 100px;
+}
+
+
+.single-antfarm_port_items-fullscreen.post-media-type-image {
+  .translucent-con--for-nav-con {
+    .translucent-canvas {
+      transform: translate3d(0, 0, 0) !important;
+    }
+  }
+}
+
+
+@import "../css_inc/portfolio/page_portfolio";
+@import "../css_inc/portfolio/page_portfolio-single";
+
+
+.portfolio-single-subtitle {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  //color: #e64c3b;
+  color: #777777;
+}
+@import "../css_inc/portfolio/quportfolio";
+
+
+.the-content-con.page-normal .zfolio + .qucreative-pagination {
+  margin-top: 20px;
+}
+.main-container,
+.slider-con {
+  img.fullwidth {
+    width: 100%;
+  }
+
+
+  .dzs-tabs.skin-menu .tabs-menu .tab-menu-con {
+    margin-right: 1px;
+  }
+
+
+  .excerpt-content.skin-qucreative {
+    .dzs-col-4 {
+      p:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+  .hr-for-skin-whitefull {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+  }
+
+
+
+  .responsive-featured-media-con {
+    display: none;
+  }
+
+
+}

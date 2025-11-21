@@ -1,0 +1,66 @@
+body.body-style-light {
+  .the-content {
+    .translucent-con .translucent-overlay {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .translucent-layer {
+    background-color: rgba(255, 255, 255, .3);
+  }
+
+  .qucreative-pagination > li > a {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: inherit;
+  }
+
+  .the-content.with-filters-bg {
+    .translucent-con {
+      .translucent-overlay {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .translucent-layer {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  .gallery-thumbs-con .translucent-con .translucent-overlay {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  // .main-container .the-content-con.fullit .zfolio.skin-melbourne .zfolio-item .the-feature-con,
+  // .main-container .the-content-con.fullit .zfolio.skin-silver .zfolio-item .the-feature-con {
+  // box-shadow: 0 0 0 2px #ffffff;
+  // }
+
+  .main-container .the-content-con.page-portfolio.fullit .selector-con {
+    background-color: #FFFFFF;
+
+    .a-category {
+
+      color: #222222;
+    }
+  }
+
+  .the-content-con.fullit.page-portfolio .selector-con .a-category.active,
+  .the-content-con.fullit.page-portfolio .selector-con .a-category:hover {
+    color: #FFFFFF;
+  }
+
+  /* homepage */
+  .main-gallery--desc .translucent-con .translucent-overlay {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .main-gallery--descs .main-gallery--desc .big-desc {
+    color: #222222;
+  }
+
+}
+
+body.body-style-light.with-fullbg .main-container > .fullbg,
+body.body-style-light.with-fullbg > .fullbg {
+  background-color: rgba(255, 255, 255, .7);
+}

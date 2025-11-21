@@ -1,0 +1,81 @@
+
+body.page-contact {
+  .the-content-con {
+    max-width: 930px;
+  }
+
+  .the-content-sheet {
+    margin-bottom: 30px;
+  }
+
+  .the-content {
+    padding-bottom: 1px;
+  }
+}
+
+.contact-info {
+  width: 46%;
+  position: relative;
+  float: right;
+  color: #FFFFFF;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .6);
+  padding: 40px 30px 10px;
+  font-weight: 600;
+
+  h4,
+  h6 {
+    color: inherit;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  p {
+    color: inherit;
+    font-size: 16px;
+    margin-bottom: 27px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.68;
+  }
+
+  a {
+    color: inherit;
+    $transition-property: color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  a:hover {
+    color: $color_highlight;
+    text-decoration: none;
+  }
+
+  .social-circle-con {
+  }
+
+  .social-circle-con:hover {
+    //    background-color: rgba(255,255,255,1);
+    //    > i{
+    //      color: #222222;
+    //    }
+  }
+
+  hr.qucreative-hr-small {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    margin-bottom: 12px;
+    margin-top: 17px;
+  }
+
+  h6 + hr.qucreative-hr-small {
+    margin-top: -7px;
+  }
+
+  hr {
+    margin-top: 40px;
+    margin-bottom: 17px;
+  }
+}

@@ -1,0 +1,27 @@
+@import "../TOKENS";
+
+
+
+
+.main-bg-con.dzsparallaxer {
+  position: fixed;
+
+  .main-bg {
+    height: 130%;
+  }
+}
+.main-bg-con.dzsparallaxer.stickto100 {
+  height: 100% !important;
+}
+
+
+body .main-container .main-bg-con-con.dzsparallaxer {
+  position: absolute;
+
+  .main-bg-con {
+    height: 130%;
+    position: fixed;
+  }
+}
+
+

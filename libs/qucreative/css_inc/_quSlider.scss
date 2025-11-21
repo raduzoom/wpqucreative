@@ -1,0 +1,103 @@
+
+.main-container,
+.slider-con {
+
+
+  .advancedscroller .thumbsClip {
+    $transition-property: left;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+  .advancedscroller.mode-onlyoneitem.transition-slide .thumbsCon .thumbsClip {
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+  }
+
+  .advancedscroller.closedhand.mode-onlyoneitem.transition-slide .thumbsCon .thumbsClip {
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+
+
+  .advancedscroller.skin-qucreative > .arrowsCon > .arrow-left {
+    right: 31px;
+  }
+
+  .advancedscroller.skin-qucreative .arrowsCon > .arrow-right:before,
+  .advancedscroller.skin-qucreative > .arrowsCon > .arrow-left:before {
+    margin-top: -16px;
+  }
+
+  .advancedscroller.skin-qucreative > .arrowsCon > .arrow-left:before {
+    margin-left: -6px;
+  }
+
+  .advancedscroller.skin-qucreative .arrowsCon > .arrow-right:before {
+    margin-left: -4px;
+  }
+
+  .advancedscroller.skin-qucreative.arrows-middle > .arrowsCon > .arrow-left {
+    bottom: auto;
+    right: auto;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .advancedscroller.skin-qucreative.arrows-middle > .arrowsCon > .arrow-right {
+    bottom: auto;
+    left: auto;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .advancedscroller.skin-qucreative.arrows-middle > .arrowsCon > .arrow-left:hover {
+    background-color: rgba(20, 20, 20, 1);
+  }
+
+  .advancedscroller.skin-qucreative.arrows-middle > .arrowsCon > .arrow-right:hover {
+    background-color: rgba(20, 20, 20, 1);
+  }
+
+  .advancedscroller.skin-whitefish.fixed-height {
+    .thumbsClip {
+      height: 100%;
+
+      > .item {
+        height: 100%;
+
+        .row.center-it-v {
+          left: 30px;
+          /* padding-top: 15px; */
+          width: calc(100% - 30px);
+          display: flex;
+          align-items: center;
+          position: absolute;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .advancedscroller.skin-whitefish.fixed-height.transition-slide {
+    .thumbsClip {
+      > .item {
+        position: relative;
+      }
+    }
+  }
+
+  .advancedscroller .arrowsCon > .arrow-left,
+  .advancedscroller .arrowsCon > .arrow-right {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+
+
+
+
+}

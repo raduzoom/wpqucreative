@@ -1,0 +1,62 @@
+.comments-pagination {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+  padding-left: 0;
+  color: #FFFFFF;
+
+  font-size: 0;
+  // font-size: 14px;
+  // font-weight: bold;
+  // font-family: "Lato",arial;
+
+  .page-numbers {
+
+    background-color: #ddd;
+  }
+
+  .nav-links {
+    > a, span {
+      display: inline-block;
+      color: #ffffff;
+
+      font-family: "Lato", serif;
+      font-size: 14px;
+
+      display: inline-flex;
+      padding: 20px 16px;
+      color: inherit;
+
+      position: relative;
+
+      width: 40px;
+      height: 40px;
+
+
+      line-height: 0 !important;
+      $transition-property: background;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    > a:hover, > span:hover, > .current {
+      text-decoration: none;
+      background-color: $color_highlight;
+    }
+
+    .next, .prev {
+      display: none;
+    }
+  }
+
+
+  & + #respond, & + .no-comments {
+    margin-top: 25px;
+  }
+}

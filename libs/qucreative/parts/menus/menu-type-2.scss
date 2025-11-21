@@ -1,0 +1,56 @@
+@import "../../TOKENS";
+
+@import "menu-type-1-and-2";
+
+body.menu-type-2 {
+  .qucreative--nav-con {
+    .translucent-con .translucent-overlay {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    p {
+      opacity: 1;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .social-icons {
+      i {
+        color: #222222;
+      }
+    }
+
+    .social-icons {
+      a:hover {
+        i {
+          //color: #ffffff;
+          //opacity: 1;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  ul.the-actual-nav li > a {
+    color: #222222;
+  }
+
+  ul.the-actual-nav ul li > a {
+    color: #ffffff;
+  }
+
+  ul.the-actual-nav li ul > li:hover > a,
+  ul.the-actual-nav li ul li.current-menu-ancestor > a,
+  ul.the-actual-nav li ul li.current-menu-item > a {
+    color: $color_highlight;
+  }
+
+  ul.the-actual-nav > li:hover > a,
+  ul.the-actual-nav li.current-menu-ancestor > a,
+  ul.the-actual-nav li.current-menu-item > a {
+    color: #ffffff;
+  }
+
+  .copyright-text {
+    color: #222222;
+  }
+}

@@ -1,0 +1,333 @@
+.post-meta {
+  font-family: "Open Sans", arial, serif;
+  font-weight: 400;
+  color: #777777;
+  font-size: 13px;
+  font-style: italic;
+
+  a {
+    color: var(--qu-colors-hightlight-text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(231, 76, 70, 0);
+    $transition-property: border, color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  a:hover {
+    color: var(--qu-colors-hightlight-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--qu-colors-hightlight-text);
+  }
+}
+
+.post-main-link {
+  color: var(--qu-content-color-headings)
+}
+
+.qu-loop--header--the-content-sheet {
+  padding: 23px 30px 19px;
+
+
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--qu-content-color-lines);
+    z-index: auto;
+    margin-top: -3px;
+
+  }
+
+  .post-main-link {
+    color: #222;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.qu-loop--header--the-content-sheet--wrapper {
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+
+}
+
+
+.post-feature {
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  overflow: hidden;
+
+  .the-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center center;
+    $transition-property: all;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  & + .post-feature {
+    margin-top: 30px;
+  }
+
+  .the-image:before {
+    content: "";
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.9+100 */
+    /* FF3.6-15 */
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#00000000', endColorstr='#e6000000', GradientType=0);
+    /* IE6-9 */
+  }
+
+  $white_bg_size: 80px;
+
+  .the-image:after {
+    content: "";
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $white_bg_size;
+    background: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    $transition-property: opacity, visibility;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .post-title-con {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $white_bg_size;
+    position: absolute;
+
+    > h6 {
+      width: 100%;
+      height: auto;
+      bottom: auto;
+      left: 0;
+      top: 40%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .post-title {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    text-align: center;
+    padding: 0 20px;
+    color: #ffffff;
+    width: 100%;
+
+    $transition-property: color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  h6 {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    text-align: center;
+    padding: 0 20px;
+    color: #ffffff;
+    $transition-property: color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  time {
+    width: 60px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    opacity: 1;
+    visibility: visible;
+    $transition-property: opacity, visibility;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    .the-day {
+      background-color: #222222;
+      color: #ffffff;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1;
+      padding: 6px 0;
+      font-size: 25px;
+    }
+
+    .the-month {
+      background-color: #ffffff;
+      color: #222;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+      padding: 5px 0;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+
+.post-feature:hover {
+  .the-image {
+    transform: scale(1.1);
+  }
+
+  .the-image:after {
+    // opacity: 1;
+    // visibility: visible;
+  }
+
+  .the-image:after {
+    //background: #ffffff;
+  }
+
+  time {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .post-title,
+  h6 {
+    // color: #222222;
+  }
+}
+
+
+.post-main-link-con {
+  & + .post-meta {
+    margin-top: 9px;
+    margin-bottom: 6px;
+  }
+}
+
+// body .advancedscroller .imagediv {
+//     width: calc(100% + 1px);
+// }
+/* --- blog page */
+a.post-feature {
+  display: block;
+}
+
+
+a.post-main-link {
+  text-decoration: none;
+  color: #222222;
+  $transition-property: color;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  > h3 {
+    $transition-property: color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  > strong {
+    font-weight: 900;
+  }
+}
+
+a.post-main-link:hover {
+  text-decoration: none;
+  color: $color_highlight;
+
+  > h3 {
+    color: $color_highlight;
+  }
+}
+
+.post-content-con {
+  padding: 15px 30px 30px;
+
+  > p:last-child {
+    margin-bottom: -7px;
+  }
+
+  > h3 {
+    margin-top: 9px;
+    margin-bottom: 9px;
+    font-weight: 900;
+    font-size: 25px;
+  }
+
+  > hr.extend-margin-30 {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+}
+
+
+.comments-area {
+
+  .depth-1.parent {
+
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  ol {
+  }
+
+  .has-children > ol {
+    padding-left: 40px;
+    list-style: none;
+
+    li > article > .comment-meta {
+      background-color: transparent;
+
+      > .comment-thumb {
+
+        $children_comment_size: 50px;
+        width: $children_comment_size;
+        height: $children_comment_size;
+
+        flex: 0 0 $children_comment_size;
+      }
+    }
+  }
+}

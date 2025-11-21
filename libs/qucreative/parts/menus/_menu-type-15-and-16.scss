@@ -1,0 +1,81 @@
+@import "../../TOKENS";
+
+
+body.menu-type-15,
+body.menu-type-16 {
+  nav.qucreative--nav-con {
+    > .translucent-con {
+      overflow: visible;
+    }
+
+    > .logo-con,
+    > .the-actual-nav,
+    > .translucent-con,
+    > .nav-social-con {
+      //z-index:3;
+    }
+
+    ul.the-actual-nav {
+      > li {
+        &:before {
+          position: absolute;
+          top: 100%;
+          height: 20px;
+          width: 100%;
+          left: 0;
+          content: "";
+        }
+      }
+    }
+
+    .translucent-overlay {
+      background-image: none;
+      background-color: rgba(0, 0, 0, .7);
+    }
+
+    .translucent-bg {
+      height: 40px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      display: none;
+    }
+  }
+
+  $size: 600px;
+
+  .qucreative--nav-con .translucent-bg:after,
+  .qucreative--nav-con .translucent-bg:before {
+    content: "";
+    height: 50px;
+    opacity: 0.3;
+    background-image: linear-gradient(left, rgba(0, 0, 0, 0) 4.23%, rgba(0, 0, 0, .37) 12.14%, rgba(0, 0, 0, .56) 17.93%, #000 33.23%);
+    /* layer fill content */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: $size;
+    -webkit-filter: blur(6px);
+    filter: blur(6px);
+    transform: rotate(3deg);
+    margin-top: -28px;
+  }
+
+  .qucreative--nav-con .translucent-bg:after {
+    margin-left: -$size;
+    width: $size;
+    transform: rotate(-3deg);
+  }
+
+  .translucent-bg {
+    display: block;
+  }
+
+  .qucreative--nav-con .translucent-bg:before {
+    background-image: linear-gradient(left, #000 66.77%, rgba(0, 0, 0, .56) 82.07%, rgba(0, 0, 0, .37) 87.86%, rgba(0, 0, 0, 0) 95.77%);
+
+  }
+}

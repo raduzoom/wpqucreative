@@ -1,0 +1,164 @@
+
+// -- todo: revise
+
+
+nav.qucreative--nav-con {
+
+  --search-expand-icon-size: 16px;
+  --search-expand-input-font-size: 14px;
+  --search-expand-wrapper-padding: 8px;
+  --search-expand-color-icon: #fff;
+  --search-expand-color-wrapper-bg: transparent;
+  --search-expand-color-wrapper-bg-hover: #ffffff;
+  --search-expand-color-text: var(--qu-colors-headings);
+  --search-expand-expand-w: 180px;
+
+  --search-expand-color-icon-hover: var(--search-expand-color-text);
+  /* sum of icon size + padding */
+  --search-expand-total-size: calc(var(--search-expand-icon-size) + (2 * var(--search-expand-wrapper-padding)));
+
+.search-expand{
+  &:not(.se-inited){
+    width: var(--search-expand-total-size);
+  }
+
+  .search-expand--input{
+    font-weight: bold;
+  }
+}
+}
+// -- move
+
+
+
+
+
+
+/* -- menu toggler */
+.menu-toggler-target {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, .9);
+  $transition-property: opacity, visibility;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  ul.the-actual-nav {
+    position: absolute;
+    bottom: 5px;
+    top: auto;
+    left: 30px;
+    padding: 0;
+    min-width: 340px;
+
+    > li {
+      position: static;
+    }
+
+    li {
+      padding-right: 20px;
+      position: static;
+
+      > a {
+        text-align: left;
+        background-color: transparent !important;
+        font-size: 40px;
+        font-family: var(--qu-font-headings), serif;
+        color: #FFFFFF;
+        font-weight: 300;
+        white-space: nowrap;
+        padding-top: 5px;
+      }
+
+      ul {
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        min-width: 370px;
+        z-index: 4;
+        padding-right: 0;
+      }
+
+      ul:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 100%;
+        width: 100%;
+        height: 100vh;
+        z-index: 0;
+      }
+
+      ul:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -30px;
+        width: 1px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, .1);
+      }
+    }
+
+    li.current-menu-ancestor,
+    li.current-menu-item,
+    li:hover {
+      > a {
+        color: rgba(255, 255, 255, .5);
+      }
+    }
+  }
+
+  .q-close-btn {
+    position: absolute;
+    top: 30px;
+    right: 38px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0.5;
+    $transition-property: opacity, visibility;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  //.q-close-btn:before{
+  //  content: "";
+  //  height:1px;
+  //  width: 100%;
+  //  background-color: #FFFFFF;
+  //  display: block;
+  //
+  //  transform: rotate(45deg);
+  //}
+  //.q-close-btn:after{
+  //  content: "";
+  //  height:1px;
+  //  width: 100%;
+  //  background-color: #FFFFFF;
+  //  display: block;
+  //
+  //  transform: rotate(-45deg);
+  //}
+  .q-close-btn:hover {
+    opacity: 1;
+  }
+}
+
+.menu-toggler-target.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* -- menu toggler END */

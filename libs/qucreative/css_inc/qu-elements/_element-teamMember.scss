@@ -1,0 +1,202 @@
+
+div[class^="team-member-element"].shape-circle {
+
+  .pic-con {
+    max-width: 300px;
+  }
+}
+
+.team-member-element {
+  white-space: nowrap;
+  position: relative;
+  font-size: 0;
+
+  .pic-con {
+    //float:left;
+    width: 180px;
+    height: 180px;
+    margin-right: 30px;
+
+    div.divimage {
+      height: 100%;
+      position: relative;
+      border-radius: 50%;
+
+      max-width: 300px;
+    }
+
+    img.divimage {
+      max-height: 100%;
+    }
+
+    .divimage:after {
+      // content: "";
+      // position: absolute;
+      // width: 94%;
+      // height: 94%;
+      // border: 1px solid #FFFFFF;
+      // left: 3%;
+      // top: 3%;
+      // border-radius: 50%;
+
+      display: none;
+    }
+  }
+
+  .meta-con,
+  .pic-con {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .meta-con {
+    overflow: hidden;
+    font-size: 13px;
+
+    > h5:first-child {
+      margin-top: 0;
+    }
+
+    > .social-profiles {
+      margin-bottom: -6px;
+    }
+
+    .first-name {
+      margin-top: 13px;
+    }
+
+    .first-name {
+      line-height: 1.28;
+    }
+
+    .first-name,
+    .sur-name {
+      color: #222222;
+      // text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .sur-name {
+      font-weight: 900;
+      margin-top: 7px;
+      margin-bottom: 0px;
+    }
+
+    hr.qucreative-hr-small {
+      margin-top: 16px;
+      margin-bottom: 15px;
+    }
+
+    .the-role {
+      font-size: 14px;
+      font-weight: bold;
+      color: #777777;
+      margin-bottom: 14px;
+    }
+
+    .social-profiles {
+      .circle-con {
+        position: relative;
+        display: inline-block;
+        margin-right: 6px;
+        width: 22px;
+        height: 22px;
+        border: 1px solid #999999;
+        border-radius: 50%;
+        color: #999999;
+        $transition-property: border, color;
+        $transition-duration: 0.3s;
+        $transition-timing: ease-out;
+        @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+        > i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+        }
+      }
+
+      .circle-con:hover {
+        background-color: $color_highlight;
+        color: #FFFFFF;
+        border: 1px solid transparent;
+      }
+
+      > i:after {
+        //        content: "";
+        //        display: block;
+        //        width: 22px;
+        //        height: 22px;
+        //        border-radius: 50%;
+        //        position: absolute;
+        //        top: -3px; left: -1px;
+      }
+    }
+  }
+}
+
+
+
+.team-member-element:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 70px;
+  background-color: #dddddd;
+  left: 140px;
+}
+
+.team-member-element:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 70px;
+  background-color: #dddddd;
+  left: 140px;
+
+
+}
+
+.team-member-element.align-right {
+  display: flex;
+  align-items: center;
+
+  .pic-con {
+    margin-right: 0;
+    margin-left: 30px;
+    flex: 0 0 auto;
+  }
+
+  .meta-con {
+    .qucreative-hr-small {
+      float: right;
+
+    }
+  }
+
+  .the-role:before {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .meta-con {
+    text-align: right;
+    flex: 100;
+  }
+}
+
+.team-member-element.align-right:before {
+  left: auto;
+  right: 140px;
+}
+
+.team-member-element.align-right:after {
+  left: auto;
+  right: 140px;
+}

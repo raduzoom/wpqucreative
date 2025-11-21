@@ -1,0 +1,240 @@
+
+.main-bg-con {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  > .main-bg-div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    display: none;
+  }
+}
+.qu-structure-content-container{
+
+  max-width: 1122px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+.the-content-and-title-con-flex{
+  display: flex;
+
+  >.the-content-and-title-con{
+    flex: 100;
+  }
+}
+.the-content-con {
+  position: relative;
+
+   .the-content {
+
+    position: relative;
+
+
+    &.gallery-thumbs--image-container {
+      max-width: none;
+    }
+  }
+
+  width: 100%;
+  margin: 0 0 50px;
+
+  > h1 {
+    text-align: right;
+    color: #ffffff;
+    font-weight: 900;
+    white-space: nowrap;
+    padding-right: 0;
+
+    .header-light {
+      font-weight: 300;
+    }
+  }
+
+
+  > .the-content {
+    padding: 30px;
+    position: relative;
+
+    > .the-content-inner {
+      position: relative;
+    }
+
+    > .translucent-con {
+      clip: rect(0, auto, auto, 0);
+
+      .translucent-img,
+      .translucent-img-canvas,
+      > .translucent-bg {
+        position: fixed;
+      }
+
+      .translucent-img,
+      .translucent-img-canvas {
+        top: 0 !important;
+        left: 0 !important;
+      }
+    }
+  }
+}
+
+
+.the-content-con.content-align-left > .the-content {
+  margin-right: auto;
+  margin-left: 0px;
+}
+
+
+.the-content-con.content-align-right > .the-content {
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+
+
+
+.main-container .the-content-con.fullit {
+
+
+  > .the-content {
+
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+
+
+
+  // todo: move
+  .portfolio-single-subtitle {
+    background-color: var(--qu-colors-hightlight-text);
+    color: var(--qu-content-color-bg);
+    display: inline-block;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato", arial, serif;
+    // text-transform: uppercase;
+    padding: 5px 4px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  > h1 {
+    //display: none;
+  }
+
+  > .the-content {
+    padding: 0;
+  }
+
+
+}
+@import "structure-header";
+
+
+
+// todo: move
+.row-for-antfarm_port_items {
+  padding-top: 19px;
+
+  > .desc-content-wrapper {
+    padding-top: 0;
+
+    blockquote {
+      margin-top: 20px;
+      margin-bottom: 100px;
+      line-height: 1.9;
+      color: #777777;
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+}
+
+.the-content-sheet {
+  background-color: var(--qu-content-color-bg);
+  position: relative;
+
+
+  &:empty {
+    border: 0 !important;
+    display: none;
+  }
+
+
+
+  .the-content-sheet-text {
+    padding: 40px 30px 30px;
+    position: relative;
+
+    a,
+    a:visited {
+    }
+
+
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
+
+
+
+}
+
+
+
+.h-no-margin,
+.h1.h1-for-progress {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+
+.main-bg {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.the-content-bg {
+  display: none;
+  position: absolute;
+  background-color: #222222;
+}
+
+
+// -- general
+
+
+
+
+.fullwidth {
+  width: 100%;
+}
+
+.fullheight {
+  height: 100%;
+}
+

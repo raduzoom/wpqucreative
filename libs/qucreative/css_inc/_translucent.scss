@@ -1,0 +1,85 @@
+.translucent-con {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  //  filter: blur(20px);
+  //  -webkit-filter: blur(15px);
+  //  -ms-filter: blur(15px);
+
+
+
+  .translucent-img {
+    position: absolute;
+  }
+
+  .translucent-img-canvas {
+    position: absolute;
+  }
+
+  .translucent-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    backdrop-filter: blur(12px);
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+.translucent-bg.for-parallaxer {
+  height: 130%;
+}
+
+.translucent-layer[data-gap="10px"] {
+
+  .post-content-con {
+    .vc_row:first-child {
+      .wpb_wrapper {
+        .zfolio:first-child {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.translucent-layer {
+  > *:last-child.qucreative-pagination {
+    margin-bottom: 0;
+  }
+
+  > *:last-child.zfolio {
+    margin-bottom: -30px;
+  }
+}
+.the-content.with-filters-bg {
+  .translucent-con {
+    .translucent-overlay {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .translucent-layer {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.translucent-layer {
+  padding: 30px;
+
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.translucent-canvas.not-drawn-because-simple-color {
+  display: none;
+}

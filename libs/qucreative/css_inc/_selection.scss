@@ -1,0 +1,14 @@
+
+::selection {
+  background: $color_highlight;
+  /* WebKit/Blink Browsers */
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+::-moz-selection {
+  background: $color_highlight;
+  /* Gecko Browsers */
+  color: #FFFFFF;
+  opacity: 1;
+}

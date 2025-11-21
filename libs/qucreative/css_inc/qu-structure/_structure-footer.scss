@@ -1,0 +1,137 @@
+.footer-social-icon {
+  .circle-icon {
+    background-color: #FFFFFF;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    $transition-property: background;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    > i {
+      font-size: 14px;
+      position: absolute;
+      color: #111111;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      $transition-property: color;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+  }
+
+  .icon-label {
+    color: #FFFFFF;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10px;
+    $transition-property: color;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+}
+
+
+.upper-footer {
+  .social-list .icon-con {
+    color: #222;
+    background-color: #fff;
+  }
+}
+
+
+footer.upper-footer {
+  > .row {
+
+    &.three-columns {
+      > .widget {
+        width: 33.33%;
+      }
+    }
+
+    &.two-columns {
+      > .widget {
+        width: 50%;
+      }
+    }
+
+
+    &.four-columns {
+      > .widget {
+        width: 25%;
+      }
+    }
+
+    &.one-column {
+      > .widget {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.footer-conglomerate {
+  position: relative;
+
+  > .translucent-layer {
+
+    margin-top: 0px;
+    padding-top: 0;
+  }
+}
+.the-content {
+  footer.lower-footer:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+.the-content-con.has-footer {
+  .the-content-inner {
+    .translucent-layer {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.upper-footer {
+  .sidebar-block {
+    .featured-works-con {
+
+      .dzstooltip.skin-blackwhite {
+
+        background-color: #fff;
+        color: #222;
+
+        &:before {
+          border-top-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.footer-copyright {
+  margin-bottom: 0;
+}
+.footer-social-icon:hover {
+  .circle-icon {
+    background-color: $color_highlight;
+
+    > i {
+      color: #FFFFFF;
+    }
+  }
+
+  .icon-label {
+    color: $color_highlight;
+  }
+}

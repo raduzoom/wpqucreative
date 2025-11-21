@@ -1,0 +1,11 @@
+@import "../../TOKENS";
+
+
+body.with-border.page-gallery-w-thumbs.menu-type-1,
+body.with-border.page-gallery-w-thumbs.menu-type-2 {
+  .gallery-thumbs-con {
+    right: 0;
+  }
+}
+
+@import "../../css_inc/qu-page-type/page-gallery-w-thumbs";

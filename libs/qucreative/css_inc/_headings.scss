@@ -1,0 +1,81 @@
+@import "../TOKENS";
+
+.vc_custom_heading {
+
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h5, .h5 {
+  color: $color_headings;
+  font-family: var(--qu-font-headings), serif;
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  margin-top: 0;
+
+  & + p, & + .paragraph-text {
+
+    margin-top: 10px;
+  }
+}
+
+h6, .h6 {
+  color: $color_headings;
+  font-family: var(--qu-font-headings), serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 0;
+
+  // color: $color_headings;
+  line-height: 1.57;
+
+  & + p, & + .paragraph-text {
+
+    margin-top: 10px;
+  }
+
+  & + .qucreative-hr-small {
+    margin-top: -7px !important;
+  }
+}
+
+p + h1 {
+  margin-top: 10px;
+}
+h6 + .antfarm-divider {
+  display: block !important;
+
+
+}
+
+h6 {
+  & + .paragraph-text {
+    margin-top: 8px;
+  }
+}
+
+.the-content-con > h1 {
+  bottom: 100%;
+  position: absolute;
+  right: 0;
+  left: auto;
+}
+
+* + h2 {
+  margin-top: 10px;
+}
+h6 {
+  //position: absolute;
+  //bottom: 8px;
+  //left: 0;
+  //text-align: center;
+  //padding: 0 20px;
+  //color: #ffffff;
+  //$transition-property: color;
+  //$transition-duration: 0.3s;
+  //$transition-timing: ease-out;
+  //@include apply_transition($transition-property, $transition-duration, $transition-timing);
+}

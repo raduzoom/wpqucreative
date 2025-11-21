@@ -1,0 +1,111 @@
+@import "../../TOKENS";
+
+
+
+@import "menu-type-11-and-12";
+
+body.with-fullbg.menu-type-12 {
+  .main-container > .fullbg,
+  > .fullbg {
+    left: 200px;
+    width: calc(100% - 400px);
+  }
+}
+
+body.menu-type-12 {
+  .main-container .the-content-con.fullit {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+body.menu-type-12 {
+  .nav-social-con p.copyright-text {
+    opacity: 1;
+  }
+
+  .the-content-con {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  nav.qucreative--nav-con {
+    width: auto;
+    height: auto;
+    position: static;
+
+    .translucent-con {
+      display: none;
+    }
+
+    .translucent-canvas {
+      display: none;
+    }
+
+    .translucent-overlay {
+      background-color: transparent;
+      display: none;
+    }
+
+    .logo-con {
+      height: 100px;
+      text-align: left;
+      margin-left: 30px;
+      margin-top: 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      img {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        -webkit-transform: none;
+      }
+    }
+
+    .nav-social-con {
+      text-align: left;
+    }
+  }
+
+  i.fa.fa-bars {
+    position: fixed;
+    left: auto;
+    right: 30px;
+    top: 45px;
+    color: #FFFFFF;
+    transform: translate(0, -50%);
+    font-size: 42px;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, .99);
+    cursor: pointer;
+    $transition-property: all;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  i.fa.fa-bars:hover {
+    opacity: 0.5;
+  }
+
+  nav.qucreative--nav-con:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  .nav-social-con {
+    left: 30px;
+    right: auto;
+    position: fixed;
+    opacity: 1;
+    visibility: visible;
+    $transition-property: opacity, visibility;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+}
+

@@ -1,0 +1,102 @@
+.selector-con-for-skin-melbourne {
+  .categories {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+
+    .a-category {
+      font-family: "Lato", arial, serif;
+      margin-right: 2px;
+      $transition-property: background, color, opacity, visibilty;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+
+    &:empty {
+      display: none;
+    }
+
+
+    .a-category {
+      color: #ffffff;
+
+      &.active,
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    .a-category:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid $color_highlight;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -7px;
+      opacity: 0;
+      $transition-property: opacity;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+
+    .a-category:hover:before {
+      opacity: 1;
+    }
+
+    .a-category.active:before {
+      opacity: 1;
+    }
+  }
+}
+
+.selector-con.selector-con-for-skin-melbourne .categories {
+  padding-top: 0;
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  $transition-duration: 0.3s;
+  $transition-easing: ease-out;
+
+  .a-category {
+    font-family: "Lato", arial, serif;
+    margin-right: 2px;
+    $transition-property: color, background;
+    $transition-duration: $transition-duration;
+    $transition-timing: $transition-easing;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .a-category:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid $color_highlight;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -7px;
+    opacity: 0;
+    $transition-property: opacity;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .a-category:hover:before {
+    opacity: 1;
+  }
+
+  .a-category.active:before {
+    opacity: 1;
+  }
+}

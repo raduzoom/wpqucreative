@@ -1,0 +1,139 @@
+
+.main-container .social-meta-con {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  .social-bg {
+    background-color: transparent;
+    position: relative;
+    height: 55px;
+    $transition-property: background;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+    > .social-heading {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: 0;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+  .the-variable-heading-name {
+
+    margin-bottom: 5px;
+  }
+
+  .the-variable-heading {
+    float: left;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: calc(100% - 30px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  span.social-circle-con {
+    float: right;
+    margin-top: -4px;
+  }
+
+  .flex-con {
+    display: flex;
+    align-items: center;
+
+    .the-variable-heading {
+      flex: 100;
+    }
+
+    .social-circle-con {
+      flex: 0 0 auto;
+    }
+  }
+
+  .hr,
+  hr {
+    margin-bottom: 0;
+    border-color: transparent;
+    border: 0;
+    height: 1px;
+    background-color: #fff;
+    margin-top: 15px;
+    margin-bottom: 7px;
+  }
+
+  hr + h4 {
+    padding-top: 4px;
+  }
+
+  .social-heading {
+    color: inherit;
+    float: none;
+    text-transform: none;
+    left: 0;
+    margin-top: 10px;
+    white-space: nowrap;
+    width: 100%;
+
+    text-overflow: ellipsis;
+    //    text-align: left;
+    $transition-property: all;
+    $transition-duration: 0.3s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  .social-heading {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+
+a.social-meta-con {
+  display: block;
+  text-decoration: none !important;
+
+  hr {
+    margin-top: 12px;
+  }
+}
+
+a.social-meta-con:hover {
+  text-decoration: none;
+
+  .social-bg {
+    background-color: #FFFFFF;
+
+    .social-heading {
+      color: #222222;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+}
+
+a.social-meta-con:visited {
+  text-decoration: none;
+}
+
+
+.main-container .social-meta-con.social-meta-con--for-secondary-contact {
+  hr {
+    margin-top: 13px;
+  }
+
+  .social-circle-con > i {
+    font-size: 28px;
+  }
+
+  i {
+    font-size: 28px;
+  }
+}
+
+.main-container .social-meta-con.social-meta-con--for-secondary-contact + .read-more-con {
+  margin-top: 13px;
+}

@@ -1,0 +1,97 @@
+@import "../TOKENS";
+
+
+
+.the-content-sheet.blog-single-block {
+  margin-bottom: 30px;
+  padding:0;
+
+  .post-content-con {
+    position: relative;
+  }
+
+  .post-content-con:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #FFFFFF;
+    left: 50%;
+    margin-left: -13px;
+  }
+}
+
+
+.blog-single-block.does-not-have-featured-media {
+  .post-content-con:before {
+    display: none;
+  }
+}
+
+.the-content-con {
+  .blog-single-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/**
+ * 4.3 Blog
+ * ----------------------------------------------------------------------------
+ */
+
+@import "../css_inc/blog";
+
+
+
+@import "../css_inc/pagination";
+
+
+
+body .selector-con.selector-con-for-skin-melbourne .categories .a-category {
+  line-height: 1 !important;
+}
+
+
+
+
+body .the-content-con .the-content.template-is-portfolio-no-filters:not(.excerpt-content) {
+  padding-top: 0;
+}
+
+.the-content-con.has-footer:not(.fullit) .the-content-inner .translucent-layer {
+  padding-bottom: 30px !important;
+}
+
+.the-content-con.fullit.has-footer .footer-conglomerate .translucent-layer {
+  padding: 0px !important;
+}
+
+
+
+
+.feature-content {
+  > .the-variable-heading + .qucreative-hr-small {
+    margin-top: 15px !important;
+  }
+
+  > h5.the-variable-heading + .qucreative-hr-small {
+    margin-top: 18px !important;
+  }
+}
+;
+
+
+.comments-pagination {
+
+  > .nav-links {
+    > .prev {
+      display: none;
+    }
+  }
+
+
+}

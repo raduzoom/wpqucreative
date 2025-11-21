@@ -1,0 +1,177 @@
+
+.map-canvas-con {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  $transition-property: top;
+  $transition-duration: 0.5s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  .contact-info {
+    position: absolute;
+    top: 20px;
+    left: 90px;
+    width: 380px;
+    display: none;
+
+    .services-lightbox--close {
+      background-color: #222222;
+    }
+
+    .services-lightbox--close:hover {
+      background-color: $color_highlight;
+    }
+  }
+
+  .map-toggler {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    .q-close-btn {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      cursor: pointer;
+    }
+
+    .q-close-btn:before {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: #000000;
+      display: block;
+      transform: rotate(45deg);
+      $transition-property: background;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+
+    .q-close-btn:after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: #000000;
+      display: block;
+      transform: rotate(-45deg);
+      $transition-property: background;
+      $transition-duration: 0.3s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+  }
+
+  .map-toggler:hover {
+    background-color: rgba(0, 0, 0, .3);
+
+    .q-close-btn:before {
+      background-color: #FFFFFF;
+    }
+
+    .q-close-btn:after {
+      background-color: #FFFFFF;
+    }
+  }
+}
+
+.map-canvas-con.active {
+  top: 0;
+
+  .contact-info {
+    display: block;
+  }
+}
+
+#map-canvas {
+  img {
+    max-width: none;
+  }
+}
+
+.map-canvas.big-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-toggler {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 2px solid #FFFFFF;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  white-space: nowrap;
+  //    box-sizing: padding-box;
+  //    border: 8px solid rgba(255,255,255,0.5);
+  $transition-property: background;
+  $transition-duration: 0.5s;
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+
+  > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #222222;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: bold;
+    $transition-property: color;
+    $transition-duration: 0.5s;
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+
+  cursor: pointer;
+}
+
+.map-toggler:after {
+  content: "";
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  left: -10px;
+  top: -10px;
+  border: 2px solid #FFFFFF;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.map-toggler:hover {
+  background-color: rgba(0, 0, 0, .3);
+
+  > span {
+    color: #FFFFFF;
+  }
+}
+
+.view-map-overflower {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 30px;
+
+  .map-toggler {
+    position: relative !important;
+    float: right !important;
+  }
+}
+
+.view-map-overflower:after {
+  content: "";
+  clear: both;
+  display: block;
+}

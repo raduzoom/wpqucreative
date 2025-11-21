@@ -1,0 +1,45 @@
+@import "../../TOKENS";
+
+
+body.menu-type-13,
+body.menu-type-14 {
+  .qucreative--nav-con {
+    > .logo-con,
+    > .the-actual-nav,
+    > .translucent-con,
+    > .nav-social-con {
+      z-index: 3;
+    }
+
+    ul.the-actual-nav {
+      z-index: 4;
+    }
+  }
+
+  $size: 600px;
+
+  .qucreative--nav-con:after,
+  .qucreative--nav-con:before {
+  }
+
+  .qucreative--nav-con:before {
+    left: 50%;
+  }
+
+  .qucreative--nav-con:after {
+    content: "";
+    background-image: url("img/shadow.png");
+    height: 36px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .qucreative--nav-con:before {
+  }
+}

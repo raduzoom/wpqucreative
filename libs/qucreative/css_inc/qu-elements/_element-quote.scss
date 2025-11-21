@@ -1,0 +1,40 @@
+.q-quote {
+  position: relative;
+  padding: 70px 100px 59px;
+  text-align: center;
+
+  .quote-icon {
+    display: block;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .author-con {
+    margin-top: 8px;
+  }
+
+  .the-variable-heading {
+    text-transform: none;
+  }
+
+  &,
+  .quote-icon,
+  .the-author,
+  .the-variable-heading {
+    color: #FFF;
+  }
+
+  .the-author {
+    // text-transform: uppercase;
+    .the-text,
+    i {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+}

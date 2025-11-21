@@ -1,0 +1,20 @@
+
+.audioplayer + .audioplayer,
+.vplayer + .vplayer,
+.vplayer-tobe + .vplayer-tobe {
+  margin-top: 30px;
+}
+
+
+.vplayer.skin_reborn .fscreencontrols .full-tooltip,
+.vplayer.skin_reborn .scrubBox,
+.vplayer.skin_reborn .timetext,
+.vplayer.skin_reborn .volumecontrols .volume-tooltip,
+ul.sidebar-count-list > li .the-count {
+  font-family: "Arial", serif;
+  font-weight: 400;
+}
+
+.vplayer[data-type="vimeo"] {
+  background-color: #444;
+}

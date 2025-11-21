@@ -1,0 +1,16 @@
+@import "../../TOKENS";
+
+
+
+.main-container {
+  opacity: 0;
+}
+
+body .main-bg-con {
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  $transition-property: transform, opacity;
+  $transition-duration: var(--qucreative-view-animation-duration);
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}

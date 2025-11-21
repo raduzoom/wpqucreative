@@ -1,0 +1,6 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+jQuery(document).ready(function(e){function a(a){const n=e(this),i=e("body");n.hasClass("dzs-select-wrapper-head")&&quCreative_main.custom_responsive_menu&&(i.addClass("custom-responsive-menu-active"),quCreative_main._mainContainer.get(0)&&quCreative_main._mainContainer.get(0).api_block_scroll&&quCreative_main._mainContainer.get(0).api_block_scroll()),n.hasClass("qucreative--520-nav-con--placeholder")&&e(".nav-wrapper-head").trigger("click")}e(document).on("click"," .qucreative--520-nav-con .dzs-select-wrapper-head,.qucreative--520-nav-con--placeholder",a),setTimeout(function(){e(".qucreative--520-nav-con .dzs-select-wrapper-head").bind("click",a)},1e3)});
+},{}]},{},[1])
+
+
+//# sourceMappingURL=responsive-menu.js.map

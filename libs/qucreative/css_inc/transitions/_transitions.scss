@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+.main-container {
+  $transition-property: opacity;
+  $transition-duration: var(--qucreative-view-animation-duration);
+  $transition-timing: ease-out;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

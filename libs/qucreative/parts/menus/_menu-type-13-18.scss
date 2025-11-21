@@ -1,0 +1,143 @@
+@import "../../TOKENS";
+
+
+body.menu-type-13,
+body.menu-type-14,
+body.menu-type-15,
+body.menu-type-16,
+body.menu-type-17,
+body.menu-type-18 {
+  .the-content-con {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  nav.qucreative--nav-con {
+    position: relative;
+    width: 100%;
+    z-index: 55;
+    height: 100px;
+    .translucent-con {
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .translucent-overlay {
+      height: 100px;
+      $bg_opacity: 0.6;
+
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0) 100%);
+      opacity: 1;
+      $transition-property: opacity;
+      $transition-duration: 0.1s;
+      $transition-timing: ease-out;
+      @include apply_transition($transition-property, $transition-duration, $transition-timing);
+    }
+    .logo-con {
+
+      left: 30px;
+
+      img {
+        display: inline-block;
+        position: relative;
+        transform: none;
+        -webkit-transform: none;
+        left: 0;
+        top: 0;
+      }
+    }
+    ul.the-actual-nav {
+
+
+
+      padding-bottom: 0;
+      z-index: 44;
+      li {
+        > a {
+          font-family: "Lato", arial, serif;
+          color: #FFFFFF;
+          font-size: 14px;
+          font-weight: bold;
+          padding: 8px;
+          line-height: 1;
+        }
+
+      }
+      > li {
+        display: inline-block;
+        margin-right: 7px;
+        > a {
+          border-radius: 15px;
+          padding: 7px 10px 9px;
+        }
+        > ul {
+          margin-top: 15px;
+        }
+        > ul:before {
+          content: "";
+          width: 15px;
+          height: 15px;
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          background-repeat: no-repeat;
+          background-image: url("../../img/menu-type-9-path.png");
+        }
+        .tooltip--icon {
+          width: 15px;
+          height: 15px;
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          background-repeat: no-repeat;
+        }
+        > ul:before {
+          content: "";
+          width: 100%;
+          height: 15px;
+          background-color: transparent;
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+        }
+      }
+      > li.current-menu-ancestor > a,
+      > li:hover > a,
+      > li.current-menu-item > a {
+        background-color: $color_highlight;
+        color: #FFFFFF;
+        border-radius: 15px;
+      }
+    }
+
+  }
+  nav.qucreative--nav-con:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+
+  .map-canvas-con .contact-info {
+    //top: 140px;
+  }
+  .map-canvas-con {
+    z-index: 85;
+  }
+}
+
+
+body.menu-type-13,
+body.menu-type-14,
+body.menu-type-15,
+body.menu-type-16,
+body.menu-type-17,
+body.menu-type-18{
+
+  .main-gallery--descs.style2 {
+    left: 30px;
+  }
+
+
+  .main-container .the-content-con.fullit {
+    padding-left: 0;
+  }
+}

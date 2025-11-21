@@ -1,0 +1,21 @@
+@import "../../TOKENS";
+
+
+
+@import "menu-type-13-18";
+@import "menu-type-17-and-18";
+
+
+
+body.menu-type-18 {
+  .main-container {
+    > .the-content-con:first-child {
+      margin-bottom: 0;
+    }
+  }
+  nav.qucreative--nav-con {
+    .translucent-overlay {
+      background-color: rgba(255,255,255,.3);
+    }
+  }
+}

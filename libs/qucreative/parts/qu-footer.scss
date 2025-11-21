@@ -1,0 +1,163 @@
+@import "../TOKENS";
+
+// -- load it in footer
+body .dzsparallaxer {
+  background-color: transparent;
+}
+
+
+body {
+
+  .qucreative-pagination > li > a {
+    line-height: 1;
+  }
+
+
+  .main-container {
+
+    .qucreative-pagination > li.active > a,
+    .qucreative-pagination > li:hover > a {
+      background-color: $color_highlight;
+    }
+  }
+}
+
+
+.the-content-sheet {
+
+
+  > .vplayer:first-child {
+    margin-bottom: 0;
+  }
+
+
+
+  .wpb_row:first-child {
+    .wpb_wrapper {
+      .element-header {
+        .col-md-12 {
+          .the-heading {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* -- misc elements END */
+p.form-submit {
+  margin-bottom: 0;
+  margin-top: 10px;
+
+  .submit-comment {
+
+  }
+}
+
+
+@import "../css_inc/qu-structure/structure-sidebar";
+
+@import "../css_inc/visual_composer";
+@import "../css_inc/qu-elements/element-featuredMediaCon";
+
+.the-section-title-hr {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  width: 100px;
+  height: 1px;
+  border: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+
+  background-color: #444;
+}
+body.qucreative-vertical-menu .the-content-con.page-normal.fullit > .the-content {
+  margin-left: 1px;
+  // padding: 30px;
+}
+
+
+.the-content-con.fullit.page-normal .main-page-title {
+  // text-align: center;
+  //
+  // left:50%;
+  // width: 100%;
+  // transform: translate3d(-50%,0,0);
+}
+
+.dzstooltip.arrow-bottom.align-right.skin-red {
+  pointer-events: none;
+}
+body.scrollbar-type-native {
+  .main-container {
+
+    max-width: 100vw;
+    overflow: hidden;
+  }
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.margint0 {
+  margin-bottom: 0 !important;
+}
+
+.marginb6 {
+  margin-bottom: 6px !important;
+}
+.read-more-p {
+  margin-top: 10px;
+
+  margin-bottom: -9px;
+
+
+}
+.progress-bars-item > * {
+  margin-bottom: 0;
+}
+
+
+
+@import "../css_inc/selection";
+
+
+/**
+ * 6.0 Footer
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+
+
+
+
+
+@import "../css_inc/qu-structure/structure-footer";
+
+
+
+/* - the footer END */
+footer.lower-footer {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: #171717;
+  border-top: 1px solid #333;
+
+
+  &,.the-variable-heading{
+
+    color: #777;
+  }
+}

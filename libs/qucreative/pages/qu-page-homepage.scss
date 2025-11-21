@@ -1,0 +1,18 @@
+@import "../TOKENS";
+
+
+
+@import "../css_inc/qu-page-type/page-homepage";
+
+
+
+.the-content-con.for-homepage {
+  width: auto;
+  position: static;
+  max-width: none;
+  $transition-property: none;
+  $transition-duration: 2s;
+  $transition-timing: ease-out;
+  margin-bottom: 0;
+  @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
