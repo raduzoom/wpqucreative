@@ -60,10 +60,9 @@
     }
 
     .comment-meta {
-      background-color: #EEEEEE;
+      background-color: var(--qu-colors--bg-secondary);
       height: auto;
       display: flex;
-      align-items: top;
 
       .comment-thumb {
         background-position: center center;
@@ -78,7 +77,6 @@
         flex: 100;
 
         display: flex;
-        align-items: left;
         flex-direction: column;
         justify-content: center;
         text-align: left;
@@ -90,7 +88,7 @@
           font-size: 14px;
           font-weight: bold;
           display: block;
-          color: #222;
+          color: var(--qu-colors-headings);
         }
 
         .comment-time {
@@ -104,7 +102,7 @@
 
     article > .comment-body {
 
-      border-bottom: 1px solid #222222;
+      border-bottom: 1px solid var(--qu-content-color-borders-emp);
     }
 
     .comment-body {
@@ -125,7 +123,7 @@
       bottom: 0;
 
       a {
-        color: #222222;
+        color: var(--qu-colors-headings);
         font-size: 11px;
         font-weight: bold;
         font-family: "Lato", arial, serif;
@@ -217,7 +215,7 @@
       font-size: 14px;
       font-weight: 600;
       box-sizing: border-box;
-      border: 1px solid #222222;
+      border: 1px solid var(--qu-content-color-borders-emp);
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0) inset;
     }
 
@@ -225,14 +223,12 @@
     input[type=email]:hover,
     input[type=text]:focus,
     input[type=text]:hover {
-      //      box-shadow:  0 0 0 2px #222222;
-      box-shadow: 0 0 0 1px #222222 inset;
+      box-shadow: 0 0 0 1px var(--qu-content-color-borders-emp) inset;
     }
 
     textarea {
       margin-top: 10px;
-      border: 1px solid #222222;
-      //      box-shadow:  0 0 0 1px #222222;
+      border: 1px solid var(--qu-content-color-borders-emp);
       padding: 12px 15px;
       width: 100%;
       color: #868686;
@@ -248,9 +244,8 @@
 
     textarea:focus,
     textarea:hover {
-      box-shadow: 0 0 0 1px #222222 inset;
+      box-shadow: 0 0 0 1px var(--qu-content-color-borders-emp) inset;
       outline: 0;
-      //      border:2px solid #222222;
     }
   }
 }

@@ -8,7 +8,13 @@
   --qu-content-color-bg: #{$color_menu_bg};
   --qu-content-color-headings: #{$color_headings};
   --qu-content-color-borders: #eeeeee;
+  --qu-content-color-borders-emp: #222222;
   --qu-content-color-lines: #dddddd;
+  --qu-colors--bg-secondary: #eeeeee;
+  --qu-colors--translucent-default: rgba(0, 0, 0, 0.3);
+
+  --qu-translucent-padding-amount: 3px;
+  --qu-translucent-blur-amount: 12px;
 
   --qu-spacing--medium: 20px;
   --qu-spacing--small: 10px;

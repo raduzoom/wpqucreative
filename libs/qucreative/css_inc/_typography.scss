@@ -64,7 +64,7 @@ a:not(.custom-a):hover, .sidebar-main a:not(.custom-a):not(.a):hover, .upper-foo
 
 div.paragraph, .paragraph-text, p, .paragraph-text-for-light {
   line-height: 1.84;
-  color: #6b6b6b;
+  color: var(--qu-colors-primary-text);
 }
 
 a:active, a:hover {

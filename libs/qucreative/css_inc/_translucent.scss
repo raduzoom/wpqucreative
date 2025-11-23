@@ -24,9 +24,9 @@
     width: 100%;
     height: 100%;
     top: 0;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(var(--qu-translucent-blur-amount));
     left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--qu-colors--translucent-default);
   }
 }
 
@@ -35,47 +35,14 @@
   height: 130%;
 }
 
-.translucent-layer[data-gap="10px"] {
-
-  .post-content-con {
-    .vc_row:first-child {
-      .wpb_wrapper {
-        .zfolio:first-child {
-          padding-top: 0;
-        }
-      }
-    }
-  }
-}
 
 
 
 
 .translucent-layer {
-  > *:last-child.qucreative-pagination {
-    margin-bottom: 0;
-  }
+  padding: var(--qu-translucent-padding-amount);
 
-  > *:last-child.zfolio {
-    margin-bottom: -30px;
-  }
-}
-.the-content.with-filters-bg {
-  .translucent-con {
-    .translucent-overlay {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  .translucent-layer {
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-}
-
-.translucent-layer {
-  padding: 30px;
-
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--qu-colors--translucent-default);
 }
 
 
