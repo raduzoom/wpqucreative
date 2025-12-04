@@ -186,7 +186,7 @@ function qucreative_filter_body_classes( $classes, $class ) {
   $qucreative_main->theme_data['body_class'].= ' '. esc_attr($qucreative_main->theme_data['theme_mods']['content_enviroment_style']);
 
 
-  if( $qucreative_main->theme_data['theme_mods']['menu_enviroment_opacity']=='100'){
+  if( $qucreative_main->theme_data['theme_mods']['menu_environment_opacity']=='100'){
     $qucreative_main->theme_data['body_class'].=' has-opaque-header-opacity';
   }
   if( $qucreative_main->theme_data['theme_mods']['content_enviroment_opacity']=='100'){

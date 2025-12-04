@@ -4,36 +4,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setupChosen = void 0;
-const setupChosen = () => {
-  const $ = jQuery;
-  const isChosenDefined = !!$.fn.chosen;
-  if (isChosenDefined) {
-    $(".font-family-selector").chosen({
-      width: "100%"
-    });
-    $(".weights-feeder,.chosen-select,.link-to-selector").chosen({
-      width: "100%",
-      disable_search: true
-    }).on("change", function (evt, params) {
-      setTimeout(function () {
-        $(this).removeClass("chosen-container-active");
-        $("#additionalDetails").focus();
-      }, 0);
-    });
-  }
-  $(document).on("click", ".chosen-search > input", function () {
-    var _t = $(this);
-  });
-};
-exports.setupChosen = setupChosen;
-
-},{}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.setupColorpicker = void 0;
 var _data = require("./sampledata/data.config");
 const setupColorpicker = () => {
@@ -47,7 +17,7 @@ const setupColorpicker = () => {
 };
 exports.setupColorpicker = setupColorpicker;
 
-},{"./sampledata/data.config":13}],3:[function(require,module,exports){
+},{"./sampledata/data.config":11}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99,7 +69,7 @@ const setupDzsDependency = () => {
 };
 exports.setupDzsDependency = setupDzsDependency;
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -161,9 +131,9 @@ const setupMenuType = () => {
         // -- 7,8,9,10,11,12,13,14,15,16  - 0
 
         if (_t.parent().parent().parent().hasClass("open")) {
-          $('*[data-customize-setting-link="menu_enviroment_opacity"]').val(val);
-          $('*[data-customize-setting-link="menu_enviroment_opacity"]').trigger("change");
-          $("#customize-control-menu_enviroment_opacity-slider").slider("value", val);
+          $('*[data-customize-setting-link="menu_environment_opacity"]').val(val);
+          $('*[data-customize-setting-link="menu_environment_opacity"]').trigger("change");
+          $("#customize-control-menu_environment_opacity-slider").slider("value", val);
         }
       }
     }
@@ -171,7 +141,7 @@ const setupMenuType = () => {
 };
 exports.setupMenuType = setupMenuType;
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -192,171 +162,7 @@ const setupPicker = () => {
 };
 exports.setupPicker = setupPicker;
 
-},{}],6:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setupRemovePreset = exports.setupFirstPreset = void 0;
-const setupFirstPreset = () => {
-  const $ = jQuery;
-  $("body.wp-customizer").append('<div class="customizer-add-preset-lightbox-con  "><div class="close-btn"><div class="the-bg"></div></div><form class="preset-name"><h4>Create a new Preset</h4><div class="flex-con"><input name="preset_name" class="regular-text big-font" placeholder="Preset Name..."/><button class="dzs-button-simple padding-big ">Add</button></div><h4>Overwrite an existing Preset</h4><div class="flex-con"><select name="existing_preset" class="dzs-style-me skin-bigwhite opener-list"><option>preset 1</option><option>preset 2</option></select><button class="dzs-button-simple padding-big ">Overwrite</button></div></form></div>');
-  setTimeout(function () {
-    let html_opts = '<option value="" selected></option>';
-    $(".preset-con.user-preset").each(function () {
-      const _t = $(this);
-      if (_t.find(".btn-activate-preset").eq(0).attr("data-id")) {
-        html_opts += '<option value="' + _t.find(".btn-activate-preset").eq(0).attr("data-id") + '">' + _t.find(".the-label").eq(0).html() + "</option>";
-      }
-    });
-    $("select[name=existing_preset]").html(html_opts);
-    if ($("select[name=existing_preset]").get(0) && $("select[name=existing_preset]").get(0).api_reinit) {
-      $("select[name=existing_preset]").get(0).api_reinit();
-    }
-  }, 1000);
-  $(document).on("submit", " form.preset-name", handle_change);
-  function handle_change(e) {
-    const _t = $(this);
-    if (e.type == "submit") {
-      if (_t.hasClass("preset-name")) {
-        // console.info("_t.find('input[name=preset_name]').val() - ", _t.find('input[name=preset_name]').val(), _t.find('input[name=preset_name]').val()=='');
-
-        let sellab = "";
-        $("select[name=existing_preset]").children().each(function () {
-          var _t = $(this);
-          if (_t.prop("selected")) {
-            sellab = _t.html();
-          }
-        });
-        if (sellab) {
-          _t.find("input[name=preset_name]").val(sellab);
-        }
-        if (_t.find("input[name=preset_name]").val() == "") {
-          _t.find("input[name=preset_name]").addClass("needs-attention");
-          setTimeout(function () {
-            _t.find("input[name=preset_name]").removeClass("needs-attention");
-          }, 500);
-          return false;
-        }
-        $(".customizer-add-preset-lightbox-con").removeClass("active");
-        $(".button-primary.save").trigger("click");
-        setTimeout(function () {
-          const data = {
-            action: "qucreative_save_preset",
-            preset_name: $("*[name=preset_name]").val()
-          };
-          jQuery.ajax({
-            type: "POST",
-            url: window.ajaxurl,
-            data: data,
-            success: function (response) {
-              // console.warn(response);
-
-              // console.info(response);
-
-              setTimeout(function () {
-                $(".button-primary.save").prop("disabled", true);
-
-                // wp.customize.previewer.save();
-                // console.info(wp.customize.previewer);
-                // window.location.reload(true);
-                window.location.href = window.location.href;
-              }, 300);
-            },
-            error: function (arg) {
-              if (typeof window.console != "undefined") {
-                console.warn("Got this from the server: " + arg);
-              }
-            }
-          });
-        }, 1000);
-        return false;
-      }
-    }
-  }
-};
-exports.setupFirstPreset = setupFirstPreset;
-const setupRemovePreset = () => {
-  const $ = jQuery;
-  console.log("ceva");
-  $(document).on("click", " .btn-activate-preset,.btn-remove-preset,.btn-activate-preset, .save-preset, .customizer-add-preset-lightbox-con > .close-btn, .button-primary.save", handle_mouse);
-  function handle_mouse(e) {
-    const _t = $(this);
-    if (e.type == "click") {
-      if (_t.hasClass("btn-activate-preset")) {
-        $("*[data-customize-setting-link=presets]").val(_t.attr("data-id"));
-
-        //.trigger('change')
-
-        _t.parent().parent().find(".preset-activated").removeClass("preset-activated");
-        _t.parent().addClass("preset-activated");
-        var data = {
-          action: "qucreative_select_preset",
-          presetid: _t.attr("data-id")
-        };
-        jQuery.ajax({
-          type: "POST",
-          url: window.ajaxurl,
-          data: data,
-          success: function (response) {
-            // console.warn(response);
-
-            // console.info(response);
-
-            $(".button-primary.save").trigger("click");
-            setTimeout(function () {
-              $(".button-primary.save").prop("disabled", true);
-
-              // wp.customize.previewer.save();
-              // console.info(wp.customize.previewer);
-              // window.location.reload(true);
-              window.location.href = window.location.href;
-            }, 881);
-          },
-          error: function (arg) {
-            if (typeof window.console != "undefined") {
-              console.warn("Got this from the server: " + arg);
-            }
-          }
-        });
-      }
-      if (_t.hasClass("btn-activated-preset")) {}
-      if (_t.hasClass("save-preset")) {
-        // do_focus(_t);
-        $(".customizer-add-preset-lightbox-con").addClass("active");
-        return false;
-      }
-      if (_t.hasClass("btn-remove-preset")) {
-        const r = confirm("Are you sure you want to remove preset ? ");
-        if (r) {
-          _t.parent().remove();
-          var data = {
-            action: "qucreative_remove_preset",
-            presetid: _t.attr("data-id")
-          };
-          jQuery.ajax({
-            type: "POST",
-            url: window.ajaxurl,
-            data: data,
-            success: function (response) {
-              // console.warn(response);
-              // console.info(response);
-            },
-            error: function (arg) {
-              if (typeof window.console != "undefined") {
-                console.warn("Got this from the server: " + arg);
-              }
-            }
-          });
-        }
-      }
-    }
-  }
-};
-exports.setupRemovePreset = setupRemovePreset;
-
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -482,7 +288,7 @@ const setupRepeater = () => {
 };
 exports.setupRepeater = setupRepeater;
 
-},{}],8:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -527,7 +333,7 @@ const setupResponsiveSlider = () => {
 };
 exports.setupResponsiveSlider = setupResponsiveSlider;
 
-},{"./sampledata/data.config":13}],9:[function(require,module,exports){
+},{"./sampledata/data.config":11}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -626,7 +432,7 @@ const setupReturnToDefaults = () => {
 };
 exports.setupReturnToDefaults = setupReturnToDefaults;
 
-},{"./sampledata/data.config":13}],10:[function(require,module,exports){
+},{"./sampledata/data.config":11}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -968,7 +774,7 @@ const setupSelector = () => {
 };
 exports.setupSelector = setupSelector;
 
-},{"./sampledata/data.config":13}],11:[function(require,module,exports){
+},{"./sampledata/data.config":11}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1011,15 +817,13 @@ const setupSliders = () => {
 };
 exports.setupSliders = setupSliders;
 
-},{}],12:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 var _repeater = require("./_repeater");
-var _chosen = require("./_chosen");
 var _dzsDependency = require("./_dzsDependency");
 var _returnToDefaults = require("./_returnToDefaults");
 var _selector = require("./_selector");
-var _removePreset = require("./_removePreset");
 var _picker = require("./_picker");
 var _colorPicker = require("./_colorPicker");
 var _responsiveSlider = require("./_responsiveSlider");
@@ -1030,7 +834,6 @@ jQuery(document).ready(function ($) {
 
   // -- we remove
 
-  (0, _removePreset.setupFirstPreset)();
   if (window.non_default_preset) {
     $("#customize-header-actions > #save").on("click.dzs", function () {
       setTimeout(function () {}, 200);
@@ -1042,8 +845,6 @@ jQuery(document).ready(function ($) {
     });
   }
   setTimeout(function () {
-    (0, _chosen.setupChosen)();
-    (0, _removePreset.setupRemovePreset)();
     if (window.dzstaa_init) {
       dzstaa_init(".dzs-tabs-1");
     }
@@ -1124,7 +925,7 @@ jQuery(document).ready(function ($) {
   }, 1000);
 });
 
-},{"./_chosen":1,"./_colorPicker":2,"./_dzsDependency":3,"./_menuType":4,"./_picker":5,"./_removePreset":6,"./_repeater":7,"./_responsiveSlider":8,"./_returnToDefaults":9,"./_selector":10,"./_sliders":11}],13:[function(require,module,exports){
+},{"./_colorPicker":1,"./_dzsDependency":2,"./_menuType":3,"./_picker":4,"./_repeater":5,"./_responsiveSlider":6,"./_returnToDefaults":7,"./_selector":8,"./_sliders":9}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1148,7 +949,7 @@ const colorpicker_args = exports.colorpicker_args = {
   palettes: true
 };
 
-},{}]},{},[12])
+},{}]},{},[10])
 
 
 //# sourceMappingURL=customizer.js.map

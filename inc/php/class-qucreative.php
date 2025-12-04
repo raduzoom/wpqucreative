@@ -42,7 +42,7 @@ class QuCreative {
 
     if(!isset($this->theme_data['theme_mods']['enable_ajax'])){
       $uns =  array();
-      foreach ($this->theme_data['customizer_fields']  as  $cf){
+      foreach ($this->theme_data[CUSTOMIZER_FIELDS_LAB]  as  $cf){
         $uns[$cf['name']] = $cf['default'];
       }
       $this->theme_data['theme_mods'] = array_merge($uns, $this->theme_data['theme_mods']) ;
@@ -57,13 +57,9 @@ class QuCreative {
 
 
 
-    foreach ($this->theme_data['customizer_fields']   as  $cf){
-
+    foreach ($this->theme_data[CUSTOMIZER_FIELDS_LAB]   as  $cf){
       $val = $this->get_theme_mod_and_sanitize($cf['name']);
-
       $this->theme_data['theme_mods'][$cf['name']] = $val;
-
-
 
       if($val==''){
 

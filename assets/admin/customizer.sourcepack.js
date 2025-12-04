@@ -1,10 +1,7 @@
 import { setupRepeater } from "./_repeater";
-
-import { setupChosen } from "./_chosen";
 import { setupDzsDependency } from "./_dzsDependency";
 import { setupReturnToDefaults } from "./_returnToDefaults";
 import { setupSelector } from "./_selector";
-import { setupFirstPreset, setupRemovePreset } from "./_removePreset";
 import { setupPicker } from "./_picker";
 import { setupColorpicker } from "./_colorPicker";
 import { setupResponsiveSlider } from "./_responsiveSlider";
@@ -16,7 +13,6 @@ jQuery(document).ready(function ($) {
 
   // -- we remove
 
-  setupFirstPreset();
 
   if (window.non_default_preset) {
     $("#customize-header-actions > #save").on("click.dzs", function () {
@@ -29,9 +25,7 @@ jQuery(document).ready(function ($) {
   }
 
   setTimeout(function () {
-    setupChosen();
 
-    setupRemovePreset();
 
     if (window.dzstaa_init) {
       dzstaa_init(".dzs-tabs-1");

@@ -79,13 +79,13 @@ export const setupMenuType = () => {
         // -- 7,8,9,10,11,12,13,14,15,16  - 0
 
         if (_t.parent().parent().parent().hasClass("open")) {
-          $('*[data-customize-setting-link="menu_enviroment_opacity"]').val(
+          $('*[data-customize-setting-link="menu_environment_opacity"]').val(
             val,
           );
-          $('*[data-customize-setting-link="menu_enviroment_opacity"]').trigger(
+          $('*[data-customize-setting-link="menu_environment_opacity"]').trigger(
             "change",
           );
-          $("#customize-control-menu_enviroment_opacity-slider").slider(
+          $("#customize-control-menu_environment_opacity-slider").slider(
             "value",
             val,
           );

@@ -89,16 +89,16 @@ jQuery(document).ready(function ($) {
   }
 
   $(document).on("click", ".install-btn", function () {
-    var _t = $(this);
+    const _t = $(this);
 
-    var data = {
+    const data = {
       action: "qucreative_import_demo",
       postdata: "",
       demo: _t.attr("data-demo"),
       nonce: $(".qucreative-nonce").eq(0).html(),
     };
 
-    var _con = _t.parent().parent().parent().parent().parent().parent();
+    const _con = _t.parent().parent().parent().parent().parent().parent();
 
     _con.addClass("loading");
     _con.parent().addClass("loading");
@@ -118,9 +118,6 @@ jQuery(document).ready(function ($) {
 
   setupCustomizer($);
 
-  jQuery(document).on("change", "input[name=video]", function () {
-    var _t = $(this);
-  });
 
   setTimeout(function () {
     try {

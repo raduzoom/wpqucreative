@@ -39,16 +39,11 @@ include_once 'inc/php/view/view-generate-pagination.php';
 include_once 'inc/php/class-qucreative.php';
 include_once 'inc/php/comments-walker.php';
 include_once 'inc/php/functions-text.php';
-include_once 'inc/php/functions-preview.php';
 include_once 'inc/php/view/view-generate-blockquote.php';
 include_once 'inc/php/view/view-generate-featured-media.php';
 include_once 'inc/php/view/view-generate-prev-next-table.php';
 
 
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-css-for-style-data-env.php';
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-css-for-contain.php';
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-css-for-highlight.php';
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-css-for-env.php';
 
 
 
@@ -1107,17 +1102,17 @@ function qucreative_generate_inline_javascript_for_options() {
   }
 
 
-  $lab = 'menu_enviroment_opacity';
-  $menu_enviroment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
+  $lab = 'menu_environment_opacity';
+  $menu_environment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
 
   if ($qucreative_main->theme_data['sw_is_in_customizer']) {
 
-    $menu_enviroment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
+    $menu_environment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
   }
-  if ($menu_enviroment_opacity == '') {
-    $menu_enviroment_opacity = '';
+  if ($menu_environment_opacity == '') {
+    $menu_environment_opacity = '';
   }
-  $val = floatval($menu_enviroment_opacity) / 100;
+  $val = floatval($menu_environment_opacity) / 100;
 
 
   $lab = 'content_enviroment_opacity';
@@ -1135,7 +1130,7 @@ function qucreative_generate_inline_javascript_for_options() {
 
 
   $qucreative_main->theme_data['js_options']['content_enviroment_opacity'] = $content_enviroment_opacity;
-  $qucreative_main->theme_data['js_options']['menu_enviroment_opacity'] = $menu_enviroment_opacity;
+  $qucreative_main->theme_data['js_options']['menu_environment_opacity'] = $menu_environment_opacity;
   $qucreative_main->theme_data['js_options']['base_url'] = get_site_url();
 
 

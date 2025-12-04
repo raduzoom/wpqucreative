@@ -20,7 +20,7 @@ const QUCREATIVE_CUSTOMIZER_FIELDS = array(
     'default' => '26',
   ),
   array(
-    'name' => 'menu_enviroment_opacity',
+    'name' => 'menu_environment_opacity',
     'default' => '30',
   ),
   array(
@@ -226,6 +226,10 @@ const QUCREATIVE_CUSTOMIZER_FIELDS = array(
     'name' => 'social_enable_pinterest_share',
     'default' => false,
   ),
+
+  // -- plugin
+
+
 );
 
 
@@ -235,6 +239,7 @@ define("QUCREATIVE_THEME_MOD_KEYS", array_map(function ($field) {
   return $field['name'];
 }, QUCREATIVE_CUSTOMIZER_FIELDS));
 
+const CUSTOMIZER_FIELDS_LAB = 'customizer_fields';
 const QUCREATIVE_INITIAL_THEME_DATA = array(
 
   'font_data' => array(),
@@ -285,6 +290,6 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
   'post_for_meta' => null,
   'view_title' => '',
   'secondary_content_height' => 300,
-  'customizer_fields' => QUCREATIVE_CUSTOMIZER_FIELDS,
+  CUSTOMIZER_FIELDS_LAB => QUCREATIVE_CUSTOMIZER_FIELDS,
   'default_typography' => QUCREATIVE_DEFAULT_TYPOGRAPHY,
 );
