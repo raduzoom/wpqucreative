@@ -1,0 +1,39 @@
+.post-password-form {
+  input[type=password] {
+    padding: 2px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #dedede;
+    border-style: solid;
+
+    outline: 0;
+  }
+
+  label {
+
+    &, & + input {
+
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    input, & + input {
+
+      height: 28px;
+    }
+
+    & + input {
+      margin-left: -5px;
+      padding: 7px;
+
+    }
+  }
+}
+.color-highlight-on-hover {
+  &, > i {
+    $transition-property: color;
+    $transition-duration: var(--qucreative-view-animation-duration);
+    $transition-timing: ease-out;
+    @include apply_transition($transition-property, $transition-duration, $transition-timing);
+  }
+}

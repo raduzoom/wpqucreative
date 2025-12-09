@@ -27,10 +27,6 @@ function qucreative_view_enqueue_in_head(QuCreativeView $quView){
 
   $transitions = array('slidedown', 'wipedown','fade');
 
-//  print_r($quView->theme_mods['bg_transition']);
-
-
-//  wp_enqueue_style('qucreative_transition', QUCREATIVE_THEME_URL . 'libs/qucreative/css_inc/transitions/qu-bg_transition-'.$qucreative_main->theme_data['theme_mods']['bg_transition'].'.css');
 
 
 
@@ -48,15 +44,12 @@ function qucreative_view_enqueue_in_head(QuCreativeView $quView){
     wp_enqueue_style('qucreative-part-menu-horizontal', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-part-horizontalMenuType.css');
   }
 
-
-  if (in_array($quView->quMain->theme_data['menu_type'], QUCREATIVE_VIEW_ENQUEUE_MENU_STYLE)) {
-
-    wp_enqueue_style('qu-' . $quView->quMain->theme_data['menu_type'], QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . $quView->quMain->theme_data['menu_type'] . '.css');
-  }
+  // -- enqueue menu type
+  wp_enqueue_style('qu-' . $quView->quMain->theme_data['menu_type'], QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . $quView->quMain->theme_data['menu_type'] . '.css');
   if ($quView->quMain->theme_data['view_loop_data']['loop_type'] === 'loop') {
 
     wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog.css');
-    wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog--shared.css');
+    wp_enqueue_style('qu-blog--shared', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog--shared.css');
   }
 
 

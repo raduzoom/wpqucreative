@@ -1,0 +1,83 @@
+
+ul.redcircle {
+  padding-left: 0;
+  margin-top: 15px;
+  list-style: none;
+  color: #444444;
+
+  li {
+    padding-left: 30px;
+    position: relative;
+    margin-top: 7px;
+    font-weight: 600;
+
+
+  }
+
+  li:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background-color: $color_highlight;
+    border-radius: 50%;
+  }
+
+  li:after {
+    content: "\f00c";
+    position: absolute;
+    font-family: "FontAwesome", sans-sarif;
+    font-size: 14px;
+    color: #ffffff;
+    top: -1px;
+    left: 4px;
+  }
+}
+
+ul.nostyle {
+  padding-left: 0;
+  margin-bottom: 15px;
+  list-style: none;
+  color: #444444;
+
+  li {
+    padding-left: 0;
+    position: relative;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+
+    > .icon-con {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 9px;
+      width: 22px;
+      height: 22px;
+      background-color: $color_highlight;
+      border-radius: 50%;
+
+      > i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: #FFFFFF;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    > .li-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  li:before {
+  }
+
+  li:after {
+  }
+}
+

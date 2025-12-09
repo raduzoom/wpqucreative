@@ -541,6 +541,7 @@ function goto_bg_doit(arg, pargs) {
       }
 
       quCreative_main._theContentConTr.find("a.comment-reply-link").addClass("custom-a");
+      // todo: move
       if (window.dzsas_init) {
         if (quCreative_main.windowWidth > RESPONSIVE_BREAKPOINT) {
           if (
@@ -570,6 +571,7 @@ function goto_bg_doit(arg, pargs) {
         );
       }
 
+      // todo: move
       if (window.dzszfl_init) {
         if (quCreative_main.windowWidth > RESPONSIVE_BREAKPOINT) {
           if (
@@ -1123,7 +1125,7 @@ function setup_newBgImage(margs) {
       // -- olg content destroy zoomfolio
       if (quCreative_main._theContent) {
         quCreative_main._theContent.find(".zfolio").each(function () {
-          var _theContentConTr_zfolio = $(this);
+          const _theContentConTr_zfolio = $(this);
 
           if (
               _theContentConTr_zfolio.get(0) &&

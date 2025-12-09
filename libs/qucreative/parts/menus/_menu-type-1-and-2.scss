@@ -1,7 +1,14 @@
+$size_width_menu: 250px;
+
+
+
 body {
 
   &.menu-type-1,
   &.menu-type-2 {
+    nav.qucreative--nav-con{
+      width: $size_width_menu;
+    }
 
     .the-content-con{
       display: flex;
@@ -12,7 +19,7 @@ body {
       >.the-content-and-title-con-flex{
 
         flex: 1;
-        max-width: calc(100% - 250px);
+        max-width: calc(100% - #{$size_width_menu});
         display: block;
 
       }

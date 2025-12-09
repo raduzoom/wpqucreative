@@ -267,16 +267,6 @@
     }
   }
 
-  .antfarm-sc-three-columns {
-    // text-align: left;
-    .qucreative-hr-small:not(.ceva) {
-
-    }
-
-    .flex-columns-eh {
-      flex-direction: column;
-    }
-  }
 
   .restaurant-menu-item .the-mentions {
     height: auto;
@@ -343,10 +333,6 @@
 
 
 @media (max-width: 720px) {
-  .main-container .the-content-con.fullit .zfolio.skin-melbourne .selector-con .categories,
-  .main-container .the-content-con.fullit .zfolio.skin-silver .selector-con .categories {
-    padding-top: 20px;
-  }
   .main-container {
     .image-box {
       text-align: left;
@@ -478,15 +464,6 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .the-content-con.page-portfolio.fullit .the-content:not(.template-is-portfolio-no-filters) .the-content-inner > .selector-con:first-child {
-    position: relative !important;
-    top: 0 !important;
-    width: 100% !important;
-    left: 0 !important;
-  }
-  .the-content-con.page-portfolio .selector-clone {
-    display: none !important;
-  }
 
 
   body.zoombox-opened {
@@ -517,12 +494,6 @@
   }
 
 
-  .the-content-con.page-portfolio .the-content-inner > .selector-con:first-child {
-    padding-top: 20px;
-  }
-  .the-content-con.page-portfolio .footer-conglomerate:not(.ceva) .translucent-layer:last-child {
-    margin-bottom: 0px !important;
-  }
   .q-quote.flex-for-sc {
     flex-direction: column;
 
@@ -551,12 +522,6 @@
     margin-top: 20px !important;
   }
 
-  .the-content-con.page-portfolio {
-    .selector-con.selector-con-for-skin-melbourne .categories {
-      margin-top: 0px !important;
-      text-align: center;
-    }
-  }
 
 
   .the-content-con.page-gallery-w-thumbs {
@@ -620,13 +585,6 @@
       display: none !important;
     }
 
-    .the-content-con:not(.ceva):not(.alceva):not(.page-gallery-w-thumbs) {
-      .the-content {
-
-        padding: 0 0 0.1px;
-        margin-left: 0;
-      }
-    }
 
     .content-menu--placeholder{
       display: none;
@@ -642,10 +600,6 @@
       margin-left: 0 !important;
       margin-right: 0 !important;
 
-      &.page-portfolio {
-
-        margin-bottom: 0;
-      }
 
       top: 0;
 
@@ -688,10 +642,6 @@
           background-color: #202020;
         }
 
-        > .translucent-con {
-          display: none;
-        }
-
         .the-content-inner {
           overflow: hidden;
 
@@ -699,10 +649,6 @@
             margin-left: 0;
             margin-right: 0;
 
-            > .zfolio {
-              padding-left: 0;
-              padding-right: 0;
-            }
           }
         }
       }
@@ -712,58 +658,8 @@
       }
     }
 
-    .contact-featured-media-con {
-
-      display: flex;
-      flex-direction: column-reverse;
 
 
-      > .featured-media--image {
-        position: absolute;
-        height: 100%;
-      }
-
-      .view-map-overflower {
-        position: relative;
-        left: auto;
-        margin-left: 0px;
-        overflow: visible;
-        right: 0;
-        top: 0;
-
-
-        padding-bottom: 47px;
-
-        .map-toggler {
-          margin: 0 auto;
-          right: 0;
-          float: none !important;
-
-        }
-      }
-
-      .contact-info {
-        width: 100%;
-        background-color: #000000;
-      }
-    }
-
-    .contact-form {
-      > .row {
-        padding-bottom: 50px;
-      }
-
-      .contact-form-button {
-        left: 15px;
-        z-index: auto;
-        bottom: 0;
-        width: calc(100% - 30px);
-      }
-
-      textarea.input-for-feedback {
-        margin-top: 10px;
-      }
-    }
 
     .main-container .advancedscroller.skin-whitefish.fixed-height .thumbsClip > .item,
     .slider-con .advancedscroller.skin-whitefish.fixed-height .thumbsClip > .item {
@@ -850,59 +746,8 @@
     }
 
 
-    .zfolio.skin-qucreative .items > .excerpt-content-con .excerpt-content {
-      background-color: #FFFFFF;
 
-      .dzs-col-8 {
-        float: none;
-        width: 100%;
 
-      }
-
-      .dzs-col-4 {
-        float: none;
-        width: 100%;
-        padding-left: 45px;
-        padding-right: 45px;
-      }
-
-      .desc-content-wrapper.desc-content-wrapper-special-1 {
-        .dzs-col-4 {
-          padding-left: 15px;
-          padding-right: 15px;
-        }
-      }
-
-      div[class^="dzs-col-"]:last-child {
-        padding-bottom: 15px;
-      }
-    }
-
-    .zfolio-portfolio-expandable.layout-3-cols-15-margin {
-      div.zfolio-item {
-        width: 50%;
-      }
-    }
-
-    //.zfolio-portfolio-expandable.layout-3-cols-15-margin{
-    //  div.zfolio-item:nth-child(2n+1){
-    //    padding-left: 45px;
-    //  }
-    //  div.zfolio-item:nth-child(2n){
-    //    padding-right: 45px;
-    //  }
-    //}
-    .zfolio.skin-melbourne,
-    .zfolio.skin-silver {
-      .selector-con {
-        text-align: center;
-      }
-    }
-
-    .zfolio-portfolio-expandable,
-    .zfolio.skin-melbourne {
-
-    }
 
     .selector-con-for-skin-melbourne {
       text-align: center;
@@ -910,37 +755,11 @@
     }
   }
 
-  body.content-align-left {
-    .the-content-con {
-      left: 0;
-
-      right: auto;
-      float: none;
-    }
-  }
-  body.content-align-right {
-    .the-content-con {
-      right: 0;
-      margin-right: 0;
-      left: auto;
-      float: none;
-    }
-  }
   body.page-gallery-w-thumbs.remove_overflow {
     overflow: auto;
   }
   body.page-gallery-w-thumbs .main-container.scroller-con.skin_apple {
     height: auto;
-  }
-  body.page-portfolio.no-padding .main-container .zfolio.skin-silver > .selector-con {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  .the-content-con.page-portfolio:not(.a) .the-content-inner > .selector-con:first-child {
-    margin-top: 0;
   }
 
   .qucreative-pagination.from-gallery-element {
@@ -975,22 +794,11 @@
       left: 0;
     }
   }
-  body.zoombox-opened {
-    .zfolio-portfolio-fullscreen-con {
-      height: 1px;
-      overflow: hidden;
-    }
-  }
   body.page-blogsingle {
     .the-content-con {
       .the-content-sheet.blog-single-block {
         margin-bottom: 30px;
       }
-    }
-
-    .sidebar-main {
-      margin-top: 30px;
-      top: 0;
     }
 
     input[name=the_email] {
@@ -1009,13 +817,5 @@
     }
   }
 
-  .antfarm-sc-social-block {
-    .featured-media-con {
-
-      position: absolute;
-      top: 0;
-      height: 100%;
-    }
-  }
 
 }

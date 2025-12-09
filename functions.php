@@ -469,33 +469,6 @@ function qucreative_init() {
 
   if (is_admin()) {
 
-    $url = get_parent_theme_file_path("assets/google_fonts.data");
-
-
-    $cont = '';
-
-    ob_start();
-    include $url;
-
-
-    $cont = ob_get_clean();
-
-
-    $qucreative_main->theme_data['font_data'] = json_decode($cont);
-
-
-    $cont = str_replace(array("\r\n", "\r", "\n"), "", $cont);
-    $qucreative_main->theme_data['font_data_str'] = ($cont);
-
-    if (is_array($qucreative_main->theme_data['font_data_str'])) {
-      $qucreative_main->theme_data['font_data_str'] = '';
-    }
-
-
-    if (isset($qucreative_main->theme_data['font_data']) && isset($qucreative_main->theme_data['font_data']->items)) {
-      $qucreative_main->theme_data['font_data_items'] = $qucreative_main->theme_data['font_data']->items;
-    }
-
 
     wp_enqueue_script('media-upload');
     wp_enqueue_script('tiny_mce');

@@ -1,3 +1,22 @@
+
+.sidebar-block {
+  background-color: var(--qu-content-color-bg);
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: normal;
+
+  > .sidebar-count-list:last-child {
+    margin-bottom: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  a:not(.custom-a) {
+    color: #545454;
+  }
+}
 .sidebar-main{
   > .widget{
     background-color: var(--qu-content-color-bg);

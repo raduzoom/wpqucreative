@@ -1,17 +1,33 @@
 @import "../../TOKENS";
 
+$size_width_menu: 230px;
 
-body.content-align-left.menu-type-3,
-body.content-align-left.menu-type-4 {
+body.menu-type-3,
+body.menu-type-4 {
+
+
   .the-content-con {
-    left: 230px;
+    display: flex;
+    width: 100%;
+
+    .qu-nav--placeholder {
+      flex: 0 0 $size_width_menu;
+    }
+
+    > .the-content-and-title-con-flex {
+
+      flex: 1;
+      max-width: calc(100% - #{$size_width_menu});
+      display: block;
+
+    }
   }
 }
 
 body.menu-type-3,
 body.menu-type-4 {
   .qucreative--nav-con {
-    width: 230px;
+    width: $size_width_menu;
 
     .translucent-overlay {
       background-color: #191919;
@@ -179,40 +195,6 @@ body.menu-type-4 {
 }
 
 
-
-
-body.menu-type-3,
-body.menu-type-4 {
-  .main-container .the-content-con.fullit {
-    padding-left: 230px;
-  }
-
-  .big-revslider-con.fullwidth {
-
-    .rev_slider_wrapper {
-      padding-left: 230px !important;
-    }
-  }
-}
-
-body.semi-responsive-mode.menu-type-3,
-body.semi-responsive-mode.menu-type-4 {
-  .main-container {
-    overflow-x: visible;
-  }
-
-  .the-content-con:not(.fullit) {
-    max-width: none;
-    width: calc(100% - 290px);
-    left: 260px;
-    margin-left: 0;
-    position: relative;
-    top: 0;
-    right: auto;
-    float: none;
-  }
-}
-
 body.menu-type-3,
 body.menu-type-4 {
   .qucreative--nav-con.menu-overflows-height {
@@ -224,9 +206,12 @@ body.menu-type-4 {
       position: relative;
     }
   }
+}
 
-  // .the-content-con.page-portfolio.fullit .the-content .the-content-inner>.selector-con:first-child{
-  //   left: 230px;
-  //   width: calc(100% - 230px);
-  // }
+
+@media (max-width: 1000px) {
+  body.menu-type-3 .the-content-con > .the-content-and-title-con-flex, body.menu-type-4 .the-content-con > .the-content-and-title-con-flex {
+
+    max-width: none;
+  }
 }

@@ -1,0 +1,33 @@
+
+hr {
+
+  border: 0;
+  border-top: 1px solid var(--qu-content-color-lines);
+  // border-color: $color_hr;
+}
+
+hr.style-2 {
+  border-bottom: 1px solid;
+}
+
+hr.style-black {
+  border-color: #222222;
+}
+
+hr.qucreative-hr-small {
+  position: relative;
+  display: block;
+  margin: 19px 0;
+  border: 0;
+  height: 2px;
+  width: 30px;
+  background-color: #111111;
+}
+
+hr.mini-hr {
+  width: 20px;
+  height: 3px;
+  border: 0;
+  margin: 20px 0;
+  background-color: $color_headings;
+}

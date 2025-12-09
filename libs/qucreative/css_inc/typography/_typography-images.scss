@@ -1,0 +1,35 @@
+
+img {
+  border: 0
+}
+.tall-img {
+  margin-top: -50%;
+  width: 100%;
+}
+
+.wide-img {
+  margin-left: -50%;
+  height: 100%;
+}
+
+.the-content-sheet img, img[class*="align"], img[class*="wp-image-"], img[class*="attachment-"] {
+  height: auto;
+  vertical-align: middle;
+}
+img.alignnone {
+  margin: 5px 0;
+}
+
+figure.wp-caption.alignright, img.alignright {
+  margin: 5px 0 5px var(--qu-spacing--medium);
+}
+
+figure.wp-caption.alignleft, img.alignleft {
+  margin: 5px var(--qu-spacing--medium) 5px 0;
+}
+
+
+.imagediv {
+  background-size: cover;
+  background-position: center center;
+}

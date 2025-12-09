@@ -78,10 +78,6 @@
 
 
 
-img {
-  // pointer-events: none;
-}
-
 .divimage {
   background-size: cover;
   background-position: center center;
@@ -123,22 +119,16 @@ img {
 
 
 
-.tall-img {
-  margin-top: -50%;
-  width: 100%;
-}
 
-.wide-img {
-  margin-left: -50%;
-  height: 100%;
-}
 
-.subtitle {
-  text-align: center;
-  color: $color_menu_text;
-  margin-top: 0;
-}
 
+$color_bg: #fff;
+$color_text: #111;
+
+
+$transition-property: all;
+$transition-duration: 0.3s;
+$transition-timing: ease-out;
 
 
 
@@ -162,18 +152,6 @@ img {
 
 
 }
-
-
-$color_bg: #fff;
-$color_text: #111;
-
-
-$transition-property: all;
-$transition-duration: 0.3s;
-$transition-timing: ease-out;
-
-
-
 
 // body.with-border {
 //     .main-container {
@@ -202,11 +180,6 @@ body.with-border {
 
 
 
-// -- temp
-.main-container {
-  // opacity: 1!important;
-}
-
 body.q-inited-bg .main-container {
   opacity: 1;
 }
@@ -215,17 +188,13 @@ body.q-inited-bg .main-container {
 
 
 
-.main-bg-con,
-.translucent-con--for-nav-con {
-  // transform: translate3d(0,0,0);
-}
 
 .transitionduration0 {
-  transition-duration: 0s !important;
+  transition-duration: 0s;
 }
 
 .main-bg-image.is-image {
-  transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0);
 }
 
 
@@ -247,8 +216,6 @@ body.q-inited-bg .main-container {
 
 // todo: separate
 @import "css_inc/body-style-light";
-@import "css_inc/content-align-right";
-@import "css_inc/content-align-left";
 
 
 
@@ -272,8 +239,6 @@ body.q-inited-bg .main-container {
   }
 }
 
-// todo: separate
-@import "css_inc/pageTitleAlign";
 
 
 
@@ -307,20 +272,6 @@ body.qucreative-vertical-menu {
 
 @import "css_inc/translucent";
 
-
-// todo: separate
-.main-container {
-  .section-number {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-family: "Lato", arial, serif;
-    font-size: 130px;
-    font-weight: 900;
-    color: var(--qu-content-color-borders);
-    line-height: 1;
-  }
-}
 
 
 
@@ -358,15 +309,6 @@ $bg_color: #191919;
 
 // todo: separate
 @import "css_inc/menu-types";
-
-
-.nav-social-con {
-  .copyright-text {
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-}
 
 
 
