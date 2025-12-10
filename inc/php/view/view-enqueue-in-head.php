@@ -45,7 +45,11 @@ function qucreative_view_enqueue_in_head(QuCreativeView $quView){
   }
 
   // -- enqueue menu type
-  wp_enqueue_style('qu-' . $quView->quMain->theme_data['menu_type'], QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . $quView->quMain->theme_data['menu_type'] . '.css');
+
+  if($quView->quMain->theme_data['menu_type']){
+
+    wp_enqueue_style('qu-' . $quView->quMain->theme_data['menu_type'], QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . $quView->quMain->theme_data['menu_type'] . '.css');
+  }
   if ($quView->quMain->theme_data['view_loop_data']['loop_type'] === 'loop') {
 
     wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog.css');

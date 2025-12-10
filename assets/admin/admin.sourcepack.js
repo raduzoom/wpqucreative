@@ -8,10 +8,11 @@
 "use strict";
 import { setupSerializeAnythingRepeater} from "./js/_serializeAnythingRepeater";
 import {setupDependencySettings, setupDzsCheckDependencySettings} from "./js/_checkDependencySettings";
-import {setupUploader} from "./js/_uploader";
+import {setupUploader} from "../../../../plugins/qu-extend/assets/admin/js/_uploader";
 import {setupBigImage} from "./js/_bigImage";
 import {setupCustomizer} from "./js/_customizer";
 import {setupAdminGallery} from "./js/_adminGallery";
+import {setupRepeater2} from "../../../../plugins/qu-extend/assets/admin/js/_repeater-2";
 
 (function ($) {
 
@@ -21,24 +22,12 @@ import {setupAdminGallery} from "./js/_adminGallery";
 setupDzsCheckDependencySettings();
 
 jQuery(document).ready(function ($) {
-  var sw_ask_before_leave = true;
+  let isAskBeforeLeave = true;
 
   var update_image_meta_attr_inter = 0;
 
 
-  // $(document).on('click.antfarmrep2', '.btn-add-repeater-field,.delete-btn', handle_mouse_repeater);
-  $(document).on(
-    "click.antfarmrep",
-    ".btn-add-repeater-field,.repeater-btn.delete-btn",
-    handle_mouse_repeater,
-  );
-  $(document).on(
-    "change.antfarmrep",
-    ".repeater-con:not(.repeater-con-for-clone) .repeater-field",
-    handle_change_repeater,
-  );
 
-  setup_repeater_cons();
   setInterval(function () {}, 1000);
 
   // -- global
@@ -51,14 +40,14 @@ jQuery(document).ready(function ($) {
   );
   $(document).on(
     "click",
-    ".ui-edit-field-close, .customize-section-back",
+    ".ui-edit-field-close",
     handle_mouse,
   );
   $(document).on(
     "click.dzs",
     'input[name="save"],input[name="publish"]',
     function (e) {
-      sw_ask_before_leave = false;
+      isAskBeforeLeave = false;
     },
   );
 
@@ -70,7 +59,7 @@ jQuery(document).ready(function ($) {
         // -- this makes sure that it asks you when close window
 
         $(window).on("beforeunload.dzs", function () {
-          if (sw_ask_before_leave) {
+          if (isAskBeforeLeave) {
             return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
           }
         });
@@ -78,43 +67,13 @@ jQuery(document).ready(function ($) {
     );
   }, 3000);
 
-  function con() {
-    if (sw_ask_before_leave) {
-    }
-  }
+
 
   $(".input-big-image").trigger("change");
   if (window.reskin_select) {
     setTimeout(reskin_select, 10);
   }
 
-  $(document).on("click", ".install-btn", function () {
-    const _t = $(this);
-
-    const data = {
-      action: "qucreative_import_demo",
-      postdata: "",
-      demo: _t.attr("data-demo"),
-      nonce: $(".qucreative-nonce").eq(0).html(),
-    };
-
-    const _con = _t.parent().parent().parent().parent().parent().parent();
-
-    _con.addClass("loading");
-    _con.parent().addClass("loading");
-
-    $.post(ajaxurl, data, function (response) {
-      if (window.console) {
-        console.log("Got this from the server: " + response);
-      }
-
-      setTimeout(function () {
-        window.location.reload();
-      }, 500);
-    });
-
-    return false;
-  });
 
   setupCustomizer($);
 
@@ -162,290 +121,16 @@ jQuery(document).ready(function ($) {
 
   setupAdminGallery($);
 
-  function handle_mouse_repeater(e) {
-    var _t3 = $(this);
 
-    if (e.type == "click") {
-      if (_t3.hasClass("btn-add-repeater-field")) {
-        add_repeater_field(_t3.parent().parent());
 
-        repeater_generate_serialized(_t3.parent().parent());
-        return false;
-      }
-      if (_t3.hasClass("delete-btn")) {
-        var _con = _t3.parent().parent().parent().parent().remove().remove();
 
-        repeater_generate_serialized(_con);
-      }
-    }
-  }
 
-  function handle_change_repeater(e) {
-    var _t3 = $(this);
 
-    if (e.type == "change") {
-      if (_t3.hasClass("repeater-field")) {
-        // console.info(_t3.data('repeater-con-main'));
 
-        var _rCM = null;
-
-        if (_t3.data("repeater-con-main")) {
-          _rCM = _t3.data("repeater-con-main");
-        }
-
-        if (
-          _t3
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .hasClass("repeater-main-con")
-        ) {
-          _rCM = _t3.parent().parent().parent().parent().parent();
-        }
-
-        if (
-          _t3
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .hasClass("repeater-main-con")
-        ) {
-          _rCM = _t3
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .parent();
-        }
-
-        repeater_generate_serialized(_rCM, {
-          call_from: "change_field",
-        });
-      }
-
-      if (_t3.attr("data-repeater_name") == "title") {
-        _t3.parent().parent().parent().find(".the-title").eq(0).html(_t3.val());
-      }
-    }
-  }
-
-  function repeater_generate_serialized(_argRepeaterMainCon, pargs) {
-    var aux = "";
-
-    var margs = {
-      call_from: "default",
-    };
-
-    if (pargs) {
-      margs = $.extend(margs, pargs);
-    }
-
-    var arr = [];
-
-    if (_argRepeaterMainCon) {
-      _argRepeaterMainCon
-        .find('.repeater-con:not(".repeater-con-for-clone")')
-        .each(function () {
-          var _t4 = $(this);
-
-          var arr_aux = {};
-          _t4.find("*[data-repeater_name]").each(function () {
-            var _t42 = $(this);
-
-            arr_aux[_t42.attr("data-repeater_name")] = _t42.val();
-          });
-
-          arr.push(arr_aux);
-        });
-
-      aux = JSON.stringify(arr);
-
-      _argRepeaterMainCon.prev().val(aux);
-    } else {
-    }
-  }
-
-  function add_repeater_field(_arg, pargs) {
-    var margs = {
-      link: "#",
-      title: "",
-      icon: "",
-    };
-
-    if (pargs) {
-      margs = $.extend(margs, pargs);
-    }
-
-    _arg
-      .find(".repeaters-con")
-      .eq(0)
-      .append(_arg.find(".repeater-con-for-clone").clone());
-    var _cach = _arg.find(".repeaters-con").children().last();
-
-    _cach.removeClass("repeater-con-for-clone");
-
-    for (var lab in margs) {
-      _cach.find('*[data-repeater_name="' + lab + '"]').val(margs[lab]);
-
-      if (lab == "title") {
-        _cach.find(".the-title").eq(0).html(margs[lab]);
-      }
-    }
-  }
-
-  function generate_repeater_cons(_repeaterMainCon, _t) {
-    var aux_arr = [];
-
-    try {
-      var _inp = _repeaterMainCon.data("target-input");
-
-      aux_arr = JSON.parse(_inp.val());
-
-      for (var lab in aux_arr) {
-        add_repeater_field(_repeaterMainCon, aux_arr[lab]);
-      }
-    } catch (err) {
-      console.info("err in json ", err);
-    }
-  }
-
-  function regenerate_repeater_cons() {
-    $(".repeater-main-con").each(function () {
-      var _t2 = $(this);
-
-      generate_repeater_cons(_t2, _t2.prev());
-    });
-  }
-
-  function setup_repeater_cons() {
-    $(".repeater-con-target").each(function () {
-      var _t = $(this);
-
-      var _repeaterMainCon = null;
-
-      if (_t.hasClass("setuped")) {
-        return;
-      }
-
-      _t.addClass("setuped");
-
-      if (_t.next().hasClass("repeater-main-con")) {
-        _repeaterMainCon = _t.next();
-      }
-
-      _t.next().data("target-input", _t);
-
-      if (_repeaterMainCon.data("setuped") == "on") {
-        return;
-      }
-
-      if (
-        _t
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .hasClass("widgets-holder-wrap")
-      ) {
-      }
-      if (
-        _t
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .parent()
-          .hasClass("widgets-holder-wrap") == false
-      ) {
-        return;
-      }
-
-      var _repeaterTarget = _t;
-
-      var _repeaterCons = null;
-
-      var inter_change_dom = 0;
-      if (_repeaterMainCon) {
-        _repeaterCons = _repeaterMainCon.find(".repeaters-con").eq(0);
-
-        if ($.fn.sortable) {
-          _repeaterCons.sortable({
-            items: ".repeater-con",
-            handle: ".move-btn",
-            scrollSensitivity: 100,
-            forcePlaceholderSize: true,
-            forceHelperSize: false,
-            helper: "clone",
-            opacity: 0.7,
-            placeholder: "repeater-con-placeholder",
-            update: function (event, ui) {
-              // console.info(this);
-
-              var _t = $(this);
-
-              if (_t.parent().hasClass("repeater-main-con")) {
-                repeater_generate_serialized(_t.parent());
-              }
-
-              if (_t.parent().parent().hasClass("repeater-main-con")) {
-                repeater_generate_serialized(_t.parent().parent());
-              }
-            },
-          });
-        } else {
-          console.warn("please include sortable");
-        }
-
-        if (_t.parent().parent().hasClass("widget-content")) {
-          _t.parent()
-            .parent()
-            .on("DOMNodeInserted DOMNodeRemoved", function () {
-              if (_t.val() != "[]") {
-                if (_repeaterMainCon.find(".repeater-con").length == 1) {
-                  regenerate_repeater_cons();
-                }
-              }
-              setTimeout(function () {}, 500);
-            });
-        }
-      }
-
-      _repeaterMainCon.addClass("setuped");
-      _repeaterMainCon.data("setuped", "on");
-      generate_repeater_cons(_repeaterMainCon);
-    });
-  }
 
 
   /// -- item gallery CODE END
 
-  function click_ahtml() {
-    $("#wp-content-wrap").removeClass("builder-active");
-  }
-
-  function click_atmce() {
-    $("#wp-content-wrap").removeClass("builder-active");
-  }
-
-  function click_builder_initer() {
-    $("#wp-content-wrap")
-      .removeClass("tmce-active")
-      .removeClass("html-active")
-      .addClass("builder-active");
-  }
 
   function update_image_meta_attr(_arg) {
     var _con = null;
@@ -494,16 +179,6 @@ jQuery(document).ready(function ($) {
       if (_t.hasClass("ui-edit-field-close")) {
         _t.parent().parent().removeClass("edit-field-active");
       }
-      if (_t.hasClass("customize-section-back")) {
-        var _c = $(".typography-tabs").eq(0);
-
-        if (_c.length) {
-          if (_c.get(0) && _c.get(0).api_goto_tab) {
-            _c.find(".tab-menu-con.active .tab-menu").trigger("click");
-          }
-        }
-      }
-
     }
   }
 
@@ -573,7 +248,6 @@ jQuery(document).ready(function ($) {
 
 
   setupBigImage($);
-  setupUploader($);
 
   jQuery(document).on("widget-updated", function (e, widget) {
     // -- do your awesome stuff here
@@ -582,40 +256,15 @@ jQuery(document).ready(function ($) {
       dzssel_init("select.dzs-style-me", { init_each: true });
     }, 2);
     setTimeout(function () {
-      setup_repeater_cons();
-    }, 100);
-    setTimeout(function () {
       jQuery(".iconselector-waiter").trigger("change");
     }, 200);
     // -- "widget" represents jQuery object of the affected widget's DOM element
   });
 });
 
-function dzstln_mainoptions_ready() {
-  jQuery(".dzstln-save-mainoptions").bind("click", dzstln_mo_saveall);
-  jQuery(".saveconfirmer").fadeOut("slow");
-}
 
 
 
-function dzstln_mo_saveall() {
-  jQuery("#save-ajax-loading").css("visibility", "visible");
-  var mainarray = jQuery(".mainsettings").serialize();
-  var data = {
-    action: "dzstln_ajax_mo",
-    postdata: mainarray,
-  };
-  jQuery(".saveconfirmer").html("Options saved.");
-  jQuery(".saveconfirmer").fadeIn("fast").delay(2000).fadeOut("fast");
-  jQuery.post(ajaxurl, data, function (response) {
-    if (window.console != undefined) {
-      console.log("Got this from the server: " + response);
-    }
-    jQuery("#save-ajax-loading").css("visibility", "hidden");
-  });
-
-  return false;
-}
 
 
 function reskin_select() {

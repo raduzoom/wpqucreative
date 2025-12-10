@@ -1,7 +1,14 @@
 <?php
+/**
+ * @param array|null|WP_POST $po
+ * @return string
+ */
+function qucreative_view_getQueryType( $po) {
 
-function qucreative_view_getQueryType(WP_POST $po) {
 
+  if(!$po){
+    return;
+  }
 
   $query_type = 'page';
   if ($po) {

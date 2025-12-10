@@ -42,36 +42,8 @@ h4.bigger-heading{
   width: 100%;
   @include boxsizing();
 }
-.dzs-img-preview-con{
-  margin-top: 10px;
-  width: 30%;
-  padding:10px;
-  background: #fff;
-  position: relative;
-  border: 1px solid rgba(0,0,0,0.1);
-}
-.dzs-img-preview-con:after {
-  bottom: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
 
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: rgba(255,255,255,1);
-  border-width: 10px;
-  left: 20px;
-  margin-left: -10px;
-}
-.dzs-img-preview{
-  background-position: center center;
-  background-size: cover;
-  height: 150px;
-  width: 100%;
-}
-
+@import "css/imgPreview";
 .dzs-setting{
   margin-bottom: 15px;
   clear: both;
@@ -82,40 +54,9 @@ h4.bigger-heading{
   color:#bbb;
   font-size:0.9em;
 }
-.dzs-wordpress-uploader { display: inline-block; }
 
 
-/*==== select wrapper ===*/
-.select-wrapper{ background: url("img/select.png") no-repeat scroll right center #fefefe; width: 150px; height:28px;
-  border-color: #CCCCCC #EEEEEE #EEEEEE #CCCCCC;
-  border-radius: 4px 4px 4px 4px;
-  border-style: solid;
-  border-width: 1px;
-  color: #888888;
-  display: inline-block; }
-.select-wrapper select{cursor: pointer;
-  height: 28px;
-  padding: 0;
-  margin-left:0;
-  opacity:0;
-  position: relative;
-  width: 150px;
-  z-index: 4; }
-.select-wrapper span{    height: 26px;
-  line-height: 26px;
-  padding-left: 6px;
-  position: absolute;
-  z-index: 2;
-}
 
-.dzs-select-wrapper.skin-bigwhite.opener-list .opener-list-wrap > .search-field{
-  background-color: #EEEEEE;
-
-  &:hover,&:focus{
-
-    background-color: #ffffff;
-  }
-}
 
 div.sidenote{
   display:block;
@@ -126,149 +67,8 @@ div.sidenote{
 }
 /*==== select wrapper END ===*/
 
-.dzs_item_gallery_list{
-  display:block;
 
-}
-.dzs_item_gallery_list:after{
-  content: " ";
-  display: block;
-  clear:both;
-}
-.dzs_item_gallery_list > li, .dzs_item_gallery_list-placeholder{
-  display:block;
-  width:70px; height:70px;
-  border: 1px solid rgba(0,0,0,0.3);
-  float:left;
-  margin:5px;
-
-  img{
-
-    cursor: move;
-  }
-
-}
-.dzs_item_gallery_list > li > img{
-  display:block;
-  width:100%; height:100%;
-  position: relative;
-
-  //z-index: 1;
-
-
-}
-.dzs_item_gallery_list > li{
-  position: relative;
-}
-.dzs_item_gallery_list{
-  > li{
-
-
-    .ui-delete{
-      width: 20px;
-      height:20px;
-      background-image: url(img/gamma-zoombox-close.png);
-      background-repeat: no-repeat; background-position: center center;
-      background-size: cover;
-      position:absolute; top: 5px; right: 5px;
-
-      opacity: 0;
-      visibility: hidden;
-
-
-      $transition-property: bottom, opacity,visibility;
-      $transition-duration: 0.3s;
-      $transition-timing: ease-out;
-
-      @include apply_transition($transition-property, $transition-duration, $transition-timing);
-    }
-
-    .ui-edit{
-      position: absolute;
-      bottom: 50%;
-      left:0;
-
-      width: 100%;
-
-      background-color: #934c4c;
-
-      color: #ffffff;
-      text-align: center;
-
-      font-weight: bold;
-
-      padding: 2px 5px;
-
-      box-sizing: border-box;
-
-      text-transform: uppercase;
-
-      font-size: 11px;
-
-      cursor: pointer;
-
-      opacity: 0;
-      visibility: hidden;
-
-      $transition-property: bottom, opacity,visibility;
-      $transition-duration: 0.3s;
-      $transition-timing: ease-out;
-
-      @include apply_transition($transition-property, $transition-duration, $transition-timing);
-    }
-  }
-
-  >li.edit-field-active,>li:hover.edit-field-active{
-
-    .ui-edit{
-      bottom: 50%;
-
-      //z-index: 2;
-
-      opacity:0;
-      visibility: hidden;
-
-    }
-  }
-
-  .the-image{
-    display: block;
-
-    >img{
-      display: block;
-      position: absolute;
-      top:0;
-      left:0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-.dzs_item_gallery_list > li:hover {
-
-
-  .ui-delete{
-    cursor:pointer;
-    opacity:1;
-    visibility: visible;
-  }
-
-}
-.dzs_item_gallery_list > li:not(.edit-field-active):hover {
-
-
-
-  .ui-edit{
-    bottom: 100%;
-
-    //z-index: 2;
-
-    opacity:1;
-    visibility: visible;
-
-  }
-}
-
+@import "css/itemGallery";
 $bg_color: #444;
 
 .ui-edit-field{
@@ -383,14 +183,6 @@ li.edit-field-active {
 }
 
 
-#toplevel_page_page-dzstln-mainoptions .wp-menu-image{
-  background: transparent url(img/icon.png) center center no-repeat;
-}#toplevel_page_page-dzstln-mainoptions:hover .wp-menu-image{
-   background: transparent url(img/icon-hover.png) center center no-repeat;
- }
-#toplevel_page_page-dzstln-mainoptions.wp-menu-open .wp-menu-image{
-  background: transparent url(img/icon-hover.png) center center no-repeat;
-}
 
 
 
@@ -466,83 +258,6 @@ li.edit-field-active {
 }
 
 
-.repeater-con-target{
-  display: none;
-}
-.repeater-con{
-
-  background-color: #fafafa;
-
-  border: 1px solid rgba(0,0,0,0.15);
-  margin-bottom: 10px;
-
-  .repeater-btn{
-    background-color: #c0c0c0;
-
-
-    $size: 20px;
-    width: $size;
-    height: $size;
-
-    border-radius: 50%;
-
-    margin-left: 5px;
-
-    position: relative;
-    float:right;
-
-    cursor: pointer;
-    color: #222;
-
-    >i{
-      @include centerit();
-
-      font-size: 11px;
-    }
-  }
-
-  &.repeater-con-for-clone{
-    display: none;
-  }
-
-
-  .repeater-con--header{
-    padding: 10px;
-
-    border-bottom: 1px solid rgba(0,0,0,0.15) ;
-
-    &:after{
-      content: "";
-      clear: both;
-      display: block;
-    }
-
-    .the-title{
-      font-size: 21px;
-      font-style: italic;
-    }
-  }
-  .repeater-con--body{
-    padding: 10px;
-
-    >.setting:first-child{
-      margin-top: 0px;
-      h6{
-        margin-top: 10px;
-      }
-    }
-  }
-
-  .setting{
-    >h6{
-      margin-bottom: 5px;
-    }
-  }
-  h6{
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-}
 .colorpicker-con{
   float:right;
 

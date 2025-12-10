@@ -4,170 +4,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setupColorpicker = void 0;
-var _data = require("./sampledata/data.config");
-const setupColorpicker = () => {
-  const $ = jQuery;
-  if ($.fn.wpColorPicker) {
-    $(".dzswp-color-picker").wpColorPicker(_data.colorpicker_args);
-    setTimeout(function () {
-      $(".dzswp-color-picker").wpColorPicker(_data.colorpicker_args);
-    }, 1000);
-  }
-};
-exports.setupColorpicker = setupColorpicker;
-
-},{"./sampledata/data.config":11}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setupDzsDependency = void 0;
-const setupDzsDependency = () => {
-  const $ = jQuery;
-  check_dependency_settings();
-  $(document).on("change", ".dzs-dependency-field", handle_change);
-  function check_dependency_settings() {
-    $("*[data-dependency]").each(function () {
-      const _t = $(this);
-
-      // console.info(_t);
-      const dep_arr = JSON.parse(_t.attr("data-dependency"));
-
-      // console.warn(dep_arr);
-
-      if (dep_arr[0]) {
-        var _c = $('*[name="' + dep_arr[0].element + '"],*[data-customize-setting-link="' + dep_arr[0].element + '"]').eq(0);
-
-        // console.info(_c, dep_arr[0].element, dep_arr[0].value);
-
-        var sw_show = false;
-        for (var i3 in dep_arr[0].value) {
-          if (_c.val() == dep_arr[0].value[i3]) {
-            sw_show = true;
-            break;
-          }
-        }
-        if (sw_show) {
-          _t.show();
-        } else {
-          _t.hide();
-        }
-      }
-    });
-  }
-  function handle_change(e) {
-    const _t = $(this);
-    if (e.type == "change") {
-      if (_t.hasClass("dzs-dependency-field")) {
-        // console.info("ceva");
-        check_dependency_settings();
-      }
-    }
-  }
-};
-exports.setupDzsDependency = setupDzsDependency;
-
-},{}],3:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setupMenuType = void 0;
-const setupMenuType = () => {
-  const $ = jQuery;
-  $(document).on("change", '*[data-customize-setting-link="menu_type"]', handle_change);
-  function handle_change(e) {
-    const _t = $(this);
-    if (e.type == "change") {
-      if (_t.attr("data-customize-setting-link") == "menu_type") {
-        window.qucreative_settings.menu_type = _t.val();
-        const menu_type = window.qucreative_settings.menu_type;
-        if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
-          // console.info('1');
-          val = 18;
-        } else {
-          if (menu_type == "menu-type-11" || menu_type == "menu-type-12") {
-            // console.info('2');
-            val = 40;
-          } else {
-            // console.info('3');
-            val = 14;
-          }
-        }
-        var val_weight;
-        if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
-          // console.info('1');
-          val_weight = 400;
-        } else {
-          if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
-            val_weight = 300;
-          } else {
-            val_weight = 700;
-          }
-        }
-
-        // console.warn(menu_type, val, val_weight);
-
-        if (menu_type == "menu-type-3" || "menu-type-4" || menu_type == "menu-type-5" || "menu-type-6" || menu_type == "menu-type-7" || "menu-type-8" || menu_type == "menu-type-9" || "menu-type-10") {}
-
-        // console.info('changed MENU_TYPE', $('input[name=menu_size]'), val);
-        $("input[name=menu_size]").val(val);
-        $("input[name=menu_size]").trigger("change");
-        $("input[name=menu_weight]").val(val_weight);
-        $("input[name=menu_weight]").trigger("change");
-        $("input[name=menu_weight]").trigger("chosen:updated");
-      }
-      if (_t.attr("data-customize-setting-link") == "menu_type") {
-        var val = 30;
-        if (_t.val() == "menu-type-3" || _t.val() == "menu-type-4" || _t.val() == "menu-type-6") {
-          val = 100;
-        }
-        if (_t.val() == "menu-type-5") {
-          val = 90;
-        }
-        // -- 7,8,9,10,11,12,13,14,15,16  - 0
-
-        if (_t.parent().parent().parent().hasClass("open")) {
-          $('*[data-customize-setting-link="menu_environment_opacity"]').val(val);
-          $('*[data-customize-setting-link="menu_environment_opacity"]').trigger("change");
-          $("#customize-control-menu_environment_opacity-slider").slider("value", val);
-        }
-      }
-    }
-  }
-};
-exports.setupMenuType = setupMenuType;
-
-},{}],4:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setupPicker = void 0;
-const setupPicker = () => {
-  const $ = jQuery;
-  $(document).on("click", ".picker-con .the-icon", function () {
-    var _t = $(this);
-    var _c = _t.parent().children(".picker");
-    if (_c.css("display") == "none") {
-      _c.fadeIn("fast");
-    } else {
-      _c.fadeOut("fast");
-    }
-  });
-};
-exports.setupPicker = setupPicker;
-
-},{}],5:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.setupRepeater = void 0;
 const setupRepeater = () => {
   const $ = jQuery;
@@ -287,6 +123,170 @@ const setupRepeater = () => {
   }
 };
 exports.setupRepeater = setupRepeater;
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupColorpicker = void 0;
+var _data = require("./sampledata/data.config");
+const setupColorpicker = () => {
+  const $ = jQuery;
+  if ($.fn.wpColorPicker) {
+    $(".dzswp-color-picker").wpColorPicker(_data.colorpicker_args);
+    setTimeout(function () {
+      $(".dzswp-color-picker").wpColorPicker(_data.colorpicker_args);
+    }, 1000);
+  }
+};
+exports.setupColorpicker = setupColorpicker;
+
+},{"./sampledata/data.config":11}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupDzsDependency = void 0;
+const setupDzsDependency = () => {
+  const $ = jQuery;
+  check_dependency_settings();
+  $(document).on("change", ".dzs-dependency-field", handle_change);
+  function check_dependency_settings() {
+    $("*[data-dependency]").each(function () {
+      const _t = $(this);
+
+      // console.info(_t);
+      const dep_arr = JSON.parse(_t.attr("data-dependency"));
+
+      // console.warn(dep_arr);
+
+      if (dep_arr[0]) {
+        var _c = $('*[name="' + dep_arr[0].element + '"],*[data-customize-setting-link="' + dep_arr[0].element + '"]').eq(0);
+
+        // console.info(_c, dep_arr[0].element, dep_arr[0].value);
+
+        var sw_show = false;
+        for (var i3 in dep_arr[0].value) {
+          if (_c.val() == dep_arr[0].value[i3]) {
+            sw_show = true;
+            break;
+          }
+        }
+        if (sw_show) {
+          _t.show();
+        } else {
+          _t.hide();
+        }
+      }
+    });
+  }
+  function handle_change(e) {
+    const _t = $(this);
+    if (e.type == "change") {
+      if (_t.hasClass("dzs-dependency-field")) {
+        // console.info("ceva");
+        check_dependency_settings();
+      }
+    }
+  }
+};
+exports.setupDzsDependency = setupDzsDependency;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupMenuType = void 0;
+const setupMenuType = () => {
+  const $ = jQuery;
+  $(document).on("change", '*[data-customize-setting-link="menu_type"]', handle_change);
+  function handle_change(e) {
+    const _t = $(this);
+    if (e.type == "change") {
+      if (_t.attr("data-customize-setting-link") == "menu_type") {
+        window.qucreative_settings.menu_type = _t.val();
+        const menu_type = window.qucreative_settings.menu_type;
+        if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
+          // console.info('1');
+          val = 18;
+        } else {
+          if (menu_type == "menu-type-11" || menu_type == "menu-type-12") {
+            // console.info('2');
+            val = 40;
+          } else {
+            // console.info('3');
+            val = 14;
+          }
+        }
+        var val_weight;
+        if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
+          // console.info('1');
+          val_weight = 400;
+        } else {
+          if (menu_type == "menu-type-1" || menu_type == "menu-type-2") {
+            val_weight = 300;
+          } else {
+            val_weight = 700;
+          }
+        }
+
+        // console.warn(menu_type, val, val_weight);
+
+        if (menu_type == "menu-type-3" || "menu-type-4" || menu_type == "menu-type-5" || "menu-type-6" || menu_type == "menu-type-7" || "menu-type-8" || menu_type == "menu-type-9" || "menu-type-10") {}
+
+        // console.info('changed MENU_TYPE', $('input[name=menu_size]'), val);
+        $("input[name=menu_size]").val(val);
+        $("input[name=menu_size]").trigger("change");
+        $("input[name=menu_weight]").val(val_weight);
+        $("input[name=menu_weight]").trigger("change");
+        $("input[name=menu_weight]").trigger("chosen:updated");
+      }
+      if (_t.attr("data-customize-setting-link") == "menu_type") {
+        var val = 30;
+        if (_t.val() == "menu-type-3" || _t.val() == "menu-type-4" || _t.val() == "menu-type-6") {
+          val = 100;
+        }
+        if (_t.val() == "menu-type-5") {
+          val = 90;
+        }
+        // -- 7,8,9,10,11,12,13,14,15,16  - 0
+
+        if (_t.parent().parent().parent().hasClass("open")) {
+          $('*[data-customize-setting-link="menu_environment_opacity"]').val(val);
+          $('*[data-customize-setting-link="menu_environment_opacity"]').trigger("change");
+          $("#customize-control-menu_environment_opacity-slider").slider("value", val);
+        }
+      }
+    }
+  }
+};
+exports.setupMenuType = setupMenuType;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupPicker = void 0;
+const setupPicker = () => {
+  const $ = jQuery;
+  $(document).on("click", ".picker-con .the-icon", function () {
+    var _t = $(this);
+    var _c = _t.parent().children(".picker");
+    if (_c.css("display") == "none") {
+      _c.fadeIn("fast");
+    } else {
+      _c.fadeOut("fast");
+    }
+  });
+};
+exports.setupPicker = setupPicker;
 
 },{}],6:[function(require,module,exports){
 "use strict";
@@ -820,7 +820,7 @@ exports.setupSliders = setupSliders;
 },{}],10:[function(require,module,exports){
 "use strict";
 
-var _repeater = require("./_repeater");
+var _repeater = require("../../../../plugins/qu-extend/assets/admin/js/_repeater");
 var _dzsDependency = require("./_dzsDependency");
 var _returnToDefaults = require("./_returnToDefaults");
 var _selector = require("./_selector");
@@ -925,7 +925,7 @@ jQuery(document).ready(function ($) {
   }, 1000);
 });
 
-},{"./_colorPicker":1,"./_dzsDependency":2,"./_menuType":3,"./_picker":4,"./_repeater":5,"./_responsiveSlider":6,"./_returnToDefaults":7,"./_selector":8,"./_sliders":9}],11:[function(require,module,exports){
+},{"../../../../plugins/qu-extend/assets/admin/js/_repeater":1,"./_colorPicker":2,"./_dzsDependency":3,"./_menuType":4,"./_picker":5,"./_responsiveSlider":6,"./_returnToDefaults":7,"./_selector":8,"./_sliders":9}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

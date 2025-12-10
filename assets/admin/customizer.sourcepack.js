@@ -1,4 +1,4 @@
-import { setupRepeater } from "./_repeater";
+import { setupRepeater } from "../../../../plugins/qu-extend/assets/admin/js/_repeater";
 import { setupDzsDependency } from "./_dzsDependency";
 import { setupReturnToDefaults } from "./_returnToDefaults";
 import { setupSelector } from "./_selector";
