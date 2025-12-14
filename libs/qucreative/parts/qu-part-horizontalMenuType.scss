@@ -7,6 +7,37 @@
 
 
 
+// -- flex structure
+
+.qucreative-horizontal-menu{
+
+  nav.qucreative--nav-con {
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+
+    &.no-wrap{
+
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    div.the-actual-nav{
+
+      flex: 1000;
+
+      margin-bottom: 0;
+    }
+    .nav-social-con {
+
+      align-self: auto;
+      flex: 0 0 auto;
+      position: relative;
+    }
+  }
+}
 
 .qucreative-horizontal-menu{
 
@@ -42,8 +73,6 @@
   nav.qucreative--nav-con {
 
     height: 130px;
-    display: flex;
-    align-items: center;
 
   }
   .logo-con {
@@ -57,14 +86,13 @@
 
   div.the-actual-nav{
 
-    flex: 1000;
     text-align: right;
+
   }
 
 
   .nav-social-con {
-    flex: 0 0 auto;
-    position: relative;
+
     right:0;
     bottom:0;
     padding-left: 27px;

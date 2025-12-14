@@ -1,9 +1,12 @@
+
+$menuSizePaddingRight: 30px;
 nav.qucreative--nav-con {
   position: fixed;
   top: 0;
   left: 0;
   width: 250px;
   height: 100%;
+
 
   .logo-con {
     text-align: center;
@@ -121,11 +124,32 @@ nav.qucreative--nav-con {
   }
 }
 
+// -- flex structure
+nav.qucreative--nav-con {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 10px;
+
+
+  div.the-actual-nav {
+
+    margin-bottom: auto;
+  }
+  .nav-social-con {
+
+    align-self: end;
+
+    &:last-child{
+
+    }
+  }
+}
+
 
 .nav-social-con {
-  position: absolute;
-  right: 30px;
-  bottom: 15px;
+
+  padding-right: $menuSizePaddingRight;
 
   i {
     color: #FFFFFF;
@@ -159,21 +183,18 @@ nav.qucreative--nav-con {
     opacity: 0.5;
   }
 
-  p.copyright-text {
-    font-family: "Lato", arial, serif;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
 
   text-align: right;
 }
 
-.qucreative--nav-con > .translucent-con > .translucent-bg {
-  //  margin-left: -15px!important;
-  //  margin-top: -25px!important;
+.nav-social-con {
+  .copyright-text {
+    font-size: 10px;
+    position: relative;
+    font-weight: 700;
+    line-height: 1.4;
+  }
 }
-
 
 ul.the-actual-nav {
   list-style: none;
@@ -183,8 +204,8 @@ ul.the-actual-nav {
   text-align: right;
   position: relative;
 
+
   li {
-    //text-transform: uppercase;
     line-height: 100%;
     position: relative;
     $transition-property: background-color, color;
@@ -199,7 +220,7 @@ ul.the-actual-nav {
       font-weight: normal;
       width: 100%;
       display: block;
-      padding: 13px 29px 13px 0;
+      padding: 13px $menuSizePaddingRight 13px 0;
       line-height: 1.2;
       @include apply_transition($transition-property, $transition-duration, $transition-timing);
     }
@@ -271,12 +292,4 @@ ul.the-actual-nav {
 }
 
 
-
-.nav-social-con {
-  .copyright-text {
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-}
 
