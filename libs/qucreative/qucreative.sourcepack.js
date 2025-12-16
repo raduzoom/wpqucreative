@@ -135,7 +135,7 @@ jQuery(document).ready(function ($) {
     _body.addClass("is-ipad");
   }
 
- 
+
 
   const regex_menu_type_res = regex_menu_type.exec(_body.attr("class"));
 
@@ -975,7 +975,7 @@ jQuery(document).ready(function ($) {
     }, 100);
 
     if (
-      _body.hasClass("single-antfarm_port_items") ||
+      _body.hasClass("single-quextend_port_items") ||
       _body.hasClass("single-dzsvcs_port_items")
     ) {
       if (qucreative_options.portfolio_page_url) {

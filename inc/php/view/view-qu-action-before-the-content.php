@@ -10,19 +10,19 @@ function qucreative_action_single_before_the_content() {
 
 
   global $post;
-  global $quplugin_main;
+  global $quextend_main;
   $content = $post->post_content;
 
   $fout = '';
 
-  $post_type_for_portfolio = 'antfarm_port_items';
+  $post_type_for_portfolio = 'quextend_port_items';
 
   if (strpos($content, '[vc_section') === false && !($post && ($post->post_type == $post_type_for_portfolio)) && ($qucreative_main->theme_data['page_type'] != 'page-portfolio')) {
     $qucreative_main->theme_data['content_acts_as_sheet'] = true;
   }
 
 
-  if ($post && ($quplugin_main && $post->post_type == $quplugin_main->name_port_item)) {
+  if ($post && ($quextend_main && $post->post_type == $quextend_main->name_port_item)) {
     $qucreative_main->theme_data['content_acts_as_sheet'] = false;
 
   }

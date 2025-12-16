@@ -558,16 +558,16 @@ h2.grey-bg+.font-conglomerate{
 
 
 
-body #qucreative_meta_options  .for-antfarm_port_items{
+body #qucreative_meta_options  .for-quextend_port_items{
   display: none;
 }
-body.post-type-antfarm_port_items #qucreative_meta_options  .for-antfarm_port_items{
+body.post-type-quextend_port_items #qucreative_meta_options  .for-quextend_port_items{
   display: block;
 }
 body .setting-meta-fullscreen-option,  .qucreative_meta-bigcon > .setting.setting-meta-fullscreen-option{
   display: none;
 }
-body.selected-template-portfolio,body.selected-default,body.post-type-antfarm_port_items{
+body.selected-template-portfolio,body.selected-default,body.post-type-quextend_port_items{
   .qucreative_meta-bigcon > .setting.setting-meta-fullscreen-option{
     display: block;
   }
@@ -582,8 +582,8 @@ body:not(.post-type-post) {
     display: none;
   }
 }
-body:not(.post-type-antfarm_port_items) {
-  .for-post-type-antfarm_port_items {
+body:not(.post-type-quextend_port_items) {
+  .for-post-type-quextend_port_items {
     display: none;
   }
 }
@@ -593,8 +593,8 @@ body.post-type-post{
     display: block;
   }
 }
-body.post-type-antfarm_port_items{
-  .for-post-type-antfarm_port_items {
+body.post-type-quextend_port_items{
+  .for-post-type-quextend_port_items {
     display: block;
   }
 }
@@ -620,7 +620,7 @@ body:not(.selected-template-portfolio) {
   }
 }
 
-body.post-type-antfarm_port_items{
+body.post-type-quextend_port_items{
   .setting-custom-section-spacing,.setting-fullscreen-strech-mode,.setting-header-revolution-slider{
     display: none;
   }
@@ -656,7 +656,7 @@ body.selected-template-qucreative-slider,body.selected-template-gallery-creative
   }
 }
 
-body.post-type-antfarm_port_items{
+body.post-type-quextend_port_items{
   .setting-only-for-template-portfolio{
 
     display: block;

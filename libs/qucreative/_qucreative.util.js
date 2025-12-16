@@ -43,7 +43,7 @@ export function do_we_need_parallaxer(arg) {
       newclass_body_page != "page-gallery-w-thumbs" &&
       (newclass_content_con.indexOf("page-portfolio-single") > -1 &&
         newclass_content_con.indexOf("page-portfolio-type-image") > -1 &&
-        newclass_content_con.indexOf("single-antfarm_port_items-fullscreen") >
+        newclass_content_con.indexOf("single-quextend_port_items-fullscreen") >
           -1) == false
     );
   }
@@ -54,7 +54,7 @@ export function do_we_need_parallaxer(arg) {
       _body.attr("class").indexOf("page-gallery-w-thumbs") == -1 &&
       (_body.attr("class").indexOf("page-portfolio-single") > -1 &&
         _body.attr("class").indexOf("page-portfolio-type-image") > -1 &&
-        _body.attr("class").indexOf("single-antfarm_port_items-fullscreen") >
+        _body.attr("class").indexOf("single-quextend_port_items-fullscreen") >
           -1) == false
     );
   }

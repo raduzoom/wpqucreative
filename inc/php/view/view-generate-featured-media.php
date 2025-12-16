@@ -1,5 +1,5 @@
 <?php
-function qucreative_generate_featured_media($arg, $pargs = array()) {
+function qucreative_generate_featured_media($arg, $pargs = array()): string {
 
   global $qucreative_main;
 

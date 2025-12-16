@@ -8,7 +8,7 @@ function qucreative_view_generateFooterForPortfolioItem($poForMeta) {
 
 
   if (strpos($qucreative_main->theme_data['body_class'], 'page-type-archive') === false) {
-    if ($poForMeta && ($poForMeta->post_type == 'antfarm_port_items') && get_post_meta($poForMeta->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
+    if ($poForMeta && ($poForMeta->post_type == 'quextend_port_items') && get_post_meta($poForMeta->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
 
 
       echo ' </div>   <div class="col-md-3 portfolio-single-meta-con" style=";">';

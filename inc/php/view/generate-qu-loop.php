@@ -58,7 +58,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
       }
 
 
-      if( !( ( $post->post_type == 'antfarm_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen', true ).$qucreative_main->theme_data['page_extra_meta_label']=='on') ){
+      if( !( ( $post->post_type == 'quextend_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen', true ).$qucreative_main->theme_data['page_extra_meta_label']=='on') ){
 
         echo qucreative_generate_featured_media($post->ID);
       }
@@ -66,11 +66,11 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
 
 
-      if($post && ( $post->post_type == 'antfarm_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on'){
+      if($post && ( $post->post_type == 'quextend_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on'){
 
 
-        echo '<div class="post-content-con the-content-sheet-text post-content-con-type-antfarm_port_items  desc-content-wrapper ">';
-        echo '<div class="row from-antfarm_port_items-meta"><div class="col-md-4 from-antfarm_port_items-meta from-functions ">';
+        echo '<div class="post-content-con the-content-sheet-text post-content-con-type-quextend_port_items  desc-content-wrapper ">';
+        echo '<div class="row from-quextend_port_items-meta"><div class="col-md-4 from-quextend_port_items-meta from-functions ">';
 
 
 
@@ -86,7 +86,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
 
         echo '</div><!--end .col-md-4-->';
-        echo '<div class="col-md-8 from-antfarm_port_items-meta">';
+        echo '<div class="col-md-8 from-quextend_port_items-meta">';
       }
 
 
@@ -137,7 +137,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
       do_action('qucreative_single_after_the_content');
 
 
-      if($post && ( $post->post_type == 'antfarm_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on'){
+      if($post && ( $post->post_type == 'quextend_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on'){
 
         echo '</div><!--end .col-md-8-->';
         echo '</div><!--end .row-->';
@@ -146,7 +146,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
 
       // -- move
-      if($post && ( $post->post_type == 'antfarm_port_items') ){
+      if($post && ( $post->post_type == 'quextend_port_items') ){
 
 
 
@@ -166,7 +166,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
 
       }
-      if($post && ( $post->post_type == 'antfarm_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on') {
+      if($post && ( $post->post_type == 'quextend_port_items') && get_post_meta( $post->ID, 'qucreative_'.'meta_is_fullscreen'.$qucreative_main->theme_data['page_extra_meta_label'], true )!='on') {
         echo '</div><!--end .the-content-sheet-text-->';
       }
 

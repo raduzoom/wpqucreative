@@ -193,7 +193,7 @@ do_action('qucreative_hook_before_html');
 
 
 
-          if ($post && (get_post_meta($post->ID, '_wp_page_template', true) == 'template-portfolio.php' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') || ($post && $post->post_type == 'antfarm_port_items' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on')) {
+          if ($post && (get_post_meta($post->ID, '_wp_page_template', true) == 'template-portfolio.php' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') || ($post && $post->post_type == 'quextend_port_items' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on')) {
 
           } else {
             ?>
@@ -216,7 +216,7 @@ do_action('qucreative_hook_before_html');
 
               qucreative_view_portfolio_generateItem($qucreative_main);
             }
-            if ($qucreative_main->theme_data['post_for_meta'] && ($qucreative_main->theme_data['post_for_meta']->post_type == 'antfarm_port_items') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
+            if ($qucreative_main->theme_data['post_for_meta'] && ($qucreative_main->theme_data['post_for_meta']->post_type == 'quextend_port_items') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
               qucreative_view_portfolio_generateItemFull($qucreative_main);
             }
             if ($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-gallery-creative.php')) {

@@ -1356,7 +1356,7 @@ export function calculate_mainbg(pargs) {
                   "single-dzsvcs_port_items-fullscreen",
               ) > -1 ||
               quCreative_main.newclass_body.indexOf(
-                  "single-antfarm_port_items-fullscreen",
+                  "single-quextend_port_items-fullscreen",
               ) > -1) &&
           quCreative_main.newclass_body.indexOf("post-media-type-image") > -1
       ) {
@@ -1373,7 +1373,7 @@ export function calculate_mainbg(pargs) {
             quCreative_main._theContent
                 .parent()
                 .hasClass(
-                    "single-antfarm_port_items-fullscreen post-media-type-image",
+                    "single-quextend_port_items-fullscreen post-media-type-image",
                 )
         ) {
           sw_no_parallaxer = true;

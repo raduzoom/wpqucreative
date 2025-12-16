@@ -32,13 +32,13 @@ function qucreative_generate_prev_next_table($arg=0, $pargs = array()): string {
 
 
 
-    $taxonomy_name = 'antfarm_port_items_cat';
+    $taxonomy_name = 'quextend_port_items_cat';
 
     if($antfarm){
       $taxonomy_name = $antfarm->name_port_item_cat;
     }
 
-    $post_type = 'antfarm_port_items';
+    $post_type = 'quextend_port_items';
 
     if($antfarm){
       $post_type = $antfarm->name_port_item;

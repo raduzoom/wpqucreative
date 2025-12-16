@@ -3,11 +3,11 @@
  * @param array|null|WP_POST $po
  * @return string
  */
-function qucreative_view_getQueryType( $po) {
+function qucreative_view_getQueryType( $po): string {
 
 
   if(!$po){
-    return;
+    return '';
   }
 
   $query_type = 'page';

@@ -506,14 +506,14 @@ function qucreative_view_portfolio_generateItemFull($qucreative_main) {
 
   $str_slider = '';
 
-  if ($qucreative_main->theme_data['post_for_meta'] && $qucreative_main->theme_data['post_for_meta']->post_type == 'antfarm_port_items' && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'slider') {
+  if ($qucreative_main->theme_data['post_for_meta'] && $qucreative_main->theme_data['post_for_meta']->post_type == 'quextend_port_items' && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'slider') {
     $portOutput = qucreative_view_generateContentPortfolio($qucreative_main);
     $str_slider .= $portOutput['str_slider'];
   }
 
   if ($wp_query) {
     if (isset($wp_query->query_vars)) {
-      if (isset($wp_query->query_vars['antfarm_port_items_cat'])) {
+      if (isset($wp_query->query_vars['quextend_port_items_cat'])) {
 
         $qucreative_main->theme_data['body_class'] .= ' page-type-archive';
       }
@@ -564,7 +564,7 @@ function qucreative_view_portfolio_generateItemFull($qucreative_main) {
                         <div class=" desc-content-wrapper from-header">';
 
 
-    if ($qucreative_main->theme_data['post_for_meta'] && $qucreative_main->theme_data['post_for_meta']->post_type == 'antfarm_port_items' && esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'] . $qucreative_main->theme_data['page_extra_meta_label'], true)) == 'slider') {
+    if ($qucreative_main->theme_data['post_for_meta'] && $qucreative_main->theme_data['post_for_meta']->post_type == 'quextend_port_items' && esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'] . $qucreative_main->theme_data['page_extra_meta_label'], true)) == 'slider') {
       echo '<div class="arrow-left-for-skin-qucreative bg-color-hg-on-hover"></div>
                             <div class="arrow-right-for-skin-qucreative bg-color-hg-on-hover"></div>';
     }
@@ -617,7 +617,7 @@ function qucreative_view_portfolio_generateItem($qucreative_main) {
 
 
       foreach ($arr_cats as $catid) {
-        $term = get_term($catid, 'antfarm_port_items_cat');
+        $term = get_term($catid, 'quextend_port_items_cat');
 
 
       }

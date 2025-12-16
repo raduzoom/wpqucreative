@@ -70,7 +70,7 @@ function qucreative_filter_the_content_before($content= ''): string {
 
 
 
-  $post_type_for_portfolio = 'antfarm_port_items';
+  $post_type_for_portfolio = 'quextend_port_items';
 
   if($antfarm && isset($antfarm->name_port_item)){
     $post_type_for_portfolio = $antfarm->name_port_item;

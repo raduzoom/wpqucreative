@@ -689,11 +689,11 @@ if (!function_exists('qucreative_sanitize_term_slug_to_id')) {
 
 
     if ($taxonomy_name == '') {
-      global $quplugin_main;
+      global $quextend_main;
 
-      if($quplugin_main){
+      if($quextend_main){
 
-        $taxonomy_name = $quplugin_main->name_port_item_cat;
+        $taxonomy_name = $quextend_main->name_port_item_cat;
       }
     }
 
@@ -935,7 +935,7 @@ function qucreative_generate_inline_javascript_for_options() {
   }
 
 
-  if ($post_for_meta && ($post_for_meta->post_type == 'antfarm_port_items') && get_post_meta($post_for_meta->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'] . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'image' && get_post_meta($post_for_meta->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
+  if ($post_for_meta && ($post_for_meta->post_type == 'quextend_port_items') && get_post_meta($post_for_meta->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'] . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'image' && get_post_meta($post_for_meta->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
 
 
     // -- for fullscreen image

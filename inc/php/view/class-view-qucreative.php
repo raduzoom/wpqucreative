@@ -212,10 +212,10 @@ class QuCreativeView {
       $page_type .= ' page-portfolio-type-' . get_post_meta($post->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true);
 
       if (get_post_meta($post->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
-        $page_type .= ' single-antfarm_port_items-fullscreen';
+        $page_type .= ' single-quextend_port_items-fullscreen';
       } else {
 
-        $page_type .= ' single-antfarm_port_items-notfullscreen';
+        $page_type .= ' single-quextend_port_items-notfullscreen';
       }
 
 
@@ -273,7 +273,7 @@ class QuCreativeView {
 
     if ($wp_query) {
       if (isset($wp_query->query_vars)) {
-        if (isset($wp_query->query_vars['antfarm_port_items_cat'])) {
+        if (isset($wp_query->query_vars['quextend_port_items_cat'])) {
           $post_for_meta = null;
           // todo: ??
         }
