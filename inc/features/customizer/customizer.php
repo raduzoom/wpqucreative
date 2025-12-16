@@ -238,7 +238,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
 
 
   $wp_customize->add_control(
-    'blur_ammount',
+    'blur_amount',
     array(
       'label' => esc_html__("Blur Amount", 'qucreative'),
       'section' => 'settings_site',
@@ -246,17 +246,6 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
     )
   );
 
-
-  $lab = 'soundcloud_apikey';
-
-  $wp_customize->add_control(
-    $lab,
-    array(
-      'label' => esc_html__("Soundcloud API Key", 'qucreative'),
-      'section' => 'settings_site',
-      'type' => 'text',
-    )
-  );
 
   $lab = 'gmaps_api_key';
 
@@ -300,7 +289,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   );
 
 
-  $lab = 'content_enviroment_style';
+  $lab = 'content_environment_style';
 
   $wp_customize->add_control(
     $lab,
@@ -316,7 +305,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   $wp_customize->add_control(
     new Qucreative_Slider_Input(
       $wp_customize,
-      'content_enviroment_opacity',
+      'content_environment_opacity',
       array(
         'label' => esc_html__('Content Enviroment Opacity', 'qucreative'),
         'section' => QUCREATIVE_CUSTOMIZER_SECTIONS['settings_content'],
@@ -335,7 +324,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
 
 
   $wp_customize->add_control(
-    'blur_ammount',
+    'blur_amount',
     array(
       'label' => esc_html__("Blur Amount", 'qucreative'),
       'section' => 'settings_site',

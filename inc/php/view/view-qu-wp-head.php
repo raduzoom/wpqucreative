@@ -63,22 +63,7 @@ function qucreative_handle_wp_head(){
 
 
 
-  $post_for_meta = $post;
-
-
-
-
-  if($qucreative_main->theme_data['post_for_meta']){
-    $post_for_meta = $qucreative_main->theme_data['post_for_meta'];
-  }else{
-    if(is_home()){
-
-      if(get_option( 'page_for_posts' )){
-        $post_for_meta = get_post(get_option( 'page_for_posts' ));
-      }
-
-    }
-  }
+  $post_for_meta = QuCreative::getPostForMeta($post);
 
 
 
@@ -91,68 +76,7 @@ function qucreative_handle_wp_head(){
 
 
 
-  if($post_for_meta ) {
-    if (get_post_meta($post_for_meta->ID, 'qucreative_'.'meta_image_gallery'.$qucreative_main->theme_data['page_extra_meta_label'], true) && get_post_meta( $post_for_meta->ID, '_wp_page_template', true )!='template-gallery-creative.php') {
-      $product_image_gallery = esc_html(get_post_meta($post_for_meta->ID, 'qucreative_'.'meta_image_gallery', true));
 
-      $attachments = array_filter(explode(',', $product_image_gallery));
-
-      if ($attachments) {
-        $bg_images = '';
-
-
-        $i3 = 0;
-        foreach ($attachments as $attachment_id) {
-
-          if ($i3 > 0) {
-            $bg_images .= ',';
-          }
-
-          $img_full = wp_get_attachment_image_src($attachment_id, 'full');
-
-          $bg_images .= '\'' . $img_full[0] . '\'';
-
-          $i3++;
-
-        }
-        if($qucreative_main->get_theme_mod_and_sanitize('bg_slideshow_time')){
-          $bg_slideshow_time = intval($qucreative_main->get_theme_mod_and_sanitize('bg_slideshow_time'));
-        }
-        if(get_post_meta($post_for_meta->ID, 'qucreative_'.'meta_home_slideshow_time'.$qucreative_main->theme_data['page_extra_meta_label'], true)){
-          $bg_slideshow_time = intval(get_post_meta($post_for_meta->ID, 'qucreative_'.'meta_home_slideshow_time'.$qucreative_main->theme_data['page_extra_meta_label'], true));
-        }
-
-
-
-      }
-    }
-  }
-
-
-
-
-
-
-
-
-  if($qucreative_main->theme_data['sw_is_in_customizer']){
-    $lab = 'width_blur_margin';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'width_column';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'width_gap';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'border_width';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'border_color';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'bg_isparallax';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'blur_ammount';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-    $lab = 'enable_ajax';
-    $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
-  }
 
 
 

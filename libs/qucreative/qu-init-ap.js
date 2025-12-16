@@ -31,7 +31,6 @@ export const qu_reinitDzsAp = () => {
       default_volume: "last", // -- number / set the default volume 0-1 or "last" for the last known volume
       skinwave_comments_retrievefromajax: "off",
 
-      soundcloud_apikey: window.qucreative_options.soundcloud_apikey, //insert api key here
       embed_code:
           "You can enable embed button for your viewers to embed on their site, the code will auto generate. &lt;iframe src=&quot;http://yoursite.com/bridge.php?type=gallery&amp;id=gal1&quot; &gt;&lt;/iframe&gt;",
       init_each: true,

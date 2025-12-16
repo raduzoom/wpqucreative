@@ -128,9 +128,6 @@ function qucreative_generate_featured_media($arg, $pargs = array()) {
 
 
     if ($margs['include_featured-media-con_div']) {
-
-
-
       $fout .= '<div class="featured-media-con from-generate_featured_media">';
     }
 

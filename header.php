@@ -84,7 +84,7 @@ do_action('qucreative_hook_before_html');
 
 
   if ($qucreative_main->theme_data['sw_is_in_customizer']) {
-    $lab = 'content_enviroment_style';
+    $lab = 'content_environment_style';
 
     $qucreative_main->theme_data['theme_mods'][$lab] = get_theme_mod($lab);
   }

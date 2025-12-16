@@ -19,9 +19,7 @@ const QUCREATIVE_ID = 'qucreative';
 const QUCREATIVE_LANG_ID = QUCREATIVE_ID;
 const QUCREATIVE_VERSION = '1.08';
 include_once QUCREATIVE_THEME_DIR . 'config/config.php';
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/generate-typography.php';
 include_once QUCREATIVE_THEME_DIR . 'inc/php/view/generate-qu-loop.php';
-include_once QUCREATIVE_THEME_DIR . 'inc/php/view/generate-typography-generate.php';
 
 
 
@@ -65,7 +63,6 @@ add_action('after_setup_theme', 'qucreative_setup');
 add_action('init', 'qucreative_init');
 add_action('tgmpa_register', 'qucreative_register_required_plugins');
 
-add_action('widgets_init', 'qucreative_widgets_areas_init', 1);
 
 
 /**
@@ -79,18 +76,21 @@ function qucreative_wp_enqueue_scripts() {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
   echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
 
-  $font_data_str = $qucreative_main->get_theme_mod_and_sanitize('font_data');
-  $font_data = array();
-  parse_str($font_data_str, $font_data);
 
-  if ($font_data_str && $font_data_str != QUCREATIVE_DEFAULT_TYPOGRAPHY) {
-    qucreative_view_customTypography($qucreative_main, $font_data);
-  } else {
-    // -- default typography (unchanged list, but the printer becomes non-blocking)
-    qucreative_enqueue_google_font('Open+Sans:400,600italic,600,400italic,800', 'Open+Sans', '400,600italic,600,400italic,800');
-    qucreative_enqueue_google_font('Lato:700,400,900italic,700italic,900', 'Lato', '700,400,900italic,700italic,900');
-    qucreative_enqueue_google_font('Playfair+Display:900italic', 'Playfair+Display', '900italic');
+  if(class_exists('QuExtend_View')){
+    QuExtend_View::embedGoogleFonts();
+  }else{
+    qucreative_wp_enqueue_scripts__defaultFonts();
   }
+
+
+}
+function qucreative_wp_enqueue_scripts__defaultFonts() {
+
+  // -- default typography (unchanged list, but the printer becomes non-blocking)
+  qucreative_enqueue_google_font('Open+Sans:400,600italic,600,400italic,800', 'Open+Sans', '400,600italic,600,400italic,800');
+  qucreative_enqueue_google_font('Lato:700,400,900italic,700italic,900', 'Lato', '700,400,900italic,700italic,900');
+  qucreative_enqueue_google_font('Playfair+Display:900italic', 'Playfair+Display', '900italic');
 }
 
 
@@ -317,72 +317,6 @@ if (!function_exists('qucreative_setup')) {
 }
 
 
-/**
- * Register widget area.
- *
- */
-function qucreative_widgets_areas_init() {
-
-  global $qucreative_main;
-
-
-  $typography_sidebar_heading_style = $qucreative_main->get_theme_mod_and_sanitize('typography_sidebar_heading_style');
-  $typography_footer_heading_style = $qucreative_main->get_theme_mod_and_sanitize('typography_footer_heading_style');
-
-  if ($typography_sidebar_heading_style) {
-
-  } else {
-    $typography_sidebar_heading_style = 'h6';
-  }
-
-  if ($typography_footer_heading_style) {
-
-  } else {
-    $typography_footer_heading_style = 'h6';
-  }
-
-
-  $h_wrap_start = '<' . $typography_sidebar_heading_style . ' class="the-variable-heading widget-title">';
-  $h_wrap_end = '</' . $typography_sidebar_heading_style . '>';
-
-  if ($typography_sidebar_heading_style == 'h-group-1' || $typography_sidebar_heading_style == 'h-group-2') {
-
-    $h_wrap_start = '<h3 class="the-variable-heading widget-title ' . $typography_sidebar_heading_style . '">';
-    $h_wrap_end = '</h3>';
-  }
-
-
-  register_sidebar(array(
-    'name' => esc_html__('Widget Area', 'qucreative'),
-    'id' => 'sidebar-1',
-    'description' => esc_html__('Add widgets here to appear in your sidebar.', 'qucreative'),
-    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-block">',
-    'after_widget' => '</div>',
-    'before_title' => $h_wrap_start,
-    'after_title' => $h_wrap_end,
-  ));
-
-
-  $h_wrap_start = '<' . $typography_footer_heading_style . ' class="the-variable-heading widget-title">';
-  $h_wrap_end = '</' . $typography_footer_heading_style . '>';
-
-  if ($typography_footer_heading_style == 'h-group-1' || $typography_footer_heading_style == 'h-group-2') {
-
-    $h_wrap_start = '<h3 class="the-variable-heading widget-title ' . $typography_footer_heading_style . '">';
-    $h_wrap_end = '</h3>';
-  }
-
-
-  register_sidebar(array(
-    'name' => esc_html__('Footer Area', 'qucreative'),
-    'id' => 'sidebar-footer',
-    'description' => esc_html__('Add widgets here to appear in your sidebar.', 'qucreative'),
-    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-block">',
-    'after_widget' => '</div>',
-    'before_title' => $h_wrap_start,
-    'after_title' => $h_wrap_end,
-  ));
-}
 
 
 /**
@@ -1035,13 +969,12 @@ function qucreative_generate_inline_javascript_for_options() {
     'type' => 'main_options',
     'images_arr' => $bg_images,
     'enable_ajax' => $qucreative_main->theme_data['theme_mods']['enable_ajax'],
-    'soundcloud_apikey' => $qucreative_main->get_theme_mod_and_sanitize('soundcloud_apikey'),
     'bg_isparallax' => $qucreative_main->theme_data['theme_mods']['bg_isparallax'],
     'bg_slideshow_time' => $bg_slideshow_time,
     'bg_transition' => $qucreative_main->theme_data['theme_mods']['bg_transition'],
     'site_url' => site_url(),
     'theme_url' => QUCREATIVE_THEME_URL,
-    'blur_ammount' => $qucreative_main->theme_data['theme_mods']['blur_ammount'],
+    'blur_amount' => $qucreative_main->theme_data['theme_mods']['blur_amount'],
     'width_column' => $qucreative_main->theme_data['theme_mods']['width_column'],
     'width_section_bg' => $qucreative_main->get_theme_mod_and_sanitize('width_section_bg'),
     'width_gap' => $qucreative_main->theme_data['theme_mods']['width_gap'],
@@ -1075,34 +1008,27 @@ function qucreative_generate_inline_javascript_for_options() {
   }
 
 
-  $lab = 'menu_environment_opacity';
-  $menu_environment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
-
-  if ($qucreative_main->theme_data['sw_is_in_customizer']) {
-
-    $menu_environment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
-  }
-  if ($menu_environment_opacity == '') {
-    $menu_environment_opacity = '';
-  }
-  $val = floatval($menu_environment_opacity) / 100;
 
 
-  $lab = 'content_enviroment_opacity';
-  $content_enviroment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
+  $meo = qucreative_generate_inline_css_for_environment_menuOpacity_val($qucreative_main);
+  $menu_environment_opacity = $meo['menu_environment_opacity'];
+
+
+  $lab = 'content_environment_opacity';
+  $content_environment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
 
 
   if ($qucreative_main->theme_data['sw_is_in_customizer']) {
 
-    $content_enviroment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
+    $content_environment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
   }
 
-  if ($content_enviroment_opacity == '') {
-    $content_enviroment_opacity = '30';
+  if ($content_environment_opacity == '') {
+    $content_environment_opacity = '30';
   }
 
 
-  $qucreative_main->theme_data['js_options']['content_enviroment_opacity'] = $content_enviroment_opacity;
+  $qucreative_main->theme_data['js_options']['content_environment_opacity'] = $content_environment_opacity;
   $qucreative_main->theme_data['js_options']['menu_environment_opacity'] = $menu_environment_opacity;
   $qucreative_main->theme_data['js_options']['base_url'] = get_site_url();
 

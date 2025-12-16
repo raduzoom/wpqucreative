@@ -128,31 +128,6 @@ class QuCreative {
 
 
 
-
-
-
-
-
-    if(is_admin()) {
-      setcookie('vchideactivationmsg', '1', strtotime('+3 years'), '/');
-      setcookie('vchideactivationmsg_vc11', (defined('WPB_VC_VERSION') ? WPB_VC_VERSION : '1'), strtotime('+3 years'), '/');
-
-
-      // todo: move to classAdmin
-      add_action('add_meta_boxes',array($this, 'qucreative_handle_add_meta_boxes'));
-
-    }
-
-    $font_data_str = $this->get_theme_mod_and_sanitize('font_data');
-
-
-
-
-
-    parse_str($font_data_str, $this->theme_data[QUCREATIVE_VIEW_FONT_PARSED]);
-
-    $this->theme_data['secondary_content_height'] = $this->get_theme_mod_and_sanitize('secondary_content_height', array('type'=>'int'));
-
     if( isset($_GET['customize_changeset_uuid']) && ($_GET['customize_changeset_uuid']) ){
       $this->theme_data['sw_is_in_customizer'] = true;
     }
@@ -165,6 +140,7 @@ class QuCreative {
 
 
 
+    add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 1);
 
 
     // -- header
@@ -173,163 +149,77 @@ class QuCreative {
 
   }
 
-  public function qucreative_handle_add_meta_boxes(){
+
+  /**
+   * Register widget area.
+   *
+   */
+  function qucreative_widgets_areas_init() {
+
+    global $qucreative_main;
 
 
+    $typography_sidebar_heading_style = $qucreative_main->get_theme_mod_and_sanitize('typography_sidebar_heading_style');
+    $typography_footer_heading_style = $qucreative_main->get_theme_mod_and_sanitize('typography_footer_heading_style');
+
+    if ($typography_sidebar_heading_style) {
+
+    } else {
+      $typography_sidebar_heading_style = 'h6';
+    }
+
+    if ($typography_footer_heading_style) {
+
+    } else {
+      $typography_footer_heading_style = 'h6';
+    }
 
 
-    add_meta_box('qucreative_meta_gallery', esc_html__('Page Gallery','qucreative'),array($this, 'qucreative_admin_meta_gallery'),'page','side');
-    add_meta_box('qucreative_meta_gallery', esc_html__('Page Gallery','qucreative'),array($this, 'qucreative_admin_meta_gallery'),'post','side');
+    $wrap = array(
+      'start' => '<' . $typography_sidebar_heading_style . ' class="the-variable-heading widget-title">',
+      'end' => '</' . $typography_sidebar_heading_style . '>',
+    );
+    $wrap = apply_filters('qucreative_widget_title_wrap', $wrap, array(
+      'heading_style' => $typography_sidebar_heading_style,
+      'sidebar_id' => 'sidebar-1',
+      'location' => 'sidebar',
+    ));
 
 
+    register_sidebar(array(
+      'name' => esc_html__('Widget Area', 'qucreative'),
+      'id' => 'sidebar-1',
+      'description' => esc_html__('Add widgets here to appear in your sidebar.', 'qucreative'),
+      'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-block">',
+      'after_widget' => '</div>',
+      'before_title' => $wrap['start'],
+      'after_title' => $wrap['end'],
+    ));
 
 
+    $wrap = array(
+      'start' => '<' . $typography_footer_heading_style . ' class="the-variable-heading widget-title">',
+      'end' => '</' . $typography_footer_heading_style . '>',
+    );
+    $wrap = apply_filters('qucreative_widget_title_wrap', $wrap, array(
+      'heading_style' => $typography_footer_heading_style,
+      'sidebar_id' => 'sidebar-footer',
+      'location' => 'footer',
+    ));
+
+
+    register_sidebar(array(
+      'name' => esc_html__('Footer Area', 'qucreative'),
+      'id' => 'sidebar-footer',
+      'description' => esc_html__('Add widgets here to appear in your sidebar.', 'qucreative'),
+      'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-block">',
+      'after_widget' => '</div>',
+      'before_title' => $wrap['start'],
+      'after_title' => $wrap['end'],
+    ));
   }
 
-  function qucreative_admin_meta_gallery() {
 
-    // -- this is the meta box
-    global $post;
-
-    ?>
-    <div id="product_images_container">
-      <ul class="dzs_item_gallery_list">
-        <?php
-        $product_image_gallery = '';
-        if (metadata_exists('post',$post->ID,'qucreative_'.'meta_image_gallery')) {
-          $product_image_gallery = get_post_meta($post->ID,'qucreative_'.'meta_image_gallery',true);
-        }
-
-        $attachments = array_filter(explode(',',$product_image_gallery));
-
-        if ($attachments) {
-          foreach ($attachments as $attachment_id) {
-            echo '<li class="item-element" data-id="'.$attachment_id.'">
-						<div class="the-image the-handler">
-'.wp_get_attachment_image($attachment_id,'thumbnail',false, array( "class" => "img-responsive " ) ).'
-</div>
-<div class="ui-delete"></div>
-<div class="ui-edit">'.esc_html__("Edit",'qucreative').'</div>';
-
-
-
-            $att_meta =array();
-
-            $att_meta = wp_prepare_attachment_for_js($attachment_id);
-
-
-            ?>
-            <div class="ui-edit-field">
-              <div class="ui-edit-field-close"><i class="fa fa-times-circle"></i></div>
-
-              <input type="hidden" name="<?php echo 'qucreative_'; ?>meta_post_id" value="<?php echo $attachment_id; ?>"/>
-              <div class="setting">
-                <h5><?php echo esc_html__("Title",'qucreative'); ?></h5>
-                <input class="q-att-meta-edit-field" type="text" name="<?php echo 'qucreative_'; ?>meta_post_excerpt"  value="<?php $aux = $att_meta['caption']; $aux = str_replace('"', '', $aux); echo $aux; ?>"/>
-              </div>
-
-              <div class="setting for-selected-template-gallery-creative">
-                <h5><?php echo esc_html__("Description",'qucreative'); ?></h5>
-                <textarea class="q-att-meta-edit-field" type="text" name="<?php echo 'qucreative_'; ?>meta_post_content"><?php $aux = $att_meta['description']; $aux = str_replace('"', '', $aux); echo $aux; ?></textarea>
-              </div>
-
-              <div class="setting not-for-selected-template-gallery-creative">
-                <h5><?php echo esc_html__("Aligment",'qucreative'); ?></h5>
-                <?php
-
-
-                $seekval = 'right';
-                $lab = 'qucreative_'.'meta_att_aligment';
-
-                if(get_post_meta($attachment_id, $lab,true)){
-                  $seekval = get_post_meta($attachment_id, $lab,true);
-                }
-
-
-
-                $arr_opts = array(
-                  array(
-                    'label'=>esc_html__("Right",'qucreative'),
-                    'value'=>'right',
-                  ),
-                  array(
-                    'label'=>esc_html__("Left",'qucreative'),
-                    'value'=>'left',
-                  ),
-                );
-
-
-                echo qucreative_helpers_generate_select($lab, array(
-                  'class'=>'qucreative-att-meta-edit-field q-att-meta-edit-field',
-                  'options'=>$arr_opts,
-                  'seekval'=>$seekval,
-                ))
-                ?>
-              </div>
-
-
-
-              <?php
-
-              $lab = 'qucreative_'.'meta_att_video';
-              $seekval = get_post_meta($attachment_id, $lab,true);
-
-
-              ?>
-              <div class="setting for-selected-template-gallery-creative">
-                <h5><?php echo esc_html__("Attached Video",'qucreative'); ?></h5>
-                <input class="qucreative-att-meta-edit-field q-att-meta-edit-field" type="text" name="<?php echo $lab; ?>" value="<?php echo $seekval; ?>"/>
-              </div>
-
-
-
-              <?php
-
-              $lab = 'qucreative_'.'meta_att_enable_video_cover';
-              $seekval = get_post_meta($attachment_id, $lab,true);
-
-
-              ?>
-              <div class="setting for-selected-template-gallery-creative">
-                <h5><?php echo esc_html__("Enable Video Cover",'qucreative'); ?></h5>
-                <?php
-
-
-
-
-                $arr_opts = array(
-                  array(
-                    'label'=>esc_html__("Off",'qucreative'),
-                    'value'=>'off',
-                  ),
-                  array(
-                    'label'=>esc_html__("On",'qucreative'),
-                    'value'=>'on',
-                  ),
-                );
-
-                echo qucreative_helpers_generate_select($lab, array(
-                  'class'=>'q-att-meta-edit-field',
-                  'options'=>$arr_opts,
-                  'seekval'=>$seekval,
-                ))
-                ?>
-              </div>
-            </div>
-            <?php
-
-
-            echo '</li>';
-          }
-        }
-        ?>
-      </ul>
-
-      <input type="hidden" id="<?php echo 'qucreative_'; ?>meta_image_gallery" name="<?php echo 'qucreative_'; ?>meta_image_gallery" value="<?php echo esc_attr($product_image_gallery); ?>" />
-      <button class="button-secondary dzs-add-gallery-item"><?php echo esc_html__("Add Media", 'qucreative'); ?></button>
-    </div>
-    <?php
-  }
 
 
   /**
@@ -387,6 +277,32 @@ class QuCreative {
 
   }
 
+
+  static function getInstance() {
+    global $qucreative_main;
+
+    return $qucreative_main;
+  }
+
+  static function getPostForMeta($post) {
+
+    $post_for_meta = $post;
+
+    $qucreative_main = QuCreative::getInstance();
+
+    if($qucreative_main->theme_data['post_for_meta']){
+      $post_for_meta = $qucreative_main->theme_data['post_for_meta'];
+    }else{
+      if(is_home()){
+        if(get_option( 'page_for_posts' )){
+          $post_for_meta = get_post(get_option( 'page_for_posts' ));
+        }
+
+      }
+    }
+
+    return $post_for_meta;
+  }
 
 
 }

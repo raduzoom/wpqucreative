@@ -175,7 +175,7 @@ function qucreative_filter_body_classes( $classes, $class ) {
 
 
   if($qucreative_main->theme_data['sw_is_in_customizer']){
-    $lab = 'content_enviroment_style';
+    $lab = 'content_environment_style';
 
     $qucreative_main->theme_data['theme_mods'][$lab] = $qucreative_main->get_theme_mod_and_sanitize($lab);
   }
@@ -183,13 +183,13 @@ function qucreative_filter_body_classes( $classes, $class ) {
   $qucreative_main->theme_data['body_class'].= ' '. 'first-transition';
   $qucreative_main->theme_data['body_class'].= ' '. esc_attr($page_title_align);
   $qucreative_main->theme_data['body_class'].= ' '. $qucreative_main->get_theme_mod_and_sanitize('page_title_style');
-  $qucreative_main->theme_data['body_class'].= ' '. esc_attr($qucreative_main->theme_data['theme_mods']['content_enviroment_style']);
+  $qucreative_main->theme_data['body_class'].= ' '. esc_attr($qucreative_main->theme_data['theme_mods']['content_environment_style']);
 
 
   if( $qucreative_main->theme_data['theme_mods']['menu_environment_opacity']=='100'){
     $qucreative_main->theme_data['body_class'].=' has-opaque-header-opacity';
   }
-  if( $qucreative_main->theme_data['theme_mods']['content_enviroment_opacity']=='100'){
+  if( $qucreative_main->theme_data['theme_mods']['content_environment_opacity']=='100'){
     $qucreative_main->theme_data['body_class'].=' has-opaque-content-opacity';
   }
 

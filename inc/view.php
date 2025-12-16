@@ -648,7 +648,7 @@ function qucreative_view_portfolio_generateTranslucentLayerStart($qucreative_mai
   $translucent_layer_custom_opacity = false;
 
 
-  if ($qucreative_main->theme_data['theme_mods']['content_enviroment_opacity'] == '100') {
+  if ($qucreative_main->theme_data['theme_mods']['content_environment_opacity'] == '100') {
 
     echo ' colorize-layers';
 
@@ -691,12 +691,12 @@ function qucreative_view_portfolio_generateTranslucentLayerStart($qucreative_mai
       list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 
 
-      echo 'background-color: rgba(' . $r . ',' . $g . ',' . $b . ',' . floatval(floatval($qucreative_main->theme_data['theme_mods']['content_enviroment_opacity']) / 100) . ');';
+      echo 'background-color: rgba(' . $r . ',' . $g . ',' . $b . ',' . floatval(floatval($qucreative_main->theme_data['theme_mods']['content_environment_opacity']) / 100) . ');';
     } else {
       if ($translucent_layer_custom_opacity) {
 
 
-        if ($qucreative_main->theme_data['theme_mods']['content_enviroment_style'] == 'body-style-light') {
+        if ($qucreative_main->theme_data['theme_mods']['content_environment_style'] == 'body-style-light') {
 
           $hex = '#ffffff';
         } else {
