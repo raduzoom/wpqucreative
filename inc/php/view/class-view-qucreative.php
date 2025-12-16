@@ -397,6 +397,26 @@ class QuCreativeView {
 
   }
 
+  public function view_searchExpand_getClasses(): string {
+
+    $qucreative_main = $this->quMain;
+
+    $fout = '';
+
+    $fout.='search-expand auto-init inline-block';
+
+
+    $searchedMenuType = $this->quMain->theme_data['menu_type'];
+
+    if($searchedMenuType == 'menu-type-3' || $searchedMenuType == 'menu-type-4'){
+      $fout.= ' mode-view--absolute';
+    }
+
+
+
+    return $fout;
+
+  }
   public function handle_wp_head() {
 
 

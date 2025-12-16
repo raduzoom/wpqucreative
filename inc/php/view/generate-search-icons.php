@@ -8,7 +8,7 @@ function qucreative_header_generateSearchIcon() {
 
     ?><div class="nav-social-con">
 
-      <div>          <div class="search-expand auto-init inline-block">
+      <div>          <div class="<?php echo $qucreative_main->quCreativeView->view_searchExpand_getClasses(); ?>">
         </div>
         </i></div>
 
