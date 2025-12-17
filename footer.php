@@ -85,9 +85,6 @@ do_action('qucreative_before_end_main_container');
 <?php
 do_action('qucreative_before_wp_footer');
 
-if ($qucreative_main->theme_data['footer_big_map_str']) {
-  echo $qucreative_main->theme_data['footer_big_map_str'];
-}
 
 
 
@@ -101,10 +98,7 @@ echo '<div class="qucreative-option-feed" data-rel="mainoptions">' . $qucreative
 
 
 if ($qucreative_main->theme_data['theme_mods']['border_width']) {
-
   qucreative_view_generateBorders();
-
-
 }
 wp_footer();
 ?>

@@ -6,7 +6,6 @@ import {
   getBrowserScrollSize,
   initObjectSizeProto,
 } from "./js/common/_helpers";
-import { dzsQuc_wpAddComment } from "./js/features/_wpAddComment";
 import { dzsQuc_initAdvancedScrollers } from "./js/features/_advancedScrollers";
 import {
   QUCREATIVE_DEFAULTS,
@@ -1207,4 +1206,3 @@ qcreative_curr_html = "";
 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
-window.addComment = dzsQuc_wpAddComment;

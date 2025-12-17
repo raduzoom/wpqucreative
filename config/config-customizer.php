@@ -304,7 +304,6 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
   'social_icons' => array(),
   'secondary_content_height' => 300,
   'footer_extra_zoombox_items' => '',
-  'footer_big_map_str' => '',
 
   // -- qu extend import
   'import_demo_last_attach_id' => '',

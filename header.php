@@ -152,14 +152,8 @@ do_action('qucreative_hook_before_html');
       <div class="the-content-and-title-con">
         <?php
 
+        do_action('qucreative_hook_before_the_content');
 
-        if ($post) {
-          if (get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_rev_slider' . $qucreative_main->theme_data['page_extra_meta_label'], true)) {
-            qucreative_view_generateRevSlider($qucreative_main);
-
-          }
-
-        }
 
 
         if (!$post || (get_post_meta($post->ID, '_wp_page_template', true) !== 'template-qucreative-slider.php')){

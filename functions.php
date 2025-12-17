@@ -965,6 +965,9 @@ function qucreative_generate_inline_javascript_for_options() {
   }
 
 
+
+  // todo: move to view
+  // todo: move parts to quextend
   $qucreative_main->theme_data['js_options'] = array(
     'type' => 'main_options',
     'images_arr' => $bg_images,
@@ -980,9 +983,6 @@ function qucreative_generate_inline_javascript_for_options() {
     'width_gap' => $qucreative_main->theme_data['theme_mods']['width_gap'],
     'border_width' => $qucreative_main->theme_data['theme_mods']['border_width'],
     'border_color' => $qucreative_main->theme_data['theme_mods']['border_color'],
-    'translate_cancel_comment' => esc_html__("Cancel reply", 'qucreative'),
-    'translate_leave_a_comment' => esc_html__("Leave a comment", 'qucreative'),
-    'translate_leave_a_comment_to' => esc_html__("Leave a comment to", 'qucreative'),
     'is_customize_preview' => $is_customize_preview,
     'width_blur_margin' => $qucreative_main->theme_data['theme_mods']['width_blur_margin'],
     'gallery_w_thumbs_autoplay_videos' => 'off',

@@ -1,5 +1,8 @@
 <?php
 
+
+// todo: move to plugin
+// todo: much simpler just overwrite the vars
 function qucreative_php_view_generate_light_style($the_content_con_identifier) {
 
 
