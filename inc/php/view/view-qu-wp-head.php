@@ -127,7 +127,7 @@ function qucreative_handle_wp_head(){
 
 
 
-  if(count($the_sidebars['sidebar-footer'])){
+  if(isset($the_sidebars['sidebar-footer']) && is_array($the_sidebars['sidebar-footer']) && count($the_sidebars['sidebar-footer'])){
   }else{
 
     $qucreative_main->theme_data['has_footer'] = false;

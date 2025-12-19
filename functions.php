@@ -739,7 +739,7 @@ function qucreative_print_real_footer() {
   $the_sidebars = wp_get_sidebars_widgets();
 
 
-  if (count($the_sidebars['sidebar-footer'])) {
+  if (isset($the_sidebars['sidebar-footer']) && is_array($the_sidebars['sidebar-footer']) && count($the_sidebars['sidebar-footer'])) {
 
 
     ?>

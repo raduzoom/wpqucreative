@@ -79,6 +79,7 @@ class QuCreative {
 
     add_action( 'wp_enqueue_scripts', array($this, 'handle_wp_enqueue_scripts') );
     add_action( 'wp_default_scripts', array($this, 'handle_wp_default_scripts') );
+    add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 10);
     add_action('init', array($this, 'handle_init'), 10);
   }
 
@@ -138,9 +139,6 @@ class QuCreative {
 
 
 
-
-
-    add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 10);
 
 
     // -- header
