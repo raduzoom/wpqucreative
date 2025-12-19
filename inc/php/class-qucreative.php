@@ -140,7 +140,7 @@ class QuCreative {
 
 
 
-    add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 1);
+    add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 10);
 
 
     // -- header
