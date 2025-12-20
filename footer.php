@@ -97,9 +97,6 @@ do_action('qucreative_before_wp_footer');
 echo '<div class="qucreative-option-feed" data-rel="mainoptions">' . $qucreative_main->theme_data['js_data_for_inline_options'] . '</div>';
 
 
-if ($qucreative_main->theme_data['theme_mods']['border_width']) {
-  qucreative_view_generateBorders();
-}
 wp_footer();
 ?>
 </body>

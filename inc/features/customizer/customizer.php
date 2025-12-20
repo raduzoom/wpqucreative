@@ -155,52 +155,9 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   }
 
 
-  $cfi = 0;
   foreach ($qucreative_main->theme_data[CUSTOMIZER_FIELDS_LAB] as $cf) {
 
-
-    $args = array(
-      'default' => $cf['default'],
-
-    );
-
-    if (isset($cf['transport'])) {
-      $args['transport'] = $cf['transport'];
-    }
-
-
-    if ($cf['name']) {
-
-      if ($cfi > 100) {
-
-
-        break;
-      }
-
-
-      if ($cf['name'] == 'font_data') {
-
-
-        // -- todo: weird.. does not work in child theme
-
-
-        $my_theme = wp_get_theme();
-
-
-        if ($my_theme->get('TextDomain') == 'qucreative-child') {
-          $args['default'] = '';
-        }
-
-      }
-      $wp_customize->add_setting(
-        $cf['name'],
-        array_merge($args, array(
-          'sanitize_callback' => 'qucreative_return_false_value',
-        ))
-      );
-
-      $cfi++;
-    }
+    QuCreative::add_customizer_field($cf, $wp_customize);
   }
 
 //	return false;
@@ -523,16 +480,6 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   );
 
 
-  $lab = 'width_blur_margin';
-
-  $wp_customize->add_control(
-    $lab,
-    array(
-      'label' => esc_html__("Content Margin Width", 'qucreative'),
-      'section' => QUCREATIVE_CUSTOMIZER_SECTIONS['settings_content'],
-      'type' => 'text',
-    )
-  );
 
 
   $lab = 'width_section_bg';

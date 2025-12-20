@@ -20,7 +20,6 @@ class QuCreative {
 
     foreach ( QUCREATIVE_THEME_MOD_KEYS as $key ) {
       $value = get_theme_mod( $key );
-
       $theme_mods[ $key ] = $value;
     }
 
@@ -233,14 +232,45 @@ class QuCreative {
 
   }
 
+  static function add_customizer_field($cf, $wp_customize) {
+
+
+
+
+    $args = array(
+      'default' => $cf['default'],
+
+    );
+
+    if (isset($cf['transport'])) {
+      $args['transport'] = $cf['transport'];
+    }
+
+    if ($cf['name']) {
+
+
+      if ($cf['name'] == 'font_data') {
+        // -- todo: weird.. does not work in child theme
+        $my_theme = wp_get_theme();
+        if ($my_theme->get('TextDomain') == 'qucreative-child') {
+          $args['default'] = '';
+        }
+
+      }
+      $wp_customize->add_setting(
+        $cf['name'],
+        array_merge($args, array(
+          'sanitize_callback' => 'qucreative_return_false_value',
+        ))
+      );
+    }
+
+  }
+
   function get_theme_mod_and_sanitize($arglab, $args = array()){
 
 
-    $defaultArgs = $args;
-    if(!is_array($defaultArgs)){
-      $defaultArgs = array();
-    }
-    $margs = array_merge(array('type'=>'string', 'cacheIt'=>true), $defaultArgs);
+    $margs = array_merge(array('type'=>'string', 'cacheIt'=>true), $args);
 
 
     $argVal = $this->theme_data['theme_mods'][$arglab] ?? get_theme_mod($arglab);
@@ -256,7 +286,7 @@ class QuCreative {
     if($arglab=='social_icons'){
       $argVal = str_replace('&quot;','"',$argVal);
     }
-    if($arglab==QUCREATIVE_OPTION_FONT_NAME){
+    if($arglab==QUEXTEND_QU_OPTION_FONT_NAME){
 
       $argVal = str_replace('&amp;','&',$argVal);
     }
