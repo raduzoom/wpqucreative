@@ -691,21 +691,6 @@ function qucreative_view_generateMainPageTitle($qucreative_main, $page_title_ali
   ?>"><?php  echo $qucreative_main->theme_data['view_title']; ?></h1>
   </div><?php
 }
-function qucreative_view_generateMenu() {
-
-  $location = QUCREATIVE_MENU_PRIMARY_MENU_ID;
-
-  // Always try to display the menu
-  wp_nav_menu(array(
-    'theme_location' => $location,
-    'echo' => true,
-    'menu_class' => 'the-actual-nav',
-    'container_class' => 'the-actual-nav',
-    'fallback_cb' => function() {
-      echo '<div class="menu-helper-text">' . esc_html__("Please setup a menu from ", 'qucreative') . '<a target="_blank" href="' . admin_url("nav-menus.php") . '">' . esc_html__("here", 'qucreative') . '</a></div>';
-    }
-  ));
-}
 
 function qucreative_view_enqueue_fontAwesome() {
 

@@ -8,8 +8,12 @@
  * Set the content width based on the theme's design and stylesheet.
  *
  */
-define('QUCREATIVE_THEME_URL', get_parent_theme_file_uri() . '/');
-define('QUCREATIVE_THEME_DIR', get_parent_theme_file_path() . '/');
+// Use stylesheet (child theme if exists, otherwise parent)
+
+
+// Define theme constants - always point to parent theme
+defined('QUCREATIVE_THEME_URL') || define('QUCREATIVE_THEME_URL', trailingslashit(get_template_directory_uri()));
+defined('QUCREATIVE_THEME_DIR') || define('QUCREATIVE_THEME_DIR', trailingslashit(get_template_directory()));
 
 
 include_once QUCREATIVE_THEME_DIR . 'inc/php/common/features/google-fonts-helper.php';

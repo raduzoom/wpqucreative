@@ -1,5 +1,5 @@
 <?php
-
+include_once QUCREATIVE_THEME_DIR.'inc/php/view/get-nav-menu.php';
 /**
  * outputs the menu
  * @return void
@@ -14,7 +14,7 @@ function qucreative_header_generateQuNav() {
     <!-- this block is the navigation -->
     <nav class="qucreative--nav-con">
 
-    <!-- modify logo from here -->
+    <!-- modify the logo from here -->
   <?php
 
 
