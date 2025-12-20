@@ -638,80 +638,27 @@ function qucreative_view_portfolio_generateTranslucentLayerStart($qucreative_mai
 
 
 
-  echo '<div class="translucent-layer';
-
-
   // -- will close it
   $qucreative_main->theme_data['post_content_has_translucent_layer'] = true;
 
   $translucent_layer_custom_color = false;
   $translucent_layer_custom_opacity = false;
 
+  // Build classes array
+  $translucent_layer_classes = array('translucent-layer');
 
-  if ($qucreative_main->theme_data['theme_mods']['content_environment_opacity'] == '100') {
-
-    echo ' colorize-layers';
-
-    // -- lets do the rest in qucreative.js / reinit()
-  }
-
-  if (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on' && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_color', true)) {
-
-    $translucent_layer_custom_color = true;
-
-    echo ' custom-color';
-  }
-  if (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on' && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_opacity', true)) {
+  // Allow plugins to modify translucent layer classes
+  $translucent_layer_classes = apply_filters('qucreative_translucent_layer_classes', $translucent_layer_classes, $qucreative_main);
 
 
-    $translucent_layer_custom_opacity = true;
 
-    echo ' custom-opacity';
-  }
-
-
-  echo '"';
+  echo '<div class="' . esc_attr(implode(' ', $translucent_layer_classes)) . '"';
   echo ' style="';
 
-
-  if ($translucent_layer_custom_opacity && $translucent_layer_custom_color) {
-
-
-    $hex = get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_color' . $qucreative_main->theme_data['page_extra_meta_label'], true);
-    list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
-
-
-    echo 'background-color: rgba(' . $r . ',' . $g . ',' . $b . ',' . floatval(floatval(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_opacity' . $qucreative_main->theme_data['page_extra_meta_label'], true)) / 100) . ');';
-
-  } else {
-    if ($translucent_layer_custom_color) {
-
-
-      $hex = esc_attr(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_color' . $qucreative_main->theme_data['page_extra_meta_label'], true));
-      list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
-
-
-      echo 'background-color: rgba(' . $r . ',' . $g . ',' . $b . ',' . floatval(floatval($qucreative_main->theme_data['theme_mods']['content_environment_opacity']) / 100) . ');';
-    } else {
-      if ($translucent_layer_custom_opacity) {
-
-
-        if ($qucreative_main->theme_data['theme_mods']['content_environment_style'] == 'body-style-light') {
-
-          $hex = '#ffffff';
-        } else {
-
-          $hex = '#000000';
-        }
-
-
-        list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
-
-
-        echo 'background-color: rgba(' . $r . ',' . $g . ',' . $b . ',' . floatval(floatval(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_overlay_opacity' . $qucreative_main->theme_data['page_extra_meta_label'], true)) / 100) . ');';
-      }
-    }
-  }
+  // Allow plugins to generate inline styles for translucent layer
+  $translucent_layer_styles = apply_filters('qucreative_translucent_layer_styles', '', $translucent_layer_classes, $qucreative_main);
+  
+  echo $translucent_layer_styles;
 
 
   echo '"';

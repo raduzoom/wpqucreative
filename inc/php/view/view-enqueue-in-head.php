@@ -10,30 +10,20 @@ function qucreative_view_enqueue_in_head(QuCreativeView $quView){
 
 
 
-  if (!stripos($_SERVER["SCRIPT_NAME"], strrchr(wp_login_url(), '/')) !== false) {
-    wp_enqueue_style(QUCREATIVE_VIEW_STYLE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.css');
-
-
-    if (QuCreativeView::isViewAnimationDurationSet($quView)) {
-
-      $duration = floatval($quView->theme_mods['view_animation_duration']); // Parse as number
-
-
-      // Inject CSS
-      $inline_style = ":root { --qucreative-view-animation-duration: {$duration}s; }";
-      wp_add_inline_style(QUCREATIVE_VIEW_STYLE_ID, $inline_style);
-    }
-  }
 
   $transitions = array('slidedown', 'wipedown','fade');
 
 
+  if (!stripos($_SERVER["SCRIPT_NAME"], strrchr(wp_login_url(), '/')) !== false) {
+    wp_enqueue_style(QUCREATIVE_VIEW_STYLE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.css');
+  }
 
 
+  $bgTransition = $quView->quMain->get_theme_mod_and_sanitize('bg_transition');
   if (
-    in_array($quView->theme_mods['bg_transition'], $transitions)) {
+    in_array($bgTransition, $transitions)) {
 
-    $transitionTarget =$quView->theme_mods['bg_transition'];
+    $transitionTarget = $bgTransition;
 
       wp_enqueue_style('qucreative-transition', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/transitions/bg_transition-'.$transitionTarget.'.css');
   }

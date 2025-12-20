@@ -155,7 +155,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   }
 
 
-  foreach ($qucreative_main->theme_data[CUSTOMIZER_FIELDS_LAB] as $cf) {
+  foreach (QUCREATIVE_CUSTOMIZER_FIELDS as $cf) {
 
     QuCreative::add_customizer_field($cf, $wp_customize);
   }

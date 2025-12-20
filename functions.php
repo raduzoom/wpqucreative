@@ -971,22 +971,18 @@ function qucreative_generate_inline_javascript_for_options() {
   $qucreative_main->theme_data['js_options'] = array(
     'type' => 'main_options',
     'images_arr' => $bg_images,
-    'enable_ajax' => $qucreative_main->theme_data['theme_mods']['enable_ajax'],
-    'bg_isparallax' => $qucreative_main->theme_data['theme_mods']['bg_isparallax'],
     'bg_slideshow_time' => $bg_slideshow_time,
-    'bg_transition' => $qucreative_main->theme_data['theme_mods']['bg_transition'],
     'site_url' => site_url(),
     'theme_url' => QUCREATIVE_THEME_URL,
-    'blur_amount' => $qucreative_main->theme_data['theme_mods']['blur_amount'],
-    'width_column' => $qucreative_main->theme_data['theme_mods']['width_column'],
-    'width_section_bg' => $qucreative_main->get_theme_mod_and_sanitize('width_section_bg'),
-    'width_gap' => $qucreative_main->theme_data['theme_mods']['width_gap'],
-    'border_width' => $qucreative_main->theme_data['theme_mods']['border_width'],
-    'border_color' => $qucreative_main->theme_data['theme_mods']['border_color'],
     'is_customize_preview' => $is_customize_preview,
-    'width_blur_margin' => $qucreative_main->theme_data['theme_mods']['width_blur_margin'],
     'gallery_w_thumbs_autoplay_videos' => 'off',
   );
+
+
+
+  // 'enable_ajax' => $qucreative_main->theme_data['theme_mods']['enable_ajax'],
+  // Allow plugins to modify js_options
+  $qucreative_main->theme_data['js_options'] = apply_filters('qucreative_js_options', $qucreative_main->theme_data['js_options'], $qucreative_main);
 
 
   if ($qucreative_main->get_theme_mod_and_sanitize('portfolio_page')) {
@@ -1009,27 +1005,6 @@ function qucreative_generate_inline_javascript_for_options() {
 
 
 
-
-  $meo = qucreative_generate_inline_css_for_environment_menuOpacity_val($qucreative_main);
-  $menu_environment_opacity = $meo['menu_environment_opacity'];
-
-
-  $lab = 'content_environment_opacity';
-  $content_environment_opacity = $qucreative_main->theme_data['theme_mods'][$lab];
-
-
-  if ($qucreative_main->theme_data['sw_is_in_customizer']) {
-
-    $content_environment_opacity = $qucreative_main->get_theme_mod_and_sanitize($lab);
-  }
-
-  if ($content_environment_opacity == '') {
-    $content_environment_opacity = '30';
-  }
-
-
-  $qucreative_main->theme_data['js_options']['content_environment_opacity'] = $content_environment_opacity;
-  $qucreative_main->theme_data['js_options']['menu_environment_opacity'] = $menu_environment_opacity;
   $qucreative_main->theme_data['js_options']['base_url'] = get_site_url();
 
 

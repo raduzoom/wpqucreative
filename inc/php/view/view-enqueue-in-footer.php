@@ -14,11 +14,6 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
   wp_enqueue_script(QUCREATIVE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.js', array('jquery'));
   wp_enqueue_style(QUCREATIVE_ID.'-misc', QUCREATIVE_THEME_URL . 'libs/qucreative/qu-misc.css', array(), QUCREATIVE_VERSION);
   wp_enqueue_script('qu-responsive-menu', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/responsive-menu.js', array('jquery'));
-  if (QuCreativeView::isViewAnimationDurationSet($quView)) {
-    $duration = floatval($quView->theme_mods['view_animation_duration']); // Parse as number
-    $inline_script = "window.qucreative_view_animation_duration = {$duration};";
-    wp_add_inline_script(QUCREATIVE_ID, $inline_script);
-  }
 
 
   // -- single post types

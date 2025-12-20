@@ -89,22 +89,15 @@ function qucreative_filter_body_classes( $classes, $class ) {
   }
 
 
-  $qucreative_main->theme_data['body_class'] .= ' bg_transition-'.$qucreative_main->theme_data['theme_mods']['bg_transition'];
-
-
-
-  if( $qucreative_main->get_theme_mod_and_sanitize('menu_horizontal_shadow_style') && $qucreative_main->get_theme_mod_and_sanitize('menu_horizontal_shadow_style')!='none' ){
-
-    $qucreative_main->theme_data['body_class'].= ' menu_horizontal_'.$qucreative_main->get_theme_mod_and_sanitize('menu_horizontal_shadow_style');
-  }
+  $bgTransition = $qucreative_main->get_theme_mod_and_sanitize('bg_transition');
+  $qucreative_main->theme_data['body_class'] .= ' bg_transition-'.$bgTransition;
 
 
 
 
-  if($qucreative_main->theme_data['theme_mods']['menu_is_sticky']=='on'){
-    $qucreative_main->theme_data['body_class'].=' menu-is-sticky';
 
-  }
+
+
 
   $page_type = qucreative_getPageType($qucreative_main);
   $qucreative_main->theme_data['page_type'] = $page_type;
@@ -183,15 +176,8 @@ function qucreative_filter_body_classes( $classes, $class ) {
   $qucreative_main->theme_data['body_class'].= ' '. 'first-transition';
   $qucreative_main->theme_data['body_class'].= ' '. esc_attr($page_title_align);
   $qucreative_main->theme_data['body_class'].= ' '. $qucreative_main->get_theme_mod_and_sanitize('page_title_style');
-  $qucreative_main->theme_data['body_class'].= ' '. esc_attr($qucreative_main->theme_data['theme_mods']['content_environment_style']);
 
 
-  if( $qucreative_main->theme_data['theme_mods']['menu_environment_opacity']=='100'){
-    $qucreative_main->theme_data['body_class'].=' has-opaque-header-opacity';
-  }
-  if( $qucreative_main->theme_data['theme_mods']['content_environment_opacity']=='100'){
-    $qucreative_main->theme_data['body_class'].=' has-opaque-content-opacity';
-  }
 
 
 
