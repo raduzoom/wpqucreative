@@ -376,10 +376,6 @@ function qucreative_init() {
     require_once($locale_file);
   }
 
-  // -- This theme uses wp_nav_menu() in one location.
-  register_nav_menus(array(
-    'primary' => esc_html__('Primary Navigation', 'qucreative'),
-  ));
 
   if (isset($_GET['preview']) && $_GET['preview'] == 'true') {
     $qucreative_main->theme_data['preview_page'] = true;

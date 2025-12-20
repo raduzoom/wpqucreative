@@ -104,34 +104,11 @@ function qucreative_view_generateLogo() {
     $logo = $qucreative_main->get_theme_mod_and_sanitize('logo');
 
 
+    $menuType = $qucreative_main->get_theme_mod_and_sanitize('menu_type');
 
-    if (isset($qucreative_main->theme_data['preview_cookies']['menu_type']) && $qucreative_main->theme_data['preview_cookies']['menu_type']) {
 
-
-      $valmt = $qucreative_main->theme_data['preview_cookies']['menu_type'];
-
-      if ($valmt == 'menu-type-1' || $valmt == 'menu-type-7') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-1-7.png';
-      }
-
-      if ($valmt == 'menu-type-2' || $valmt == 'menu-type-8') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-2-8.png';
-      }
-      if ($valmt == 'menu-type-3' || $valmt == 'menu-type-9' || $valmt == 'menu-type-13' || $valmt == 'menu-type-15' || $valmt == 'menu-type-17') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-3-9-13-15-17.png';
-      }
-      if ($valmt == 'menu-type-4' || $valmt == 'menu-type-10' || $valmt == 'menu-type-14' || $valmt == 'menu-type-16' || $valmt == 'menu-type-18') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-4-10-14-16-18.png';
-      }
-      if ($valmt == 'menu-type-5') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-5.png';
-      }
-      if ($valmt == 'menu-type-6') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-6.png';
-      }
-      if ($valmt == 'menu-type-11' || $valmt == 'menu-type-12') {
-        $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-11-12.png';
-      }
+    if(!$logo){
+      $logo = qucreative_view_generateLogo_defaultLogo($menuType);
     }
 
 
@@ -140,7 +117,7 @@ function qucreative_view_generateLogo() {
           <?php
           if ($isDivLogo) {
             ?>
-              <div class="the-logo"
+              <div class="qu-header--logo the-logo"
                    style="<?php
                    echo $str_inner_w;
                    echo $str_inner_h;
@@ -158,4 +135,41 @@ function qucreative_view_generateLogo() {
         </a>
     </div>
   <?php
+}
+
+
+
+function qucreative_view_generateLogo_defaultLogo(string $menuType): string {
+
+
+  $logo = '';
+
+
+
+
+  if ($menuType == '' || $menuType == 'menu-type-1' || $menuType == 'menu-type-7') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-1-7.png';
+  }
+
+  if ($menuType == 'menu-type-2' || $menuType == 'menu-type-8') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-2-8.png';
+  }
+  if ($menuType == 'menu-type-3' || $menuType == 'menu-type-9' || $menuType == 'menu-type-13' || $menuType == 'menu-type-15' || $menuType == 'menu-type-17') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-3-9-13-15-17.png';
+  }
+  if ($menuType == 'menu-type-4' || $menuType == 'menu-type-10' || $menuType == 'menu-type-14' || $menuType == 'menu-type-16' || $menuType == 'menu-type-18') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-4-10-14-16-18.png';
+  }
+  if ($menuType == 'menu-type-5') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-5.png';
+  }
+  if ($menuType == 'menu-type-6') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-6.png';
+  }
+  if ($menuType == 'menu-type-11' || $menuType == 'menu-type-12') {
+    $logo = QUCREATIVE_THEME_URL . 'placeholders/logo-11-12.png';
+  }
+
+  return $logo;
+
 }
