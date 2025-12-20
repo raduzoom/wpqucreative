@@ -657,7 +657,7 @@ function qucreative_view_portfolio_generateTranslucentLayerStart($qucreative_mai
 
   // Allow plugins to generate inline styles for translucent layer
   $translucent_layer_styles = apply_filters('qucreative_translucent_layer_styles', '', $translucent_layer_classes, $qucreative_main);
-  
+
   echo $translucent_layer_styles;
 
 
@@ -693,26 +693,18 @@ function qucreative_view_generateMainPageTitle($qucreative_main, $page_title_ali
 }
 function qucreative_view_generateMenu() {
 
+  $location = QUCREATIVE_MENU_PRIMARY_MENU_ID;
 
-  $location = 'primary';
-
-  $menuArgs = array(
+  // Always try to display the menu
+  wp_nav_menu(array(
     'theme_location' => $location,
-    'echo' => false,
+    'echo' => true,
     'menu_class' => 'the-actual-nav',
     'container_class' => 'the-actual-nav',
-  );
-  $menu = wp_nav_menu($menuArgs);
-
-  if (has_nav_menu($location)) {
-
-    echo $menu;
-  } else {
-
-    echo '<div class="menu-helper-text">' . esc_html__("Please setup a menu from ", 'qucreative') . '<a target="_blank" href="' . admin_url("nav-menus.php") . '">' . esc_html__("here", 'qucreative') . '</a></div>';
-
-
-  }
+    'fallback_cb' => function() {
+      echo '<div class="menu-helper-text">' . esc_html__("Please setup a menu from ", 'qucreative') . '<a target="_blank" href="' . admin_url("nav-menus.php") . '">' . esc_html__("here", 'qucreative') . '</a></div>';
+    }
+  ));
 }
 
 function qucreative_view_enqueue_fontAwesome() {
@@ -772,6 +764,31 @@ function qucreative_view_footerEnqueueScripts() {
 }
 
 
+if(function_exists('qucreative_enqueue_google_font') === false){
+  function qucreative_enqueue_google_font($fontName, $family, $weights){
+    $weightsArr = array('normal'=>array(), 'italic'=>array());
+    $tempWeights = explode(',',$weights);
+
+    foreach ($tempWeights as $tempWeight){
+      $val = $tempWeight;
+      $targetLab = 'normal';
+      if (strpos($tempWeight, 'italic') !== false){
+        $targetLab = 'italic';
+        $val = str_replace('italic','',$val);
+      }
+      // Normalize to integer when possible
+      $val = trim($val);
+      if ($val !== '') {
+        $weightsArr[$targetLab][] = (int)$val;
+      }
+    }
+
+    $fontNameSplit = explode(':', $fontName);
+    $fontName = $fontNameSplit[0];
+
+    echo dzsCommon_enqueueGoogleFont($fontName, $weightsArr);
+  }
+}
 
 include_once 'php/view/generate-footer-for-portfolio-item.php';
 include_once 'php/view/generate-qu-nav.php';

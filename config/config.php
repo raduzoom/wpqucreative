@@ -11,7 +11,7 @@ const QUCREATIVE_VIEW_ENQUEUE_MENU_STYLE = array('menu-type-1','menu-type-2','me
 const QUCREATIVE_VIEW_FONT_PARSED = 'font_vals';
 const QUCREATIVE_VIEW_FONT_FOR_ECHO = 'css_data_typography';
 const QUCREATIVE_VIEW_STYLE_ID = 'qucreative-style';
-
+const QUCREATIVE_MENU_PRIMARY_MENU_ID = 'primary';
 
 const QU_VIEW_ALLOWED_TAGS = array(
   'a' => array(

@@ -300,7 +300,7 @@ if (!function_exists('qucreative_setup')) {
 
 
     register_nav_menus(array(
-      'primary' => esc_html__('Primary Menu', 'qucreative'),
+      QUCREATIVE_MENU_PRIMARY_MENU_ID => esc_html__('Primary Menu', 'qucreative'),
       'social' => esc_html__('Social Links Menu', 'qucreative'),
     ));
 
@@ -315,7 +315,6 @@ if (!function_exists('qucreative_setup')) {
 
   }
 }
-
 
 
 

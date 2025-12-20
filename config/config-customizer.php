@@ -234,7 +234,7 @@ const QUCREATIVE_CUSTOMIZER_FIELDS = array(
 // Extract the `name` keys
 define("QUCREATIVE_THEME_MOD_KEYS", array_map(function ($field) {
   return $field['name'];
-}, QUEXTEND_QU_CUSTOMIZER_FIELDS));
+}, QUCREATIVE_CUSTOMIZER_FIELDS));
 
 const CUSTOMIZER_FIELDS_LAB = 'customizer_fields';
 
@@ -274,7 +274,7 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
   'content_link_to_menu_opacity' => false,
   'post_for_meta' => null,
   'view_title' => '',
-  CUSTOMIZER_FIELDS_LAB => QUEXTEND_QU_CUSTOMIZER_FIELDS,
+  CUSTOMIZER_FIELDS_LAB => QUCREATIVE_CUSTOMIZER_FIELDS,
 
   // -- qu extend
   'font_data' => array(),

@@ -286,9 +286,13 @@ class QuCreative {
     if($arglab=='social_icons'){
       $argVal = str_replace('&quot;','"',$argVal);
     }
-    if($arglab==QUEXTEND_QU_OPTION_FONT_NAME){
 
-      $argVal = str_replace('&amp;','&',$argVal);
+    if(defined('QUEXTEND_QU_OPTION_FONT_NAME')){
+
+      if($arglab==QUEXTEND_QU_OPTION_FONT_NAME){
+
+        $argVal = str_replace('&amp;','&',$argVal);
+      }
     }
 
     if($margs['type']=='int'){
