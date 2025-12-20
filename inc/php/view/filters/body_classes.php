@@ -175,7 +175,6 @@ function qucreative_filter_body_classes( $classes, $class ) {
 
   $qucreative_main->theme_data['body_class'].= ' '. 'first-transition';
   $qucreative_main->theme_data['body_class'].= ' '. esc_attr($page_title_align);
-  $qucreative_main->theme_data['body_class'].= ' '. $qucreative_main->get_theme_mod_and_sanitize('page_title_style');
 
 
 
