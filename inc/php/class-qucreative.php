@@ -1,5 +1,6 @@
 <?php
-include_once 'view/class-view-qucreative.php';
+include_once QUCREATIVE_THEME_DIR.'inc/php/view/class-view-qucreative.php';
+include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-sanitize-theme-mod.php';
 include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-social-icons.php';
 class QuCreative {
 
@@ -269,43 +270,7 @@ class QuCreative {
 
   function get_theme_mod_and_sanitize($arglab, $args = array()){
 
-
-    $margs = array_merge(array('type'=>'string', 'cacheIt'=>true), $args);
-
-
-    $argVal = $this->theme_data['theme_mods'][$arglab] ?? get_theme_mod($arglab);
-
-    if($margs['cacheIt']===false){
-      $argVal = get_theme_mod($arglab);
-    }
-
-
-
-    $argVal = esc_html($argVal);
-
-    if($arglab=='social_icons'){
-      $argVal = str_replace('&quot;','"',$argVal);
-    }
-
-    if(defined('QUEXTEND_QU_OPTION_FONT_NAME')){
-
-      if($arglab==QUEXTEND_QU_OPTION_FONT_NAME){
-
-        $argVal = str_replace('&amp;','&',$argVal);
-      }
-    }
-
-    if($margs['type']=='int'){
-
-
-      if(!is_numeric(intval($argVal, 10 ))){
-        return null;
-      }
-
-      return intval($argVal, 10 );
-    }
-
-    return $argVal;
+    return qucreative_view_get_theme_mod_and_sanitize($this, $arglab, $args);
 
   }
 

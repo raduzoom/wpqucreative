@@ -13,7 +13,6 @@ function qucreative_action_single_after_the_content() {
   if ($post) {
 
     if (is_single()) {
-
       if ($post->post_type == 'post') {
         $args = array(
           'before' => '<div class="qucreative-pagination qucreative-pagination--wp_link_pages">',
@@ -76,10 +75,10 @@ function qucreative_action_single_after_the_content() {
 
 /**
  * in the content
- * @param $margs
+ * @param array $margs
  * @return string
  */
-function qucreative_check_if_post_meta_below_must_be_added($margs = array()) {
+function qucreative_check_if_post_meta_below_must_be_added(array $margs = array()): string {
   global $post;
   $fout = '';
 
@@ -187,7 +186,7 @@ function qucreative_check_if_post_meta_below_must_be_added($margs = array()) {
 }
 
 
-function qucreative_check_if_prev_next_post_must_be_added() {
+function qucreative_check_if_prev_next_post_must_be_added(): string {
   global $post;
 
   $fout = '';

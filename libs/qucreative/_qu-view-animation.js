@@ -6,7 +6,7 @@ import { zoomboxDefaultSettings } from './config/_defaultSettings'
 import { do_we_need_parallaxer } from './_qucreative.util'
 import { RESPONSIVE_BREAKPOINT } from './_qucreative.config'
 import { determine_page } from './_qu-view-determine-page'
-import { quSetupCheckLazyLoading } from '../../js/_checkLazyLoading'
+import { quSetupCheckLazyLoading } from './_checkLazyLoading'
 
 
 

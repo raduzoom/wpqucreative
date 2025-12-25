@@ -11,10 +11,32 @@ class QuCreativeView {
   public $sidebar;
   public $theme_mods;
 
+  public bool $structureHasFooter = false;
+
   function __construct(QuCreative $quMain) {
 
     $this->quMain = $quMain;
     add_action('init', array($this, 'handle_init'));
+    add_action('wp_enqueue_scripts', array($this,'qucreative_wp_enqueue_scripts'));
+  }
+
+  /**
+   * todo: move non default to plugin
+   * @return void
+   */
+  public function qucreative_wp_enqueue_scripts() {
+
+
+    // Connection hints (keep them – they help)
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+
+
+    if(class_exists(QUCREATIVE_QUEXTEND_PLUGIN_NAME)){
+      QuExtend_View::embedGoogleFonts();
+    }else{
+      qucreative_wp_enqueue_scripts__defaultFonts();
+    }
   }
 
   public function handle_init(): void {
@@ -94,7 +116,7 @@ class QuCreativeView {
   }
 
   static function viewIsPageFullwidth(QuCreative $qucreative_main): bool {
-    return !!($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-portfolio.php' || ($qucreative_main->theme_data['post_for_meta']->post_type == QUCREATIVE_POST_TYPE_PORTFOLIO) || $qucreative_main->theme_data['post_for_meta']->post_type == 'page') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on');
+    return !!($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-portfolio.php' || ($qucreative_main->theme_data['post_for_meta']->post_type == QUCREATIVE_POST_TYPE_PORTFOLIO) || $qucreative_main->theme_data['post_for_meta']->post_type == 'page') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on');
   }
 
   static function viewIsMenuHorizontal($searchedMenuType): bool {
@@ -209,9 +231,9 @@ class QuCreativeView {
     if ($post && $post->post_type === QUCREATIVE_POST_TYPE_PORTFOLIO) {
 
       $page_type = ' page-portfolio-single ';
-      $page_type .= ' page-portfolio-type-' . get_post_meta($post->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true);
+      $page_type .= ' page-portfolio-type-' . get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true);
 
-      if (get_post_meta($post->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
+      if (get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
         $page_type .= ' single-quextend_port_items-fullscreen';
       } else {
 
@@ -221,7 +243,7 @@ class QuCreativeView {
 
     }
     if ($post) {
-      $page_type .= ' post-media-type-' . esc_attr(get_post_meta($post->ID, 'qucreative_' . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true));
+      $page_type .= ' post-media-type-' . esc_attr(get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_post_media_type' . $qucreative_main->theme_data['page_extra_meta_label'], true));
 
     }
 
@@ -285,7 +307,7 @@ class QuCreativeView {
   public function controller_getContentConExtraClasses() {
     $qucreative_main = $this->quMain;
 
-    if ($qucreative_main->theme_data['has_footer']) {
+    if ($qucreative_main->quCreativeView->structureHasFooter) {
       echo ' has-footer';
     }
     if ($qucreative_main->theme_data['post_for_meta']) {
@@ -307,7 +329,7 @@ class QuCreativeView {
 
 
     if ($qucreative_main->theme_data['post_for_meta']) {
-      if ($qucreative_main->theme_data['post_for_meta']->ID && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) != 'on') {
+      if ($qucreative_main->theme_data['post_for_meta']->ID && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) != 'on') {
 
 
         echo ' ' . $qucreative_main->theme_data['theme_mods']['content_align'];
@@ -346,11 +368,11 @@ class QuCreativeView {
         $qucreative_main->theme_data['view_title'] = '';
       }
 
-      echo ' fullit-type-' . esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_' . 'meta_is_fullscreen_stretch' . $qucreative_main->theme_data['page_extra_meta_label'], true));
+      echo ' fullit-type-' . esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen_stretch' . $qucreative_main->theme_data['page_extra_meta_label'], true));
     }
 
 
-    if ($mePost && get_post_meta($mePost->ID, 'qucreative_' . 'meta_rev_slider', true)) {
+    if ($mePost && get_post_meta($mePost->ID, QUCREATIVE_META_PREFIX . 'meta_rev_slider', true)) {
       echo ' has-header-slider';
     }
 
@@ -408,7 +430,9 @@ class QuCreativeView {
 
     $searchedMenuType = $this->quMain->theme_data['menu_type'];
 
-    if($searchedMenuType == 'menu-type-3' || $searchedMenuType == 'menu-type-4'){
+
+
+    if(in_array($searchedMenuType, QUCREATIVE_VIEW_MENU_TYPES_VERTICAL)){
       $fout.= ' mode-view--absolute';
     }
 
@@ -420,16 +444,13 @@ class QuCreativeView {
   public function handle_wp_head() {
 
 
-    $qucreative_main = $this->quMain;
-
 
     global $post;
 
     $tempArgs = array(
-      'query_type' => 'page',
+      'query_type' => qucreative_view_getQueryType($post),
     );
 
-    $tempArgs['query_type'] = qucreative_view_getQueryType($post);
 
     $mainArgs = array(
 
@@ -545,4 +566,14 @@ class QuCreativeView {
 
   }
 
+}
+
+
+
+function qucreative_wp_enqueue_scripts__defaultFonts() {
+
+  // -- default typography (unchanged list, but the printer becomes non-blocking)
+  qucreative_enqueue_google_font('Open+Sans:400,600italic,600,400italic,800', 'Open+Sans', '400,600italic,600,400italic,800');
+  qucreative_enqueue_google_font('Lato:700,400,900italic,700italic,900', 'Lato', '700,400,900italic,700italic,900');
+  qucreative_enqueue_google_font('Playfair+Display:900italic', 'Playfair+Display', '900italic');
 }

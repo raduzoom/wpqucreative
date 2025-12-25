@@ -22,7 +22,7 @@ function qucreative_action_single_before_the_content() {
   }
 
 
-  if ($post && ($quextend_main && $post->post_type == $quextend_main->name_port_item)) {
+  if ($post && ($quextend_main && $post->post_type == QUPLUGIN_META_POST_TYPE)) {
     $qucreative_main->theme_data['content_acts_as_sheet'] = false;
 
   }

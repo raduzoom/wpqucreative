@@ -1,7 +1,20 @@
 <?php
+if (!function_exists('qucreative_sanitize_to_size')) {
+  function qucreative_sanitize_to_size($arg) {
+
+    if ($arg == '') {
+      return $arg;
+    }
+    if (strpos($arg, 'px') === false && strpos($arg, '%') === false && strpos($arg, 'auto') === false) {
+      return $arg . 'px';
+    }
+    return $arg;
+  }
+}
 
 
-function qucreative_helpers_generate_input_checkbox($argname, $argopts) {
+// -- todo: move to plugin
+function qucreative_helpers_generate_input_checkbox($argname, $argopts): string {
   $fout = '';
   $auxtype = 'checkbox';
 
@@ -54,7 +67,8 @@ function qucreative_helpers_generate_input_checkbox($argname, $argopts) {
 
 
 
-function qucreative_helpers_generate_input_text($argname, $otherargs = array()) {
+// -- todo: move to plugin
+function qucreative_helpers_generate_input_text($argname, $otherargs = array()): string {
   $fout = '';
 
   $margs = array(
@@ -111,7 +125,9 @@ function qucreative_helpers_generate_input_text($argname, $otherargs = array()) 
 }
 
 
-function qucreative_helpers_generate_select($argname, $pargopts) {
+
+// -- todo: move to plugin
+function qucreative_helpers_generate_select($argname, $pargopts): string {
 
 
   $fout = '';
@@ -189,24 +205,6 @@ function qucreative_helpers_generate_select($argname, $pargopts) {
   return $fout;
 }
 
-if(!function_exists('qucreative_sanitize_id_to_src')){
-
-  function qucreative_sanitize_id_to_src($arg){
-
-
-    if(is_numeric($arg)){
-
-      $imgsrc = wp_get_attachment_image_src($arg, 'full');
-
-      return $imgsrc[0];
-    }else{
-      return $arg;
-    }
-
-
-  }
-
-}
 
 
 
@@ -223,19 +221,13 @@ if (!function_exists('qucreative_clean')) {
 
 }
 
-if(!function_exists('qucreative_get_link_url')){
-
-  function qucreative_get_link_url() {
-    $has_url = get_url_in_content( get_the_content() );
-
-    return $has_url ? $has_url : apply_filters( 'the_permalink', get_permalink() );
-  }
-}
 
 
+
+// -- string
 if (!function_exists("qucreative_str_replace_first")) {
 
-  function qucreative_str_replace_first($from, $to, $subject, $from_position = 0) {
+  function qucreative_str_replace_first($from, $to, $subject, $from_position = 0): string {
     $from = '/' . preg_quote($from, '/') . '/';
 
     $aux1 = '';
@@ -259,6 +251,43 @@ if (!function_exists("qucreative_str_replace_first")) {
     return $aux_final;
   }
 }
+
+
+function qucreative_clean($string) {
+  $string = str_replace(' ', '-', $string); // -- Replaces all spaces with hyphens.
+
+  return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // -- Removes special chars.
+}
+
+
+
+// -- blog
+if(!function_exists('qucreative_sanitize_id_to_src')){
+
+  function qucreative_sanitize_id_to_src($arg){
+
+
+    if(is_numeric($arg)){
+
+      $imgsrc = wp_get_attachment_image_src($arg, 'full');
+
+      return $imgsrc[0];
+    }else{
+      return $arg;
+    }
+
+
+  }
+
+}
+if(!function_exists('qucreative_get_link_url')){
+
+  function qucreative_get_link_url() {
+    $has_url = get_url_in_content( get_the_content() );
+
+    return $has_url ? $has_url : apply_filters( 'the_permalink', get_permalink() );
+  }
+}
 if (!function_exists('qucreative_sanitize_post_name_to_id')) {
 
   function qucreative_sanitize_post_name_to_id($arg, $post_type = 'post') {
@@ -276,15 +305,6 @@ if (!function_exists('qucreative_sanitize_post_name_to_id')) {
     return $arg;
   }
 }
-
-
-function qucreative_clean($string) {
-  $string = str_replace(' ', '-', $string); // -- Replaces all spaces with hyphens.
-
-  return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // -- Removes special chars.
-}
-
-
 if(!function_exists('qucreative_sanitize_for_post_terms')){
   function qucreative_sanitize_for_post_terms($arg){
 
@@ -332,3 +352,31 @@ if(!function_exists('qucreative_sanitize_for_post_terms')){
   }
 }
 
+
+if (!function_exists('qucreative_sanitize_term_slug_to_id')) {
+  function qucreative_sanitize_term_slug_to_id($arg, $taxonomy_name = '') {
+
+
+    if ($taxonomy_name == '') {
+      global $quextend_main;
+
+      if($quextend_main){
+
+        $taxonomy_name = $quextend_main->name_port_item_cat;
+      }
+    }
+
+    if (!is_numeric($arg)) {
+
+      $term = get_term_by('slug', $arg, $taxonomy_name);
+
+      if ($term) {
+        $arg = $term->term_id;
+      }
+
+    }
+
+
+    return $arg;
+  }
+}

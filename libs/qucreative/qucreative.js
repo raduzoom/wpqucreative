@@ -236,7 +236,7 @@ var _defaultSettings = require("./config/_defaultSettings");
 var _qucreative = require("./_qucreative.util");
 var _qucreative2 = require("./_qucreative.config");
 var _quViewDeterminePage = require("./_qu-view-determine-page");
-var _checkLazyLoading = require("../../js/_checkLazyLoading");
+var _checkLazyLoading = require("./_checkLazyLoading");
 var inter_check_if_main_content_loaded = 0;
 let is_ready_load = false,
   bg_errored = false,
@@ -1125,7 +1125,7 @@ function update_parallaxer(arg) {
   }
 }
 
-},{"../../js/_checkLazyLoading":1,"./_qu-view-determine-page":4,"./_qucreative.config":7,"./_qucreative.util":8,"./config/_defaultSettings":9,"./js/common/_sniffers":12}],4:[function(require,module,exports){
+},{"./_checkLazyLoading":1,"./_qu-view-determine-page":4,"./_qucreative.config":7,"./_qucreative.util":8,"./config/_defaultSettings":9,"./js/common/_sniffers":12}],4:[function(require,module,exports){
 "use strict";function determine_page(){const e=window.quCreative_main,a=e._body;e.is_content_page=!1,a.hasClass("page-gallery-w-thumbs")&&(e.page="page-gallery-w-thumbs"),a.hasClass("page-portfolio")&&(e.page="page-portfolio",e.is_content_page=!0),a.hasClass("page-portfolio-single")&&(e.page="page-portfolio-single",e.is_content_page=!0),a.hasClass("page-normal")&&(e.page="page-normal",e.is_content_page=!0),a.hasClass("page-blog")&&(e.page="page-blog",e.is_content_page=!0),a.hasClass("page-blogsingle")&&(e.page="page-blogsingle",e.is_content_page=!0),a.hasClass("page-about")&&(e.page="page-about",e.is_content_page=!0),a.hasClass("page-contact")&&(e.page="page-contact",e.is_content_page=!0),a.hasClass("page-homepage")&&(e.page="page-homepage"),e.transitioned_via_ajax_first&&e.newclass_body&&(a.removeClass("page-blogsingle page-homepage page-gallery-w-thumbs page-normal page-contact page-about page-contact page-portfolio page-portfolio-single"),a.removeClass("new-"+e.newclass_body_page),a.addClass(e.newclass_body),a.attr("class",e.newclass_body),"menu-type-5"!=e.menu_type&&"menu-type-6"!=e.menu_type||a.addClass("menu-is-sticky"),e.handle_resize(null,{ignore_menu:!1,placew:!1,place_page:!1,redraw_canvas:!1,calculate_sidebar_main_is_bigger:!1,calculate_menu_overflow:!0}),a.removeClass("bg_transition-fade bg_transition-slidedown bg_transition-wipedown"),a.addClass("bg_transition-"+e.bg_transition),a.removeClass("first-transition"),e.border_width>0&&a.addClass("with-border"),e.newclass_body=e.newclass_body.replace(/menu-type-\d*/g,""),e.page=e.newclass_body_page,a.removeClass("no-padding"),e.newclass_body_nopadding&&a.addClass("no-padding"))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.determine_page=determine_page;
 },{}],5:[function(require,module,exports){
 "use strict";
@@ -1581,7 +1581,7 @@ var _qucreative = require("./_qucreative.config");
 var _quViewAnimation = require("./_qu-view-animation");
 var _quViewDeterminePage = require("./_qu-view-determine-page");
 var _quView = require("./_qu-view");
-var _checkLazyLoading = require("../../js/_checkLazyLoading");
+var _checkLazyLoading = require("./_checkLazyLoading");
 var _quViewLayout = require("./js/features/_quViewLayout");
 var _quActions = require("./_qu-actions");
 var _qucreativeClass = require("./_qucreative-class");
@@ -2332,7 +2332,7 @@ jQuery(document).ready(function ($) {
 qcreative_curr_html = "";
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
-},{"../../js/_checkLazyLoading":1,"./_qu-actions":2,"./_qu-view":5,"./_qu-view-animation":3,"./_qu-view-determine-page":4,"./_qucreative-class":6,"./_qucreative.config":7,"./js/check-lazyloading-images/_check-lazyloading-images":10,"./js/common/_helpers":11,"./js/features/_advancedScrollers":13,"./js/features/_quViewLayout":14,"./js/init-progress-markers/_init-progress-markers":15}]},{},[16])
+},{"./_checkLazyLoading":1,"./_qu-actions":2,"./_qu-view":5,"./_qu-view-animation":3,"./_qu-view-determine-page":4,"./_qucreative-class":6,"./_qucreative.config":7,"./js/check-lazyloading-images/_check-lazyloading-images":10,"./js/common/_helpers":11,"./js/features/_advancedScrollers":13,"./js/features/_quViewLayout":14,"./js/init-progress-markers/_init-progress-markers":15}]},{},[16])
 
 
 //# sourceMappingURL=qucreative.js.map

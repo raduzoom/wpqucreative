@@ -151,7 +151,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
 
 
-        $social_shares = qucreative_get_social_shares();
+        $social_shares = quextend_qu_get_social_shares();
 
 
         // -- if it's fullscreen then we already have the social shares

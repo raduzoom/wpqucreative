@@ -6,6 +6,7 @@ nav.qucreative--nav-con {
   left: 0;
   width: 250px;
   height: 100%;
+  text-align: right;
 
 
   .logo-con {
@@ -149,6 +150,7 @@ nav.qucreative--nav-con {
 
 .nav-social-con {
 
+
   padding-right: $menuSizePaddingRight;
 
   i {
@@ -267,7 +269,7 @@ ul.the-actual-nav {
       li.current-menu-ancestor > a,
       li.current-menu-item > a {
         background-color: $color_menu_bg;
-        color: $color_highlight;
+        color: var(--qu-colors-hightlight-text);
       }
     }
   }
@@ -281,15 +283,6 @@ ul.the-actual-nav {
   }
 }
 
-/**
- * 3.2 Navigation
- * ----------------------------------------------------------------------------
- */
-.menu-helper-text {
-  position: relative;
-  padding: 15px;
-  color: #ffffff;
-}
 
 
 

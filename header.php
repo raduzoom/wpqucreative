@@ -11,7 +11,8 @@
 global $post;
 
 
-include_once 'inc/view.php';
+include_once QUCREATIVE_THEME_DIR.'inc/view.php';
+include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-generate-inline-options-functional.php';
 
 $tempArgs = array(
   'query_type' => 'page',

@@ -749,7 +749,7 @@ function qucreative_view_footerEnqueueScripts() {
 }
 
 
-if(function_exists('qucreative_enqueue_google_font') === false){
+if(!function_exists('qucreative_enqueue_google_font')){
   function qucreative_enqueue_google_font($fontName, $family, $weights){
     $weightsArr = array('normal'=>array(), 'italic'=>array());
     $tempWeights = explode(',',$weights);

@@ -276,7 +276,7 @@ body .vc_row-has-fill + .vc_row > .vc_column_container > .vc_column-inner {
     }
 
     > h1 {
-      margin-top: -15px;
+      margin-top: calc(var(--qu-spacing--padding) * -1);
       // margin-bottom: 12px;
     }
 
@@ -459,8 +459,8 @@ ul.style-angle {
   padding-left: 0;
 
   > li {
-    margin-bottom: 15px;
-    padding-left: 15px;
+    margin-bottom: var(--qu-spacing--padding);
+    padding-left: var(--qu-spacing--padding);
     position: relative;
 
     > a {
@@ -491,4 +491,20 @@ ul.style-angle {
 
 .transitionduration0 {
   transition-duration: 0s;
+}
+
+
+/**
+ * 3.2 Navigation
+ * ----------------------------------------------------------------------------
+ */
+.menu-helper-text {
+  position: relative;
+  padding: var(--qu-spacing--padding);
+  padding-right:0;
+  color: var(--qu-content-color-bg);
+  a:not(.a){
+
+    color: var(--qu-colors-hightlight-text);
+  }
 }

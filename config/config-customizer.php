@@ -255,7 +255,6 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
 
   'body_class' => '',
   'footer_extra_css' => '',
-  'admin_head_extra' => '',
 
   'css_data_overlay_opacity' => '',
   'css_data_style_env' => '',
@@ -264,11 +263,10 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
   'css_data_contain' => '',
 
   'replace_string_in_content_with_nada' => '',
-  'js_data_for_inline_options' => '',
+  'view_js_data_for_inline_options' => '',
   'page_extra_meta_label' => '',
   'title_label' => 'QuCreative',
   'post_content_has_translucent_layer' => false,
-  'has_footer' => false,
   'sw_is_in_customizer' => false,
   'content_acts_as_sheet' => false,
   'content_link_to_menu_opacity' => false,

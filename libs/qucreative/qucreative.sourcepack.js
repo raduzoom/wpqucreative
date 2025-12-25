@@ -14,7 +14,7 @@ import {
 import {  goto_bg } from './_qu-view-animation'
 import { determine_page } from './_qu-view-determine-page'
 import { check_animation_time, quBuildResponsiveMenu, quSetupBorderCss } from "./_qu-view";
-import { quSetupCheckLazyLoading } from '../../js/_checkLazyLoading'
+import { quSetupCheckLazyLoading } from './_checkLazyLoading'
 import { dzsQu_view_adjustLayout, calculate_menu_width } from './js/features/_quViewLayout'
 import { qu_setupActions } from './_qu-actions'
 

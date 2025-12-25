@@ -95,13 +95,13 @@ function qucreative_handle_wp_head(){
 
     if((get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) != 'template-qucreative-slider.php') && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) != 'template-gallery-creative.php') ){
 
-      $qucreative_main->theme_data['has_footer'] = true;
+      $qucreative_main->quCreativeView->structureHasFooter = true;
     }
 
 
     if(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, 'qucreative_'.'meta_disable_footer'.$qucreative_main->theme_data['page_extra_meta_label'],true)=='on'){
 
-      $qucreative_main->theme_data['has_footer'] = false;
+      $qucreative_main->quCreativeView->structureHasFooter = false;
     }
 
 
@@ -117,7 +117,7 @@ function qucreative_handle_wp_head(){
 
       }else{
 
-        $qucreative_main->theme_data['has_footer'] = true;
+        $qucreative_main->quCreativeView->structureHasFooter = true;
       }
 
     }
@@ -130,7 +130,7 @@ function qucreative_handle_wp_head(){
   if(isset($the_sidebars['sidebar-footer']) && is_array($the_sidebars['sidebar-footer']) && count($the_sidebars['sidebar-footer'])){
   }else{
 
-    $qucreative_main->theme_data['has_footer'] = false;
+    $qucreative_main->quCreativeView->structureHasFooter = false;
   }
 }
 
