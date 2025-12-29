@@ -34,7 +34,7 @@ if(isset($current_user) && isset($current_user->data) && isset($current_user->da
 }
 ?>
 
-<div id="comments" class="comments-area blog-comments">
+<div id="comments" class="comments-area blog-comments qu-inner-padding">
 
 	<?php if ( have_comments() ){ ?>
 

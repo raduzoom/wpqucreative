@@ -18,6 +18,10 @@
     display: none;
   }
 }
+
+.qu-inner-padding{
+  padding: calc(var(--qu-spacing--padding) * 2);
+}
 .qu-structure-content-container{
 
   max-width: 1122px;

@@ -486,6 +486,7 @@ const setupSelector = () => {
                 aux.label = "Thin 100";
                 // delete files[i3];
               }
+
               i3 = "100italic";
               if (isUsed == false && files.hasOwnProperty(i3) && $.inArray(i3, theUsedArray) == -1) {
                 theUsedArray.push(i3);
@@ -494,6 +495,7 @@ const setupSelector = () => {
                 aux.label = "Thin 100 Italic";
                 // delete files[i3];
               }
+
               i3 = "200";
               if (isUsed == false && files.hasOwnProperty(i3) && $.inArray(i3, theUsedArray) == -1) {
                 theUsedArray.push(i3);
@@ -502,6 +504,7 @@ const setupSelector = () => {
                 aux.label = "Extra-Light 200";
                 // delete files[i3];
               }
+
               i3 = "200italic";
               if (isUsed == false && files.hasOwnProperty(i3) && $.inArray(i3, theUsedArray) == -1) {
                 theUsedArray.push(i3);
@@ -684,6 +687,7 @@ const setupSelector = () => {
                   }
                   // console.groupEnd();
                 });
+
                 if (sw) {
                   // _t3.val(_t3.attr('data-default-weight'));
                   _t3.val(last_val);
@@ -736,6 +740,7 @@ const setupSelector = () => {
                     // return;
                   }
                 });
+
                 if (sw) {
                   // _t3.val(last_val);
                 }
@@ -751,6 +756,7 @@ const setupSelector = () => {
           }
         }
       }
+
       if (_t.hasClass("link-to-selector")) {
         // console.info("ceva");
 

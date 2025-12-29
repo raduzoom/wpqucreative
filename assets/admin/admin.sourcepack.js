@@ -78,14 +78,14 @@ jQuery(document).ready(function ($) {
   setupCustomizer($);
 
 
-  setTimeout(function () {
+  setTimeout(function () { 
     try {
       jQuery('*[name="qucreative_meta_post_media_type"]').trigger("change");
       jQuery("#page_template").trigger("change");
     } catch (err) {
       console.log("try to change page_template", err);
     }
-  }, 500);
+  }, 500); 
 
   setTimeout(function () {
     try {

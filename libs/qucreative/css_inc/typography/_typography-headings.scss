@@ -30,6 +30,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: var(--qu-spacing--medium);
   margin-bottom: var(--qu-spacing--medium);
 }
 
@@ -53,14 +54,12 @@ h2, .h2 {
 
   font-size: 50px;
   font-weight: 700;
-  margin-top: 0;
 
 }
 
 h3, .h3 {
 
   font-size: 40px;
-  margin-top: 0;
 
   font-weight: 700;
 }
@@ -70,7 +69,6 @@ h4, .h4 {
   font-size: 30px;
   font-weight: 900;
 
-  margin-top: 0;
 
 
   line-height: 1.15;

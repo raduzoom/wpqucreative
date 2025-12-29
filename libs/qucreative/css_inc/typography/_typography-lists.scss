@@ -81,3 +81,57 @@ ul.nostyle {
   }
 }
 
+.wp-block-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--qu-content-color-borders);
+  border-radius: 4px;
+  padding: 15px 20px;
+
+  > summary {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--qu-colors-headings);
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+    padding-left: 30px;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:before {
+      content: "\f105";
+      position: absolute;
+      font-family: "FontAwesome", sans-serif;
+      font-size: 18px;
+      color: var(--qu-colors-hightlight-text);
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &[open] > summary {
+    margin-bottom: 15px;
+
+    &:before {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    color: var(--qu-colors-primary-text);
+    line-height: 1.6;
+  }
+
+  p + p {
+    margin-top: 10px;
+  }
+}

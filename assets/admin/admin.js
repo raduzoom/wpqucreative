@@ -18,6 +18,7 @@ const setupRepeater2 = () => {
     }, 100);
     // -- "widget" represents jQuery object of the affected widget's DOM element
   });
+
   function handle_mouse_repeater(e) {
     var _t3 = $(this);
     if (e.type == "click") {
@@ -448,6 +449,7 @@ jQuery(document).ready(function ($) {
     // -- "widget" represents jQuery object of the affected widget's DOM element
   });
 });
+
 function reskin_select() {
   for (var i = 0; i < jQuery("select").length; i++) {
     var $cache = jQuery("select").eq(i);
