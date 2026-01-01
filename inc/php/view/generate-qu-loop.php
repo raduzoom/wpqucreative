@@ -363,7 +363,7 @@ function qucreative_get_view($template, $type, $pargs=array()){
 
       'container_class'=>'qucreative-pagination from-loop',
       'include_raquo'=>false,
-      'a_class'=>'pagination-link ajax-link custom-a ajax-link--blog-page bg-color-hg-on-hover color-hg-on-parent-active donotchange-ajax-menu h6',
+      'a_class'=>'pagination-link ajax-link custom-a ajax-link--blog-page bg-color-hg-on-hover color-hg-on-parent-active donotchange-ajax-menu',
       'style'=>'ul',
       'wrap_before_text'=>'<span class="the-number">',
       'wrap_after_text'=>'</span>',
