@@ -189,17 +189,6 @@ function qucreative_init() {
   }
 
 
-  global $vc_manager;
-  if (class_exists('Vc_Manager') && !$vc_manager) {
-    $vc_manager = Vc_Manager::getInstance();
-    // -- Load components
-    $vc_manager->loadComponents();
-  }
-
-  if ($vc_manager) {
-
-    $vc_manager->setIsAsTheme(true);
-  }
 
 
   if (is_admin()) {
