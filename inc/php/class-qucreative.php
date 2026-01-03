@@ -7,6 +7,7 @@ class QuCreative {
   public QuCreativeView $quCreativeView;
 
   public array $theme_data = QUCREATIVE_INITIAL_THEME_DATA;
+  public int $view_loop_currIndex = 0;
   function __construct() {
 
 
