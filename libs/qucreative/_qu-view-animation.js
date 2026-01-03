@@ -471,7 +471,7 @@ function goto_bg_doit(arg, pargs) {
         console.log("[warn] _theContentConTr missing ..");
       }
       if (quCreative_main._theContentConTr.hasClass("fullit") == false) {
-        quCreative_main.page_is_fullwidth = false;
+        quCreative_main.viewPageIsFullwidth = false;
 
         setTimeout(function () {
 
@@ -490,7 +490,7 @@ function goto_bg_doit(arg, pargs) {
 
         quCreative_main._theContentConTr.find(".zfolio.fullwidth").css({});
 
-        quCreative_main.page_is_fullwidth = true;
+        quCreative_main.viewPageIsFullwidth = true;
       }
       // -- here we add them
       if (
@@ -645,7 +645,7 @@ function goto_bg_doit(arg, pargs) {
     quCreative_main._mainBgTransitioning.addClass("transitioning-in ");
   }
 
-  do_transition();
+  qucreative_view_animation_doTransition();
 }
 
 
@@ -706,7 +706,7 @@ function do_transition_really_do_it(margs) {
   margs = $.extend(margs_default, margs);
 
   quCreative_main._body.removeClass("qtransitioned");
-  quCreative_main._body.addClass("qtransitioning");
+  quCreative_main._body.addClass("qucreative-view-animation-transitioning");
 
   quCreative_main._mainBgTransitioning.css("display", "");
 
@@ -944,9 +944,7 @@ function setup_newBgImage(margs) {
 
   var mainBgImgCSS = "";
   var mainBgImgUrl = "";
-  if (quCreative_main._mainContainer.get(0) && quCreative_main._mainContainer.get(0).api_scrolly_to) {
-    _body.addClass("has-custom-scroller");
-  }
+
 
   var margs_default = {
     newpage_transition: true,
@@ -974,49 +972,11 @@ function setup_newBgImage(margs) {
 
   mainBgImgUrl = aux;
 
-  if (quCreative_main.qcre_init_zoombox || _body.children(".zoombox-maincon").length == 0) {
-    let defaultZoomSoundsSettings = JSON.parse(
-        JSON.stringify(zoomboxDefaultSettings),
-    );
-
-    var def_opts_parse = $.extend(true, {}, defaultZoomSoundsSettings);
-
-    if (window.init_zoombox) {
-      if (window.init_zoombox_preset == "darkfull") {
-        quCreative_main.zoombox_options = $.extend(
-            def_opts_parse,
-            window.init_zoombox_darkfull,
-        );
-      }
-
-      if (window.init_zoombox_preset == "whitefull") {
-        quCreative_main.zoombox_options = $.extend(
-            def_opts_parse,
-            window.init_zoombox_whitefull,
-        );
-      }
-
-      window.init_zoombox(zoombox_options);
-    } else {
-    }
-    quCreative_main.qcre_init_zoombox = false;
-  }
-
-  quCreative_main._c_for_parallax_items = [];
 
   // -for now we force fade
 
-  var arg = "";
+  const arg = "";
 
-  if (do_we_need_parallaxer(arg)) {
-    quCreative_main._c_for_parallax_items = [];
-    if ($(".for-parallaxer").length > 0) {
-      $(".for-parallaxer").each(function () {
-        var _t = $(this);
-        quCreative_main._c_for_parallax_items.push(_t);
-      });
-    }
-  }
 
   if (margs.newpage_transition && quCreative_main.___response) {
     quCreative_main.transitioned_via_ajax_first = true;
@@ -1026,67 +986,9 @@ function setup_newBgImage(margs) {
 
     document.body.style.zoom = 1.0;
 
-    $(".dzs-progress-bar").each(function () {
-      var _t = $(this);
-
-      if (_t.get(0) && _t.get(0).api_destroy_listeners) {
-        _t.get(0).api_destroy_listeners();
-      }
-
-      setTimeout(function () {
-        _t[0] = null;
-      }, 300);
-    });
-
-    force_scroll_to_top();
+    qucreative_view_forceScrollToTop();
   }
 
-  if (
-      window.qucreative_options.bg_isparallax == "on" &&
-      quCreative_main.newclass_body_page != "page-homepage" &&
-      quCreative_main.newclass_body_page != "page-gallery-w-thumbs"
-  ) {
-    const args = {
-      mode_scroll: "normal",
-      animation_duration: "20",
-      is_fullscreen: "on",
-      init_functional_delay: "0",
-      init_functional_remove_delay_on_scroll: "off",
-      settings_substract_from_th:
-        qucreative_options.substract_parallaxer_pixels,
-    };
-    if (parallax_reverse) {
-      args.direction = "reverse";
-    }
-
-    var _aux_theContentCon = $(".main-container > .the-content-con").eq(0);
-
-    if ($(".main-container > .the-content-con.transitioning").length > 0) {
-      _aux_theContentCon = $(
-          ".main-container > .the-content-con.transitioning",
-      ).eq(0);
-    }
-
-    if (_body.hasClass("with-border")) {
-    }
-
-
-
-    args.cthis_height_is_window_height = "on";
-
-    if (window.dzsprx_init) {
-      window.dzsprx_init(quCreative_main._mainBg, args);
-    }
-
-    quCreative_main._curr_parallaxer = quCreative_main._mainBg;
-
-    if (
-        quCreative_main._mainBg.get(0) &&
-        quCreative_main._mainBg.get(0).api_set_update_func
-    ) {
-      quCreative_main._mainBg.get(0).api_set_update_func(update_parallaxer);
-    }
-  }
 
   if (margs.newpage_transition && quCreative_main.___response) {
     // -- part of setup_newBgImage
@@ -1094,10 +996,9 @@ function setup_newBgImage(margs) {
     $(".map-canvas.to-remove").remove();
 
     /**     *   * @type {string}   */
+    theQuery = '.the-content-con:not(".transitioning")';
     let theQuery = "";
     $(".the-content-con.transitioning-out").remove();
-    theQuery = '.the-content-con:not(".transitioning")';
-    $(theQuery).find(".zfolio").remove();
 
     let _contentConTransitioning = $(".the-content-con.transitioning");
     if (quCreative_main._theContent) {
@@ -1122,19 +1023,6 @@ function setup_newBgImage(margs) {
       quCreative_main._theContentConTr.css("max-width", "");
       quCreative_main._theContentConTr.removeClass("transitioning");
 
-      // -- olg content destroy zoomfolio
-      if (quCreative_main._theContent) {
-        quCreative_main._theContent.find(".zfolio").each(function () {
-          const _theContentConTr_zfolio = $(this);
-
-          if (
-              _theContentConTr_zfolio.get(0) &&
-              _theContentConTr_zfolio.get(0).api_destroy
-          ) {
-            _theContentConTr_zfolio.get(0).api_destroy();
-          }
-        });
-      }
 
       // -- the new content-con is the real content-con NOW
       quCreative_main._theContent = $(
@@ -1147,11 +1035,8 @@ function setup_newBgImage(margs) {
       });
 
       if (quCreative_main._theContentConTr.hasClass("fullit")) {
-        quCreative_main._theContentConTr.find(".zfolio.fullwidth").css({
-          width: "",
-        });
 
-        quCreative_main.page_is_fullwidth = true;
+        quCreative_main.viewPageIsFullwidth = true;
       }
 
       setTimeout(function () {
@@ -1191,10 +1076,6 @@ function setup_newBgImage(margs) {
 
     $(".the-content-con").addClass("currContent");
 
-    if(quCreative_main.start_bg_slideshow_time){
-
-      quCreative_main.start_bg_slideshow_time();
-    }
   }
 
   quCreative_main._mainContainer.addClass("transition-" + quCreative_main.bg_transition);
@@ -1212,16 +1093,10 @@ function setup_newBgImage(margs) {
   }, 1000);
 
 
-  const $mapCanvas = $(".map-canvas");
-  if ($mapCanvas.length > 0 && window.qcreative_gm_init) {
-    window.qcreative_gm_init();
-  }
-  $mapCanvas.removeClass("transitioning").addClass("to-remove");
-  $(".map-canvas-con").removeClass("transitioning");
 }
 
 
-function force_scroll_to_top() {
+function qucreative_view_forceScrollToTop() {
   const $ = jQuery;
   const quCreative_main = window.quCreative_main;
   window.scroll_top_object.val = 0;
@@ -1240,7 +1115,7 @@ let main_content_loaded = false;
 /**
  * only on ajax ?
  */
-function do_transition(margs) {
+function qucreative_view_animation_doTransition(margs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
 
@@ -1271,7 +1146,7 @@ function do_transition(margs) {
       ) {
         main_content_loaded = false;
 
-        var _czfolio = quCreative_main._theContentConTr.find(".zfolio").eq(0);
+        const _czfolio = quCreative_main._theContentConTr.find(".zfolio").eq(0);
         inter_check_if_main_content_loaded = setInterval(function () {
           if (_czfolio.hasClass("all-images-loaded")) {
             clearInterval(inter_check_if_main_content_loaded);
@@ -1398,47 +1273,3 @@ export function calculate_mainbg(pargs) {
 }
 
 
-export function update_parallaxer(arg) {
-  const quCreative_main = window.quCreative_main;
-  const _body = quCreative_main._body;
-
-
-  if (isNaN(arg)) {
-    arg = 0;
-  }
-
-  // -- we receive the value from parallaxer
-
-  if (quCreative_main._c_for_parallax_items) {
-    for (let i24 = 0; i24 < quCreative_main._c_for_parallax_items.length; i24++) {
-      var _t = quCreative_main._c_for_parallax_items[i24];
-
-      var arg2 = arg;
-
-      if (
-          (_body.hasClass("menu-type-13") ||
-              _body.hasClass("menu-type-14") ||
-              _body.hasClass("menu-type-17") ||
-              _body.hasClass("menu-type-18")) &&
-          _body.hasClass("menu-is-sticky") == false
-      ) {
-        if (_t.parent().parent().hasClass("qucreative--nav-con")) {
-          arg2 += Number($(window).scrollTop());
-        }
-
-        if (
-            quCreative_main._theContent &&
-            quCreative_main._theContent
-                .parent()
-                .hasClass("page-portfolio-single")
-        ) {
-          arg2 = Number($(window).scrollTop());
-        }
-      }
-
-      _t.css({
-        transform: "translate3d(0," + arg2 + "px,0)",
-      });
-    }
-  }
-}

@@ -6,25 +6,17 @@
  */
 
 "use strict";
-import { setupSerializeAnythingRepeater} from "./js/_serializeAnythingRepeater";
 import {setupDependencySettings, setupDzsCheckDependencySettings} from "./js/_checkDependencySettings";
-import {setupUploader} from "../../../../plugins/qu-extend/assets/admin/js/_uploader";
 import {setupBigImage} from "./js/_bigImage";
 import {setupCustomizer} from "./js/_customizer";
-import {setupAdminGallery} from "./js/_adminGallery";
-import {setupRepeater2} from "../../../../plugins/qu-extend/assets/admin/js/_repeater-2";
+import {setupAdminGallery} from "../../../../plugins/qu-extend/assets/admin/js/_adminGallery";
 
-(function ($) {
-
-  setupSerializeAnythingRepeater($);
-})(jQuery);
 
 setupDzsCheckDependencySettings();
 
 jQuery(document).ready(function ($) {
   let isAskBeforeLeave = true;
 
-  var update_image_meta_attr_inter = 0;
 
 
 
@@ -32,12 +24,6 @@ jQuery(document).ready(function ($) {
 
   // -- global
   var i = 0;
-  $(document).delegate(".q-att-meta-edit-field", "keyup", handle_submit);
-  $(document).on(
-    "change",
-    'select[name="page_template"], *[name="qucreative_meta_post_media_type"], select.q-att-meta-edit-field',
-    handle_submit,
-  );
   $(document).on(
     "click",
     ".ui-edit-field-close",
@@ -78,14 +64,14 @@ jQuery(document).ready(function ($) {
   setupCustomizer($);
 
 
-  setTimeout(function () { 
+  setTimeout(function () {
     try {
       jQuery('*[name="qucreative_meta_post_media_type"]').trigger("change");
       jQuery("#page_template").trigger("change");
     } catch (err) {
       console.log("try to change page_template", err);
     }
-  }, 500); 
+  }, 500);
 
   setTimeout(function () {
     try {
@@ -119,7 +105,6 @@ jQuery(document).ready(function ($) {
 
 
 
-  setupAdminGallery($);
 
 
 
@@ -132,45 +117,6 @@ jQuery(document).ready(function ($) {
   /// -- item gallery CODE END
 
 
-  function update_image_meta_attr(_arg) {
-    var _con = null;
-
-    if (_arg.parent().parent().hasClass("ui-edit-field")) {
-      _con = _arg.parent().parent();
-    }
-
-    var mainarray = {};
-
-    mainarray.id = _con.find('*[name="qucreative_meta_post_id"]').val();
-    mainarray.post_excerpt = _con
-      .find('*[name="qucreative_meta_post_excerpt"]')
-      .val();
-    mainarray.post_content = _con
-      .find('*[name="qucreative_meta_post_content"]')
-      .val();
-    mainarray.meta_att_aligment = _con
-      .find('*[name="qucreative_meta_att_aligment"]')
-      .val();
-    mainarray.meta_att_video = _con
-      .find('*[name="qucreative_meta_att_video"]')
-      .val();
-    mainarray.qucreative_meta_att_enable_video_cover = _con
-      .find('*[name="qucreative_meta_att_enable_video_cover"]')
-      .val();
-
-    mainarray = JSON.stringify(mainarray);
-
-    var data = {
-      action: "qucreative_save_att_meta",
-      postdata: mainarray,
-    };
-
-    jQuery.post(ajaxurl, data, function (response) {
-      if (window.console != undefined) {
-        console.log("Got this from the server: " + response);
-      }
-    });
-  }
 
   function handle_mouse(e) {
     var _t = $(this);
@@ -182,68 +128,6 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  function handle_submit(e) {
-    var _t = $(this);
-
-    if (e.type == "keyup" || e.type == "change") {
-      if (_t.hasClass("q-att-meta-edit-field")) {
-        clearTimeout(update_image_meta_attr_inter);
-
-        update_image_meta_attr_inter = setTimeout(function () {
-          update_image_meta_attr(_t);
-        }, 1000);
-      }
-    }
-
-    if (e.type == "change") {
-      if (_t.attr("name") == "page_template") {
-        if (
-          _t.val() == "template-qucreative-slider.php" ||
-          _t.val() == "template-gallery-creative.php"
-        ) {
-        } else {
-          if (
-            $('*[name="qucreative_meta_post_media_type"]').eq(0).val() !=
-            "slider"
-          ) {
-          }
-        }
-
-        var aux = _t.val();
-
-        aux = aux.replace(".php", "");
-
-        $("body").removeClass(
-          "selected-default selected-template-qucreative-slider selected-template-portfolio selected-template-gallery-creative",
-        );
-
-        $("body").addClass("selected-" + aux);
-      }
-
-      if (String(_t.attr("name")) == "qucreative_meta_post_media_type") {
-        if (_t.parent().parent().hasClass("con-type-receiver")) {
-          var _con = _t.parent().parent();
-
-          _con.removeClass(
-            "type-image type-video type-vimeo type-youtube type-slider",
-          );
-
-          _con.addClass("type-" + _t.val());
-        }
-
-        if (
-          $('*[name="page_template"]').eq(0).val() !=
-          "template-qucreative-slider.php"
-        ) {
-          $("body").removeClass(
-            "selected-media-type-image selected-media-type-video selected-media-type-youtube selected-media-type-vimeo selected-media-type-slider ",
-          );
-
-          $("body").addClass("selected-media-type-" + _t.val());
-        }
-      }
-    }
-  }
 
 
 

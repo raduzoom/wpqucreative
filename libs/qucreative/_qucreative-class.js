@@ -30,7 +30,7 @@ export class QuCreative{
   bg_transition= "slidedown";
   last_bg_transition= "slidedown";
   menu_type= "";
-  menu_macrotype= "horizontal"; // -- horizontal = 9-10; 13-18
+  viewMenuMacroType= "horizontal"; // -- horizontal = 9-10; 13-18
   initial_bg_transition= "";
   newclass_body_nopadding= false;
   newclass_body_with_fullbg= false;
@@ -38,7 +38,7 @@ export class QuCreative{
   zoombox_options= {};
   old_zoombox_options= {};
   _c_for_parallax_items= null;
-  page_is_fullwidth= false;
+  viewPageIsFullwidth= false;
   transitioned_via_ajax_first= false; // -- set to true when the first ajax transition has been made
   page_portfolio_requires_move_filters= false;
   newclass_body= "";
@@ -46,7 +46,7 @@ export class QuCreative{
   force_content_width= 1122;
   newclass_body_page= "";
   reinit= null;
-  curr_html= "";
+  curr_html= ""; // -- todo: why do we need it ?
   curr_html_with_clear_cache= false;
   view_isFirstTransition= true; // -- for ajax
   is_content_page= false;
@@ -274,7 +274,7 @@ export class QuCreative{
 
         if (
           !_body.hasClass("page-is-fullwidth") &&
-          (quCreative_main.menu_macrotype === 'vertical')
+          (quCreative_main.viewMenuMacroType === 'vertical')
         ) {
           if (quCreative_main.windowWidth < quCreative_main.view_menuWidth + this.menu_content_space + quCreative_main.content_width) {
             _body.addClass("semi-responsive-mode");

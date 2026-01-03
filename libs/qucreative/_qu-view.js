@@ -8,7 +8,7 @@ export function check_animation_time(quCreative_main) {
 }
 
 /**
- * should do only on init todo:
+ * should do only on init todo: move to php
  * @param quCreative_main
  * @param _body
  */
@@ -56,73 +56,32 @@ export function quBuildResponsiveMenu(quCreative_main, _body) {
         .eq(0);
     }
   }
+
+
+  const qcm = quCreative_main;
+  if (qcm._navCon_520.children(".logo-con").length == 0) {
+    qcm._navCon_520.prepend(
+      qcm._navCon.children(".logo-con").clone(),
+    );
+  }
+
+
+  let _cac = qcm._navCon_520
+    .find(".dzs-select-wrapper select")
+    .eq(0);
+
+  if (
+    qcm._navCon_520.children(".custom-responsive-menu").length > 0
+  ) {
+    qcm.custom_responsive_menu = true;
+    _cac = qcm._navCon_520
+      .children(".custom-responsive-menu")
+      .find(".custom-menu")
+      .eq(0);
+  }
+  qcm._navCon_520.find(".logo-con").addClass("logo-con-520");
+
+  _cac.html("");
 }
 
 
-/**
- *
- * @param {QuCreative} quCreative_main
- * @param _body
- */
-export function quSetupBorderCss(quCreative_main) {
-
-  const $ = quCreative_main.$;
-
-  const _body = quCreative_main._body;
-
-  _body.addClass("with-border");
-
-  quCreative_main._mainContainer.css({
-    padding: quCreative_main.border_width + "px",
-  });
-
-  if (
-      _body.hasClass("qucreative-horizontal-menu") &&
-      _body.hasClass("menu-is-sticky")
-  ) {
-    quCreative_main._navCon.css({
-      top: quCreative_main.border_width + "px",
-      left: quCreative_main.border_width + "px",
-      width: "calc(100% - " + quCreative_main.border_width * 2 + "px)",
-    });
-  }
-  if (_body.hasClass("qucreative-vertical-menu")) {
-    quCreative_main._navCon.find(".translucent-con--for-nav-con").css({
-      top: -quCreative_main.border_width + "px",
-    });
-  }
-  if (
-      _body.hasClass("qucreative-vertical-menu") &&
-      _body.hasClass("menu-is-sticky")
-  ) {
-    quCreative_main._navCon.css({
-      top: quCreative_main.border_width + "px",
-      left: quCreative_main.border_width + "px",
-      height: "calc(100% - " + quCreative_main.border_width * 2 + "px)",
-    });
-  }
-
-  var aux = "";
-
-  aux += '<style class="qucreative-border-css">';
-  aux += ".main-gallery--descs { right: " + (0 + quCreative_main.border_width) + "px } ";
-  aux +=
-      ".main-gallery-buttons-con { right: " + (30 + quCreative_main.border_width) + "px } ";
-  aux +=
-      ".main-gallery-buttons-con { bottom: " + (-30 + quCreative_main.border_width) + "px } ";
-  aux +=
-      ".main-gallery-buttons-con.style2 { bottom: " +
-      (30 + quCreative_main.border_width) +
-      "px } ";
-  if (_body.hasClass("qucreative-vertical-menu")) {
-    aux += "nav.qucreative--nav-con { top: " + (0 + quCreative_main.border_width) + "px } ";
-    aux +=
-        "nav.qucreative--nav-con { left: " + (0 + quCreative_main.border_width) + "px } ";
-    aux +=
-        "nav.qucreative--nav-con { height: calc(100% - " +
-        quCreative_main.border_width * 2 +
-        "px); } ";
-  }
-  aux += "</style>";
-  $("head").append(aux);
-}

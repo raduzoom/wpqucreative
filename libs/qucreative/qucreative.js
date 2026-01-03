@@ -230,7 +230,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.calculate_mainbg = calculate_mainbg;
 exports.goto_bg = goto_bg;
-exports.update_parallaxer = update_parallaxer;
 var _sniffers = require("./js/common/_sniffers");
 var _defaultSettings = require("./config/_defaultSettings");
 var _qucreative = require("./_qucreative.util");
@@ -509,7 +508,7 @@ function goto_bg_doit(arg, pargs) {
         console.log("[warn] _theContentConTr missing ..");
       }
       if (quCreative_main._theContentConTr.hasClass("fullit") == false) {
-        quCreative_main.page_is_fullwidth = false;
+        quCreative_main.viewPageIsFullwidth = false;
         setTimeout(function () {
           quCreative_main._theContentConTr.css({});
           quCreative_main._theContentConTr.css({});
@@ -521,7 +520,7 @@ function goto_bg_doit(arg, pargs) {
           opacity: 0
         });
         quCreative_main._theContentConTr.find(".zfolio.fullwidth").css({});
-        quCreative_main.page_is_fullwidth = true;
+        quCreative_main.viewPageIsFullwidth = true;
       }
       // -- here we add them
       if (_body.hasClass("menu-type-9") || _body.hasClass("menu-type-10") || _body.hasClass("menu-type-13") || _body.hasClass("menu-type-14") || _body.hasClass("menu-type-15") || _body.hasClass("menu-type-16") || _body.hasClass("menu-type-17") || _body.hasClass("menu-type-18")) {
@@ -610,7 +609,7 @@ function goto_bg_doit(arg, pargs) {
   } else {
     quCreative_main._mainBgTransitioning.addClass("transitioning-in ");
   }
-  do_transition();
+  qucreative_view_animation_doTransition();
 }
 function transitionComplete() {
   return new Promise((resolve, reject) => {
@@ -637,7 +636,7 @@ function do_transition_really_do_it(margs) {
   };
   margs = $.extend(margs_default, margs);
   quCreative_main._body.removeClass("qtransitioned");
-  quCreative_main._body.addClass("qtransitioning");
+  quCreative_main._body.addClass("qucreative-view-animation-transitioning");
   quCreative_main._mainBgTransitioning.css("display", "");
   const _aux_mainBgTransitioning = quCreative_main._mainBgTransitioning;
   if (quCreative_main.view_isFirstTransition) {
@@ -791,9 +790,6 @@ function setup_newBgImage(margs) {
   const _body = quCreative_main._body;
   var mainBgImgCSS = "";
   var mainBgImgUrl = "";
-  if (quCreative_main._mainContainer.get(0) && quCreative_main._mainContainer.get(0).api_scrolly_to) {
-    _body.addClass("has-custom-scroller");
-  }
   var margs_default = {
     newpage_transition: true
   };
@@ -807,76 +803,17 @@ function setup_newBgImage(margs) {
     aux = aux.replace('")', "");
   } else {}
   mainBgImgUrl = aux;
-  if (quCreative_main.qcre_init_zoombox || _body.children(".zoombox-maincon").length == 0) {
-    let defaultZoomSoundsSettings = JSON.parse(JSON.stringify(_defaultSettings.zoomboxDefaultSettings));
-    var def_opts_parse = $.extend(true, {}, defaultZoomSoundsSettings);
-    if (window.init_zoombox) {
-      if (window.init_zoombox_preset == "darkfull") {
-        quCreative_main.zoombox_options = $.extend(def_opts_parse, window.init_zoombox_darkfull);
-      }
-      if (window.init_zoombox_preset == "whitefull") {
-        quCreative_main.zoombox_options = $.extend(def_opts_parse, window.init_zoombox_whitefull);
-      }
-      window.init_zoombox(zoombox_options);
-    } else {}
-    quCreative_main.qcre_init_zoombox = false;
-  }
-  quCreative_main._c_for_parallax_items = [];
 
   // -for now we force fade
 
-  var arg = "";
-  if ((0, _qucreative.do_we_need_parallaxer)(arg)) {
-    quCreative_main._c_for_parallax_items = [];
-    if ($(".for-parallaxer").length > 0) {
-      $(".for-parallaxer").each(function () {
-        var _t = $(this);
-        quCreative_main._c_for_parallax_items.push(_t);
-      });
-    }
-  }
+  const arg = "";
   if (margs.newpage_transition && quCreative_main.___response) {
     quCreative_main.transitioned_via_ajax_first = true;
 
     // -- this is the new page transition from setup_newBgImage() . destroy any listeners here
     (0, _quViewDeterminePage.determine_page)();
     document.body.style.zoom = 1.0;
-    $(".dzs-progress-bar").each(function () {
-      var _t = $(this);
-      if (_t.get(0) && _t.get(0).api_destroy_listeners) {
-        _t.get(0).api_destroy_listeners();
-      }
-      setTimeout(function () {
-        _t[0] = null;
-      }, 300);
-    });
-    force_scroll_to_top();
-  }
-  if (window.qucreative_options.bg_isparallax == "on" && quCreative_main.newclass_body_page != "page-homepage" && quCreative_main.newclass_body_page != "page-gallery-w-thumbs") {
-    const args = {
-      mode_scroll: "normal",
-      animation_duration: "20",
-      is_fullscreen: "on",
-      init_functional_delay: "0",
-      init_functional_remove_delay_on_scroll: "off",
-      settings_substract_from_th: qucreative_options.substract_parallaxer_pixels
-    };
-    if (parallax_reverse) {
-      args.direction = "reverse";
-    }
-    var _aux_theContentCon = $(".main-container > .the-content-con").eq(0);
-    if ($(".main-container > .the-content-con.transitioning").length > 0) {
-      _aux_theContentCon = $(".main-container > .the-content-con.transitioning").eq(0);
-    }
-    if (_body.hasClass("with-border")) {}
-    args.cthis_height_is_window_height = "on";
-    if (window.dzsprx_init) {
-      window.dzsprx_init(quCreative_main._mainBg, args);
-    }
-    quCreative_main._curr_parallaxer = quCreative_main._mainBg;
-    if (quCreative_main._mainBg.get(0) && quCreative_main._mainBg.get(0).api_set_update_func) {
-      quCreative_main._mainBg.get(0).api_set_update_func(update_parallaxer);
-    }
+    qucreative_view_forceScrollToTop();
   }
   if (margs.newpage_transition && quCreative_main.___response) {
     // -- part of setup_newBgImage
@@ -884,10 +821,9 @@ function setup_newBgImage(margs) {
     $(".map-canvas.to-remove").remove();
 
     /**     *   * @type {string}   */
+    theQuery = '.the-content-con:not(".transitioning")';
     let theQuery = "";
     $(".the-content-con.transitioning-out").remove();
-    theQuery = '.the-content-con:not(".transitioning")';
-    $(theQuery).find(".zfolio").remove();
     let _contentConTransitioning = $(".the-content-con.transitioning");
     if (quCreative_main._theContent) {
       let _lastContentConTransitioning = _contentConTransitioning.last();
@@ -909,16 +845,6 @@ function setup_newBgImage(margs) {
       quCreative_main._theContentConTr.css("max-width", "");
       quCreative_main._theContentConTr.removeClass("transitioning");
 
-      // -- olg content destroy zoomfolio
-      if (quCreative_main._theContent) {
-        quCreative_main._theContent.find(".zfolio").each(function () {
-          const _theContentConTr_zfolio = $(this);
-          if (_theContentConTr_zfolio.get(0) && _theContentConTr_zfolio.get(0).api_destroy) {
-            _theContentConTr_zfolio.get(0).api_destroy();
-          }
-        });
-      }
-
       // -- the new content-con is the real content-con NOW
       quCreative_main._theContent = $(".the-content:not(.the-content-for-preseter)").eq(0);
       quCreative_main.handle_resize(null, {
@@ -926,10 +852,7 @@ function setup_newBgImage(margs) {
         place_page: true
       });
       if (quCreative_main._theContentConTr.hasClass("fullit")) {
-        quCreative_main._theContentConTr.find(".zfolio.fullwidth").css({
-          width: ""
-        });
-        quCreative_main.page_is_fullwidth = true;
+        quCreative_main.viewPageIsFullwidth = true;
       }
       setTimeout(function () {
         if (!quCreative_main._theContentConTr.hasClass("fullit")) {
@@ -957,9 +880,6 @@ function setup_newBgImage(margs) {
       first_page_not_transitioned = false;
     }
     $(".the-content-con").addClass("currContent");
-    if (quCreative_main.start_bg_slideshow_time) {
-      quCreative_main.start_bg_slideshow_time();
-    }
   }
   quCreative_main._mainContainer.addClass("transition-" + quCreative_main.bg_transition);
   setTimeout(function () {
@@ -972,14 +892,8 @@ function setup_newBgImage(margs) {
     };
     quCreative_main.handle_resize(null, args);
   }, 1000);
-  const $mapCanvas = $(".map-canvas");
-  if ($mapCanvas.length > 0 && window.qcreative_gm_init) {
-    window.qcreative_gm_init();
-  }
-  $mapCanvas.removeClass("transitioning").addClass("to-remove");
-  $(".map-canvas-con").removeClass("transitioning");
 }
-function force_scroll_to_top() {
+function qucreative_view_forceScrollToTop() {
   const $ = jQuery;
   const quCreative_main = window.quCreative_main;
   window.scroll_top_object.val = 0;
@@ -996,7 +910,7 @@ let main_content_loaded = false;
 /**
  * only on ajax ?
  */
-function do_transition(margs) {
+function qucreative_view_animation_doTransition(margs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
   const now = Number(new Date().getDate());
@@ -1013,7 +927,7 @@ function do_transition(margs) {
     return new Promise(resolve => {
       if (quCreative_main._theContentConTr && quCreative_main._theContentConTr.hasClass("wait-for-main-content-to-load")) {
         main_content_loaded = false;
-        var _czfolio = quCreative_main._theContentConTr.find(".zfolio").eq(0);
+        const _czfolio = quCreative_main._theContentConTr.find(".zfolio").eq(0);
         inter_check_if_main_content_loaded = setInterval(function () {
           if (_czfolio.hasClass("all-images-loaded")) {
             clearInterval(inter_check_if_main_content_loaded);
@@ -1097,33 +1011,6 @@ function calculate_mainbg(pargs) {
     }
   });
 }
-function update_parallaxer(arg) {
-  const quCreative_main = window.quCreative_main;
-  const _body = quCreative_main._body;
-  if (isNaN(arg)) {
-    arg = 0;
-  }
-
-  // -- we receive the value from parallaxer
-
-  if (quCreative_main._c_for_parallax_items) {
-    for (let i24 = 0; i24 < quCreative_main._c_for_parallax_items.length; i24++) {
-      var _t = quCreative_main._c_for_parallax_items[i24];
-      var arg2 = arg;
-      if ((_body.hasClass("menu-type-13") || _body.hasClass("menu-type-14") || _body.hasClass("menu-type-17") || _body.hasClass("menu-type-18")) && _body.hasClass("menu-is-sticky") == false) {
-        if (_t.parent().parent().hasClass("qucreative--nav-con")) {
-          arg2 += Number($(window).scrollTop());
-        }
-        if (quCreative_main._theContent && quCreative_main._theContent.parent().hasClass("page-portfolio-single")) {
-          arg2 = Number($(window).scrollTop());
-        }
-      }
-      _t.css({
-        transform: "translate3d(0," + arg2 + "px,0)"
-      });
-    }
-  }
-}
 
 },{"./_checkLazyLoading":1,"./_qu-view-determine-page":4,"./_qucreative.config":7,"./_qucreative.util":8,"./config/_defaultSettings":9,"./js/common/_sniffers":12}],4:[function(require,module,exports){
 "use strict";function determine_page(){const e=window.quCreative_main,a=e._body;e.is_content_page=!1,a.hasClass("page-gallery-w-thumbs")&&(e.page="page-gallery-w-thumbs"),a.hasClass("page-portfolio")&&(e.page="page-portfolio",e.is_content_page=!0),a.hasClass("page-portfolio-single")&&(e.page="page-portfolio-single",e.is_content_page=!0),a.hasClass("page-normal")&&(e.page="page-normal",e.is_content_page=!0),a.hasClass("page-blog")&&(e.page="page-blog",e.is_content_page=!0),a.hasClass("page-blogsingle")&&(e.page="page-blogsingle",e.is_content_page=!0),a.hasClass("page-about")&&(e.page="page-about",e.is_content_page=!0),a.hasClass("page-contact")&&(e.page="page-contact",e.is_content_page=!0),a.hasClass("page-homepage")&&(e.page="page-homepage"),e.transitioned_via_ajax_first&&e.newclass_body&&(a.removeClass("page-blogsingle page-homepage page-gallery-w-thumbs page-normal page-contact page-about page-contact page-portfolio page-portfolio-single"),a.removeClass("new-"+e.newclass_body_page),a.addClass(e.newclass_body),a.attr("class",e.newclass_body),"menu-type-5"!=e.menu_type&&"menu-type-6"!=e.menu_type||a.addClass("menu-is-sticky"),e.handle_resize(null,{ignore_menu:!1,placew:!1,place_page:!1,redraw_canvas:!1,calculate_sidebar_main_is_bigger:!1,calculate_menu_overflow:!0}),a.removeClass("bg_transition-fade bg_transition-slidedown bg_transition-wipedown"),a.addClass("bg_transition-"+e.bg_transition),a.removeClass("first-transition"),e.border_width>0&&a.addClass("with-border"),e.newclass_body=e.newclass_body.replace(/menu-type-\d*/g,""),e.page=e.newclass_body_page,a.removeClass("no-padding"),e.newclass_body_nopadding&&a.addClass("no-padding"))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.determine_page=determine_page;
@@ -1135,7 +1022,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.check_animation_time = check_animation_time;
 exports.quBuildResponsiveMenu = quBuildResponsiveMenu;
-exports.quSetupBorderCss = quSetupBorderCss;
 function check_animation_time(quCreative_main) {
   if (window.qucreative_view_animation_duration) {
     quCreative_main.view_animation_duration = window.qucreative_view_animation_duration * 1000;
@@ -1143,7 +1029,7 @@ function check_animation_time(quCreative_main) {
 }
 
 /**
- * should do only on init todo:
+ * should do only on init todo: move to php
  * @param quCreative_main
  * @param _body
  */
@@ -1163,52 +1049,17 @@ function quBuildResponsiveMenu(quCreative_main, _body) {
       quCreative_main._navCon_520 = quCreative_main._theContent.parent().children(".qucreative--520-nav-con").eq(0);
     }
   }
-}
-
-/**
- *
- * @param {QuCreative} quCreative_main
- * @param _body
- */
-function quSetupBorderCss(quCreative_main) {
-  const $ = quCreative_main.$;
-  const _body = quCreative_main._body;
-  _body.addClass("with-border");
-  quCreative_main._mainContainer.css({
-    padding: quCreative_main.border_width + "px"
-  });
-  if (_body.hasClass("qucreative-horizontal-menu") && _body.hasClass("menu-is-sticky")) {
-    quCreative_main._navCon.css({
-      top: quCreative_main.border_width + "px",
-      left: quCreative_main.border_width + "px",
-      width: "calc(100% - " + quCreative_main.border_width * 2 + "px)"
-    });
+  const qcm = quCreative_main;
+  if (qcm._navCon_520.children(".logo-con").length == 0) {
+    qcm._navCon_520.prepend(qcm._navCon.children(".logo-con").clone());
   }
-  if (_body.hasClass("qucreative-vertical-menu")) {
-    quCreative_main._navCon.find(".translucent-con--for-nav-con").css({
-      top: -quCreative_main.border_width + "px"
-    });
+  let _cac = qcm._navCon_520.find(".dzs-select-wrapper select").eq(0);
+  if (qcm._navCon_520.children(".custom-responsive-menu").length > 0) {
+    qcm.custom_responsive_menu = true;
+    _cac = qcm._navCon_520.children(".custom-responsive-menu").find(".custom-menu").eq(0);
   }
-  if (_body.hasClass("qucreative-vertical-menu") && _body.hasClass("menu-is-sticky")) {
-    quCreative_main._navCon.css({
-      top: quCreative_main.border_width + "px",
-      left: quCreative_main.border_width + "px",
-      height: "calc(100% - " + quCreative_main.border_width * 2 + "px)"
-    });
-  }
-  var aux = "";
-  aux += '<style class="qucreative-border-css">';
-  aux += ".main-gallery--descs { right: " + (0 + quCreative_main.border_width) + "px } ";
-  aux += ".main-gallery-buttons-con { right: " + (30 + quCreative_main.border_width) + "px } ";
-  aux += ".main-gallery-buttons-con { bottom: " + (-30 + quCreative_main.border_width) + "px } ";
-  aux += ".main-gallery-buttons-con.style2 { bottom: " + (30 + quCreative_main.border_width) + "px } ";
-  if (_body.hasClass("qucreative-vertical-menu")) {
-    aux += "nav.qucreative--nav-con { top: " + (0 + quCreative_main.border_width) + "px } ";
-    aux += "nav.qucreative--nav-con { left: " + (0 + quCreative_main.border_width) + "px } ";
-    aux += "nav.qucreative--nav-con { height: calc(100% - " + quCreative_main.border_width * 2 + "px); } ";
-  }
-  aux += "</style>";
-  $("head").append(aux);
+  qcm._navCon_520.find(".logo-con").addClass("logo-con-520");
+  _cac.html("");
 }
 
 },{}],6:[function(require,module,exports){
@@ -1243,7 +1094,7 @@ class QuCreative {
   bg_transition = "slidedown";
   last_bg_transition = "slidedown";
   menu_type = "";
-  menu_macrotype = "horizontal"; // -- horizontal = 9-10; 13-18
+  viewMenuMacroType = "horizontal"; // -- horizontal = 9-10; 13-18
   initial_bg_transition = "";
   newclass_body_nopadding = false;
   newclass_body_with_fullbg = false;
@@ -1251,7 +1102,7 @@ class QuCreative {
   zoombox_options = {};
   old_zoombox_options = {};
   _c_for_parallax_items = null;
-  page_is_fullwidth = false;
+  viewPageIsFullwidth = false;
   transitioned_via_ajax_first = false; // -- set to true when the first ajax transition has been made
   page_portfolio_requires_move_filters = false;
   newclass_body = "";
@@ -1259,7 +1110,7 @@ class QuCreative {
   force_content_width = 1122;
   newclass_body_page = "";
   reinit = null;
-  curr_html = "";
+  curr_html = ""; // -- todo: why do we need it ?
   curr_html_with_clear_cache = false;
   view_isFirstTransition = true; // -- for ajax
   is_content_page = false;
@@ -1399,7 +1250,7 @@ class QuCreative {
       if (quCreative_main.page == "page-portfolio" || quCreative_main.page == "page-portfolio-single" || quCreative_main.page == "page-normal" || quCreative_main.page == "page-blog" || quCreative_main.page == "page-blogsingle" || quCreative_main.page == "page-about" || quCreative_main.page == "page-contact") {
         // -- setting the content left position, menu types excluded here
 
-        if (!_body.hasClass("page-is-fullwidth") && quCreative_main.menu_macrotype === 'vertical') {
+        if (!_body.hasClass("page-is-fullwidth") && quCreative_main.viewMenuMacroType === 'vertical') {
           if (quCreative_main.windowWidth < quCreative_main.view_menuWidth + this.menu_content_space + quCreative_main.content_width) {
             _body.addClass("semi-responsive-mode");
             _body.addClass("semi-responsive-mode-enforce");
@@ -1573,6 +1424,54 @@ function dzsQu_view_adjustLayoutContentWidth(quCreative_main) {
 },{}],16:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.qucreative_view_featureCustomScroll = qucreative_view_featureCustomScroll;
+/**
+ *
+ * @param {QuCreative} qcm
+ */
+function qucreative_view_featureCustomScroll(qcm) {
+  const _contpar = qcm._theContent.parent();
+  const windowhref = window.location.href;
+  let posY = 0;
+  if (_contpar.attr("data-scroll-to")) {
+    if (_contpar.attr("data-scroll-to-pixel")) {
+      posY = Number(_contpar.attr("data-scroll-to-pixel"));
+    }
+    if (_contpar.attr("data-scroll-to") == "browser-bottom") {
+      posY = qcm.windowHeight;
+    }
+  } else {
+    const targetid = windowhref.split("#")[1];
+    let _c4 = null;
+    if (targetid) {
+      _c4 = $("#" + targetid).eq(0);
+      if (_c4 && _c4.length && _c4.offset()) {
+        posY = Number(_c4.offset().top) - 200;
+      }
+    }
+  }
+  if (posY) {
+    setTimeout(function () {
+      if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to) {
+        qcm._mainContainer.get(0).api_scrolly_to(posY, {
+          force_no_easing: "off",
+          show_scrollbar: false
+        });
+      } else {
+        if (_contpar.attr("data-scroll-to")) {
+          $(window).scrollTop(posY);
+        }
+      }
+    }, 1000);
+  }
+}
+
+},{}],17:[function(require,module,exports){
+"use strict";
+
 var _checkLazyloadingImages = require("./js/check-lazyloading-images/_check-lazyloading-images");
 var _initProgressMarkers = require("./js/init-progress-markers/_init-progress-markers");
 var _helpers = require("./js/common/_helpers");
@@ -1585,6 +1484,7 @@ var _checkLazyLoading = require("./_checkLazyLoading");
 var _quViewLayout = require("./js/features/_quViewLayout");
 var _quActions = require("./_qu-actions");
 var _qucreativeClass = require("./_qucreative-class");
+var _featureCustomScroll = require("./js/view/_feature-custom-scroll");
 /*
  * Author: ant_farm
  * Website: http://antfarmthemes.com
@@ -1620,7 +1520,6 @@ window.gooogle_maps_must_init = false;
 window.scroll_top_object = {
   val: 0
 };
-let qcreative_curr_html;
 jQuery(document).ready(function ($) {
   Math.easeIn = function (t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
@@ -1643,16 +1542,11 @@ jQuery(document).ready(function ($) {
   var newclass_content_con = "";
   var thumbs_padding_left_and_right = 40,
     thumbs_list_padding_right = 0,
-    menu_height = 0,
-    native_scrollbar_width = 0,
-    css_border_width = 0;
-  var global_image_data = null;
+    menu_height = 0;
   const qcm = new _qucreativeClass.QuCreative($, reinit, _quViewAnimation.goto_bg);
   window.quCreative_main = qcm;
   var old_qcre_options = null;
   var selector_con_cloned = false;
-  var windowhref = "";
-  var is_menu_horizontal_and_full_bg = false;
   $("div.the-actual-nav").children("ul").addClass("the-actual-nav");
   qcm._logoCon = qcm._navCon.find(".logo-con").eq(0);
   if ($(".the-content:not(.the-content-for-preseter)").length > 0) {
@@ -1665,8 +1559,6 @@ jQuery(document).ready(function ($) {
   if (regex_menu_type_res) {
     qcm.menu_type = "menu-type-" + regex_menu_type_res[1];
   }
-  let browserScrollSize = (0, _helpers.getBrowserScrollSize)();
-  native_scrollbar_width = browserScrollSize.width;
   var qucreative_options_defaults = _qucreative.QUCREATIVE_DEFAULTS;
   if (window.qucreative_options) {
     window.qucreative_options = $.extend(qucreative_options_defaults, window.qucreative_options);
@@ -1682,7 +1574,7 @@ jQuery(document).ready(function ($) {
   function init() {
     console.log('[lifecycle] init()', _body.attr('class'));
     if (_body.attr('class').indexOf(["menu-type-1 ", "menu-type-2", "menu-type-3", "menu-type-4", "menu-type-5", "menu-type-6", "menu-type-7", "menu-type-8"]) > -1) {
-      qcm.menu_macrotype = 'vertical';
+      qcm.viewMenuMacroType = 'vertical';
     }
     // -- todo: move to ajax
     const tempFindClass = _qucreative.regex_bodyclass_page.exec(String(_body.attr("class")));
@@ -1699,9 +1591,6 @@ jQuery(document).ready(function ($) {
     }
     qcm.$cssFromJs = $("#qucreative-css-from-js").eq(0);
     newclass_content_con = $(".the-content-con").eq(0).attr("class");
-    if (isNaN(parseInt(_body.css("border-width"), 10)), parseInt(_body.css("border-width"), 10)) {
-      css_border_width = parseInt(_body.css("border-width"), 10);
-    }
     $(".qucreative-option-feed").each(function () {
       let arg;
       let aux;
@@ -1716,32 +1605,11 @@ jQuery(document).ready(function ($) {
             console.info("CANNOT PARSE", err);
           }
         }
-        if ($optionFeed.attr("data-rel") == "zoombox-options") {
-          try {
-            arg = JSON.parse($optionFeed.html());
-            window.init_zoombox_preset = arg.type;
-          } catch (err) {
-            console.info("CANNOT PARSE", err);
-          }
-        }
-        if ($optionFeed.attr("data-rel") == "gmaps-styling") {
-          try {
-            window.str_gmaps_styling = $optionFeed.html();
-          } catch (err) {
-            console.info("CANNOT PARSE", err);
-          }
-        }
       }
     });
     qcm.initial_bg_transition = qucreative_options.bg_transition;
     qcm.last_bg_transition = qcm.initial_bg_transition;
     qcm.new_bg_transition = window.qucreative_options.new_bg_transition;
-    if (isNaN(parseInt(window.qucreative_options.border_width, 10)) == false && parseInt(window.qucreative_options.border_width, 10)) {
-      qcm.border_width = parseInt(window.qucreative_options.border_width, 10);
-    }
-    if (qcm.border_width > 0) {
-      (0, _quView.quSetupBorderCss)(qcm, _body);
-    }
     if (isNaN(parseInt(window.qucreative_options.blur_amount, 10)) == false) {
       window.qucreative_options.blur_amount = parseInt(window.qucreative_options.blur_amount, 10);
     } else {
@@ -1754,7 +1622,6 @@ jQuery(document).ready(function ($) {
     if (_body.hasClass("menu-type-13") || _body.hasClass("menu-type-14") || _body.hasClass("menu-type-15") || _body.hasClass("menu-type-16") || _body.hasClass("menu-type-17") || _body.hasClass("menu-type-18")) {
       qcm.$theActualNav.find("> li > .sub-menu").prepend('<svg class="tooltip--icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15" enable-background="new 0 0 15 15" xml:space="preserve"> <path fill-rule="evenodd" clip-rule="evenodd" fill="#5EBB53" d="M0,0v15h15C6.716,15,0,8.284,0,0z"/> </svg> ');
     }
-    windowhref = window.location.href;
     $(".the-actual-nav .menu-item > a").addClass("custom-a");
     $(this).scrollTop(0);
     if (window.qucreative_options.enable_ajax == "on") {
@@ -1764,11 +1631,6 @@ jQuery(document).ready(function ($) {
     }
     (0, _quViewDeterminePage.determine_page)();
     window.qucreative_reinit = reinit;
-
-    // todo: load ajax sync
-
-    // setupAjax(quCreative_main);
-
     (0, _quActions.qu_setupActions)();
     _body.addClass("menu-scroll-method-" + qucreative_options.menu_scroll_method);
     $(window).bind("resize", qcm.handle_resize.bind(qcm));
@@ -1814,23 +1676,11 @@ jQuery(document).ready(function ($) {
         aux2 = window.location.href;
       }
     }
-    if (aux2.indexOf("?") > -1) {
-      if (aux2.indexOf("clearcache=on") > -1) {
-        qcm.curr_html_with_clear_cache = true;
-      }
-      qcm.curr_html = aux2.split("?")[0];
-    } else {
-      qcm.curr_html = aux2;
-    }
-    if (qcm.curr_html == "") {
-      qcm.curr_html = "";
-    }
-    qcreative_curr_html = qcm.curr_html;
     setTimeout(function () {
-      _body.removeClass("q-ajax-transitioning");
+      _body.removeClass("qucreative-view-ajax-animation-transitioning");
       $(".widget_text .textwidget").addClass("font-group-6");
     }, 100);
-    _body.removeClass("qtransitioning");
+    _body.removeClass("qucreative-view-animation-transitioning");
     _body.removeClass("page-is-fullwidth");
     if (margs.call_from == "init()") {
       if (window.qucreative_options.bg_isparallax == "on" && _body.hasClass("page-homepage") == false && _body.hasClass("page-gallery-w-thumbs") == false) {
@@ -1843,210 +1693,28 @@ jQuery(document).ready(function ($) {
       }
     }
     if (qcm._theContent) {
-      qcm._theContent.find(".sc-final-closer").each(function () {
-        const _t = $(this);
-        if (_t.html() == "") {
-          if (_t.parent().parent().parent().parent().children().length == 1) {
-            _t.parent().parent().parent().parent().parent().remove();
-          }
-          if (_t.parent().parent().parent().parent().children().length == 2) {
-            var _c = _t.parent().parent().parent().parent().children().eq(1);
-            if (_c.children().length == 1 && _c.find(".wpb_wrapper").length == 1 && _c.find(".wpb_wrapper").html() == "") {
-              _t.parent().parent().parent().parent().parent().remove();
-            }
-          }
-        }
-      });
-      qcm._theContent.find(".delete-prev-cst").each(function () {
-        var _t = $(this);
-        if (_t.prev().hasClass("the-content-sheet-text")) {
-          _t.prev().hide();
-        }
-      });
-      qcm._theContent.find(".wpb_wrapper").each(function () {
-        var _t = $(this);
-        if (_t.children().last().hasClass("vc_empty_space")) {
-          _t.parent().append(_t.children().last());
-        }
-      });
-      qcm._theContent.find(".delete-prev-section").each(function () {
-        var _t = $(this);
-        if (_t.prev().hasClass("the-content-sheet")) {
-          _t.prev().hide();
-        }
-      });
-      qcm._theContent.find(".wpb_wrapper").each(function () {
-        var _t = $(this);
-        if (_t.html() == "") {
-          if (_t.parent().parent().hasClass("vc_col-sm-12")) {
-            _t.parent().parent().parent().remove();
-          }
-        }
-      });
-      qcm._theContent.find(".vc_empty_space,.qucreative-divider-from-element").each(function () {
-        var _t = $(this);
-        var _con = null;
-        if (_t.parent().parent().parent().hasClass("vc_row")) {
-          _con = _t.parent().parent().parent();
-        }
-        if (_t.parent().parent().parent().parent().hasClass("vc_row")) {
-          _con = _t.parent().parent().parent().parent();
-        }
-        if (_con) {
-          var _chtml = _con.html();
-          if (_chtml.indexOf("12") > -1) {
-            if (_chtml.length < 290) {
-              _con.addClass("no-margin-bottom");
-            }
-          }
-        }
-      });
-      qcm._theContent.find(".wpb_wrapper .antfarm-divider").each(function () {
-        var _t = $(this);
-        var __par = _t.parent().get(0);
-        if (__par && __par.nodeName == "P") {
-          if (__par.className == "") {
-            if (__par) {
-              if (__par.outerHTML) {
-                if (String(__par.outerHTML).length < 290) {
-                  $(__par).css({
-                    "margin-top": "0",
-                    "margin-bottom": "0",
-                    "font-size": "0",
-                    "line-height": "1"
-                  });
-                }
-              }
-            }
-          }
-        }
-      });
       ;
-      var _ctl = qcm._theContent.find(".translucent-layer").eq(0);
-      if (_ctl.hasClass("colorize-layers")) {
-        if (_ctl.hasClass("custom-color") == false && _ctl.hasClass("custom-opacity") == false) {
-          if (_body.hasClass("body-style-light")) {
-            qcm._theContent.find(".translucent-con .translucent-overlay").css("background-color", "#eeeeee");
-            qcm._theContent.find(".translucent-layer").eq(0).css("background-color", "#fff");
-          } else {
-            qcm._theContent.find(".translucent-con .translucent-overlay").css("background-color", "#333333");
-            qcm._theContent.find(".translucent-layer").eq(0).css("background-color", "#222222");
-          }
-        }
-      }
-      if (qcm._theContent && qcm._theContent.find(".post-password-form").length) {
-        qcm._theContent.find(".post-password-form input[type=submit]").addClass("antfarm-btn btn-read-more style-default padding-small");
-      }
+      ;
+      ;
     }
     if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("fullit")) {
-      qcm.page_is_fullwidth = true;
+      qcm.viewPageIsFullwidth = true;
     }
     if (qcm.page == "page-gallery-w-thumbs" || qcm.page == "page-homepage") {
-      qcm.page_is_fullwidth = true;
+      qcm.viewPageIsFullwidth = true;
     }
     selector_con_cloned = false;
-    is_menu_horizontal_and_full_bg = false;
-    if (qcm.page_is_fullwidth) {
+    if (qcm.viewPageIsFullwidth) {
       _body.addClass("page-is-fullwidth");
-      if (qcm.menu_macrotype === 'horizontal') {
-        is_menu_horizontal_and_full_bg = true;
-      }
     }
+
+    // todo: move to php
     (0, _quView.quBuildResponsiveMenu)(qcm, _body);
-    if (qcm._theContent && qcm._theContent.length) {
-      const _c = qcm._theContent.find(".responsive-featured-media-con").eq(0);
-      if (_c.length > 0) {
-        if (_c.children().length == 0) {
-          if (qcm._theContent.find(".responsive-featured-media-con--target").length > 0) {
-            _c.append(qcm._theContent.find(".responsive-featured-media-con--target").html());
-            if (qcm._theContent.find(".responsive-featured-media-con--target").eq(0).hasClass("advancedscroller-con")) {
-              _c.children(".advancedscroller").removeClass("skin-nonav").addClass("skin-qucreative").height(400);
-              _c.children(".advancedscroller").attr("data-options", '{ settings_mode: "onlyoneitem",design_arrowsize: "0" ,settings_swipe: "on" ,settings_autoHeight: "on",settings_autoHeight_proportional: "on",settings_swipeOnDesktopsToo: "on" ,settings_slideshow: "on" ,settings_slideshowTime: "150" }');
-            }
-          }
-        }
-        if (_c.children().length == 0) {
-          if (qcm._theContent.find(".responsive-featured-media-con--target").length == 0) {
-            var aux = $(".main-bg-div").eq(0).css("background-image");
-            var the_bg = window.qucreative_options.images_arr[0];
-            if (window.qucreative_options.the_background) {
-              the_bg = window.qucreative_options.the_background;
-            }
-            var aux2 = '<img src="' + the_bg + '" class="fullwidth"/>';
-            _c.append(aux2);
-          }
-        }
-      }
-    } else {
-      // -- move to plugin
-      if (qcm.page == "page-homepage") {
-        if ($(".the-content-con").eq(0).children(".qucreative--520-nav-con").length == 0) {
-          $(".the-content-con").eq(0).prepend('<div class="qucreative--520-nav-con "> <div class="dzs-select-wrapper skin-justvisible "> <div class="dzs-select-wrapper-head"> <div class="nav-wrapper-head  bg-color-hg"><i class="fa fa-bars"></i></div> </div> ' + the_select_str + " </div>" + the_custom_menu_str + "</div>");
-          qcm._navCon_520 = $(".the-content-con").eq(0).children(".qucreative--520-nav-con").eq(0);
-        }
-      }
-    }
-    if (qcm._theContent && qcm._theContent.parent()) {
-      setTimeout(function () {
-        if (qcm._theContent.parent().attr("data-scrollbar-theme") == "light") {
-          $(".main-container > .scrollbar .scrollbary").css({
-            "background-color": "rgba(255,255,255,0.5)"
-          });
-        } else {
-          $(".main-container > .scrollbar .scrollbary").css({
-            "background-color": ""
-          });
-        }
-      }, 1000);
-    }
-    if (qcm._navCon_520.children(".logo-con").length == 0) {
-      qcm._navCon_520.prepend(qcm._navCon.children(".logo-con").clone());
-    }
-    var _cac = qcm._navCon_520.find(".dzs-select-wrapper select").eq(0);
-    if (qcm._navCon_520.children(".custom-responsive-menu").length > 0) {
-      qcm.custom_responsive_menu = true;
-      _cac = qcm._navCon_520.children(".custom-responsive-menu").find(".custom-menu").eq(0);
-    }
-    qcm._navCon_520.find(".logo-con").addClass("logo-con-520");
-    _cac.html("");
-    qcm.$theActualNav.children("li").each(function () {
-      var _t = $(this);
-      var aux_str = "";
-      if (!qcm.custom_responsive_menu) {
-        aux_str = "<option";
-        if (_t.hasClass("current-menu-item")) {
-          aux_str += " selected";
-        }
-        aux_str += ' value="' + _t.children("a").attr("href") + '">' + _t.children("a").eq(0).html() + "</option>";
-        _cac.append(aux_str);
-        if (_t.children("ul").length > 0) {
-          _t.children("ul").eq(0).children("li").each(function () {
-            var _t2 = $(this);
-            _cac.append('<option value="' + _t2.children("a").attr("href") + '"> - ' + _t2.children("a").eq(0).html() + "</option>");
-            _t2.children("ul").eq(0).children("li").each(function () {
-              var _t3 = $(this);
-              _cac.append('<option value="' + _t3.children("a").attr("href") + '"> - - ' + _t3.children("a").eq(0).html() + "</option>");
-            });
-          });
-        }
-      } else {}
-    });
-    if (qcm.custom_responsive_menu) {
-      _cac.append(qcm.$theActualNav.html());
-      _cac.find("li").each(function () {
-        var _t = $(this);
-        if (_t.children("ul").length > 0) {
-          _t.addClass("has-children");
-          _t.prepend('<i class="submenu-toggler fa fa-angle-right"></i>');
-        }
-      });
-    }
     (0, _quViewLayout.calculate_menu_width)(qcm);
-    if (_body.hasClass("page-portfolio") || _body.hasClass("page-blogsingle")) {}
     if (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6") || _body.hasClass("menu-type-7") || _body.hasClass("menu-type-8") || _body.hasClass("menu-type-11")) {
       qcm.menu_content_space = 30;
     }
-    if (qcm.menu_macrotype === 'horizontal') {
+    if (qcm.viewMenuMacroType === 'horizontal') {
       qcm.view_menuWidth = 0;
       qcm.view_menuWidth_onRight = 0;
       qcm.menu_content_space = 0;
@@ -2069,37 +1737,11 @@ jQuery(document).ready(function ($) {
       //   quCreative_main._mainContainer.prepend($(".qucreative--nav-con").eq(0));
       // }
     }
-    setTimeout(function () {
-      $('ul[class*="qc-pagination-for-zfolio"]').find("a").addClass("dzszfl-pagination-a custom-a");
-      if ($.fn.vcGrid) {
-        $("[data-vc-grid-settings]").vcGrid();
-      }
-    }, 1000);
     _body.removeClass("page-title-no-antetitle");
     window.qucreative_actions_reinit.forEach(reinitAction => {
       reinitAction(margs);
     });
-
-    // todo: add
-    // $(".social-icon").each(function () {
-    //   var aux = window.location.href;
-    //   var _t = $(this);
-    //   _t.attr(
-    //     "onclick",
-    //     String(_t.attr("onclick")).replace("{{replaceurl}}", aux),
-    //   );
-    // });
-
-    // todo: add
-    // window.init_progress_markers();
-
-    // todo: add
-    // if (window.dzsprb_init) {
-    //   window.dzsprb_init(".dzs-progress-bar", { init_each: true });
-    // }
-
     var i23 = 0;
-    qcm._c_for_parallax_items = [];
 
     // -- page gallery with thumbs reinit
     if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_toggle_resize) {
@@ -2108,68 +1750,6 @@ jQuery(document).ready(function ($) {
         qcm._mainContainer.get(0).api_toggle_resize();
       }, 900);
     }
-
-    // todo: add
-    // qu_reinitDzsVp();
-
-    // todo: add
-    // qu_reinitDzsTaa();
-
-    // todo: add
-    // qu_reinitDzsAp();
-    if (qcm._theContent) {
-      qcm._theContent.find(".divimage-calculate-real-size,a.comment-reply-link").each(function () {
-        var _t4 = $(this);
-        if (_t4.hasClass("comment-reply-link")) {
-          _t4.addClass("custom-a").attr("onclick", String(_t4.attr("onclick")).replace("div-", ""));
-        }
-        if (_t4.hasClass("divimage-calculate-real-size")) {
-          var src = sanitize_image_src_from_background(_t4.css("background-image"));
-          var img = new Image();
-          img.parentEl = _t4;
-          img.onload = function (e) {
-            // image  has been loaded
-
-            var _t4_c = this.parentEl;
-            if (_t4_c.parent().hasClass("pic-con")) {
-              _t4_c.parent().animate({
-                "max-width": this.naturalWidth
-              });
-            }
-          };
-          img.onerror = function (e) {
-            // image  has been loaded
-          };
-          img.src = src;
-        }
-      });
-    }
-
-    // todo: add
-    // window.init_advanced_scrollers();
-
-    // -- init
-    // -- from reinit()
-    // todo: add
-    // if (window.dzszfl_init) {
-    //   dzszfl_init(".zfolio.auto-init-from-q", {
-    //     init_each: true,
-    //   });
-    // }
-    // todo: add
-    // if (window.dzssel_init) {
-    //   dzssel_init("select.dzs-style-me-from-q", { init_each: true });
-    // }
-
-    setTimeout(function () {
-      calculate_dims({
-        ignore_menu: false,
-        placew: false,
-        place_page: false,
-        redraw_canvas: false,
-        calculate_sidebar_main_is_bigger: false
-      });
-    }, 100);
     if (_body.hasClass("single-quextend_port_items") || _body.hasClass("single-dzsvcs_port_items")) {
       if (qucreative_options.portfolio_page_url) {
         var pgu = qucreative_options.portfolio_page_url;
@@ -2187,39 +1767,7 @@ jQuery(document).ready(function ($) {
       }
     }
     if (qcm._theContent) {
-      var _contpar = qcm._theContent.parent();
-      var posY = 0;
-      if (_contpar.attr("data-scroll-to")) {
-        if (_contpar.attr("data-scroll-to-pixel")) {
-          posY = Number(_contpar.attr("data-scroll-to-pixel"));
-        }
-        if (_contpar.attr("data-scroll-to") == "browser-bottom") {
-          posY = qcm.windowHeight;
-        }
-      } else {
-        var targetid = windowhref.split("#")[1];
-        var _c4 = null;
-        if (targetid) {
-          _c4 = $("#" + targetid).eq(0);
-          if (_c4 && _c4.length && _c4.offset()) {
-            posY = Number(_c4.offset().top) - 200;
-          }
-        }
-      }
-      if (posY) {
-        setTimeout(function () {
-          if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to) {
-            qcm._mainContainer.get(0).api_scrolly_to(posY, {
-              force_no_easing: "off",
-              show_scrollbar: false
-            });
-          } else {
-            if (_contpar.attr("data-scroll-to")) {
-              $(window).scrollTop(posY);
-            }
-          }
-        }, 1000);
-      }
+      (0, _featureCustomScroll.qucreative_view_featureCustomScroll)(qcm);
     }
 
     // -- todo: move to menu-type-11-12
@@ -2245,94 +1793,11 @@ jQuery(document).ready(function ($) {
         }
       }
     }
-
-    // todo: add
-    // if (window.dzswtl_init) {
-    //   window.dzswtl_init();
-    // }
-  }
-  function sanitize_image_src_from_background(arg) {
-    var aux32 = arg;
-    aux32 = aux32.replace("url(", "");
-    aux32 = aux32.replace(")", "");
-    aux32 = aux32.replace(/"/g, "");
-    return aux32;
-  }
-  function calculate_dims(pargs) {
-    // -- only executes
-
-    var margs = {
-      ignore_menu: false,
-      placew: true,
-      place_page: true,
-      redraw_canvas: true,
-      calculate_sidebar_main_is_bigger: true
-    };
-    if (pargs) {
-      margs = $.extend(margs, pargs);
-    }
-    global_image_data = null;
-    _body.removeClass("resizing");
-    window.qucreative_calculate_dims_actions.forEach(reinitAction => {
-      reinitAction();
-    });
-    if (_body.hasClass("page-is-fullwidth")) {
-      if (_body.hasClass("menu-type-9") || _body.hasClass("menu-type-10")) {
-        setTimeout(function () {
-          if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_handle_wheel) {
-            qcm._mainContainer.get(0).api_handle_wheel();
-          }
-        }, 100);
-      }
-    }
-    if (window.qucreative_options.bg_isparallax == "on") {
-      setTimeout(function () {
-        if (qcm._mainBg.get(0) && qcm._mainBg.get(0).api_handle_scroll) {
-          qcm._mainBg.get(0).api_handle_scroll(null, {
-            from: "qcre",
-            force_th: qcm.bigimageheight,
-            force_ch: qcm.windowHeight
-          });
-        }
-      }, 100);
-    }
-    $(".height-same-as-width").each(function () {
-      var _t23 = $(this);
-      _t23.height(_t23.width());
-    });
-    if (window.preseter_init) {
-      var _cach = $(".preseter-content-con").eq(0);
-      var _cach_cont = _cach.find(".the-content").eq(0);
-      _cach_cont.scrollTop(0);
-      if (110 + _cach_cont.find(".the-content-inner-inner").height() + 56 > qcm.windowHeight) {
-        _cach.outerHeight(qcm.windowHeight - 110);
-        _cach.removeClass("auto-height");
-        _cach.addClass("needs-scrolling");
-        _cach_cont.find(".the-content-inner-inner").css({
-          "padding-right": 39 - native_scrollbar_width + "px",
-          width: 490 - native_scrollbar_width + "px"
-        });
-        _cach_cont.find(".the-bg").eq(0).css({});
-      } else {
-        _cach.css("height", "auto");
-        _cach.addClass("auto-height");
-        _cach.removeClass("needs-scrolling");
-        _cach_cont.find(".the-content-inner-inner").css({
-          "padding-right": "",
-          width: ""
-        });
-        _cach_cont.find(".the-bg").eq(0).css({
-          right: "",
-          width: ""
-        });
-      }
-    }
   }
 });
-qcreative_curr_html = "";
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
-},{"./_checkLazyLoading":1,"./_qu-actions":2,"./_qu-view":5,"./_qu-view-animation":3,"./_qu-view-determine-page":4,"./_qucreative-class":6,"./_qucreative.config":7,"./js/check-lazyloading-images/_check-lazyloading-images":10,"./js/common/_helpers":11,"./js/features/_advancedScrollers":13,"./js/features/_quViewLayout":14,"./js/init-progress-markers/_init-progress-markers":15}]},{},[16])
+},{"./_checkLazyLoading":1,"./_qu-actions":2,"./_qu-view":5,"./_qu-view-animation":3,"./_qu-view-determine-page":4,"./_qucreative-class":6,"./_qucreative.config":7,"./js/check-lazyloading-images/_check-lazyloading-images":10,"./js/common/_helpers":11,"./js/features/_advancedScrollers":13,"./js/features/_quViewLayout":14,"./js/init-progress-markers/_init-progress-markers":15,"./js/view/_feature-custom-scroll":16}]},{},[17])
 
 
 //# sourceMappingURL=qucreative.js.map
