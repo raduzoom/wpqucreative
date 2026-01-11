@@ -125,7 +125,7 @@ function qucreative_generate_inline_javascript_for_options() {
     'type' => 'main_options',
     'images_arr' => $bg_images,
     'bg_slideshow_time' => $bg_slideshow_time,
-    'site_url' => site_url(),
+    'site_url' => home_url('/'),
     'theme_url' => QUCREATIVE_THEME_URL,
     'is_customize_preview' => $is_customize_preview,
     'gallery_w_thumbs_autoplay_videos' => 'off',
@@ -158,7 +158,7 @@ function qucreative_generate_inline_javascript_for_options() {
 
 
 
-  $qucreative_main->theme_data['js_options']['base_url'] = get_site_url();
+  $qucreative_main->theme_data['js_options']['base_url'] = home_url('/');
 
 
   // todo: inline

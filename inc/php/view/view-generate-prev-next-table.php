@@ -236,7 +236,7 @@ function qucreative_generate_prev_next_table($arg=0, $pargs = array()): string {
 
 
 
-  $link = site_url();
+  $link = home_url();
 
   if(isset( $pagePort->ID )){
     $link = get_permalink( $pagePort->ID );

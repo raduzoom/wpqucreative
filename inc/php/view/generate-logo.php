@@ -113,7 +113,7 @@ function qucreative_view_generateLogo() {
 
 
     ?>">
-        <a class="custom-a" rel="home" href="<?php echo esc_url(site_url()); ?>">
+        <a class="custom-a" rel="home" href="<?php echo esc_url(home_url('/')); ?>">
           <?php
           if ($isDivLogo) {
             ?>
