@@ -7,7 +7,7 @@
   padding: 11px 18px;
   margin-top: 0;
   margin-bottom: 0;
-  outline: none;
+  /* outline: none; - Removed for accessibility - keyboard focus must be visible */
   $transition-property: color, border, background;
   $transition-duration: 0.3s;
   $transition-timing: ease-out;

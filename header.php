@@ -94,6 +94,7 @@ do_action('qucreative_hook_before_html');
 </head>
 <body <?php body_class(); ?> >
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#main-content"><?php esc_html_e('Skip to content', 'qucreative'); ?></a>
 
 <div class="main-container transition-<?php echo $qucreative_main->get_theme_mod_and_sanitize('bg_transition') ?>">
   <div class="main-bg-con main-bg-con--placeholder">
@@ -169,7 +170,7 @@ do_action('qucreative_hook_before_html');
 
           <div class="the-content-inner <?php
           quCreative_view_getTheContentInnerClasses()
-          ?>"><?php
+          ?>" id="main-content"><?php
 
 
             do_action('qucreative_hook_the_content_inner_start');

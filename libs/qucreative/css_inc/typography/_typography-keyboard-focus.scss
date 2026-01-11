@@ -1,0 +1,98 @@
+/**
+ * Accessibility Styles for Keyboard Navigation
+ * WordPress.org requirement: Visual keyboard focus highlighting
+ */
+
+/* Skip Link Styles - already in _typography-accesibility.scss */
+
+/* Keyboard Focus Styles for Links and Buttons */
+a:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+.antfarm-btn:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
+
+/* Navigation Menu Focus Styles */
+.the-actual-nav a:focus,
+ul.the-actual-nav li a:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+  background-color: rgba(0, 115, 170, 0.1);
+}
+
+/* Form Field Focus Styles */
+input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):focus,
+textarea:focus,
+select:focus,
+.search-field:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+  border-color: #0073aa;
+}
+
+/* Ensure checkbox and radio buttons have visible focus */
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+}
+
+/* Widget Links Focus */
+.widget a:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 1px;
+}
+
+/* Blog Navigation and Pagination Focus */
+.qucreative-pagination a:focus,
+.portfolio-link--title:focus,
+.portfolio-link--toback a:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+}
+
+/* Maintain focus visibility for custom styled buttons */
+.antfarm-btn:focus:not(:active) {
+  outline: 2px solid #0073aa !important;
+  outline-offset: 2px !important;
+}
+
+/* Logo Focus */
+.logo-con a:focus {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+}
+
+/* Responsive Menu Button Focus */
+.responsive-info-btn-con:focus,
+.responsive-info-btn-con figure:focus-within {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
+}
+
+/* Ensure focus is visible on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  a:focus,
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 3px solid #0073aa;
+    outline-offset: 3px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  a:focus,
+  button:focus,
+  input:focus {
+    outline-width: 3px;
+    outline-color: currentColor;
+  }
+}

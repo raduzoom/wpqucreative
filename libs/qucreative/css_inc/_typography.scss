@@ -275,9 +275,11 @@ p {
   margin-bottom: 10px;
 }
 @import "typography/typography-accesibility";
+@import "typography/typography-keyboard-focus";
 
 /* Do not show the outline on the skip link target. */
-#content[tabindex="-1"]:focus {
+#content[tabindex="-1"]:focus,
+#main-content[tabindex="-1"]:focus {
   outline: 0;
 }
 
@@ -359,14 +361,17 @@ figure.aligncenter {
 }
 
 
+/* Links - removed outline:none for accessibility compliance */
 a {
-  outline: none;
   text-decoration: none;
 }
 
-a:focus,
-a:visited {
+/* Only remove outline when using mouse (not keyboard) */
+a:focus:not(:focus-visible) {
   outline: none;
+}
+
+a:visited {
   text-decoration: none;
 }
 
