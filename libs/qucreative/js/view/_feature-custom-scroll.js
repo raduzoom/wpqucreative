@@ -4,6 +4,8 @@
  */
 export function qucreative_view_featureCustomScroll(qcm) {
 
+  const $ = jQuery;
+
   const _contpar = qcm._theContent.parent();
   const windowhref = window.location.href;
 
@@ -29,12 +31,7 @@ export function qucreative_view_featureCustomScroll(qcm) {
 
   if (posY) {
     setTimeout(function () {
-      if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to) {
-        qcm._mainContainer.get(0).api_scrolly_to(posY, {
-          force_no_easing: "off",
-          show_scrollbar: false,
-        });
-      } else {
+      if (!(qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to)) {
         if (_contpar.attr("data-scroll-to")) {
           $(window).scrollTop(posY);
         }

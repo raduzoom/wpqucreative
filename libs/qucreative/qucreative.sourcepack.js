@@ -69,13 +69,6 @@ window.scroll_top_object = { val: 0 };
 
 
 jQuery(document).ready(function ($) {
-  Math.easeIn = function (t, b, c, d) {
-    return -c * (t /= d) * (t - 2) + b;
-  };
-  Math.easeOut = function (t, b, c, d) {
-    t /= d;
-    return -c * t * (t - 2) + b;
-  };
 
   if (window.qcreative_document_ready_ed) {
     return false;
@@ -93,14 +86,10 @@ jQuery(document).ready(function ($) {
   const _body = $("body");
 
   var newclass_content_con = "";
-  var
-    thumbs_padding_left_and_right = 40,
-    thumbs_list_padding_right = 0,
-    menu_height = 0;
 
 
 
-  const qcm = new QuCreative($, reinit, goto_bg);
+  const qcm = new QuCreative($, qucreative_lifecycle_reinit, goto_bg);
 
   window.quCreative_main = qcm;
 
@@ -270,7 +259,7 @@ jQuery(document).ready(function ($) {
     determine_page();
 
 
-    window.qucreative_reinit = reinit;
+    window.qucreative_reinit = qucreative_lifecycle_reinit;
 
 
 
@@ -317,7 +306,7 @@ jQuery(document).ready(function ($) {
    * todo: we should add an action from AJAX
    * @param pargs
    */
-  function reinit(pargs) {
+  function qucreative_lifecycle_reinit(pargs) {
     console.groupCollapsed("[lifecycle] reinit");
     console.trace();
     console.groupEnd();
@@ -433,32 +422,8 @@ jQuery(document).ready(function ($) {
       qcm.view_menuWidth = 0;
       qcm.view_menuWidth_onRight = 0;
       qcm.menu_content_space = 0;
-      menu_height = 135;
-      thumbs_padding_left_and_right = 40;
-      thumbs_list_padding_right = 20;
 
-      if (
-        _body.hasClass("menu-type-13") ||
-        _body.hasClass("menu-type-14") ||
-        _body.hasClass("menu-type-15") ||
-        _body.hasClass("menu-type-16") ||
-        _body.hasClass("menu-type-17") ||
-        _body.hasClass("menu-type-18")
-      ) {
-        menu_height = 100;
-      }
 
-      // if (
-      //   quCreative_main._theContent &&
-      //   (quCreative_main._theContent.parent().prev().length == 0 ||
-      //     quCreative_main._theContent
-      //       .parent()
-      //       .prev()
-      //       .hasClass("q-creative--nav-con") == false) &&
-      //     quCreative_main._mainContainer.children().eq(0).hasClass("qucreative--nav-con") == false
-      // ) {
-      //   quCreative_main._mainContainer.prepend($(".qucreative--nav-con").eq(0));
-      // }
     }
 
 

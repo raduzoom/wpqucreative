@@ -26,7 +26,7 @@ jQuery(document).ready(function ($) {
   let  initial_sidebar_offset = 0,
       initial_theContent_offset = 0;
 
-  function reinit(pargs) {
+  function qucreative_lifecycle_reinit_nav(pargs) {
     var margs = Object.assign(
       {
         call_from: "default",
@@ -182,7 +182,7 @@ jQuery(document).ready(function ($) {
 
   let duration_viy = 10;
   window.qucreative_handle_resize_actions.push(handle_resize);
-  window.qucreative_actions_reinit.push(reinit);
+  window.qucreative_actions_reinit.push(qucreative_lifecycle_reinit_nav);
 
 
 

@@ -1433,6 +1433,7 @@ exports.qucreative_view_featureCustomScroll = qucreative_view_featureCustomScrol
  * @param {QuCreative} qcm
  */
 function qucreative_view_featureCustomScroll(qcm) {
+  const $ = jQuery;
   const _contpar = qcm._theContent.parent();
   const windowhref = window.location.href;
   let posY = 0;
@@ -1455,12 +1456,7 @@ function qucreative_view_featureCustomScroll(qcm) {
   }
   if (posY) {
     setTimeout(function () {
-      if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to) {
-        qcm._mainContainer.get(0).api_scrolly_to(posY, {
-          force_no_easing: "off",
-          show_scrollbar: false
-        });
-      } else {
+      if (!(qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_scrolly_to)) {
         if (_contpar.attr("data-scroll-to")) {
           $(window).scrollTop(posY);
         }
@@ -1521,13 +1517,6 @@ window.scroll_top_object = {
   val: 0
 };
 jQuery(document).ready(function ($) {
-  Math.easeIn = function (t, b, c, d) {
-    return -c * (t /= d) * (t - 2) + b;
-  };
-  Math.easeOut = function (t, b, c, d) {
-    t /= d;
-    return -c * t * (t - 2) + b;
-  };
   if (window.qcreative_document_ready_ed) {
     return false;
   } else {
@@ -1540,10 +1529,7 @@ jQuery(document).ready(function ($) {
   var page = 3;
   const _body = $("body");
   var newclass_content_con = "";
-  var thumbs_padding_left_and_right = 40,
-    thumbs_list_padding_right = 0,
-    menu_height = 0;
-  const qcm = new _qucreativeClass.QuCreative($, reinit, _quViewAnimation.goto_bg);
+  const qcm = new _qucreativeClass.QuCreative($, qucreative_lifecycle_reinit, _quViewAnimation.goto_bg);
   window.quCreative_main = qcm;
   var old_qcre_options = null;
   var selector_con_cloned = false;
@@ -1630,7 +1616,7 @@ jQuery(document).ready(function ($) {
       }
     }
     (0, _quViewDeterminePage.determine_page)();
-    window.qucreative_reinit = reinit;
+    window.qucreative_reinit = qucreative_lifecycle_reinit;
     (0, _quActions.qu_setupActions)();
     _body.addClass("menu-scroll-method-" + qucreative_options.menu_scroll_method);
     $(window).bind("resize", qcm.handle_resize.bind(qcm));
@@ -1655,7 +1641,7 @@ jQuery(document).ready(function ($) {
    * todo: we should add an action from AJAX
    * @param pargs
    */
-  function reinit(pargs) {
+  function qucreative_lifecycle_reinit(pargs) {
     console.groupCollapsed("[lifecycle] reinit");
     console.trace();
     console.groupEnd();
@@ -1718,24 +1704,6 @@ jQuery(document).ready(function ($) {
       qcm.view_menuWidth = 0;
       qcm.view_menuWidth_onRight = 0;
       qcm.menu_content_space = 0;
-      menu_height = 135;
-      thumbs_padding_left_and_right = 40;
-      thumbs_list_padding_right = 20;
-      if (_body.hasClass("menu-type-13") || _body.hasClass("menu-type-14") || _body.hasClass("menu-type-15") || _body.hasClass("menu-type-16") || _body.hasClass("menu-type-17") || _body.hasClass("menu-type-18")) {
-        menu_height = 100;
-      }
-
-      // if (
-      //   quCreative_main._theContent &&
-      //   (quCreative_main._theContent.parent().prev().length == 0 ||
-      //     quCreative_main._theContent
-      //       .parent()
-      //       .prev()
-      //       .hasClass("q-creative--nav-con") == false) &&
-      //     quCreative_main._mainContainer.children().eq(0).hasClass("qucreative--nav-con") == false
-      // ) {
-      //   quCreative_main._mainContainer.prepend($(".qucreative--nav-con").eq(0));
-      // }
     }
     _body.removeClass("page-title-no-antetitle");
     window.qucreative_actions_reinit.forEach(reinitAction => {
