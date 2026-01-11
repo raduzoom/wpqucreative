@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
       initial_theContent_offset = 0;
 
   function qucreative_lifecycle_reinit_nav(pargs) {
-    var margs = Object.assign(
+    const margs = Object.assign(
       {
         call_from: "default",
       },

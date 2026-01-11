@@ -86,6 +86,16 @@ export class QuCreative{
     this.$ = $;
   }
 
+  viewCheckFullWidth(){
+
+    const _body = this._body;
+    if (this.viewPageIsFullwidth) {
+      _body.addClass("page-is-fullwidth");
+    }else{
+
+      _body.removeClass("page-is-fullwidth");
+    }
+  }
   qcreative_overwrite_mainoptions(arg) {
     const $ = this.$;
 

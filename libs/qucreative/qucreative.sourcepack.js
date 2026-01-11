@@ -114,6 +114,7 @@ jQuery(document).ready(function ($) {
   }
 
 
+  const isiPad = navigator.userAgent.match(/iPad/i) != null;
   if (isiPad) {
     _body.addClass("is-ipad");
   }
@@ -319,80 +320,27 @@ jQuery(document).ready(function ($) {
       pargs || {},
     );
 
-    if (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6")) {
-      _body.addClass("menu-is-sticky");
-    }
 
-    var auxa = String(window.location.href).split("/");
-
-    var aux2 = auxa[auxa.length - 1];
-
-
-    quSetupCheckLazyLoading();
-
-    if (window.qucreative_options) {
-      // -- then it is WordPress
-      if (window.qucreative_options.site_url) {
-        aux2 = window.location.href;
-      }
-    }
 
 
     setTimeout(function () {
       _body.removeClass("qucreative-view-ajax-animation-transitioning");
 
-      $(".widget_text .textwidget").addClass("font-group-6");
     }, 100);
     _body.removeClass("qucreative-view-animation-transitioning");
     _body.removeClass("page-is-fullwidth");
 
-    if (margs.call_from == "init()") {
-      if (
-        window.qucreative_options.bg_isparallax == "on" &&
-        _body.hasClass("page-homepage") == false &&
-        _body.hasClass("page-gallery-w-thumbs") == false
-      ) {
-        setTimeout(function () {
-          if (qcm._mainBgTransitioning) {
-            qcm._mainBgTransitioning.addClass("dzsparallaxer");
-            qcm._mainBgTransitioning
-              .children(".main-bg")
-              .addClass("dzsparallaxer--target");
-          }
-        }, 500);
-      }
-    }
 
-    if (qcm._theContent) {
-
-
-;
-
-;
-;
-
-
-
-
-    }
 
 
     if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("qucreative-view-fullwidth")) {
       qcm.viewPageIsFullwidth = true;
     }
 
-    if (
-      qcm.page == "page-gallery-w-thumbs" ||
-      qcm.page == "page-homepage"
-    ) {
-      qcm.viewPageIsFullwidth = true;
-    }
 
     selector_con_cloned = false;
-    if (qcm.viewPageIsFullwidth) {
-      _body.addClass("page-is-fullwidth");
 
-    }
+    qcm.viewCheckFullWidth();
 
 
 
@@ -407,24 +355,6 @@ jQuery(document).ready(function ($) {
     calculate_menu_width(qcm);
 
 
-    if (
-      _body.hasClass("menu-type-5") ||
-      _body.hasClass("menu-type-6") ||
-      _body.hasClass("menu-type-7") ||
-      _body.hasClass("menu-type-8") ||
-      _body.hasClass("menu-type-11")
-    ) {
-      qcm.menu_content_space = 30;
-    }
-    if (
-      qcm.viewMenuMacroType === 'horizontal'
-    ) {
-      qcm.view_menuWidth = 0;
-      qcm.view_menuWidth_onRight = 0;
-      qcm.menu_content_space = 0;
-
-
-    }
 
 
 
@@ -433,47 +363,18 @@ jQuery(document).ready(function ($) {
     window.qucreative_actions_reinit.forEach((reinitAction) => {
       reinitAction(margs);
     });
-    var i23 = 0;
 
 
 
 
 
-    // -- page gallery with thumbs reinit
-    if (qcm._mainContainer.get(0) && qcm._mainContainer.get(0).api_toggle_resize) {
-      qcm._mainContainer.get(0).api_toggle_resize();
-
-      setTimeout(function () {
-        qcm._mainContainer.get(0).api_toggle_resize();
-      }, 900);
-    }
 
 
 
 
-
-    if (
-      _body.hasClass("single-quextend_port_items") ||
-      _body.hasClass("single-dzsvcs_port_items")
-    ) {
-      if (qucreative_options.portfolio_page_url) {
-        var pgu = qucreative_options.portfolio_page_url;
-
-
-        const $portfolioPageLinks = $('a[href="' + pgu + '"]');
-        $portfolioPageLinks
-          .parent()
-          .addClass("current-menu-item");
-        $portfolioPageLinks
-          .parent()
-          .parent()
-          .parent()
-          .addClass("current-menu-item");
-      }
-    }
     if (_body.hasClass("page-blogsingle")) {
       if (qucreative_options.blog_posts_url) {
-        var pgu = qucreative_options.blog_posts_url;
+        const pgu = qucreative_options.blog_posts_url;
 
         const $blogPageLinks = $('a[href="' + pgu + '"]');
         $blogPageLinks
@@ -488,39 +389,11 @@ jQuery(document).ready(function ($) {
     }
 
     if (qcm._theContent) {
-
       qucreative_view_featureCustomScroll(qcm);
     }
 
 
-    // -- todo: move to menu-type-11-12
-    if (_body.hasClass("qucreative-overlay-menu")) {
-      if ($(".menu-toggler-target").eq(0).hasClass("active")) {
-        setTimeout(function () {
-          $(".q-close-btn").trigger("click");
-        }, 100);
-      }
-    }
 
-    if (margs.call_from != "setup_newBgImage() _ samePageTransition") {
-      qcm.page_portfolio_requires_move_filters = false;
-    }
-    if (qcm.page === "page-portfolio") {
-      if (
-        qcm._theContent &&
-        qcm._theContent.parent().hasClass("qucreative-view-fullwidth")
-      ) {
-        if (qcm._theContent.find(".selector-con").length) {
-          qcm.page_portfolio_requires_move_filters = true;
-        }
-      }
-
-      if (_body.hasClass("qucreative-horizontal-menu")) {
-        if (!_body.hasClass("menu-is-sticky")) {
-          qcm.page_portfolio_requires_move_filters = false;
-        }
-      }
-    }
 
 
   }
@@ -547,5 +420,4 @@ jQuery(document).ready(function ($) {
 
 
 
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
