@@ -1,8 +1,141 @@
 <?php
 
+if (function_exists('qucreative_sanitize_text') == false) {
+  /**
+   * Sanitize text field
+   * 
+   * @param string $value The value to sanitize
+   * @return string Sanitized value
+   */
+  function qucreative_sanitize_text($value) {
+    return sanitize_text_field($value);
+  }
+}
+
+if (function_exists('qucreative_sanitize_textarea') == false) {
+  /**
+   * Sanitize textarea field
+   * 
+   * @param string $value The value to sanitize
+   * @return string Sanitized value
+   */
+  function qucreative_sanitize_textarea($value) {
+    return sanitize_textarea_field($value);
+  }
+}
+
+if (function_exists('qucreative_sanitize_url') == false) {
+  /**
+   * Sanitize URL field
+   * 
+   * @param string $value The value to sanitize
+   * @return string Sanitized value
+   */
+  function qucreative_sanitize_url($value) {
+    return esc_url_raw($value);
+  }
+}
+
+if (function_exists('qucreative_sanitize_color') == false) {
+  /**
+   * Sanitize color field (hex color)
+   * 
+   * @param string $value The value to sanitize
+   * @return string Sanitized value
+   */
+  function qucreative_sanitize_color($value) {
+    // Use WordPress core function if available (WP 3.4+)
+    if (function_exists('sanitize_hex_color')) {
+      return sanitize_hex_color($value);
+    }
+    
+    // Fallback for older WordPress versions
+    $value = ltrim($value, '#');
+    
+    if (ctype_xdigit($value) && (strlen($value) == 6 || strlen($value) == 3)) {
+      return '#' . $value;
+    }
+    
+    return '';
+  }
+}
+
+if (function_exists('qucreative_sanitize_integer') == false) {
+  /**
+   * Sanitize integer field
+   * 
+   * @param mixed $value The value to sanitize
+   * @return int Sanitized value
+   */
+  function qucreative_sanitize_integer($value) {
+    return absint($value);
+  }
+}
+
+if (function_exists('qucreative_sanitize_checkbox') == false) {
+  /**
+   * Sanitize checkbox field
+   * 
+   * @param mixed $value The value to sanitize
+   * @return bool Sanitized value
+   */
+  function qucreative_sanitize_checkbox($value) {
+    return (bool) $value;
+  }
+}
+
+if (function_exists('qucreative_sanitize_select') == false) {
+  /**
+   * Sanitize select field - ensures value is in valid choices
+   * 
+   * @param mixed $value The value to sanitize
+   * @param WP_Customize_Setting $setting The setting object
+   * @return mixed Sanitized value
+   */
+  function qucreative_sanitize_select($value, $setting) {
+    // Get the setting's control
+    $control = $setting->manager->get_control($setting->id);
+    
+    // If control exists and has choices, validate against them
+    if ($control && isset($control->choices)) {
+      $choices = $control->choices;
+      
+      // If the value is in the list of valid choices, return it
+      if (array_key_exists($value, $choices)) {
+        return $value;
+      }
+    }
+    
+    // Otherwise, return the default
+    return $setting->default;
+  }
+}
+
+if (function_exists('qucreative_sanitize_json') == false) {
+  /**
+   * Sanitize JSON field
+   * 
+   * @param string $value The value to sanitize
+   * @return string Sanitized JSON string or empty string if invalid
+   */
+  function qucreative_sanitize_json($value) {
+    // Attempt to decode the JSON
+    $decoded = json_decode($value);
+    
+    // If it's valid JSON, return it
+    if (json_last_error() === JSON_ERROR_NONE) {
+      return $value;
+    }
+    
+    // Otherwise return empty string
+    return '';
+  }
+}
+
+// Legacy function for backward compatibility - now just an alias
 if (function_exists('qucreative_return_false_value') == false) {
   function qucreative_return_false_value($value) {
-    return $value;
+    return qucreative_sanitize_text($value);
   }
 }
 

@@ -33,37 +33,6 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
 
   $po = get_post($arg);
 
-  // -- detect media type from post format (image)
-  if ($po) {
-    if ($po->post_type == 'post') {
-      if (get_post_format($arg) == 'image') {
-        $postContent = $po->post_content;
-
-        if (strpos($postContent, '<img') !== false) {
-          $post_media_type = 'image';
-
-
-          preg_match_all("/<img.*?src=[\"|'](.*?)[\"|'].*?>/", $postContent, $matches);;
-
-
-          $to_replace = '';
-          if (isset($matches[0][0]) && $matches[0][0]) {
-            if (isset($matches[1][0]) && $matches[1][0]) {
-              $post_media = $matches[1][0];
-              $to_replace = $matches[0][0];
-            }
-          }
-
-          global $post;
-          if ($to_replace && $post && $post->ID === $arg) {
-            $qucreative_main->theme_data['replace_string_in_content_with_nada'] = $to_replace;
-          }
-
-        }
-      }
-    }
-  }
-
 
   // -- detect media type from post_media URL
   if ($post_media) {

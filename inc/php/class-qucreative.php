@@ -226,14 +226,110 @@ class QuCreative {
         }
 
       }
+      
+      // Determine appropriate sanitize callback based on field characteristics
+      $sanitize_callback = self::get_sanitize_callback_for_field($cf);
+      
       $wp_customize->add_setting(
         $cf['name'],
         array_merge($args, array(
-          'sanitize_callback' => 'qucreative_return_false_value',
+          'sanitize_callback' => $sanitize_callback,
         ))
       );
     }
 
+  }
+  
+  /**
+   * Get the appropriate sanitize callback for a customizer field
+   * 
+   * @param array $cf The customizer field configuration
+   * @return string The sanitize callback function name
+   */
+  static function get_sanitize_callback_for_field($cf) {
+    $field_name = $cf['name'];
+    
+    // Field-specific sanitization rules
+    $sanitize_rules = array(
+      // URLs and images
+      'logo' => 'qucreative_sanitize_url',
+      'background_image' => 'qucreative_sanitize_url',
+      
+      // Colors
+      'highlight_color' => 'qucreative_sanitize_color',
+      'border_color' => 'qucreative_sanitize_color',
+      'text_color' => 'qucreative_sanitize_color',
+      
+      // Numeric values
+      'logo_width' => 'qucreative_sanitize_integer',
+      'logo_height' => 'qucreative_sanitize_integer',
+      'logo_x_custom' => 'qucreative_sanitize_integer',
+      'logo_y_custom' => 'qucreative_sanitize_integer',
+      'border_width' => 'qucreative_sanitize_integer',
+      'content_add_extra_pixels' => 'qucreative_sanitize_integer',
+      'section_margin_bottom' => 'qucreative_sanitize_integer',
+      'bg_slideshow_time' => 'qucreative_sanitize_integer',
+      'content_environment_opacity' => 'qucreative_sanitize_integer',
+      
+      // Textareas
+      'copyright_textbox' => 'qucreative_sanitize_textarea',
+      
+      // Select/dropdowns
+      'logo_x' => 'qucreative_sanitize_text',
+      'logo_y' => 'qucreative_sanitize_text',
+      'bg_transition' => 'qucreative_sanitize_text',
+      'menu_type' => 'qucreative_sanitize_text',
+      'page_title_align' => 'qucreative_sanitize_text',
+      
+      // JSON data
+      'social_icons' => 'qucreative_sanitize_json',
+      'font_data' => 'qucreative_sanitize_json',
+      
+      // Checkboxes/booleans
+      'enable_ajax' => 'qucreative_sanitize_checkbox',
+    );
+    
+    // If we have a specific rule for this field, use it
+    if (isset($sanitize_rules[$field_name])) {
+      return $sanitize_rules[$field_name];
+    }
+    
+    // Check for field type if specified in config
+    if (isset($cf['type'])) {
+      switch ($cf['type']) {
+        case 'url':
+          return 'qucreative_sanitize_url';
+        case 'color':
+          return 'qucreative_sanitize_color';
+        case 'textarea':
+          return 'qucreative_sanitize_textarea';
+        case 'integer':
+        case 'number':
+          return 'qucreative_sanitize_integer';
+        case 'checkbox':
+          return 'qucreative_sanitize_checkbox';
+        case 'select':
+          return 'qucreative_sanitize_select';
+        case 'json':
+          return 'qucreative_sanitize_json';
+      }
+    }
+    
+    // Pattern matching for common field names
+    if (strpos($field_name, '_color') !== false) {
+      return 'qucreative_sanitize_color';
+    }
+    
+    if (strpos($field_name, '_url') !== false || strpos($field_name, '_image') !== false) {
+      return 'qucreative_sanitize_url';
+    }
+    
+    if (strpos($field_name, '_width') !== false || strpos($field_name, '_height') !== false) {
+      return 'qucreative_sanitize_integer';
+    }
+    
+    // Default to text sanitization
+    return 'qucreative_sanitize_text';
   }
 
   function get_theme_mod_and_sanitize($arglab, $args = array()){

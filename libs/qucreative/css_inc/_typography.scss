@@ -232,7 +232,6 @@ td, th {
 
 abbr[title] {
   text-decoration: none;
-  // border-bottom:0;
 }
 
 
@@ -361,19 +360,12 @@ figure.aligncenter {
 }
 
 
-/* Links - removed outline:none for accessibility compliance */
-a {
-  text-decoration: none;
-}
 
 /* Only remove outline when using mouse (not keyboard) */
 a:focus:not(:focus-visible) {
   outline: none;
 }
 
-a:visited {
-  text-decoration: none;
-}
 
 a:not(.custom-a):visited {
 }
