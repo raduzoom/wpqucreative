@@ -95,12 +95,12 @@ function qucreative_check_if_post_meta_below_must_be_added(array $margs = array(
 
     if (is_array($cats) && isset($cats[0]) && $cats[0] != 1) {
 
-      $cats_str = ' / ' . esc_html__("in", QUCREATIVE_LANG_ID) . ' ';
+      $cats_str = ' / ' . esc_html__("in", 'qucreative') . ' ';
 
       $i3 = 0;
 
 
-      $cats_str = '<div class="meta-left h-group-1">' . esc_html__("CATEGORIES", QUCREATIVE_LANG_ID) . '</div>
+      $cats_str = '<div class="meta-left h-group-1">' . esc_html__("CATEGORIES", 'qucreative') . '</div>
   <div class="meta-right h-group-1">';
 
       foreach ($cats as $catid) {

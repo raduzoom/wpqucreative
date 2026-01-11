@@ -266,7 +266,7 @@ class QuCreativeView {
 
         $postForMeta = get_post($posts_page);
       } else {
-        $title = esc_html__("Blog", QUCREATIVE_LANG_ID);
+        $title = esc_html__("Blog", 'qucreative');
 
         $postForMeta = null;
 

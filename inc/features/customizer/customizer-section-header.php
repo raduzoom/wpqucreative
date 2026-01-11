@@ -52,7 +52,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $lab, array(
     'section'     => $section_id,
     'priority' => ++$indPriority,
-    'label'       => esc_html__("Logo", QUCREATIVE_ID),
+    'label'       => esc_html__("Logo", 'qucreative'),
   ) ) );
 
 
@@ -67,13 +67,13 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control(
     $lab,
     array(
-      'label' => esc_html__("Logo",QUCREATIVE_ID).' X '.esc_html__("Position",QUCREATIVE_ID),
+      'label' => esc_html__("Logo",'qucreative').' X '.esc_html__("Position",'qucreative'),
       'section' => $section_id,
       'priority' => ++$indPriority,
       'type' => 'select',
       'choices' => array(
-        'default'=>esc_html__("Default",QUCREATIVE_ID).'',
-        'custom_position'=>esc_html__("Custom Position",QUCREATIVE_ID).'',
+        'default'=>esc_html__("Default",'qucreative').'',
+        'custom_position'=>esc_html__("Custom Position",'qucreative').'',
 
 
 
@@ -88,7 +88,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
 
   add_action( 'customize_render_control_logo_x_custom', function(){
     ?>
-    <div class="sidenote"><?php echo esc_html__("By default, logo will center horizontally on vertical menus.",QUCREATIVE_ID); ?></div>
+    <div class="sidenote"><?php echo esc_html__("By default, logo will center horizontally on vertical menus.",'qucreative'); ?></div>
     <?php
   });
 
@@ -103,7 +103,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
       $wp_customize,
       $lab,
       array(
-        'label' => esc_html__("Logo",QUCREATIVE_ID).' X '.esc_html__("Position",QUCREATIVE_ID).' ('.esc_html__("in",QUCREATIVE_ID).' px)',
+        'label' => esc_html__("Logo",'qucreative').' X '.esc_html__("Position",'qucreative').' ('.esc_html__("in",'qucreative').' px)',
         'section'    => $section_id,
         'priority' => ++$indPriority,
         'type' => 'text',
@@ -125,8 +125,8 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
 
 
   $choices_logo = array(
-    'default'=>esc_html__("Default",QUCREATIVE_ID).'',
-    'custom_position'=>esc_html__("Custom Position",QUCREATIVE_ID).'',
+    'default'=>esc_html__("Default",'qucreative').'',
+    'custom_position'=>esc_html__("Custom Position",'qucreative').'',
 
   );
 
@@ -135,7 +135,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control(
     $lab,
     array(
-      'label' => esc_html__("Logo",QUCREATIVE_ID).' Y '.esc_html__("Position",QUCREATIVE_ID),
+      'label' => esc_html__("Logo",'qucreative').' Y '.esc_html__("Position",'qucreative'),
       'priority' => ++$indPriority,
       'section' => $section_id,
       'type' => 'select',
@@ -160,7 +160,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
 
   add_action( 'customize_render_control_logo_y_custom', function(){
     ?>
-    <div class="sidenote"><?php echo esc_html__("By default, logo will center vertically on horizontal menus.",QUCREATIVE_ID); ?></div>
+    <div class="sidenote"><?php echo esc_html__("By default, logo will center vertically on horizontal menus.",'qucreative'); ?></div>
     <?php
   });
 
@@ -178,7 +178,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
       $wp_customize,
       $lab,
       array(
-        'label' => esc_html__("Logo",QUCREATIVE_ID).' Y '.esc_html__("Position",QUCREATIVE_ID).' ('.esc_html__("in",QUCREATIVE_ID).' px)',
+        'label' => esc_html__("Logo",'qucreative').' Y '.esc_html__("Position",'qucreative').' ('.esc_html__("in",'qucreative').' px)',
         'section'    => $section_id,
         'priority' => ++$indPriority,
         'type' => 'text',
@@ -199,7 +199,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control(
     $lab,
     array(
-      'label' => esc_html__("Logo Width",QUCREATIVE_ID),
+      'label' => esc_html__("Logo Width",'qucreative'),
       'section' => $section_id,
       'priority' => ++$indPriority,
       'type' => 'text',
@@ -215,7 +215,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control(
     $lab,
     array(
-      'label' => esc_html__("Logo Height",QUCREATIVE_ID),
+      'label' => esc_html__("Logo Height",'qucreative'),
       'section' => $section_id,
       'priority' => ++$indPriority,
       'type' => 'text',
@@ -235,7 +235,7 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
   $wp_customize->add_control(
     $lab,
     array(
-      'label' => esc_html__("Copyright text",QUCREATIVE_ID),
+      'label' => esc_html__("Copyright text",'qucreative'),
       'section' => $section_id,
       'priority' => ++$indPriority,
       'type' => 'text',
@@ -248,14 +248,14 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
 
 
   $arr_headings = array(
-    'h1'=>esc_html__("Heading",QUCREATIVE_ID).' 1',
-    'h2'=>esc_html__("Heading",QUCREATIVE_ID).' 2',
-    'h3'=>esc_html__("Heading",QUCREATIVE_ID).' 3',
-    'h4'=>esc_html__("Heading",QUCREATIVE_ID).' 4',
-    'h5'=>esc_html__("Heading",QUCREATIVE_ID).' 5',
-    'h6'=>esc_html__("Heading",QUCREATIVE_ID).' 6',
-    'h-group-1'=>esc_html__("Heading Group",QUCREATIVE_ID).' 1',
-    'h-group-2'=>esc_html__("Heading Group",QUCREATIVE_ID).' 2',
+    'h1'=>esc_html__("Heading",'qucreative').' 1',
+    'h2'=>esc_html__("Heading",'qucreative').' 2',
+    'h3'=>esc_html__("Heading",'qucreative').' 3',
+    'h4'=>esc_html__("Heading",'qucreative').' 4',
+    'h5'=>esc_html__("Heading",'qucreative').' 5',
+    'h6'=>esc_html__("Heading",'qucreative').' 6',
+    'h-group-1'=>esc_html__("Heading Group",'qucreative').' 1',
+    'h-group-2'=>esc_html__("Heading Group",'qucreative').' 2',
 
 
   );

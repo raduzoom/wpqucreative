@@ -221,7 +221,7 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
   $wp_customize->add_section(
     $section_id,
     array(
-      'title' => esc_html__("Header Settings",QUCREATIVE_ID),
+      'title' => esc_html__("Header Settings",'qucreative'),
       'description' => 'This is a settings section.',
       'priority' => 35,
     )

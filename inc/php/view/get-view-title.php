@@ -10,23 +10,23 @@ function qucreative_get_viewTitle(QuCreativeView $quCreativeView, $mainArgs) {
   $viewTitle = '';
 
   if (is_search()) {
-    $viewTitle = esc_html__("SEARCH", QUCREATIVE_LANG_ID);
+    $viewTitle = esc_html__("SEARCH", 'qucreative');
     return $viewTitle;
   }
   if (is_archive()) {
-    $viewTitle = esc_html__("ARCHIVE", QUCREATIVE_LANG_ID);
+    $viewTitle = esc_html__("ARCHIVE", 'qucreative');
     return $viewTitle;
   }
 
   if (is_404()) {
-    $viewTitle = esc_html__("Oops", QUCREATIVE_LANG_ID);
+    $viewTitle = esc_html__("Oops", 'qucreative');
     return $viewTitle;
   }
 
 
 
 
-  $langDefaultBlog = esc_html__("Blog", QUCREATIVE_LANG_ID);
+  $langDefaultBlog = esc_html__("Blog", 'qucreative');
   if ($mainArgs['title'] !== null) {
 
     $viewTitle = $mainArgs['title'];

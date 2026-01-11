@@ -61,7 +61,6 @@ QuCreative works best with the Qu Companion Plugin (qu-extend) which adds portfo
 * All images used in the theme (screenshot, placeholders, and demo content) are either created by theme author or sourced from:
   - [If you use stock photos, list them here with proper attribution]
   - Example: Screenshot image from Pexels.com, [CC0 License](https://creativecommons.org/publicdomain/zero/1.0/)
-  - Example: Photo by John Doe on Unsplash, [Unsplash License](https://unsplash.com/license)
 
 == Copyright ==
 
