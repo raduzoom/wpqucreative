@@ -116,7 +116,7 @@ class QuCreativeView {
   }
 
   static function viewIsPageFullwidth(QuCreative $qucreative_main): bool {
-    return !!($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-portfolio.php' || ($qucreative_main->theme_data['post_for_meta']->post_type == QUCREATIVE_POST_TYPE_PORTFOLIO) || $qucreative_main->theme_data['post_for_meta']->post_type == 'page') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on');
+    return !!($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-portfolio.php' || $qucreative_main->theme_data['post_for_meta']->post_type == 'page') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on');
   }
 
   static function viewIsMenuHorizontal($searchedMenuType): bool {
@@ -358,7 +358,7 @@ class QuCreativeView {
 
 
     if ($isFullIt) {
-      echo ' fullit';
+      echo ' qucreative-view-fullwidth';
 
       $qucreative_main->theme_data['page_is_fullscreen'] = true;
       $viewIsPageFullWidth = true;
@@ -368,7 +368,7 @@ class QuCreativeView {
         $qucreative_main->theme_data['view_title'] = '';
       }
 
-      echo ' fullit-type-' . esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen_stretch' . $qucreative_main->theme_data['page_extra_meta_label'], true));
+      echo ' qucreative-view-fullwidth-type-' . esc_html(get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen_stretch' . $qucreative_main->theme_data['page_extra_meta_label'], true));
     }
 
 

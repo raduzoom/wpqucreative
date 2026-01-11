@@ -1,8 +1,6 @@
 <?php
 
-add_action('save_post', 'qucreative_handle_admin_meta_save');
-add_action('wp_ajax_qucreative_save_att_meta', 'qucreative_ajax_save_att_meta');
-function qucreative_get_featured_image($pid) {
+function qucreative_view_get_featured_image($pid) {
 
 
   $image = wp_get_attachment_image_src(get_post_thumbnail_id($pid), 'single-post-thumbnail');
@@ -13,7 +11,6 @@ function qucreative_get_featured_image($pid) {
     if (is_array($image)) {
       return $image[0];
     } else {
-
       return $image;
     }
   } else {
@@ -21,99 +18,7 @@ function qucreative_get_featured_image($pid) {
   }
 }
 
-function qucreative_handle_admin_meta_save($post_id) {
-  global $post;
 
-
-  if (!$post) {
-    return;
-  }
-
-  // --  Check autosave
-  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-    return $post_id;
-  }
-
-
-  $is_preview = false;
-  if (isset($_POST['wp-preview']) && $_POST['wp-preview'] == 'dopreview') {
-
-    // -- save for preview ( append _preview maybe )
-    $is_preview = true;
-
-  }
-
-
-  if (isset($_REQUEST[QUCREATIVE_META_PREFIX . 'meta_nonce'])) {
-    $nonce = $_REQUEST[QUCREATIVE_META_PREFIX . 'meta_nonce'];
-    if (!wp_verify_nonce($nonce, QUCREATIVE_META_PREFIX . 'meta_nonce')) {
-      wp_die('Security check');
-    }
-  }
-
-
-  if (is_array($_POST)) {
-    $auxa = $_POST;
-    foreach ($auxa as $label => $value) {
-
-
-      $label_to_save = $label;
-
-      if ($is_preview) {
-        $label_to_save .= '_preview';
-      }
-
-
-      $original_value = $value;
-
-
-      if (is_array($value) || $original_value === ' ') {
-
-      } else {
-
-        $value = sanitize_text_field($value);
-      }
-
-
-      if (strpos($label, QUCREATIVE_META_PREFIX . 'meta_') !== false) {
-        update_post_meta($post->ID, $label_to_save, $value);
-      }
-
-
-    }
-  }
-
-
-}
-
-function qucreative_ajax_save_att_meta() {
-
-  global $qucreative_main;
-
-
-  $arr_post = json_decode(stripslashes($_POST['postdata']), true);
-
-
-  $pid = $arr_post['id'];
-
-  $args = array(
-    'ID' => $pid,
-    'post_content' => $arr_post['post_content'],
-    'post_excerpt' => $arr_post['post_excerpt'],
-  );
-
-
-// -- Update the post into the database
-  wp_update_post($args);
-
-
-  update_post_meta($pid, 'qucreative_' . 'meta_att_aligment', sanitize_text_field($arr_post[$arr_post['qucreative_' . 'meta_att_aligment']]));
-  update_post_meta($pid, 'qucreative_' . 'meta_att_video', sanitize_text_field($arr_post['qucreative_' . 'meta_att_video']));
-  update_post_meta($pid, 'qucreative_' . 'meta_att_enable_video_cover', sanitize_text_field($arr_post['qucreative_' . 'meta_att_enable_video_cover']));
-
-
-  die();
-}
 
 
 

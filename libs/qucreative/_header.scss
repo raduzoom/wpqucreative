@@ -133,24 +133,6 @@ nav.qucreative--nav-con {
     @include apply_transition($transition-property, $transition-duration, $transition-timing);
   }
 
-  //.q-close-btn:before{
-  //  content: "";
-  //  height:1px;
-  //  width: 100%;
-  //  background-color: #FFFFFF;
-  //  display: block;
-  //
-  //  transform: rotate(45deg);
-  //}
-  //.q-close-btn:after{
-  //  content: "";
-  //  height:1px;
-  //  width: 100%;
-  //  background-color: #FFFFFF;
-  //  display: block;
-  //
-  //  transform: rotate(-45deg);
-  //}
   .q-close-btn:hover {
     opacity: 1;
   }
@@ -162,3 +144,7 @@ nav.qucreative--nav-con {
 }
 
 /* -- menu toggler END */
+
+.copyright-text {
+  color: #fff;
+}

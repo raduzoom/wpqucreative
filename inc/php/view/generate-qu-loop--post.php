@@ -12,7 +12,7 @@ function qucreative_get_view__printPost(): void{
 
   $img = '';
   if($post){
-    $img = qucreative_get_featured_image($post->ID);
+    $img = qucreative_view_get_featured_image($post->ID);
 
   }
 

@@ -62,11 +62,11 @@ body .the-content-con .the-content.template-is-portfolio-no-filters:not(.excerpt
   padding-top: 0;
 }
 
-.the-content-con.has-footer:not(.fullit) .the-content-inner .translucent-layer {
+.the-content-con.has-footer:not(.qucreative-view-fullwidth) .the-content-inner .translucent-layer {
   padding-bottom: 30px !important;
 }
 
-.the-content-con.fullit.has-footer .footer-conglomerate .translucent-layer {
+.the-content-con.qucreative-view-fullwidth.has-footer .footer-conglomerate .translucent-layer {
   padding: 0px !important;
 }
 
@@ -85,13 +85,9 @@ body .the-content-con .the-content.template-is-portfolio-no-filters:not(.excerpt
 ;
 
 
-.comments-pagination {
 
-  > .nav-links {
-    > .prev {
-      display: none;
-    }
-  }
+article.the-content-sheet.sticky {
+  background-color: #f7f5f5;
 
-
+  border-top: 5px solid var(--qu-colors-hightlight-2);
 }

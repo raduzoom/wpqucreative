@@ -11,14 +11,9 @@ const QUCREATIVE_CUSTOMIZER_SECTIONS = array(
 );
 const QUCREATIVE_CUSTOMIZER_FIELDS = array(
 
-  // -- deprecate mail_method
-  array(
-    'name' => 'mail_method',
-    'default' => 'wp_mail',
-  ),
   array(
     'name' => 'logo',
-    'default' => QUCREATIVE_THEME_URL . 'img/qlogo.png',
+    'default' => QUCREATIVE_THEME_URL . 'assets/img/qlogo.png',
   ),
   array(
     'name' => 'logo_x',

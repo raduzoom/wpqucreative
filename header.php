@@ -11,8 +11,8 @@
 global $post;
 
 
-include_once QUCREATIVE_THEME_DIR.'inc/view.php';
-include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-generate-inline-options-functional.php';
+include_once QUCREATIVE_THEME_DIR . 'inc/view.php';
+include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-options-functional.php';
 
 $tempArgs = array(
   'query_type' => 'page',
@@ -55,30 +55,16 @@ do_action('qucreative_hook_before_html');
   <?php
 
 
-
-
   // -- end font inclusions
 
   ?>
   <?php
 
 
-
-
   global $wp_query;
 
 
-
-
-
-
-
   $qucreative_main->quCreativeView->controller_menuType();
-
-
-
-
-
 
 
   $page_title_align = get_theme_mod('page_title_align');
@@ -89,12 +75,6 @@ do_action('qucreative_hook_before_html');
 
     $qucreative_main->theme_data['theme_mods'][$lab] = get_theme_mod($lab);
   }
-
-
-
-
-
-
 
 
   qucreative_generate_inline_javascript_for_options();
@@ -108,17 +88,12 @@ do_action('qucreative_hook_before_html');
   // -- after wp_head
 
 
-
   $quSidebar = $qucreative_main->quCreativeView->sidebar_get();
 
   ?>
 </head>
 <body <?php body_class(); ?> >
 <?php
-
-
-
-
 
 
 ?>
@@ -130,7 +105,7 @@ do_action('qucreative_hook_before_html');
   <?php
 
 
-  if($qucreative_main->theme_data['menu_type_attr']===QUCREATIVE_VIEW_HORIZONTAL_MENU_TYPE_CSS_CLASS){
+  if ($qucreative_main->theme_data['menu_type_attr'] === QUCREATIVE_VIEW_HORIZONTAL_MENU_TYPE_CSS_CLASS) {
     qucreative_header_generateQuNav();
   }
   // -- title + .the-content
@@ -141,13 +116,15 @@ do_action('qucreative_hook_before_html');
   $qucreative_main->quCreativeView->controller_getContentConExtraClasses();
 
 
-  ?>"  style=";">
+  ?>" style=";">
 
     <div class="qu-nav--placeholder"></div>
     <div class="the-content-and-title-con-flex"><?php
 
-      if($qucreative_main->theme_data['menu_horizontal_width']) {
-        ?><div class="content-menu--placeholder" style="flex: 0 0 <?php echo $qucreative_main->theme_data['menu_horizontal_width']; ?>px; width: <?php echo $qucreative_main->theme_data['menu_horizontal_width']; ?>px;"></div><?php
+      if ($qucreative_main->theme_data['menu_horizontal_width']) {
+        ?>
+        <div class="content-menu--placeholder"
+             style="flex: 0 0 <?php echo $qucreative_main->theme_data['menu_horizontal_width']; ?>px; width: <?php echo $qucreative_main->theme_data['menu_horizontal_width']; ?>px;"></div><?php
       }
       ?>
       <div class="the-content-and-title-con">
@@ -156,9 +133,7 @@ do_action('qucreative_hook_before_html');
         do_action('qucreative_hook_before_the_content');
 
 
-
         if (!$post || (get_post_meta($post->ID, '_wp_page_template', true) !== 'template-qucreative-slider.php')){
-
 
 
         if ($qucreative_main->theme_data['view_title'] && $original_title != 'none' && $original_title != ' ') {
@@ -186,19 +161,12 @@ do_action('qucreative_hook_before_html');
         >
           <?php
 
-
-
-          if ($post && (get_post_meta($post->ID, '_wp_page_template', true) == 'template-portfolio.php' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') || ($post && $post->post_type == 'quextend_port_items' && get_post_meta($post->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on')) {
-
-          } else {
-            ?>
-
-            <div class="translucent-con translucent-con--for-the-content ">
-              <div class="translucent-overlay"></div>
-            </div>
-
-            <?php
+          if(!defined('QUEXTEND_PLUGIN_URL')){
+            qucreative_view_generateTranslucentCon('translucent-con--for-content');
           }
+
+
+          do_action('qucreative_hook_the_content_start');
           ?>
 
 
@@ -207,17 +175,7 @@ do_action('qucreative_hook_before_html');
           ?>"><?php
 
 
-            if ($qucreative_main->theme_data['template_is_portfolio']) {
-
-              qucreative_view_portfolio_generateItem($qucreative_main);
-            }
-            if ($qucreative_main->theme_data['post_for_meta'] && ($qucreative_main->theme_data['post_for_meta']->post_type == 'quextend_port_items') && get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, QUCREATIVE_META_PREFIX . 'meta_is_fullscreen' . $qucreative_main->theme_data['page_extra_meta_label'], true) == 'on') {
-              qucreative_view_portfolio_generateItemFull($qucreative_main);
-            }
-            if ($qucreative_main->theme_data['post_for_meta'] && (get_post_meta($qucreative_main->theme_data['post_for_meta']->ID, '_wp_page_template', true) == 'template-gallery-creative.php')) {
-
-              qucreative_view_generateTemplateGallerCreative($qucreative_main);
-            }
+            do_action('qucreative_hook_the_content_inner_start');
 
 
             if ($quSidebar){

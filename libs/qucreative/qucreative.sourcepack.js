@@ -388,7 +388,7 @@ jQuery(document).ready(function ($) {
     }
 
 
-    if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("fullit")) {
+    if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("qucreative-view-fullwidth")) {
       qcm.viewPageIsFullwidth = true;
     }
 
@@ -543,7 +543,7 @@ jQuery(document).ready(function ($) {
     if (qcm.page === "page-portfolio") {
       if (
         qcm._theContent &&
-        qcm._theContent.parent().hasClass("fullit")
+        qcm._theContent.parent().hasClass("qucreative-view-fullwidth")
       ) {
         if (qcm._theContent.find(".selector-con").length) {
           qcm.page_portfolio_requires_move_filters = true;

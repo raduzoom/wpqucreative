@@ -154,11 +154,11 @@ export function dzsQu_view_adjustLayoutContentWidth(quCreative_main){
   const default_content_width = content_width;
 
   var aux23 =
-      "  .main-container .the-content-con.page-normal:not(.fullit) > .the-content{max-width:" +
+      "  .main-container .the-content-con.page-normal:not(.qucreative-view-fullwidth) > .the-content{max-width:" +
       quCreative_main.force_content_width +
-      "px; }        .the-content-con.page-portfolio-single:not(.fullit) > .the-content{ max-width:" +
+      "px; }        .the-content-con.page-portfolio-single:not(.qucreative-view-fullwidth) > .the-content{ max-width:" +
       quCreative_main.force_content_width +
-      "px; } .main-container .the-content-con:not(.fullit) > .the-content:not(.gallery-thumbs--image-container){ max-width:" +
+      "px; } .main-container .the-content-con:not(.qucreative-view-fullwidth) > .the-content:not(.gallery-thumbs--image-container){ max-width:" +
       quCreative_main.force_content_width +
       "px; } ";
 
@@ -172,7 +172,7 @@ export function dzsQu_view_adjustLayoutContentWidth(quCreative_main){
   }
 
   aux23 +=
-      "  .main-container .the-content-con.page-template-template-portfolio:not(.fullit)  > .the-content{ max-width:" +
+      "  .main-container .the-content-con.page-template-template-portfolio:not(.qucreative-view-fullwidth)  > .the-content{ max-width:" +
       (quCreative_main.force_content_width - force_width_gap * 2) +
       "px; }  ";
 
@@ -198,13 +198,13 @@ export function dzsQu_view_adjustLayoutContentWidth(quCreative_main){
   }
 
   aux23 +=
-      " body .the-content-con.page-normal.fullit > .the-content { padding: " +
+      " body .the-content-con.page-normal.qucreative-view-fullwidth > .the-content { padding: " +
       force_width_blur_margin +
       "px; }";
 
   if (force_width_blur_margin > 30) {
     aux23 +=
-        " .the-content-con.page-portfolio:not(.fullit) .the-content-inner>.selector-con:first-child{ margin-top: " +
+        " .the-content-con.page-portfolio:not(.qucreative-view-fullwidth) .the-content-inner>.selector-con:first-child{ margin-top: " +
         (20 - force_width_blur_margin) +
         "px; }";
   }

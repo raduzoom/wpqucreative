@@ -304,7 +304,7 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
 
     if ($margs['search_for_featured_media']) {
 
-      $img = qucreative_get_featured_image($arg);
+      $img = qucreative_view_get_featured_image($arg);
 
       if ($img) {
 

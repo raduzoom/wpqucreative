@@ -507,7 +507,7 @@ function goto_bg_doit(arg, pargs) {
       if (!quCreative_main._theContentConTr) {
         console.log("[warn] _theContentConTr missing ..");
       }
-      if (quCreative_main._theContentConTr.hasClass("fullit") == false) {
+      if (quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false) {
         quCreative_main.viewPageIsFullwidth = false;
         setTimeout(function () {
           quCreative_main._theContentConTr.css({});
@@ -555,7 +555,7 @@ function goto_bg_doit(arg, pargs) {
       // todo: move
       if (window.dzsas_init) {
         if (quCreative_main.windowWidth > _qucreative2.RESPONSIVE_BREAKPOINT) {
-          if (_body.hasClass("page-portfolio") && quCreative_main.newclass_body_page == "page-portfolio-single" && quCreative_main._theContentConTr.hasClass("fullit") == false) {}
+          if (_body.hasClass("page-portfolio") && quCreative_main.newclass_body_page == "page-portfolio-single" && quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false) {}
         }
         dzsas_init(quCreative_main._theContentConTr.find(".advancedscroller.skin-qucreative.auto-init-from-q"), {
           init_each: true
@@ -568,7 +568,7 @@ function goto_bg_doit(arg, pargs) {
       // todo: move
       if (window.dzszfl_init) {
         if (quCreative_main.windowWidth > _qucreative2.RESPONSIVE_BREAKPOINT) {
-          if (quCreative_main.newclass_body_page == "page-portfolio" && quCreative_main._theContentConTr.hasClass("fullit") == false) {}
+          if (quCreative_main.newclass_body_page == "page-portfolio" && quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false) {}
         }
         dzszfl_init(quCreative_main._theContentConTr.find(".zfolio.auto-init-from-q"), {
           init_each: true
@@ -851,11 +851,11 @@ function setup_newBgImage(margs) {
         placew: false,
         place_page: true
       });
-      if (quCreative_main._theContentConTr.hasClass("fullit")) {
+      if (quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth")) {
         quCreative_main.viewPageIsFullwidth = true;
       }
       setTimeout(function () {
-        if (!quCreative_main._theContentConTr.hasClass("fullit")) {
+        if (!quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth")) {
           if (quCreative_main.page != "nuttin") {
             window.qucreative_actions_setupNewBgImage.forEach(goToBgDoItAction => {
               goToBgDoItAction();
@@ -1187,7 +1187,7 @@ class QuCreative {
       quCreative_main.windowWidth = quCreative_main.windowWidth - quCreative_main.border_width * 2;
     }
     $(".main-bg-div").height(quCreative_main.windowHeight);
-    if (quCreative_main.page == "page-portfolio-single" && quCreative_main._theContent && quCreative_main._theContent.parent().hasClass("fullit")) {
+    if (quCreative_main.page == "page-portfolio-single" && quCreative_main._theContent && quCreative_main._theContent.parent().hasClass("qucreative-view-fullwidth")) {
       $(".advancedscroller").eq(0).css("height", "100%");
       $(".advancedscroller-con").eq(0).height(quCreative_main.windowHeight);
       $(".advancedscroller-con-placeholder").eq(0).height(quCreative_main.windowHeight);
@@ -1387,19 +1387,19 @@ function dzsQu_view_adjustLayout(quCreative_main) {
 function dzsQu_view_adjustLayoutContentWidth(quCreative_main) {
   const content_width = quCreative_main.force_content_width;
   const default_content_width = content_width;
-  var aux23 = "  .main-container .the-content-con.page-normal:not(.fullit) > .the-content{max-width:" + quCreative_main.force_content_width + "px; }        .the-content-con.page-portfolio-single:not(.fullit) > .the-content{ max-width:" + quCreative_main.force_content_width + "px; } .main-container .the-content-con:not(.fullit) > .the-content:not(.gallery-thumbs--image-container){ max-width:" + quCreative_main.force_content_width + "px; } ";
+  var aux23 = "  .main-container .the-content-con.page-normal:not(.qucreative-view-fullwidth) > .the-content{max-width:" + quCreative_main.force_content_width + "px; }        .the-content-con.page-portfolio-single:not(.qucreative-view-fullwidth) > .the-content{ max-width:" + quCreative_main.force_content_width + "px; } .main-container .the-content-con:not(.qucreative-view-fullwidth) > .the-content:not(.gallery-thumbs--image-container){ max-width:" + quCreative_main.force_content_width + "px; } ";
   if (force_width_section_bg) {
     aux23 += "body .the-content-sheet .the-content-sheet-text:not(.forced-from-no-rows):not(.post-type-post), .flex-for-sc, .the-content-con:not(.page-blogsingle) footer.upper-footer{ padding-left: " + force_width_section_bg + "px; padding-right: " + force_width_section_bg + "px; }";
   }
-  aux23 += "  .main-container .the-content-con.page-template-template-portfolio:not(.fullit)  > .the-content{ max-width:" + (quCreative_main.force_content_width - force_width_gap * 2) + "px; }  ";
+  aux23 += "  .main-container .the-content-con.page-template-template-portfolio:not(.qucreative-view-fullwidth)  > .the-content{ max-width:" + (quCreative_main.force_content_width - force_width_gap * 2) + "px; }  ";
   aux23 += ' .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, div[class*="vc_col-sm-"] >.vc_column-inner  { padding-left: ' + force_width_gap / 2 + "px; padding-right: " + force_width_gap / 2 + "px; } .row,.vc_row { margin-left: -" + force_width_gap / 2 + "px; margin-right: -" + force_width_gap / 2 + "px; }";
   aux23 += " .the-content-con > .the-content { padding: " + force_width_blur_margin + "px; }";
   if (force_width_blur_margin == 0) {
     aux23 += " .the-content-con.template-is-default-and-has-one-zfolio > .the-content , .the-content-con.posts-page > .the-content, .the-content-con.page-blogsingle:not(.ceva) > .the-content { padding: 30px; }";
   }
-  aux23 += " body .the-content-con.page-normal.fullit > .the-content { padding: " + force_width_blur_margin + "px; }";
+  aux23 += " body .the-content-con.page-normal.qucreative-view-fullwidth > .the-content { padding: " + force_width_blur_margin + "px; }";
   if (force_width_blur_margin > 30) {
-    aux23 += " .the-content-con.page-portfolio:not(.fullit) .the-content-inner>.selector-con:first-child{ margin-top: " + (20 - force_width_blur_margin) + "px; }";
+    aux23 += " .the-content-con.page-portfolio:not(.qucreative-view-fullwidth) .the-content-inner>.selector-con:first-child{ margin-top: " + (20 - force_width_blur_margin) + "px; }";
   }
   aux23 += " .margin-right-blur-margin { margin-right: " + force_width_blur_margin + "px; }";
   aux23 += " .margin-left-blur-margin { margin-left: " + force_width_blur_margin + "px; }";
@@ -1697,7 +1697,7 @@ jQuery(document).ready(function ($) {
       ;
       ;
     }
-    if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("fullit")) {
+    if (qcm._mainContainer.find(".the-content-con").eq(0).hasClass("qucreative-view-fullwidth")) {
       qcm.viewPageIsFullwidth = true;
     }
     if (qcm.page == "page-gallery-w-thumbs" || qcm.page == "page-homepage") {
@@ -1782,7 +1782,7 @@ jQuery(document).ready(function ($) {
       qcm.page_portfolio_requires_move_filters = false;
     }
     if (qcm.page === "page-portfolio") {
-      if (qcm._theContent && qcm._theContent.parent().hasClass("fullit")) {
+      if (qcm._theContent && qcm._theContent.parent().hasClass("qucreative-view-fullwidth")) {
         if (qcm._theContent.find(".selector-con").length) {
           qcm.page_portfolio_requires_move_filters = true;
         }

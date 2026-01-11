@@ -1,9 +1,11 @@
 <?php
 include_once QUCREATIVE_THEME_DIR.'inc/php/view/class-view-qucreative.php';
+include_once QUCREATIVE_THEME_DIR.'inc/php/admin/QuCreativeAdmin.php';
 include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-sanitize-theme-mod.php';
 include_once QUCREATIVE_THEME_DIR.'inc/php/view/view-social-icons.php';
 class QuCreative {
 
+  public QuCreativeAdmin $quCreativeAdmin;
   public QuCreativeView $quCreativeView;
 
   public array $theme_data = QUCREATIVE_INITIAL_THEME_DATA;
@@ -11,6 +13,7 @@ class QuCreative {
   function __construct() {
 
 
+    $this->quCreativeAdmin = new QuCreativeAdmin($this);
     $this->quCreativeView = new QuCreativeView($this);
 
     $this->theme_data['allowed_html_tags'] = QUCREATIVE_ALLOWED_TAGS;
@@ -78,46 +81,10 @@ class QuCreative {
 
 
 
-    add_action( 'wp_enqueue_scripts', array($this, 'handle_wp_enqueue_scripts') );
-    add_action( 'wp_default_scripts', array($this, 'handle_wp_default_scripts') );
     add_action('widgets_init', array($this,'qucreative_widgets_areas_init'), 10);
     add_action('init', array($this, 'handle_init'), 10);
   }
 
-  /**
-   * move to plugin
-   * @return void
-   */
-  function handle_wp_enqueue_scripts() {
-
-    if ( ! is_admin() ) {
-      // Remove jQuery
-      wp_deregister_script( 'jquery' );
-
-      // Register it again, in the footer
-      wp_register_script(
-        'jquery',
-        includes_url( '/js/jquery/jquery.min.js' ),
-        false,
-        null,
-        true // Load in footer
-      );
-      wp_enqueue_script( 'jquery' );
-    }
-  }
-  /**
-   * move to plugin
-   * @return void
-   */
-  function handle_wp_default_scripts() {
-
-    if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
-      $scripts->registered['jquery']->deps = array_diff(
-        $scripts->registered['jquery']->deps,
-        array( 'jquery-migrate' )
-      );
-    }
-  }
   public function handle_init(): void {
 
 

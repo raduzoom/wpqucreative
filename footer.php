@@ -59,10 +59,7 @@ if ($qucreative_main->quCreativeView->structureHasFooter) {
   </div><!-- end .the-content-and-title-con-flex -->
 <?php
 
-// -- slideshow homepage
-qucreative_view_generateSlider($post);
-
-qucreative_view_generateTemplateGalleryCreative($post);
+do_action('qucreative_before_end_the_content_con');
 
 ?>
 </div><!-- end .the-content-con-->

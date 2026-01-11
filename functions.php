@@ -193,8 +193,6 @@ function qucreative_init() {
 
   if (is_admin()) {
 
-
-    wp_enqueue_script('media-upload');
     wp_enqueue_script('tiny_mce');
     wp_enqueue_script('qucreative.admin', QUCREATIVE_THEME_URL . 'assets/admin/admin.js', array('jquery'));
     wp_enqueue_style('qucreative.admin', QUCREATIVE_THEME_URL . 'assets/admin/admin.css');
@@ -217,12 +215,6 @@ function qucreative_init() {
       }
     }
   } else {
-
-
-    if (isset($vc_manager) && $vc_manager) {
-
-      wp_enqueue_style('js_composer_front', $vc_manager->assetUrl('css/js_composer.min.css'));
-    }
 
 
   }

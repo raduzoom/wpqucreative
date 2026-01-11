@@ -99,7 +99,7 @@ var _dzsCommonFunctions = require("../../js/common/_dzs-common-functions");
     const _body = quCreative_main._body;
     if (margs.place_page) {
       if (quCreative_main.page == "page-portfolio" || quCreative_main.page == "page-portfolio-single" || quCreative_main.page == "page-normal" || quCreative_main.page == "page-blog" || quCreative_main.page == "page-blogsingle" || quCreative_main.page == "page-about" || quCreative_main.page == "page-contact") {
-        if (_body.hasClass("menu-is-sticky") && _body.hasClass("content-align-right") == false && _body.hasClass("content-align-left") == false && quCreative_main._theContent && quCreative_main._theContent.parent().hasClass("fullit") == false && (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6"))) {
+        if (_body.hasClass("menu-is-sticky") && _body.hasClass("content-align-right") == false && _body.hasClass("content-align-left") == false && quCreative_main._theContent && quCreative_main._theContent.parent().hasClass("qucreative-view-fullwidth") == false && (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6"))) {
           // -- sticky
 
           quCreative_main.menu_content_space = 30;

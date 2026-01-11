@@ -163,7 +163,7 @@ export class QuCreative{
     if (
       quCreative_main.page == "page-portfolio-single" &&
       quCreative_main._theContent &&
-      quCreative_main._theContent.parent().hasClass("fullit")
+      quCreative_main._theContent.parent().hasClass("qucreative-view-fullwidth")
     ) {
       $(".advancedscroller").eq(0).css("height", "100%");
       $(".advancedscroller-con").eq(0).height(quCreative_main.windowHeight);

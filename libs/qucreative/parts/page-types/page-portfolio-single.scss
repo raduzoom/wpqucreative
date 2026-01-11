@@ -3,7 +3,7 @@
 
 @import "../../../../../../plugins/qu-extend/libs/qushortcodes/portfolio/page_portfolio-single";
 
-.main-container .the-content-con.fullit {
+.main-container .the-content-con.qucreative-view-fullwidth {
 
 
   &.page-portfolio-single {
@@ -35,7 +35,7 @@ body.page-portfolio-single.page-is-fullwidth.menu-type-9 {
 
   }
 
-  .page-portfolio-single.fullit {
+  .page-portfolio-single.qucreative-view-fullwidth {
 
     .row {
       & {
@@ -69,7 +69,7 @@ body.page-portfolio-single.page-is-fullwidth.menu-type-9 {
   }
 
   body.page-portfolio-single {
-    .the-content-con.fullit {
+    .the-content-con.qucreative-view-fullwidth {
       .advancedscroller-con-placeholder {
         display: none;
       }
@@ -143,7 +143,7 @@ body.page-portfolio-single.page-is-fullwidth.menu-type-9 {
 body.menu-type-5,
 body.menu-type-6 {
 
-  .the-content-con.page-portfolio-single.fullit .advancedscroller-con {
+  .the-content-con.page-portfolio-single.qucreative-view-fullwidth .advancedscroller-con {
     width: calc(100% - 280px);
   }
 }

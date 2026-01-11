@@ -23,7 +23,6 @@ export const setupDzsDependency = () => {
             '"]',
         ).eq(0);
 
-        // console.info(_c, dep_arr[0].element, dep_arr[0].value);
 
         var sw_show = false;
 
@@ -48,7 +47,6 @@ export const setupDzsDependency = () => {
 
     if (e.type == "change") {
       if (_t.hasClass("dzs-dependency-field")) {
-        // console.info("ceva");
         check_dependency_settings();
       }
     }

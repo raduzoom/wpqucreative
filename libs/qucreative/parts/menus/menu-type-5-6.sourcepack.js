@@ -31,7 +31,7 @@ loadScriptIfItDoesNotExist(null, 'quCreative_main').then(()=>{
           _body.hasClass("content-align-right") == false &&
           _body.hasClass("content-align-left") == false &&
           quCreative_main._theContent &&
-          quCreative_main._theContent.parent().hasClass("fullit") == false &&
+          quCreative_main._theContent.parent().hasClass("qucreative-view-fullwidth") == false &&
           (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6"))
         ) {
           // -- sticky

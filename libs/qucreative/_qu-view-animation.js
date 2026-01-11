@@ -470,7 +470,7 @@ function goto_bg_doit(arg, pargs) {
       if (!quCreative_main._theContentConTr) {
         console.log("[warn] _theContentConTr missing ..");
       }
-      if (quCreative_main._theContentConTr.hasClass("fullit") == false) {
+      if (quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false) {
         quCreative_main.viewPageIsFullwidth = false;
 
         setTimeout(function () {
@@ -547,7 +547,7 @@ function goto_bg_doit(arg, pargs) {
           if (
             _body.hasClass("page-portfolio") &&
             quCreative_main.newclass_body_page == "page-portfolio-single" &&
-            quCreative_main._theContentConTr.hasClass("fullit") == false
+            quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false
           ) {
           }
         }
@@ -576,7 +576,7 @@ function goto_bg_doit(arg, pargs) {
         if (quCreative_main.windowWidth > RESPONSIVE_BREAKPOINT) {
           if (
             quCreative_main.newclass_body_page == "page-portfolio" &&
-            quCreative_main._theContentConTr.hasClass("fullit") == false
+            quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth") == false
           ) {
           }
         }
@@ -1034,13 +1034,13 @@ function setup_newBgImage(margs) {
         place_page: true,
       });
 
-      if (quCreative_main._theContentConTr.hasClass("fullit")) {
+      if (quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth")) {
 
         quCreative_main.viewPageIsFullwidth = true;
       }
 
       setTimeout(function () {
-        if (!quCreative_main._theContentConTr.hasClass("fullit")) {
+        if (!quCreative_main._theContentConTr.hasClass("qucreative-view-fullwidth")) {
           if (quCreative_main.page != "nuttin") {
 
             window.qucreative_actions_setupNewBgImage.forEach(
