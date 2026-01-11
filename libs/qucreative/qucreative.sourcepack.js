@@ -143,7 +143,6 @@ jQuery(document).ready(function ($) {
   $(window).scrollTop(0);
 
 
-  const regex_bodyclass = /(page-.*?)[ |"]/g;
 
   setTimeout(function () {
     $(".preseter").css("opacity", "");
@@ -397,20 +396,6 @@ jQuery(document).ready(function ($) {
 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

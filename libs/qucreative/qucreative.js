@@ -1561,7 +1561,6 @@ jQuery(document).ready(function ($) {
     window.qucreative_options = $.extend({}, qucreative_options_defaults);
   }
   $(window).scrollTop(0);
-  const regex_bodyclass = /(page-.*?)[ |"]/g;
   setTimeout(function () {
     $(".preseter").css("opacity", "");
   }, 500);

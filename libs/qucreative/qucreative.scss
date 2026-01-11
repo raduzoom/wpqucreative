@@ -8,7 +8,6 @@ above the fold stuff
 :root{
   --qucreative-view-animation-duration: #{$qu_animation_duration};
   --qu-colors-hightlight-text: #{$color_highlight};
-  --qu-colors-hightlight-2: #e85555;
   --qu-colors-primary-text: #{$color_paragraph};
   --qu-colors-headings: #{$color_headings};
   --qu-content-color-bg: #{$color_menu_bg};
@@ -37,19 +36,9 @@ above the fold stuff
 
 
 
-.custom-a,
-.custom-a:hover {
-  text-decoration: none;
-}
 @import "css_inc/headings";
 
 
-
-.the-content-inner p {
-  > strong:first-child {
-    color: var(--qu-content-color-headings);
-  }
-}
 
 
 
@@ -112,31 +101,8 @@ $transition-timing: ease-out;
 
 
 
-.main-container {
 
 
-
-
-
-
-
-  // -- h4
-  .social-meta-con .the-variable-heading-circle-label {
-    color: #ffffff;
-  }
-
-  // -- h4
-  .social-meta-con h3 {
-
-  }
-
-
-}
-
-
-body.with-border {
-
-}
 
 
 
@@ -150,11 +116,6 @@ body.q-inited-bg .main-container {
 
 
 
-
-
-.main-bg-image.is-image {
-  transform: translate3d(0, 0, 0);
-}
 
 
 @import "css_inc/transitions/transitions";
@@ -275,34 +236,6 @@ $bg_color: #191919;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@import "css_inc/menu-types";
-
-
 @import "css_inc/typography";
 
 
@@ -319,25 +252,6 @@ $bg_color: #191919;
 
 
 
-
-
-
-
-// body #wpadminbar {
-//     top: -32px;
-//     background: rgba(35, 40, 45, 0.5);
-//     $transition-property: top;
-//     $transition-duration: 0.3s;
-//     $transition-timing: ease-out;
-//     @include apply_transition($transition-property, $transition-duration, $transition-timing);
-// }
-// #wpadminbar.active {
-//     top: 0;
-//     $transition-property: top;
-//     $transition-duration: 0.3s;
-//     $transition-timing: ease-out;
-//     @include apply_transition($transition-property, $transition-duration, $transition-timing);
-// }
 
 
 
@@ -373,33 +287,6 @@ $bg_color: #191919;
     margin-top: 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -459,10 +346,6 @@ body {
 
 @import "css_inc/fontGroup";
 
-$transition-property: all;
-$transition-duration: 0.3s;
-$transition-timing: ease-out;
-$classmain: ".scroller-con";
 
 /*  functional styling*/
 

@@ -5,6 +5,10 @@ below the fold stuff
  */
 
 
+.custom-a,
+.custom-a:hover {
+  text-decoration: none;
+}
 
 @import "css_inc/selectorCon";
 
@@ -439,9 +443,31 @@ body .vc_row-has-fill + .vc_row > .vc_column_container > .vc_column-inner {
 
 @import "css_inc/sectionTitle";
 @import "css_inc/blog/comments";
+
+
+
+.the-content-inner p {
+  > strong:first-child {
+    color: var(--qu-content-color-headings);
+  }
+}
+
+
+.main-container {
+  // -- h4
+  .social-meta-con .the-variable-heading-circle-label {
+    color: #ffffff;
+  }
+
+}
 @import "css_inc/typography/typography-lists";
 @import "css_inc/typography/typography-misc";
 
+
+
+.main-bg-image.is-image {
+  transform: translate3d(0, 0, 0);
+}
 body.qucreative-submenu-style-highlight-color:not(.qucreative-light-menu) {
 
   nav.qucreative--nav-con {

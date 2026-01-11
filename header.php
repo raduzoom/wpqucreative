@@ -93,10 +93,7 @@ do_action('qucreative_hook_before_html');
   ?>
 </head>
 <body <?php body_class(); ?> >
-<?php
-
-
-?>
+<?php wp_body_open(); ?>
 
 <div class="main-container transition-<?php echo $qucreative_main->get_theme_mod_and_sanitize('bg_transition') ?>">
   <div class="main-bg-con main-bg-con--placeholder">
