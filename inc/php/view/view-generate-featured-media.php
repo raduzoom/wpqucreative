@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * todo: modify with plugin if plugin exists
+ * @param $arg
+ * @param $pargs
+ * @return string
+ */
 function qucreative_generate_featured_media($arg, $pargs = array()): string {
 
   global $qucreative_main;
@@ -117,8 +124,8 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
       $fout .= '<div class="vplayer-tobe auto-init-from-q " data-src="' . $post_media . '" style="';
 
 
-      wp_enqueue_script('antfarm-video-player', QUCREATIVE_THEME_URL . 'libs/videogallery/vplayer.js', array('jquery'));
-      wp_enqueue_style('antfarm-video-player', QUCREATIVE_THEME_URL . 'libs/videogallery/vplayer.css');
+      wp_enqueue_script('qucreative-video-player', QUCREATIVE_THEME_URL . 'libs/videogallery/vplayer.js', array('jquery'));
+      wp_enqueue_style('qucreative-video-player', QUCREATIVE_THEME_URL . 'libs/videogallery/vplayer.css');
 
 
       if ($margs['call_from'] == 'item_excerpt_setup') {
