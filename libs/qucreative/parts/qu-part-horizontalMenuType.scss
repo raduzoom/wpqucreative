@@ -56,13 +56,11 @@
   }
 
 
-  .logo-con:not(.divlogo):not(.logo-con-520):not(custom-position-y){
+  .logo-con:not(.divlogo):not(.logo-con-520):not(.custom-position-y){
     >a{
       display: inline-flex;
       position: relative;
       flex-direction: column;
-      /* align-items: center; */
-      /* align-content: center; */
       justify-content: center;
       >img{
         position: relative!important;
