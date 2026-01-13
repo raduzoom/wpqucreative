@@ -13,6 +13,7 @@ global $post;
 
 include_once QUCREATIVE_THEME_DIR . 'inc/view.php';
 include_once QUCREATIVE_THEME_DIR . 'inc/php/view/view-generate-inline-options-functional.php';
+include_once QUCREATIVE_THEME_DIR . 'inc/php/view/generate-responsive-menu.php';
 
 $tempArgs = array(
   'query_type' => 'page',
@@ -115,7 +116,6 @@ do_action('qucreative_hook_before_html');
 
 
   ?>" style=";">
-
     <div class="qu-nav--placeholder"></div>
     <div class="the-content-and-title-con-flex"><?php
 
@@ -126,6 +126,7 @@ do_action('qucreative_hook_before_html');
       }
       ?>
       <div class="the-content-and-title-con">
+        <?php qucreative_view_generateResponsiveMenu(); ?>
         <?php
 
         do_action('qucreative_hook_before_the_content');
