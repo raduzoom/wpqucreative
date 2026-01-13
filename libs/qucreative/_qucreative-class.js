@@ -1,7 +1,7 @@
 "use strict";
-import { QUCREATIVE_DEFAULTS, RESPONSIVE_BREAKPOINT } from "./_qucreative.config";
-import { calculate_menu_width } from "./js/features/_quViewLayout";
-import { calculate_mainbg } from "./_qu-view-animation";
+import {QUCREATIVE_DEFAULTS, RESPONSIVE_BREAKPOINT} from "./_qucreative.config";
+import {calculate_menu_width} from "./js/features/_quViewLayout";
+import {calculate_mainbg} from "./_qu-view-animation";
 
 export class QuCreative{
 
@@ -37,6 +37,7 @@ export class QuCreative{
   qcre_init_zoombox= false;
   zoombox_options= {};
   old_zoombox_options= {};
+  mainOptions = {};
   _c_for_parallax_items= null;
   viewPageIsFullwidth= false;
   transitioned_via_ajax_first= false; // -- set to true when the first ajax transition has been made
@@ -100,9 +101,8 @@ export class QuCreative{
     const $ = this.$;
 
     const customizer_force_blur = -1;
-    var qucreative_options_defaults = QUCREATIVE_DEFAULTS;
-    var qucreative_options_defaults_string = JSON.stringify(
-      qucreative_options_defaults,
+    const qucreative_options_defaults_string = JSON.stringify(
+      QUCREATIVE_DEFAULTS,
     );
 
 
@@ -130,6 +130,8 @@ export class QuCreative{
     window.qucreative_options.images_arr = aux.split(",");
 
     window.qucreative_options = qucreative_options;
+
+    this.mainOptions = window.qucreative_options;
   }
 
 

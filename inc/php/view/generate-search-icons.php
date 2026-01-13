@@ -58,7 +58,7 @@ function qucreative_header_generateSearchIcon() {
         },
         onSubmitSearch: (query) => {
           console.log('onSubmitSearch()', { query });
-          window.location.href = window.location.origin + '/?s=' + query;
+          window.location.href = window.quCreative_main.mainOptions.site_url + '/?s=' + query;
         }
       })
 

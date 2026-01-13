@@ -9,7 +9,6 @@ export const QUCREATIVE_DEFAULTS = {
   enable_native_scrollbar: "on",
   blur_amount: 25,
   border_width: "0", // -- if set to higher then 0, then a border of n pixels will sorround the site
-  border_color: "#ffffff",
   substract_parallaxer_pixels: 10,
   content_width: "0", // -- set a custom content width
   width_column: "0", // -- set a custom column width
