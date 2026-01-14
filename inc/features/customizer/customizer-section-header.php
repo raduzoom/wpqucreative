@@ -11,18 +11,6 @@ function qucreative_admin_customizer_header_addSections($wp_customize, $section_
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   $args = array(
     'public'   => true,
     '_builtin' => false
