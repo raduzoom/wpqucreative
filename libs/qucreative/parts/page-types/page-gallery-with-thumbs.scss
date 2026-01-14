@@ -9,3 +9,25 @@ body.with-border.page-gallery-w-thumbs.menu-type-2 {
 }
 
 @import "../../css_inc/qu-page-type/page-gallery-w-thumbs";
+
+
+
+/* responsive breakpoint - 1000px */
+@media (max-width: 1000px) {
+  .the-content-con.page-gallery-w-thumbs {
+
+    overflow: visible;
+    height: auto;
+    position: relative;
+
+    .the-content {
+      max-height: none;
+      overflow: visible;
+
+    }
+
+    .gallery-thumbs-con {
+      position: relative;
+    }
+  }
+}

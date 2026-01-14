@@ -29,15 +29,6 @@ function qucreative_view_generateResponsiveMenu() {
     </select>';
   }
 
-  // Build the custom responsive menu structure
-  $custom_menu_html = '';
-  if ($responsive_menu_type === 'custom') {
-    $custom_menu_html = '<div class="custom-responsive-menu">
-      <div class="close-responsive-con"><i class="fa fa-times"></i></div>
-      <div class="custom-menu-con"><ul class="custom-menu"></ul></div>
-    </div>';
-  }
-
   ?>
   <div class="qucreative--520-nav-con">
     <?php qucreative_view_generateResponsiveMenuLogo(); ?>
@@ -47,7 +38,14 @@ function qucreative_view_generateResponsiveMenu() {
       </div>
       <?php echo $select_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is built with escaped parts ?>
     </div>
-    <?php echo $custom_menu_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is static ?>
+    <?php if ($responsive_menu_type === 'custom') : ?>
+      <div class="custom-responsive-menu">
+        <div class="close-responsive-con"><i class="fa fa-times"></i></div>
+        <div class="custom-menu-con">
+          <?php qucreative_view_generateResponsiveMenuItems(); ?>
+        </div>
+      </div>
+    <?php endif; ?>
   </div>
   <?php
 }
@@ -74,4 +72,50 @@ function qucreative_view_generateResponsiveMenuLogo() {
     </a>
   </div>
   <?php
+}
+
+/**
+ * Generate the menu items for the responsive custom menu
+ *
+ * @return void
+ */
+function qucreative_view_generateResponsiveMenuItems() {
+  $location = QUCREATIVE_MENU_PRIMARY_MENU_ID;
+
+  // Get all available menus
+  $menus = wp_get_nav_menus();
+
+  // Check if primary location has a menu assigned
+  $locations = get_nav_menu_locations();
+  $has_primary_menu = !empty($locations[$location]);
+
+  if ($has_primary_menu) {
+    // Display the assigned primary menu
+    wp_nav_menu(array(
+      'theme_location' => $location,
+      'echo' => true,
+      'menu_class' => 'custom-menu',
+      'container' => false,
+      'fallback_cb' => '__return_false',
+    ));
+  } elseif (!empty($menus)) {
+    // Fallback: Display the first available menu
+    wp_nav_menu(array(
+      'theme_location' => $location,
+      'menu' => $menus[0],
+      'echo' => true,
+      'menu_class' => 'custom-menu',
+      'container' => false,
+      'fallback_cb' => '__return_false',
+    ));
+  } else {
+    // No menus exist - output empty ul with helper text
+    echo '<ul class="custom-menu">';
+    echo '<li><div class="menu-helper-text">' .
+      esc_html__("Please create a menu from ", 'qucreative') .
+      '<a target="_blank" href="' . esc_url(admin_url("nav-menus.php")) . '">' .
+      esc_html__("here", 'qucreative') .
+      '</a></div></li>';
+    echo '</ul>';
+  }
 }

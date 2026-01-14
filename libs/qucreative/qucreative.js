@@ -1056,7 +1056,7 @@ function quBuildResponsiveMenu(quCreative_main, _body) {
   }
 
   // Clear the menu content (will be populated by JavaScript menu builder)
-  _cac.html("");
+  // _cac.html("");
 }
 
 },{}],6:[function(require,module,exports){

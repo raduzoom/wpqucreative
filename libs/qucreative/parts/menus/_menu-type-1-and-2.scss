@@ -31,7 +31,7 @@ body {
 @media (max-width: 1000px) {
   body.menu-type-1 .the-content-con > .the-content-and-title-con-flex, body.menu-type-2 .the-content-con > .the-content-and-title-con-flex {
 
-    max-width: none;
+    max-width: 100vw;
   }
 }
 
