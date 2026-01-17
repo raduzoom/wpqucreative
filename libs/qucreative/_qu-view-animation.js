@@ -1,7 +1,6 @@
 "use strict";
 
 
-import { ieVersion } from './js/common/_sniffers'
 import { zoomboxDefaultSettings } from './config/_defaultSettings'
 import { do_we_need_parallaxer } from './_qucreative.util'
 import { RESPONSIVE_BREAKPOINT } from './_qucreative.config'

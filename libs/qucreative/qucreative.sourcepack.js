@@ -1,34 +1,25 @@
 "use strict";
 
-import { dzsCommon_init_lazyloadingImages } from "./js/check-lazyloading-images/_check-lazyloading-images";
-import { dzsQuc_init_progressMarkers } from "./js/init-progress-markers/_init-progress-markers";
+import { dzsCommon_init_lazyloadingImages } from "../../../../plugins/qu-extend/libs/qushortcodes/view/check-lazyloading-images/_check-lazyloading-images";
+import { dzsQuc_init_progressMarkers } from "../../../../plugins/qu-extend/libs/qushortcodes/view/init-progress-markers/_init-progress-markers";
 import {
-  getBrowserScrollSize,
   initObjectSizeProto,
 } from "./js/common/_helpers";
-import { dzsQuc_initAdvancedScrollers } from "./js/features/_advancedScrollers";
+import { dzsQuc_initAdvancedScrollers } from "../../../../plugins/qu-extend/libs/qushortcodes/view/_advancedScrollers";
 import {
   QUCREATIVE_DEFAULTS,
   regex_bodyclass_page, regex_menu_type,
 } from "./_qucreative.config";
 import {  goto_bg } from './_qu-view-animation'
 import { determine_page } from './_qu-view-determine-page'
-import { check_animation_time, quBuildResponsiveMenu, quSetupBorderCss } from "./_qu-view";
-import { quSetupCheckLazyLoading } from './_checkLazyLoading'
-import { dzsQu_view_adjustLayout, calculate_menu_width } from './js/features/_quViewLayout'
+import { check_animation_time } from "./_qu-view";
+
+import { dzsQu_view_adjustLayout, calculate_menu_width } from '../../../../plugins/qu-extend/libs/qushortcodes/view/_quViewLayout'
 import { qu_setupActions } from './_qu-actions'
 
 import {QuCreative} from './_qucreative-class';
-import {qucreative_view_featureCustomScroll} from "./js/view/_feature-custom-scroll";
+import {qucreative_view_featureCustomScroll} from "../../../../plugins/qu-extend/libs/qushortcodes/view/_feature-custom-scroll";
 
-/*
- * Author: ant_farm
- * Website: http://antfarmthemes.com
- * Portfolio: http://themeforest.net/user/ant_farm/portfolio?ref=ant_farm
- * This is not free software.
- * QuCreative
- * Version: 1.08
- */
 window.quCreative_debug_time = 0;
 
 
@@ -343,8 +334,6 @@ jQuery(document).ready(function ($) {
 
 
 
-    // todo: move to php
-    quBuildResponsiveMenu(qcm, _body);
 
 
 

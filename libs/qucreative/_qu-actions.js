@@ -11,9 +11,6 @@ export const qu_setupActions = () => {
 
 
 
-  if (_body.children("#wpadminbar").length) {
-    $(document).bind("mousemove", mousemove_document);
-  }
 
   $(document).on(
     "click",
@@ -46,24 +43,10 @@ export const qu_setupActions = () => {
         $(this).parent().addClass("hovered");
       },
   );
-  $(document).on(
-      "mouseout",
-      ".search-submit.screen-reader-text",
-      function () {
-        $(this).removeClass("hovered");
-        $(this).parent().removeClass("hovered");
-      },
-  );
 
 
   if (qucreative_options.menu_scroll_method == "mousemove") {
     quCreative_main._navCon.bind("mousemove", handle_mouse);
-  } else {
-    if (quCreative_main._navCon[0] && quCreative_main._navCon[0].addEventListener) {
-      quCreative_main._navCon[0].addEventListener("DOMMouseScroll", handle_wheel, false);
-      quCreative_main._navCon[0].onmousewheel = handle_wheel;
-    } else {
-    }
   }
 
 
@@ -76,25 +59,9 @@ export const qu_setupActions = () => {
     const _t = $(this);
 
     if (e) {
-      if (e.type == "mousemove") {
 
-
-        // -- mouse move
-        if (_t.hasClass("qucreative--nav-con")) {
-          if (_body.hasClass("menu-type-1") || _body.hasClass("menu-type-2")) {
-            if (e.pageX > 250) {
-              return false;
-            }
-          }
-
-        }
-      }
       if (e.type == "click") {
-        if (_t.attr("data-vc-container")) {
-          if (_t.attr("href") == "#") {
-            return false;
-          }
-        }
+
 
         if (_t.parent().hasClass("has-children") && _t.attr("href") == "#") {
           _t.parent().children(".submenu-toggler").trigger("click");
@@ -121,11 +88,7 @@ export const qu_setupActions = () => {
         }
 
 
-        const _mainContainer = quCreative_main._mainContainer;
 
-
-        if (_t.hasClass("submit-comment")) {
-        }
 
 
         if (_t.hasClass("description-wrapper--icon-con")) {
@@ -141,16 +104,6 @@ export const qu_setupActions = () => {
 
 
 
-
-  function mousemove_document(e) {
-    if (e && e.pageY) {
-      if (e.pageY < 33) {
-        $("#wpadminbar").addClass("active");
-      } else {
-        $("#wpadminbar").removeClass("active");
-      }
-    }
-  }
 
   /**
    * todo: move only if has submenu
@@ -307,19 +260,10 @@ export const qu_setupActions = () => {
     }
   }
 
-  function calculate_dims_light() {}
 
 
 
 
-
-
-
-  function handle_wheel(e) {
-    var _t = $(this);
-
-
-  }
 
 
 }

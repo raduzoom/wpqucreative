@@ -13,10 +13,9 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
   $qucreative_main = $quView->quMain;
   wp_enqueue_script(QUCREATIVE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.js', array('jquery'));
   wp_enqueue_style(QUCREATIVE_ID.'-misc', QUCREATIVE_THEME_URL . 'libs/qucreative/qu-misc.css', array(), QUCREATIVE_VERSION);
-  wp_enqueue_script('qu-responsive-menu', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/responsive-menu.js', array('jquery'));
-  
+
   // Accessibility: Skip link focus fix
-  wp_enqueue_script('qucreative-skip-link-focus-fix', QUCREATIVE_THEME_URL . 'js/skip-link-focus-fix.js', array(), QUCREATIVE_VERSION, true);
+  wp_enqueue_script('qucreative-skip-link-focus-fix', QUCREATIVE_THEME_URL . 'inc/js/skip-link-focus-fix.js', array(), QUCREATIVE_VERSION, true);
 
 
   // -- single post types

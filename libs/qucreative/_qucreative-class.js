@@ -1,6 +1,6 @@
 "use strict";
 import {QUCREATIVE_DEFAULTS, RESPONSIVE_BREAKPOINT} from "./_qucreative.config";
-import {calculate_menu_width} from "./js/features/_quViewLayout";
+import {calculate_menu_width} from "../../../../plugins/qu-extend/libs/qushortcodes/view/_quViewLayout";
 import {calculate_mainbg} from "./_qu-view-animation";
 
 export class QuCreative{
