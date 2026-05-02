@@ -182,7 +182,6 @@ export class QuCreative{
       $(".advancedscroller-con-placeholder").eq(0).height(quCreative_main.windowHeight);
     }
 
-    calculate_menu_width(quCreative_main);
 
     if (margs.placew) {
       $(".placewh").each(function () {

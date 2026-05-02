@@ -1,11 +1,8 @@
 "use strict";
 
-import { dzsCommon_init_lazyloadingImages } from "../../../../plugins/qu-extend/libs/qushortcodes/view/check-lazyloading-images/_check-lazyloading-images";
-import { dzsQuc_init_progressMarkers } from "../../../../plugins/qu-extend/libs/qushortcodes/view/init-progress-markers/_init-progress-markers";
 import {
   initObjectSizeProto,
 } from "./js/common/_helpers";
-import { dzsQuc_initAdvancedScrollers } from "../../../../plugins/qu-extend/libs/qushortcodes/view/_advancedScrollers";
 import {
   QUCREATIVE_DEFAULTS,
   regex_bodyclass_page, regex_menu_type,
@@ -14,11 +11,9 @@ import {  goto_bg } from './_qu-view-animation'
 import { determine_page } from './_qu-view-determine-page'
 import { check_animation_time } from "./_qu-view";
 
-import { dzsQu_view_adjustLayout, calculate_menu_width } from '../../../../plugins/qu-extend/libs/qushortcodes/view/_quViewLayout'
 import { qu_setupActions } from './_qu-actions'
 
 import {QuCreative} from './_qucreative-class';
-import {qucreative_view_featureCustomScroll} from "../../../../plugins/qu-extend/libs/qushortcodes/view/_feature-custom-scroll";
 
 window.quCreative_debug_time = 0;
 
@@ -32,11 +27,6 @@ window.dzs_check_lazyloading_images_toberesized_arr = [];
 window.dzs_check_lazyloading_inter = 0;
 window.dzs_check_lazyloading_delayed = 0; // -- at 50 we launch the function nonetheless
 
-dzsCommon_init_lazyloadingImages();
-
-dzsQuc_init_progressMarkers();
-
-dzsQuc_initAdvancedScrollers();
 
 initObjectSizeProto();
 
@@ -210,7 +200,6 @@ jQuery(document).ready(function ($) {
 
     check_animation_time(qcm);
 
-    dzsQu_view_adjustLayout(qcm);
 
 
 
@@ -340,9 +329,6 @@ jQuery(document).ready(function ($) {
 
 
 
-    calculate_menu_width(qcm);
-
-
 
 
 
@@ -376,9 +362,6 @@ jQuery(document).ready(function ($) {
       }
     }
 
-    if (qcm._theContent) {
-      qucreative_view_featureCustomScroll(qcm);
-    }
 
 
 
