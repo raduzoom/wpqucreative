@@ -414,9 +414,11 @@ if (!function_exists('qucreative_enqueue_theme_style')) {
 
 if (!function_exists('qucreative_enqueue_theme_script')) {
   /**
-   * Enqueue a script that ships with the theme, versioned by its modification time and
-   * loaded with `defer`: it no longer blocks parsing, and deferred scripts still run in
-   * order, before DOMContentLoaded.
+   * Enqueue a script that ships with the theme, in the footer, versioned by its modification time.
+   *
+   * Not `defer`: measured 2026-11-23, deferring these end-of-body scripts made real first
+   * paint ~10% faster but Lighthouse's simulated mobile FCP ~300 ms slower (it then counts
+   * their run time before first paint). Revisit once the scripts are smaller (plan, Phase 6).
    *
    * @param string $handle
    * @param string $relativePath path inside the theme, e.g. 'libs/qucreative/qucreative.js'
@@ -424,9 +426,6 @@ if (!function_exists('qucreative_enqueue_theme_script')) {
    * @return void
    */
   function qucreative_enqueue_theme_script($handle, $relativePath, $deps = array()) {
-    wp_enqueue_script($handle, QUCREATIVE_THEME_URL . $relativePath, $deps, qucreative_asset_version($relativePath), array(
-      'in_footer' => true,
-      'strategy' => 'defer',
-    ));
+    wp_enqueue_script($handle, QUCREATIVE_THEME_URL . $relativePath, $deps, qucreative_asset_version($relativePath), true);
   }
 }
