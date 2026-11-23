@@ -8,3 +8,10 @@
   text-align: right;
   padding-right: 0;
 }
+
+// -- desktop without a background image: the title would be white on the white default background
+@media (min-width: 1000px) {
+  body.qucreative-bg-no-image:not(.responsive-mode-sc) .main-page-title {
+    color: var(--qu-colors-headings);
+  }
+}

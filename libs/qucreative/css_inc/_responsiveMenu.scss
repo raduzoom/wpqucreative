@@ -39,11 +39,11 @@
 
   .dzs-select-wrapper-head {
     .nav-wrapper-head {
-      background-color: var(--qu-colors-hightlight-text);
+      background-color: var(--qu-color-highlight);
       height: 60px;
       text-align: center;
       position: relative;
-      color: #FFFFFF;
+      color: var(--qu-color-on-highlight);
       font-family: "Lato", arial, serif;
       font-size: 14px;
       line-height: 1;

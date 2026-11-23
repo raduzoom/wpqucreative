@@ -67,7 +67,7 @@ h3, .h3 {
 h4, .h4 {
 
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 700;
 
 
 
@@ -76,5 +76,23 @@ h4, .h4 {
   & + p, & + .paragraph-text {
 
     margin-top: 10px;
+  }
+}
+
+
+// -- small screens: headings scale down so long words don't break mid-word (docs/design.md in
+// wpqucreative). The page title has its own responsive size.
+@media (max-width: 767px) {
+  h1:not(.main-page-title), .h1 {
+    font-size: 40px;
+  }
+  h2, .h2 {
+    font-size: 32px;
+  }
+  h3, .h3 {
+    font-size: 28px;
+  }
+  h4, .h4 {
+    font-size: 24px;
   }
 }

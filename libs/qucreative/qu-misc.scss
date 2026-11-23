@@ -538,3 +538,69 @@ ul.style-angle {
     color: var(--qu-colors-hightlight-text);
   }
 }
+
+
+// -- sidebar search: field and button side by side (the 404 page keeps its own large search).
+// Here rather than in _structure-sidebar.scss: that partial only compiles into parts/qu-footer.css,
+// which nothing loads.
+body:not(.error404) .sidebar-block.widget_search {
+  .search-form {
+    display: flex;
+  }
+
+  label {
+    flex: 1;
+    margin: 0;
+  }
+
+  .search-field {
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    padding: 0 16px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    color: #222222;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .search-field:focus {
+    border-color: #222222;
+  }
+
+  .search-submit {
+    height: 48px;
+    padding: 0 16px;
+    border: 0;
+    background-color: #222222;
+    color: #ffffff;
+    font-family: "Lato", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .search-submit:hover,
+  .search-submit:focus {
+    background-color: var(--qu-color-highlight);
+    color: var(--qu-color-on-highlight);
+  }
+}
+
+// -- link-list widgets: lighter links, underline on hover. Recent comments keep their underline:
+// those links sit inside text (docs/accessibility.md in wpqucreative)
+.sidebar-block:not(.widget_recent_comments) > ul > li {
+  padding-block: 2px;
+
+  > a:not(.custom-a) {
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  > a:not(.custom-a):hover {
+    text-decoration: underline;
+  }
+}

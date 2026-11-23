@@ -63,7 +63,7 @@ a:not(.custom-a):hover, .sidebar-main a:not(.custom-a):not(.a):hover, .upper-foo
 
 
 div.paragraph, .paragraph-text, p, .paragraph-text-for-light {
-  line-height: 1.84;
+  line-height: 1.6;
   color: var(--qu-colors-primary-text);
 }
 
@@ -478,7 +478,7 @@ table {
 
 blockquote {
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   line-height: 1.9;
   color: #6b6b6b;
   font-weight: 400;
@@ -610,3 +610,11 @@ a {
 }
 // -- not important
 
+
+
+// -- reading measure: text blocks at most ~70 characters wide; headings, media and tables keep the
+// full column (docs/design.md in wpqucreative)
+.the-content :is(p, ul, ol, dl, blockquote, address),
+.post-content-con > .paragraph {
+  max-width: 70ch;
+}

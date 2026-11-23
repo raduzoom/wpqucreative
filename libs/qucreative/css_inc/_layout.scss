@@ -9,7 +9,7 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: $color_bg;
   color: var(--qu-colors-primary-text);
-  line-height: 2;
+  line-height: 1.6;
   word-wrap: break-word;
   // image-rendering: optimizequality;
 }
@@ -17,7 +17,8 @@ body {
 .Antfarm_links,
 .row-inline div[class*="col-md-"],
 body {
-  font-size: 13px;
+  // -- reading size (docs/design.md in wpqucreative); was 13px
+  font-size: 16px;
 }
 
 html {
