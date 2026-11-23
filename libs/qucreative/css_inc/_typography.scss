@@ -420,7 +420,15 @@ tt, code {
 }
 
 
-p > code {
+// Inline code in running text. Covers lists, tables and nested inline tags too:
+// "p > code" alone left code in a list item with the block padding and margin.
+p code,
+li code,
+td code,
+th code,
+dd code,
+dt code,
+figcaption code {
   margin: 0;
   padding: 0 5px;
   // display: inline;
