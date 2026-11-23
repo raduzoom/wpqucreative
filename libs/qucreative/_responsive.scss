@@ -522,6 +522,10 @@
 
     background-color: rgba(0, 0, 0, 0.6);
     color: #ffffff;
+
+    white-space: normal;
+    font-size: clamp(36px, 11vw, 70px);
+    line-height: 1.1;
   }
 
   .selector-con.selector-con-for-skin-melbourne .categories {
@@ -574,6 +578,15 @@
 
     .qucreative--nav-con {
       display: none ;
+    }
+
+    // -- must outrank .qucreative-horizontal-menu nav.qucreative--nav-con { display: flex }
+    &.qucreative-horizontal-menu nav.qucreative--nav-con {
+      display: none;
+    }
+
+    .the-content-and-title-con {
+      min-width: 0;
     }
 
 

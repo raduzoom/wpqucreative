@@ -32,15 +32,24 @@ function qucreative_view_generateResponsiveMenu() {
   ?>
   <div class="qucreative--520-nav-con">
     <?php qucreative_view_generateResponsiveMenuLogo(); ?>
+    <?php if ($responsive_menu_type === 'custom') : ?>
+      <input class="responsive-menu-state" type="checkbox" id="qucreative-responsive-menu-state" autocomplete="off" aria-label="<?php echo esc_attr__('Menu', 'qucreative'); ?>">
+    <?php endif; ?>
     <div class="dzs-select-wrapper skin-justvisible">
-      <div class="dzs-select-wrapper-head">
-        <div class="nav-wrapper-head bg-color-hg"><i class="fa fa-bars"></i></div>
-      </div>
+      <?php if ($responsive_menu_type === 'custom') : ?>
+        <label class="dzs-select-wrapper-head" for="qucreative-responsive-menu-state">
+          <div class="nav-wrapper-head bg-color-hg"><i class="fa fa-bars"></i></div>
+        </label>
+      <?php else : ?>
+        <div class="dzs-select-wrapper-head">
+          <div class="nav-wrapper-head bg-color-hg"><i class="fa fa-bars"></i></div>
+        </div>
+      <?php endif; ?>
       <?php echo $select_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is built with escaped parts ?>
     </div>
     <?php if ($responsive_menu_type === 'custom') : ?>
       <div class="custom-responsive-menu">
-        <div class="close-responsive-con"><i class="fa fa-times"></i></div>
+        <label class="close-responsive-con" for="qucreative-responsive-menu-state"><i class="fa fa-times"></i></label>
         <div class="custom-menu-con">
           <?php qucreative_view_generateResponsiveMenuItems(); ?>
         </div>
@@ -73,6 +82,32 @@ function qucreative_view_generateResponsiveMenuLogo() {
   </div>
   <?php
 }
+
+/**
+ * Add a CSS-driven submenu toggle to parent items of the responsive custom menu
+ *
+ * A "#" link has no page to open, so its whole row becomes the toggle.
+ *
+ * @param string   $item_output The menu item's HTML
+ * @param WP_Post  $item        The menu item
+ * @param int      $depth       Depth of the item
+ * @param stdClass $args        wp_nav_menu() arguments
+ * @return string
+ */
+function qucreative_view_responsiveMenuItemToggle($item_output, $item, $depth, $args) {
+  if (empty($args->menu_class) || $args->menu_class !== 'custom-menu' || !in_array('menu-item-has-children', (array) $item->classes, true)) {
+    return $item_output;
+  }
+
+  $id = 'qucreative-submenu-state-' . (int) $item->ID;
+  $label = sprintf(esc_html__('Submenu: %s', 'qucreative'), wp_strip_all_tags($item->title));
+  $row_class = $item->url === '#' ? ' submenu-toggle--row' : '';
+
+  return '<input class="submenu-state" type="checkbox" id="' . esc_attr($id) . '" autocomplete="off" aria-label="' . esc_attr($label) . '">'
+    . $item_output
+    . '<label class="submenu-toggle' . $row_class . '" for="' . esc_attr($id) . '"><i class="fa fa-angle-right"></i></label>';
+}
+add_filter('walker_nav_menu_start_el', 'qucreative_view_responsiveMenuItemToggle', 10, 4);
 
 /**
  * Generate the menu items for the responsive custom menu

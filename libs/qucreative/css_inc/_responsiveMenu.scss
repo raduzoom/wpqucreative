@@ -140,23 +140,6 @@
         }
       }
 
-      i.submenu-toggler {
-        font-family: "FontAwesome", sans-sarif;
-        content: "\f105";
-        font-size: 28px;
-        color: #222222;
-        position: absolute;
-        top: 9px;
-        right: 20px;
-        cursor: pointer;
-        padding: 10px;
-        //pointer-events: none;
-        $transition-property: all;
-        $transition-duration: 0.3s;
-        $transition-timing: ease-out;
-        @include apply_transition($transition-property, $transition-duration, $transition-timing);
-      }
-
       li.current-menu-ancestor,
       li.current-menu-item {
         > a {
@@ -169,27 +152,6 @@
         > a {
           color: #ffffff;
           background-color: $color_highlight;
-        }
-
-        > .submenu-toggler {
-          color: #ffffff;
-        }
-      }
-
-      li.children-active {
-        > a {
-          background-color: #dddddd;
-          color: #222222;
-        }
-
-        > .submenu-toggler {
-          color: #222222;
-          transform: rotate(90deg);
-          top: 10px;
-        }
-
-        > ul {
-          //display: block;
         }
       }
 
@@ -209,11 +171,91 @@
   }
 }
 
-body.custom-responsive-menu-active {
-  .qucreative--520-nav-con {
-    .custom-responsive-menu {
-      opacity: 1;
-      visibility: visible;
+// -- open states are checkboxes, so the menu works before any js loads
+.qucreative--520-nav-con {
+  .responsive-menu-state,
+  .custom-responsive-menu .custom-menu .submenu-state {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .responsive-menu-state:checked ~ .custom-responsive-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .responsive-menu-state:focus-visible ~ .dzs-select-wrapper .nav-wrapper-head {
+    outline: 2px solid #ffffff;
+    outline-offset: -4px;
+  }
+
+  label.dzs-select-wrapper-head,
+  label.close-responsive-con {
+    display: block;
+    cursor: pointer;
+  }
+
+  .custom-responsive-menu .custom-menu {
+    .submenu-toggle {
+      position: absolute;
+      top: 12px;
+      right: 11px;
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      margin: 0;
+      padding: 10px 0;
+      font-size: 28px;
+      line-height: 1;
+      text-align: center;
+      color: #222222;
+      cursor: pointer;
+
+      > i {
+        display: inline-block;
+        font-size: inherit;
+        transition: transform 0.3s ease-out;
+      }
+    }
+
+    .submenu-toggle--row {
+      top: 0;
+      right: 0;
+      left: 0;
+      width: auto;
+      height: 71px;
+      padding: 21px 30px;
+      text-align: right;
+    }
+
+    li:hover > .submenu-toggle {
+      color: #ffffff;
+    }
+
+    .submenu-state:checked ~ a {
+      background-color: #dddddd;
+      color: #222222;
+    }
+
+    .submenu-state:checked ~ .submenu-toggle {
+      color: #222222;
+
+      > i {
+        transform: rotate(90deg);
+      }
+    }
+
+    .submenu-state:checked ~ ul {
+      display: block;
+    }
+
+    .submenu-state:focus-visible ~ .submenu-toggle {
+      outline: 2px solid currentColor;
+      outline-offset: -2px;
     }
   }
 }

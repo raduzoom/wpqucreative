@@ -9,7 +9,6 @@ export class QuCreative{
   $theActualNav= null;
   response_str= null;
   _theContent= null;
-  custom_responsive_menu= null;
   _theContentConTr= null;
   _mainContainer= null;
   ___response= null;
