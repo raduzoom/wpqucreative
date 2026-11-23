@@ -245,6 +245,20 @@ function qucreative_customize_register(WP_Customize_Manager $wp_customize): void
     )
   );
 
+  $wp_customize->add_control(
+    'show_preloader',
+    array(
+      'label' => esc_html__("Preloader", 'qucreative'),
+      'description' => esc_html__("A spinner in the middle of the screen while the page loads.", 'qucreative'),
+      'section' => 'settings_site',
+      'type' => 'select',
+      'choices' => array(
+        'off' => esc_html__("Disable", 'qucreative'),
+        'on' => esc_html__("Enable", 'qucreative'),
+      ),
+    )
+  );
+
 
 
 

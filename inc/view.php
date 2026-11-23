@@ -11,7 +11,11 @@ function qucreative_view_generateTranslucentCon($extraClass='translucent-con--fo
   <?php
 }
 function qucreative_view_generatePreloader() {
+  global $qucreative_main;
 
+  if ($qucreative_main->get_theme_mod_and_sanitize('show_preloader') !== 'on') {
+    return;
+  }
   ?>
 
   <!-- preloader area -->

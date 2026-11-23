@@ -2,9 +2,8 @@
 
 
 
-.main-container {
-  opacity: 0;
-}
+// -- only the background animates in; the content (.main-container) stays visible from the
+// first paint instead of waiting for the theme's JavaScript
 
 body .main-bg-con {
   transform: translate3d(0, 0, 0);
@@ -13,4 +12,13 @@ body .main-bg-con {
   $transition-duration: var(--qucreative-view-animation-duration);
   $transition-timing: ease-out;
   @include apply_transition($transition-property, $transition-duration, $transition-timing);
+}
+
+// -- near-instant rather than none: the theme's JavaScript may wait for transitionend
+@media (prefers-reduced-motion: reduce) {
+  body .main-bg-con,
+  body .translucent-con--for-nav-con,
+  body .translucent-con.drawn {
+    transition-duration: 0.01ms !important;
+  }
 }

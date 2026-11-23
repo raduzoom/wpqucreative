@@ -67,6 +67,11 @@ const QUCREATIVE_CUSTOMIZER_FIELDS = array(
     'name' => 'bg_slideshow_time',
     'default' => '10',
   ),
+  array(
+    // -- off for new installs; qucreative_migrate_settings() turns it on for sites that existed before
+    'name' => 'show_preloader',
+    'default' => 'off',
+  ),
 
 
   // -- plugin ajax
