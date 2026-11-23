@@ -1,15 +1,17 @@
 .post-meta {
   font-family: "Open Sans", arial, serif;
   font-weight: 400;
-  color: #777777;
+  color: #6b6b6b;
   font-size: 13px;
   font-style: italic;
 
+  // -- underlined: links inside text mustn't rely on colour alone (docs/accessibility.md)
   a {
     color: var(--qu-colors-hightlight-text);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(231, 76, 70, 0);
-    $transition-property: border, color;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    $transition-property: color;
     $transition-duration: 0.3s;
     $transition-timing: ease-out;
     @include apply_transition($transition-property, $transition-duration, $transition-timing);
@@ -17,8 +19,7 @@
 
   a:hover {
     color: var(--qu-colors-hightlight-text);
-    text-decoration: none;
-    border-bottom: 1px solid var(--qu-colors-hightlight-text);
+    text-decoration-thickness: 2px;
   }
 }
 
@@ -272,10 +273,10 @@ a.post-main-link {
 
 a.post-main-link:hover {
   text-decoration: none;
-  color: $color_highlight;
+  color: var(--qu-colors-hightlight-text);
 
   > h3 {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
   }
 }
 

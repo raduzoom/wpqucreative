@@ -127,11 +127,11 @@ footer.upper-footer {
     background-color: $color_highlight;
 
     > i {
-      color: #FFFFFF;
+      color: var(--qu-color-on-highlight);
     }
   }
 
   .icon-label {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
   }
 }

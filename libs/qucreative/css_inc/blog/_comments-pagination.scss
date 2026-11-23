@@ -58,6 +58,7 @@
     > a:hover, > span:hover, > .current {
       text-decoration: none;
       background-color: $color_highlight;
+      color: var(--qu-color-on-highlight);
     }
 
     .next, .prev {

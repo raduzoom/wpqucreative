@@ -17,6 +17,7 @@ defined('QUCREATIVE_THEME_DIR') || define('QUCREATIVE_THEME_DIR', trailingslashi
 
 
 include_once QUCREATIVE_THEME_DIR . 'inc/php/common/features/google-fonts-helper.php';
+include_once QUCREATIVE_THEME_DIR . 'inc/php/common/features/color-contrast.php';
 
 
 const QUCREATIVE_ID = 'qucreative';

@@ -7,7 +7,9 @@ above the fold stuff
 
 :root{
   --qucreative-view-animation-duration: #{$qu_animation_duration};
-  --qu-colors-hightlight-text: #{$color_highlight};
+  --qu-color-highlight: #{$color_highlight};
+  --qu-color-on-highlight: #{$color_on_highlight};
+  --qu-colors-hightlight-text: #{$color_highlight_text};
   --qu-colors-primary-text: #{$color_paragraph};
   --qu-colors-headings: #{$color_headings};
   --qu-content-color-bg: #{$color_menu_bg};

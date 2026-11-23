@@ -20,7 +20,7 @@
   }
 
   a:hover {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
     text-decoration: none;
   }
 
@@ -70,12 +70,12 @@
     &:hover {
       .icon-con {
         background-color: $color_highlight;
-        color: #fff;
+        color: var(--qu-color-on-highlight);
         border-color: rgba(0, 0, 0, 0);
       }
 
       .text-con {
-        color: $color_highlight;
+        color: var(--qu-colors-hightlight-text);
       }
     }
   }
@@ -125,7 +125,7 @@
   .sidebar-block {
     > .widget-title:first-of-type {
       background-color: $color_highlight;
-      color: #FFFFFF;
+      color: var(--qu-color-on-highlight);
       padding: 13px 25px;
       margin-top: 0;
       margin-left: -27px;

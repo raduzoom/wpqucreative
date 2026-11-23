@@ -90,7 +90,7 @@ a.antfarm-btn:focus {
 .antfarm-btn:focus:hover,
 .antfarm-btn:hover {
   background-color: $color_highlight;
-  color: #FFFFFF;
+  color: var(--qu-color-on-highlight);
   text-decoration: none;
 }
 
@@ -99,7 +99,7 @@ a.antfarm-btn:focus {
 /* -- buttons */
 .antfarm-btn.style-highlight {
   background-color: $color_highlight;
-  color: #FFFFFF;
+  color: var(--qu-color-on-highlight);
 }
 
 
@@ -115,7 +115,7 @@ a.antfarm-btn:focus {
 
 .btn-full-red {
   text-align: center;
-  color: #FFFFFF;
+  color: var(--qu-color-on-highlight);
   padding: 10px;
   display: block;
   background-color: $color_highlight;

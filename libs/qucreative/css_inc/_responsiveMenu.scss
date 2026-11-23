@@ -143,14 +143,14 @@
       li.current-menu-ancestor,
       li.current-menu-item {
         > a {
-          color: #ffffff;
+          color: var(--qu-color-on-highlight);
           background-color: $color_highlight;
         }
       }
 
       li:hover {
         > a {
-          color: #ffffff;
+          color: var(--qu-color-on-highlight);
           background-color: $color_highlight;
         }
       }

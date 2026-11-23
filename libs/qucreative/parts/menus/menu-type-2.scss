@@ -41,7 +41,7 @@ body.menu-type-2 {
   ul.the-actual-nav li ul > li:hover > a,
   ul.the-actual-nav li ul li.current-menu-ancestor > a,
   ul.the-actual-nav li ul li.current-menu-item > a {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
   }
 
   ul.the-actual-nav > li:hover > a,

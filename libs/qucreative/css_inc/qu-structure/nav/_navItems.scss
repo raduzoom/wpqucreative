@@ -36,7 +36,7 @@ ul.the-actual-nav {
   li.current-menu-ancestor > a,
   li.current-menu-item > a {
     background-color: $color_highlight;
-    color: $color_menu_bg;
+    color: var(--qu-color-on-highlight);
   }
 
   li {
@@ -60,7 +60,7 @@ ul.the-actual-nav {
       li {
         > a {
           background-color: $color_highlight;
-          color: #ffffff;
+          color: var(--qu-color-on-highlight);
           padding: 13px 25px 13px 29px;
         }
       }

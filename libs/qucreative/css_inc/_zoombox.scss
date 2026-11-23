@@ -46,7 +46,7 @@
     margin-top: 19px;
     font-size: 14px;
     font-weight: bold;
-    color: #777777;
+    color: #6b6b6b;
     margin-bottom: 23px;
     font-weight: 400;
     font-style: italic;
@@ -69,7 +69,7 @@
     }
 
     a:hover {
-      color: $color_highlight;
+      color: var(--qu-colors-hightlight-text);
       text-decoration: none;
     }
   }
@@ -110,7 +110,7 @@
   .main-con > .info-con .subtitle {
     font-style: italic;
     font-size: 14px;
-    color: #777 !important;
+    color: #6b6b6b !important;
     font-weight: bold;
     margin-bottom: 13px;
     text-align: left;

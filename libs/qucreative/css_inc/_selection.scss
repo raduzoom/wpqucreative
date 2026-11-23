@@ -2,13 +2,13 @@
 ::selection {
   background: $color_highlight;
   /* WebKit/Blink Browsers */
-  color: #FFFFFF;
+  color: var(--qu-color-on-highlight);
   opacity: 1;
 }
 
 ::-moz-selection {
   background: $color_highlight;
   /* Gecko Browsers */
-  color: #FFFFFF;
+  color: var(--qu-color-on-highlight);
   opacity: 1;
 }

@@ -8,7 +8,7 @@ textarea.input-style-sharp {
   $transition-duration: 0.3s;
   $transition-timing: ease-out;
   @include apply_transition($transition-property, $transition-duration, $transition-timing);
-  color: #868686;
+  color: #6b6b6b;
   font-size: 14px;
   font-weight: 600;
   outline: 0;
@@ -42,7 +42,7 @@ textarea.input-style-sharp {
   //      box-shadow:  0 0 0 1px #222222;
   padding: 12px 15px;
   width: 100%;
-  color: #868686;
+  color: #6b6b6b;
   font-size: 14px;
   font-weight: 600;
   box-sizing: border-box;

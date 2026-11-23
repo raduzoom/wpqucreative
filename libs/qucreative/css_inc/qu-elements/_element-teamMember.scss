@@ -90,7 +90,7 @@ div[class^="team-member-element"].shape-circle {
     .the-role {
       font-size: 14px;
       font-weight: bold;
-      color: #777777;
+      color: #6b6b6b;
       margin-bottom: 14px;
     }
 
@@ -103,7 +103,7 @@ div[class^="team-member-element"].shape-circle {
         height: 22px;
         border: 1px solid #999999;
         border-radius: 50%;
-        color: #999999;
+        color: #737373;
         $transition-property: border, color;
         $transition-duration: 0.3s;
         $transition-timing: ease-out;
@@ -121,7 +121,7 @@ div[class^="team-member-element"].shape-circle {
 
       .circle-con:hover {
         background-color: $color_highlight;
-        color: #FFFFFF;
+        color: var(--qu-color-on-highlight);
         border: 1px solid transparent;
       }
 

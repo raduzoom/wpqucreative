@@ -103,7 +103,7 @@ body.menu-type-18 {
       > li:hover > a,
       > li.current-menu-item > a {
         background-color: $color_highlight;
-        color: #FFFFFF;
+        color: var(--qu-color-on-highlight);
         border-radius: 15px;
       }
     }

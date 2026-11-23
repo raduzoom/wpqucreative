@@ -13,6 +13,9 @@
 
 }
 .the-content-sheet-dark {
+  // -- on a dark sheet the highlight as picked reads better than the shade darkened for light backgrounds
+  --qu-colors-hightlight-text: var(--qu-color-highlight);
+
   .row-from-antfarm-latest-posts-2 {
     a.post-main-link {
       color: #fff;
@@ -180,7 +183,7 @@ body .the-content-sheet.the-content-sheet-dark .section-title-divider-box {
   }
 
   .antfarm-btn.style-black:hover {
-    color: #FFFFFF;
+    color: var(--qu-color-on-highlight);
     background-color: $color_highlight;
   }
 
@@ -199,12 +202,12 @@ body .the-content-sheet.the-content-sheet-dark .section-title-divider-box {
     background-color: $color_highlight;
     // border-color: $color_highlight;
     box-shadow: 0 0 0 2px $color_highlight inset;
-    color: #FFFFFF;
+    color: var(--qu-color-on-highlight);
   }
 
   .antfarm-btn.style-highlight {
     background-color: $color_highlight;
-    color: #FFFFFF;
+    color: var(--qu-color-on-highlight);
   }
 
   .antfarm-btn.style-default:hover,

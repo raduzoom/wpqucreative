@@ -46,7 +46,7 @@
 
   .price-date {
     margin-bottom: 16px;
-    color: #999999;
+    color: #737373;
   }
 
   a.signup-button {
@@ -68,7 +68,7 @@
 
   a.signup-button:hover {
     background-color: $color_highlight;
-    color: #FFFFFF;
+    color: var(--qu-color-on-highlight);
     border: 2px solid transparent;
     text-decoration: none;
   }

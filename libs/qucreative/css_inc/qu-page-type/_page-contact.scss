@@ -48,7 +48,7 @@ body.page-contact {
   }
 
   a:hover {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
     text-decoration: none;
   }
 

@@ -28,10 +28,10 @@ function qucreative_php_view_generate_light_style($the_content_con_identifier) {
 // -- search
   $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . '  .sidebar-main .widget_search .search-submit-con, body.body-style-light ' . $the_content_con_identifier . '  .sidebar-main .widget_search .search-submit { background-color: #222222;  } ';
   $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . '  .sidebar-main .widget_search .search-submit:after { color: #fff; } ';
-  $style_data_for_env .= ' body.body-style-light ' . $the_content_con_identifier . '  .sidebar-main .widget_search input[type=text]:hover, body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search .search-field:hover,   body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search input[type=text]:first-child,   body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search .search-field { background-color: #ffffff; color: #777; } ';
-  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-webkit-input-placeholder { color: #777; } ';
-  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-moz-placeholder { color: #777; } ';
-  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-ms-input-placeholder { color: #777; } ';
+  $style_data_for_env .= ' body.body-style-light ' . $the_content_con_identifier . '  .sidebar-main .widget_search input[type=text]:hover, body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search .search-field:hover,   body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search input[type=text]:first-child,   body.body-style-light ' . $the_content_con_identifier . ' .sidebar-main .widget_search .search-field { background-color: #ffffff; color: #6b6b6b; } ';
+  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-webkit-input-placeholder { color: #6b6b6b; } ';
+  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-moz-placeholder { color: #6b6b6b; } ';
+  $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . ' .widget_search .search-field::-ms-input-placeholder { color: #6b6b6b; } ';
   $style_data_for_env .= 'body.body-style-light ' . $the_content_con_identifier . '.page-portfolio .zfolio.skin-melbourne .item-meta { border-left: 1px solid #ddd; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; } ';
 
 

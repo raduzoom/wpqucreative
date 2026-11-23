@@ -463,7 +463,7 @@ div[class*="col-"].bullet-feature {
 
     .real-icon {
       font-size: 28px;
-      color: $color_highlight;
+      color: var(--qu-colors-hightlight-text);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -522,7 +522,7 @@ div[class*="col-"].bullet-feature {
     width: 40px;
     height: 40px;
     background-color: $color_highlight;
-    color: #FFFFFF;
+    color: var(--qu-color-on-highlight);
     position: relative;
 
     .real-icon {

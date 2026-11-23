@@ -63,7 +63,7 @@ ul.nostyle {
         position: absolute;
         top: 50%;
         left: 50%;
-        color: #FFFFFF;
+        color: var(--qu-color-on-highlight);
         transform: translate(-50%, -50%);
       }
     }

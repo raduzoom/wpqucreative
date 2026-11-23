@@ -510,11 +510,11 @@ ul.style-angle {
   }
 
   > li:hover {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
   }
 
   > li:hover:before {
-    color: $color_highlight;
+    color: var(--qu-colors-hightlight-text);
   }
 }
 
