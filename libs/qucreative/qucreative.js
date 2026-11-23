@@ -80,9 +80,6 @@ let first_page_not_transitioned = true,
 function goto_bg(arg, pargs) {
   const $ = jQuery;
   const quCreative_main = window.quCreative_main;
-  const now = Number(new Date().getDate());
-  console.log('[animation] goto_bg -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
   if (quCreative_main.busy_main_transition) {
     return false;
   }
@@ -185,9 +182,6 @@ function goto_bg_doit(arg, pargs) {
 
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
-  const now = Number(new Date().getDate());
-  console.log('[animation] goto_bg_doit -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
   const wh = window.innerHeight;
   var margs = {
     newpage_transition: false,
@@ -445,9 +439,6 @@ function do_transition_really_do_it(margs) {
   const $ = jQuery;
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
-  const now = Number(new Date().getDate());
-  console.log('[animation] do_transition_really_do_it -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
   if (margs && margs.newpage_transition) {}
   var margs_default = {
     arg: 0
@@ -492,9 +483,6 @@ function do_transition_really_do_it(margs) {
     main_bg_transition_complete();
   });
   function main_bg_transition_complete() {
-    const now = Number(new Date().getDate());
-    console.log("%c [animation] main_bg_transition_complete", "background-color: #dd0000;", now - window.quCreative_debug_time);
-    window.quCreative_debug_time = now;
     quCreative_main._mainBg = quCreative_main._mainBgTransitioning;
     quCreative_main._mainBgTransitioning = null;
     theQuery = '.main-bg-con:not(".transitioning")';
@@ -731,9 +719,6 @@ let main_content_loaded = false;
 function qucreative_view_animation_doTransition(margs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
-  const now = Number(new Date().getDate());
-  console.log('[animation] do_transition -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
   _body.addClass("q-inited-bg");
   var delay_time = 0;
   if (quCreative_main.bg_transition != quCreative_main.last_bg_transition) {
@@ -768,7 +753,6 @@ function qucreative_view_animation_doTransition(margs) {
     });
   }
   promiseContentReady().then(() => {
-    console.log('[animation] content ready');
     do_transition_really_do_it(margs);
   });
 }
@@ -796,7 +780,6 @@ function calculate_mainbg(pargs) {
     var he = _t.get(0).naturalHeight;
     if (quCreative_main.border_width) {
       quCreative_main.windowWidth = window.innerWidth - quCreative_main.border_width;
-      console.info("ww-", ww);
     }
     var auxww = quCreative_main.windowWidth;
     var auxwh = quCreative_main.windowHeight;
@@ -1087,7 +1070,6 @@ var _quViewDeterminePage = require("./_qu-view-determine-page");
 var _quView = require("./_qu-view");
 var _quActions = require("./_qu-actions");
 var _qucreativeClass = require("./_qucreative-class");
-window.quCreative_debug_time = 0;
 window.qucreative_env_style_index = 1;
 window.qucreative_vc_custom_style_index = 1;
 window.dzs_check_lazyloading_images_use_this_element_css_top_instead_of_window_scroll = null;
@@ -1153,7 +1135,6 @@ jQuery(document).ready(function ($) {
   }, 500);
   init();
   function init() {
-    console.log('[lifecycle] init()', _body.attr('class'));
     if (_body.attr('class').indexOf(["menu-type-1 ", "menu-type-2", "menu-type-3", "menu-type-4", "menu-type-5", "menu-type-6", "menu-type-7", "menu-type-8"]) > -1) {
       qcm.viewMenuMacroType = 'vertical';
     }

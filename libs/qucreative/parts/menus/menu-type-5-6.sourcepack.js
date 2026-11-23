@@ -8,7 +8,6 @@ loadScriptIfItDoesNotExist(null, 'quCreative_main').then(()=>{
     _body.addClass("menu-is-sticky");
   }
 
-  console.log('window.qucreative_handle_resize_actions ->', window.qucreative_handle_resize_actions);
   window.qucreative_handle_resize_actions.push(handleResizeM56);
 
 

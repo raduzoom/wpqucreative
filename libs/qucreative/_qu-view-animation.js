@@ -53,9 +53,6 @@ export function goto_bg(arg, pargs) {
   const $ = jQuery;
   const quCreative_main = window.quCreative_main;
 
-  const now = Number(new Date().getDate());
-  console.log('[animation] goto_bg -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
   if (quCreative_main.busy_main_transition) {
     return false;
   }
@@ -184,9 +181,6 @@ function goto_bg_doit(arg, pargs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
 
-  const now = Number(new Date().getDate());
-  console.log('[animation] goto_bg_doit -> ', (now - window.quCreative_debug_time));
-  window.quCreative_debug_time = now;
 
   const wh = window.innerHeight;
 
@@ -691,9 +685,6 @@ function do_transition_really_do_it(margs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
 
-  const now = Number(new Date().getDate());
-  console.log('[animation] do_transition_really_do_it -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
 
   if (margs && margs.newpage_transition) {
   }
@@ -767,11 +758,6 @@ function do_transition_really_do_it(margs) {
   function main_bg_transition_complete() {
 
 
-    const now = Number(new Date().getDate());
-    console.log(
-        "%c [animation] main_bg_transition_complete",
-        "background-color: #dd0000;", now - window.quCreative_debug_time);
-    window.quCreative_debug_time = now;
 
     quCreative_main._mainBg = quCreative_main._mainBgTransitioning;
     quCreative_main._mainBgTransitioning = null;
@@ -1118,9 +1104,6 @@ function qucreative_view_animation_doTransition(margs) {
   const quCreative_main = window.quCreative_main;
   const _body = quCreative_main._body;
 
-  const now = Number(new Date().getDate());
-  console.log('[animation] do_transition -> ', now - window.quCreative_debug_time);
-  window.quCreative_debug_time = now;
 
 
 
@@ -1172,7 +1155,6 @@ function qucreative_view_animation_doTransition(margs) {
 
   promiseContentReady().then(()=>{
 
-    console.log('[animation] content ready');
 
 
     do_transition_really_do_it(margs);
@@ -1211,7 +1193,6 @@ export function calculate_mainbg(pargs) {
     if (quCreative_main.border_width) {
       quCreative_main.windowWidth = window.innerWidth - quCreative_main.border_width;
 
-      console.info("ww-", ww);
     }
     var auxww = quCreative_main.windowWidth;
     var auxwh = quCreative_main.windowHeight;

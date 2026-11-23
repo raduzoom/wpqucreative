@@ -15,7 +15,6 @@ import { qu_setupActions } from './_qu-actions'
 
 import {QuCreative} from './_qucreative-class';
 
-window.quCreative_debug_time = 0;
 
 
 window.qucreative_env_style_index = 1;
@@ -134,7 +133,6 @@ jQuery(document).ready(function ($) {
 
   function init() {
 
-    console.log('[lifecycle] init()', _body.attr('class'));
 
 
     if (

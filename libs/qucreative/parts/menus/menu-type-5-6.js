@@ -92,7 +92,6 @@ var _dzsCommonFunctions = require("../../js/common/_dzs-common-functions");
   if (_body.hasClass("menu-type-5") || _body.hasClass("menu-type-6")) {
     _body.addClass("menu-is-sticky");
   }
-  console.log('window.qucreative_handle_resize_actions ->', window.qucreative_handle_resize_actions);
   window.qucreative_handle_resize_actions.push(handleResizeM56);
   window.quCreative_main.handle_resize.bind(window.quCreative_main)();
   function handleResizeM56(margs, quCreative_main) {

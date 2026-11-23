@@ -14,8 +14,6 @@ loadScriptIfItDoesNotExist(null, 'quCreative_main').then(()=>{
     .find(".menu-toggler-target")
 ;
 
-  console.log('qcm._mainContainer -' , qcm._mainContainer);
-  console.log('$menuTogglerTarget -' , $menuTogglerTarget);
   $menuTogglerTarget.eq(0)
     .append(qcm._navCon.find(".the-actual-nav").eq(0));
 
@@ -31,13 +29,11 @@ loadScriptIfItDoesNotExist(null, 'quCreative_main').then(()=>{
   function handle_mouse(e) {
     const _t = $(this);
 
-    console.log('_t', _t);
 
     if (e) {
 
       if (e.type == "click") {
         if (_t.hasClass("qu-overlay-menu-toggler") || _t.hasClass("qu-overlay-menu-closer")) {
-          console.log('$(".menu-toggler-target")- ' , $(".menu-toggler-target"));
           $(".menu-toggler-target").eq(0).toggleClass("active");
         }
       }
