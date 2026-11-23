@@ -46,7 +46,7 @@ function qucreative_view_enqueue_fontAwesome() {
 
   if (defined("QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN") && QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN == "ON") {
     // 3rd-party CDN can use original handle
-    wp_enqueue_style('fontawesome', 'https://' . 'maxcdn' . '.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
+    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
     return;
   }
 
