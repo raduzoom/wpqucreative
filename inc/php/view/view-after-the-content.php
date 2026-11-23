@@ -229,8 +229,8 @@ function qucreative_check_if_prev_next_post_must_be_added(): string {
 
     $url_page_for_posts = '';
 
-    if (get_option('page_for_posts')) {
-      $url_page_for_posts = get_permalink(get_option('page_for_posts'));
+    if (qucreative_page_for_posts_id()) {
+      $url_page_for_posts = get_permalink(qucreative_page_for_posts_id());
     }
 
 

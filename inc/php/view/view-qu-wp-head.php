@@ -113,7 +113,7 @@ function qucreative_handle_wp_head(){
 
     if(is_home() || is_search() || is_archive()){
 
-      if(get_option( 'page_for_posts' )){
+      if(qucreative_page_for_posts_id()){
 
       }else{
 

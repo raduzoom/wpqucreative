@@ -355,8 +355,8 @@ class QuCreative {
       $post_for_meta = $qucreative_main->theme_data['post_for_meta'];
     }else{
       if(is_home()){
-        if(get_option( 'page_for_posts' )){
-          $post_for_meta = get_post(get_option( 'page_for_posts' ));
+        if(qucreative_page_for_posts_id()){
+          $post_for_meta = get_post(qucreative_page_for_posts_id());
         }
 
       }

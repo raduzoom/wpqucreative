@@ -21,8 +21,8 @@ function qucreative_generate_inline_javascript_for_options() {
   } else {
     if (is_home()) {
 
-      if (get_option('page_for_posts')) {
-        $post_for_meta = get_post(get_option('page_for_posts'));
+      if (qucreative_page_for_posts_id()) {
+        $post_for_meta = get_post(qucreative_page_for_posts_id());
       }
 
     }
@@ -150,9 +150,9 @@ function qucreative_generate_inline_javascript_for_options() {
 
   }
 
-  if (get_option('page_for_posts')) {
+  if (qucreative_page_for_posts_id()) {
 
-    $qucreative_main->theme_data['js_options']['blog_posts_url'] = get_permalink(get_option('page_for_posts'));
+    $qucreative_main->theme_data['js_options']['blog_posts_url'] = get_permalink(qucreative_page_for_posts_id());
 
 
   }

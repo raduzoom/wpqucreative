@@ -88,8 +88,8 @@ function qucreative_get_viewTitle(QuCreativeView $quCreativeView, $mainArgs) {
 
     $viewTitle = get_the_title($post->ID);
     // -- single post
-    if (get_option('page_for_posts')) {
-      $page_posts = get_post(get_option('page_for_posts'));
+    if (qucreative_page_for_posts_id()) {
+      $page_posts = get_post(qucreative_page_for_posts_id());
 
       $viewTitle = $page_posts->post_title;
       if (get_post_meta($page_posts->ID, QUCREATIVE_META_PREFIX . 'meta_custom_title' . $qucreative_main->theme_data['page_extra_meta_label'], true)) {

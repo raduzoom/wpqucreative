@@ -492,3 +492,14 @@ if (!function_exists('qucreative_enqueue_theme_script')) {
     wp_enqueue_script($handle, QUCREATIVE_THEME_URL . $relativePath, $deps, qucreative_asset_version($relativePath), true);
   }
 }
+if (!function_exists('qucreative_page_for_posts_id')) {
+  /**
+   * The posts page, only when the site uses a static front page (Settings > Reading). With "Your
+   * latest posts" WordPress ignores page_for_posts, which can still hold an old value; so does the theme.
+   *
+   * @return int 0 when there is no posts page in use
+   */
+  function qucreative_page_for_posts_id() {
+    return get_option('show_on_front') === 'page' ? (int) get_option('page_for_posts') : 0;
+  }
+}

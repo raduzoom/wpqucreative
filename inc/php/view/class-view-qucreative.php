@@ -35,7 +35,7 @@ class QuCreativeView {
     }
     $fontData = $this->quMain->get_theme_mod_and_sanitize('font_data');
 
-    return !$fontData || (defined('QUEXTEND_QU_DEFAULT_TYPOGRAPHY') && $fontData == QUEXTEND_QU_DEFAULT_TYPOGRAPHY);
+    return !$fontData || (function_exists('quextend_typography_is_default') && quextend_typography_is_default($fontData));
   }
 
   /**
@@ -312,7 +312,7 @@ class QuCreativeView {
     // -- the post that contains the page meta
     $postForMeta = $post;
     if (is_home() || is_search()) {
-      $posts_page = get_option('page_for_posts');
+      $posts_page = qucreative_page_for_posts_id();
 
       if ($posts_page) {
 
