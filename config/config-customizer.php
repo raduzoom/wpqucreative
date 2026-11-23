@@ -68,7 +68,7 @@ const QUCREATIVE_CUSTOMIZER_FIELDS = array(
     'default' => '10',
   ),
   array(
-    // -- off for new installs; qucreative_migrate_settings() turns it on for sites that existed before
+    // -- off by default, for every site (docs/page-load-and-preloader.md in wpqucreative)
     'name' => 'show_preloader',
     'default' => 'off',
   ),

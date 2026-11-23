@@ -36,7 +36,6 @@ include_once 'inc/php/view/view-after-the-content.php';
 include_once 'inc/php/filters.php';
 
 include_once 'inc/php/helpers.php';
-include_once 'inc/php/migrate-settings.php';
 include_once 'inc/php/view/view-generate-pagination.php';
 
 
