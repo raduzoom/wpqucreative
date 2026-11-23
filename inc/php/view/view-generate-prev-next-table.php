@@ -247,7 +247,7 @@ function qucreative_generate_prev_next_table($arg=0, $pargs = array()): string {
   $fout.= '<div class="center-td portfolio-link--toback" style="">
                                 <a class="custom-a portfolio-link--toback-a donotchange-ajax-menu" href="'.$link.'">
 
-                                    <i class="fa-th fa"></i>
+                                    ' . qucreative_icon('th') . '
                                 </a>
                             </div>';
 

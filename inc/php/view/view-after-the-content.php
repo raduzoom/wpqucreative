@@ -242,7 +242,7 @@ function qucreative_check_if_prev_next_post_must_be_added(): string {
     }
 
     $fout .= '>
-        <i class="fa-th fa"></i>
+        ' . qucreative_icon('th') . '
     </a>
 </div>';
 

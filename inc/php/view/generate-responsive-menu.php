@@ -38,18 +38,18 @@ function qucreative_view_generateResponsiveMenu() {
     <div class="dzs-select-wrapper skin-justvisible">
       <?php if ($responsive_menu_type === 'custom') : ?>
         <label class="dzs-select-wrapper-head" for="qucreative-responsive-menu-state">
-          <div class="nav-wrapper-head bg-color-hg"><i class="fa fa-bars"></i></div>
+          <div class="nav-wrapper-head bg-color-hg"><?php echo qucreative_icon('bars'); ?></div>
         </label>
       <?php else : ?>
         <div class="dzs-select-wrapper-head">
-          <div class="nav-wrapper-head bg-color-hg"><i class="fa fa-bars"></i></div>
+          <div class="nav-wrapper-head bg-color-hg"><?php echo qucreative_icon('bars'); ?></div>
         </div>
       <?php endif; ?>
       <?php echo $select_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is built with escaped parts ?>
     </div>
     <?php if ($responsive_menu_type === 'custom') : ?>
       <div class="custom-responsive-menu">
-        <label class="close-responsive-con" for="qucreative-responsive-menu-state"><i class="fa fa-times"></i></label>
+        <label class="close-responsive-con" for="qucreative-responsive-menu-state"><?php echo qucreative_icon('times'); ?></label>
         <div class="custom-menu-con">
           <?php qucreative_view_generateResponsiveMenuItems(); ?>
         </div>
@@ -105,7 +105,7 @@ function qucreative_view_responsiveMenuItemToggle($item_output, $item, $depth, $
 
   return '<input class="submenu-state" type="checkbox" id="' . esc_attr($id) . '" autocomplete="off" aria-label="' . esc_attr($label) . '">'
     . $item_output
-    . '<label class="submenu-toggle' . $row_class . '" for="' . esc_attr($id) . '"><i class="fa fa-angle-right"></i></label>';
+    . '<label class="submenu-toggle' . $row_class . '" for="' . esc_attr($id) . '">' . qucreative_icon('angle-right') . '</label>';
 }
 add_filter('walker_nav_menu_start_el', 'qucreative_view_responsiveMenuItemToggle', 10, 4);
 

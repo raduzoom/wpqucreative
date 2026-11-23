@@ -1,0 +1,15 @@
+// -- theme icons as inline SVG (qucreative_icon() / quIcon(); docs/asset-loading.md in wpqucreative).
+// The SVG spans Font Awesome's full em box, so dropping it by the font's descent (256/1792) puts the
+// glyph on the baseline where the icon font drew it.
+.qu-icon-svg {
+  display: inline-block;
+  height: 1em;
+  vertical-align: -0.1429em;
+  fill: currentColor;
+}
+
+// -- the wrapper keeps the "fa" class for the existing icon CSS, but not Font Awesome's font: Chrome
+// downloads a font for any box that uses it, text or not
+.fa.qu-icon {
+  font-family: inherit;
+}

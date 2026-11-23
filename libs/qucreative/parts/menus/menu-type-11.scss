@@ -38,7 +38,7 @@ body.menu-type-11 {
     }
   }
 
-  i.fa.fa-bars {
+  i.qu-overlay-menu-toggler {
     position: absolute;
     left: 30px;
     top: 50%;
@@ -53,7 +53,7 @@ body.menu-type-11 {
     @include apply_transition($transition-property, $transition-duration, $transition-timing);
   }
 
-  i.fa.fa-bars:hover {
+  i.qu-overlay-menu-toggler:hover {
     opacity: 0.5;
   }
 

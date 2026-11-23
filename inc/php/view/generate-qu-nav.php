@@ -38,7 +38,7 @@ function qucreative_header_generateQuNav() {
 
   if (in_array($searchedMenuType, QUCREATIVE_VIEW_OVERLAY_MENUS)) {
 
-    echo '<i class="fa fa-bars qu-overlay-menu-toggler" role="button" tabindex="0" aria-label="' . esc_attr__('Menu', 'qucreative') . '" aria-expanded="false" aria-controls="qu-overlay-menu"></i>';
+    echo qucreative_icon('bars', 'class="qu-overlay-menu-toggler" role="button" tabindex="0" aria-label="' . esc_attr__('Menu', 'qucreative') . '" aria-expanded="false" aria-controls="qu-overlay-menu"');
   }
   ?>
     </nav><?php
