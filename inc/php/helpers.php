@@ -380,3 +380,34 @@ if (!function_exists('qucreative_sanitize_term_slug_to_id')) {
     return $arg;
   }
 }
+
+
+if (!function_exists('qucreative_asset_version')) {
+  /**
+   * Version string for a theme file: its modification time, so the URL changes
+   * whenever the file does and browsers drop their cached copy.
+   * Falls back to the theme version when the file can't be read.
+   *
+   * @param string $relativePath path inside the theme, e.g. 'libs/qucreative/qucreative.css'
+   * @return string
+   */
+  function qucreative_asset_version($relativePath) {
+    $file = QUCREATIVE_THEME_DIR . $relativePath;
+    $modified = file_exists($file) ? filemtime($file) : false;
+
+    return $modified ? (string) $modified : QUCREATIVE_VERSION;
+  }
+}
+
+if (!function_exists('qucreative_enqueue_theme_style')) {
+  /**
+   * Enqueue a stylesheet that ships with the theme, versioned by its modification time.
+   *
+   * @param string $handle
+   * @param string $relativePath path inside the theme, e.g. 'libs/qucreative/qucreative.css'
+   * @return void
+   */
+  function qucreative_enqueue_theme_style($handle, $relativePath) {
+    wp_enqueue_style($handle, QUCREATIVE_THEME_URL . $relativePath, array(), qucreative_asset_version($relativePath));
+  }
+}

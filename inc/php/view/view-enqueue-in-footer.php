@@ -12,7 +12,7 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
 
   $qucreative_main = $quView->quMain;
   wp_enqueue_script(QUCREATIVE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.js', array('jquery'));
-  wp_enqueue_style(QUCREATIVE_ID.'-misc', QUCREATIVE_THEME_URL . 'libs/qucreative/qu-misc.css', array(), QUCREATIVE_VERSION);
+  qucreative_enqueue_theme_style(QUCREATIVE_ID.'-misc', 'libs/qucreative/qu-misc.css');
 
   // Accessibility: Skip link focus fix
   wp_enqueue_script('qucreative-skip-link-focus-fix', QUCREATIVE_THEME_URL . 'inc/js/skip-link-focus-fix.js', array(), QUCREATIVE_VERSION, true);
@@ -21,9 +21,9 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
   // -- single post types
   if (is_single()) {
 
-    wp_enqueue_style('qu-blog', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog.css');
-    wp_enqueue_style('qu-blog-single', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog-single.css');
-    wp_enqueue_style('qu-blog--shared', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/qu-blog--shared.css');
+    qucreative_enqueue_theme_style('qu-blog', 'libs/qucreative/parts/qu-blog.css');
+    qucreative_enqueue_theme_style('qu-blog-single', 'libs/qucreative/parts/qu-blog-single.css');
+    qucreative_enqueue_theme_style('qu-blog--shared', 'libs/qucreative/parts/qu-blog--shared.css');
   }
 
 
