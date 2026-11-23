@@ -81,7 +81,7 @@ if(isset($current_user) && isset($current_user->data) && isset($current_user->da
 		'label_submit'      => esc_html__( 'Submit Comment','qucreative' ),
 		'format'            => 'html5',
 
-		'comment_field' =>  '<div class="row"><div class="col-md-12"><textarea class="inputbox font-group-5" id="commentText" name="comment" cols="45" rows="8" aria-required="true"  onfocus=\'if(this.value=="'.esc_html__("Comment...",'qucreative').'") this.value=""\' onblur=\'if(this.value=="") this.value="'.esc_html__("Comment...",'qucreative').'"\'>'.esc_html__("Comment...",'qucreative').'</textarea></div></div>',
+		'comment_field' =>  '<div class="row"><div class="col-md-12"><label class="screen-reader-text" for="commentText">'.esc_html__("Comment",'qucreative').'</label><textarea class="inputbox font-group-5" id="commentText" name="comment" cols="45" rows="8" aria-required="true"  onfocus=\'if(this.value=="'.esc_html__("Comment...",'qucreative').'") this.value=""\' onblur=\'if(this.value=="") this.value="'.esc_html__("Comment...",'qucreative').'"\'>'.esc_html__("Comment...",'qucreative').'</textarea></div></div>',
 
 		'must_log_in' => '<p class="must-log-in">' .
 		                 wp_kses(sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.','qucreative' ),
