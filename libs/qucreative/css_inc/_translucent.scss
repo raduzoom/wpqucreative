@@ -47,3 +47,11 @@
 .translucent-canvas.not-drawn-because-simple-color {
   display: none;
 }
+
+
+// -- no background image: the panel would be white under the 0.3 overlay (#b3b3b3, 2.09:1 for the
+// white nav text); 0.55 makes it #737373 (4.74:1). The owner's overlay opacity setting (qu-extend)
+// still wins, and light menus keep their white overlay. The nav only: the content frame keeps its look.
+body.qucreative-bg-no-image:not(.qucreative-light-menu) .qucreative--nav-con {
+  --qu-colors--translucent-default: rgba(0, 0, 0, 0.55);
+}

@@ -256,6 +256,8 @@ const QUCREATIVE_INITIAL_THEME_DATA = array(
   'body_class' => '',
   'footer_extra_css' => '',
 
+  // -- false when the page falls back to the plain default background (no image): see qucreative_generate_inline_javascript_for_options()
+  'bg_has_image' => true,
   'css_data_overlay_opacity' => '',
   'css_data_style_env' => '',
   'css_data_typography' => '',

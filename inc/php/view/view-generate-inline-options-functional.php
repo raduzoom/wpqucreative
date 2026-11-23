@@ -110,6 +110,11 @@ function qucreative_generate_inline_javascript_for_options() {
   }
 
 
+  // -- no image: the plain default colour, or nothing (404 without a front page background);
+  // body class qucreative-bg-no-image darkens the menu overlay (docs/accessibility.md in wpqucreative)
+  $qucreative_main->theme_data['bg_has_image'] = !in_array($bg_images, array("''", "'#" . QUCREATIVE_VIEW_DEFAULT_WHITE_BG . "'"), true);
+
+
   $is_customize_preview = 'off';
   if (is_customize_preview()) {
     // -- Output a demo content

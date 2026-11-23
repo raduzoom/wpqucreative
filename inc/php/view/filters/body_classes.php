@@ -130,6 +130,9 @@ function qucreative_filter_body_classes( $classes, $class ) {
   if($qucreative_main->theme_data['menu_type']=='menu-type-2' || $qucreative_main->theme_data['menu_type']=='menu-type-4' || $qucreative_main->theme_data['menu_type']=='menu-type-6' || $qucreative_main->theme_data['menu_type']=='menu-type-8' || $qucreative_main->theme_data['menu_type']=='menu-type-10'  || $qucreative_main->theme_data['menu_type']=='menu-type-14' || $qucreative_main->theme_data['menu_type']=='menu-type-16' || $qucreative_main->theme_data['menu_type']=='menu-type-18'){
     $qucreative_main->theme_data['body_class'].=' qucreative-light-menu';
   }
+  if (!$qucreative_main->theme_data['bg_has_image']) {
+    $qucreative_main->theme_data['body_class'] .= ' qucreative-bg-no-image';
+  }
 
 
 
