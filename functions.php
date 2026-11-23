@@ -22,7 +22,7 @@ include_once QUCREATIVE_THEME_DIR . 'inc/php/common/features/color-contrast.php'
 
 const QUCREATIVE_ID = 'qucreative';
 const QUCREATIVE_LANG_ID = QUCREATIVE_ID;
-const QUCREATIVE_VERSION = '1.08';
+const QUCREATIVE_VERSION = '1.1.0';
 include_once QUCREATIVE_THEME_DIR . 'config/config.php';
 include_once QUCREATIVE_THEME_DIR . 'inc/php/view/generate-qu-loop.php';
 

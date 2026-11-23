@@ -3,9 +3,9 @@
 Contributors: ant_farm
 Tags: right-sidebar, custom-colors, custom-header, featured-images, theme-options, threaded-comments, translation-ready
 Requires at least: 5.4
-Tested up to: 6.1
+Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 1.0.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,20 @@ QuCreative is a modern, flexible WordPress theme designed for creative professio
 QuCreative works best with the Qu Companion Plugin (qu-extend) which adds portfolio post types, shortcodes, and page builder elements.
 
 == Changelog ==
+
+= 1.1.0 =
+Faster pages and more readable text. Every site gets the new defaults on update; values saved in the Customizer still win.
+
+* Speed: first-screen CSS inlined and the rest loaded without blocking; featured images responsive (srcset, sizes, width/height), the first one high priority and the rest lazy-loaded; assets versioned by file time.
+* Fonts: Open Sans, Lato and Playfair Display now ship with the theme (no request to Google). Open Sans and Playfair Display now appear as designed: a bug had kept them from loading.
+* Page content shows from the first paint; only the background animates in. The preloader is now a Customizer option, off by default.
+* Reduced motion: near-instant transitions and no preloader for visitors who ask for less motion.
+* Readability: body text 16px with 1.6 line height, lines capped at about 70 characters; headings scale down on phones.
+* Accessibility: darker greys; text on and in the highlight colour adjusts to stay readable for any highlight; links in text underlined; larger tap targets in the post meta; labelled comment box; overlay menu works with the keyboard.
+* Page title readable on pages without a background image; menu panel darker on those pages.
+* Sidebar search box restyled; lighter widget link lists; tighter spacing after quotes.
+* Fixed: single posts showed the posts page title when the site lists latest posts; two menu background images pointed to a missing folder.
+* Removed: Font Awesome CDN option (always loads the bundled copy); unused footer stylesheet.
 
 = 1.0.8 =
 * WordPress.org preparation
