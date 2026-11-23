@@ -14,6 +14,7 @@ import { check_animation_time } from "./_qu-view";
 import { qu_setupActions } from './_qu-actions'
 
 import {QuCreative} from './_qucreative-class';
+import { quIcon } from './js/common/_icons';
 
 
 
@@ -266,7 +267,7 @@ jQuery(document).ready(function ($) {
 
         if (_t.find("ul").length > 0) {
           _t.append(
-            '<i class="sub-menu-indicator fa fa-chevron-circle-right"></i>',
+            quIcon('chevron-circle-right', 'sub-menu-indicator'),
           );
         }
       });

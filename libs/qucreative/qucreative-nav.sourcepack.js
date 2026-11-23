@@ -1,5 +1,6 @@
 "use strict";
 import { RESPONSIVE_BREAKPOINT } from "./_qucreative.config";
+import { quIcon } from "./js/common/_icons";
 
 jQuery(document).ready(function ($) {
   let st = 0;
@@ -124,12 +125,12 @@ jQuery(document).ready(function ($) {
                 .find("tfoot #prev a")
                 .eq(0)
                 .addClass("calendar-arrow-left")
-                .html('<i class="fa fa-chevron-left"></i>');
+                .html(quIcon('chevron-left'));
             _t2
                 .find("tfoot #next a")
                 .eq(0)
                 .addClass("calendar-arrow-right")
-                .html('<i class="fa fa-chevron-right"></i>');
+                .html(quIcon('chevron-right'));
 
             _t2.find("*[colspan]").each(function () {
               var _t3 = $(this);
