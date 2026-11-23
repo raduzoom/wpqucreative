@@ -197,6 +197,12 @@
   width: 100%;
 }
 
+// -- featured images carry width/height attributes (wp_get_attachment_image) so the browser
+// reserves their space; height: auto keeps the ratio when the width is scaled
+.featured-media-con > img {
+  height: auto;
+}
+
 .fullheight {
   height: 100%;
 }

@@ -83,7 +83,8 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
       $fout .= '<div class="featured-media-con from-generate_featured_media">';
     }
 
-    $fout .= '<img alt="' . esc_html__("image", 'qucreative') . '" class="' . $margs['img_extra_class'] . '" src="' . qucreative_sanitize_id_to_src($post_media) . '">';
+    $attachmentId = is_numeric($post_media) ? (int) $post_media : attachment_url_to_postid($post_media);
+    $fout .= qucreative_view_featured_image_tag($attachmentId, qucreative_sanitize_id_to_src($post_media), $margs);
 
     if ($margs['include_featured-media-con_div']) {
       $fout .= '</div>';
@@ -97,7 +98,7 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
         $fout .= '<div class="featured-media-con from-generate_featured_media">';
       }
 
-      $fout .= '<img alt="' . esc_html__("image", 'qucreative') . '" class="' . $margs['img_extra_class'] . '" src="' . $img . '">';
+      $fout .= qucreative_view_featured_image_tag(get_post_thumbnail_id($arg), $img, $margs);
 
       if ($margs['include_featured-media-con_div']) {
         $fout .= '</div>';
@@ -106,4 +107,41 @@ function qucreative_generate_featured_media($arg, $pargs = array()): string {
   }
 
   return $fout;
+}
+
+add_filter('wp_omit_loading_attr_threshold', 'qucreative_view_omit_loading_attr_threshold');
+
+/**
+ * Core loads the first 3 images of a page eagerly. Each post here shows one full-width
+ * featured image, so only the first is on the first screen; the rest load lazily instead of
+ * competing with it for bandwidth.
+ *
+ * @return int
+ */
+function qucreative_view_omit_loading_attr_threshold(): int {
+  return 1;
+}
+
+/**
+ * The <img> of a featured image. Inside the theme's .featured-media-con wrapper, a media library
+ * image goes through wp_get_attachment_image(): srcset and sizes, width and height (the
+ * browser reserves its space, see .featured-media-con > img in _qu-structure.scss), the alt
+ * text from the library, and core's lazy-loading / fetchpriority choice for the main loop.
+ * Other callers (qu-extend's portfolio and lightbox items) keep the plain <img>.
+ *
+ * @param int $attachmentId 0 when the media isn't a library attachment
+ * @param string $src
+ * @param array $margs arguments of qucreative_generate_featured_media()
+ * @return string
+ */
+function qucreative_view_featured_image_tag($attachmentId, $src, $margs): string {
+  if ($margs['include_featured-media-con_div'] && $attachmentId && wp_attachment_is_image($attachmentId)) {
+    return wp_get_attachment_image($attachmentId, 'large', false, array(
+      'class' => $margs['img_extra_class'],
+      // -- the content column is at most ~900px wide
+      'sizes' => '(max-width: 900px) 100vw, 900px',
+    ));
+  }
+
+  return '<img alt="' . esc_html__("image", 'qucreative') . '" class="' . $margs['img_extra_class'] . '" src="' . $src . '">';
 }
