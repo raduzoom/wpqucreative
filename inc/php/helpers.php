@@ -411,3 +411,22 @@ if (!function_exists('qucreative_enqueue_theme_style')) {
     wp_enqueue_style($handle, QUCREATIVE_THEME_URL . $relativePath, array(), qucreative_asset_version($relativePath));
   }
 }
+
+if (!function_exists('qucreative_enqueue_theme_script')) {
+  /**
+   * Enqueue a script that ships with the theme, versioned by its modification time and
+   * loaded with `defer`: it no longer blocks parsing, and deferred scripts still run in
+   * order, before DOMContentLoaded.
+   *
+   * @param string $handle
+   * @param string $relativePath path inside the theme, e.g. 'libs/qucreative/qucreative.js'
+   * @param string[] $deps
+   * @return void
+   */
+  function qucreative_enqueue_theme_script($handle, $relativePath, $deps = array()) {
+    wp_enqueue_script($handle, QUCREATIVE_THEME_URL . $relativePath, $deps, qucreative_asset_version($relativePath), array(
+      'in_footer' => true,
+      'strategy' => 'defer',
+    ));
+  }
+}

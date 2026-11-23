@@ -40,15 +40,13 @@ function qucreative_view_generateMainPageTitle($qucreative_main, $page_title_ali
 
 function qucreative_view_enqueue_fontAwesome() {
 
-  $fontAwesomeLink = QUCREATIVE_THEME_URL . 'libs/fontawesome/font-awesome.min.css';
-  $handle = 'qucreative-fontawesome'; // Prefixed handle for local file
-  
   if (defined("QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN") && QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN == "ON") {
-    $fontAwesomeLink = 'https://' . 'maxcdn' . '.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-    $handle = 'fontawesome'; // 3rd-party CDN can use original handle
+    // 3rd-party CDN can use original handle
+    wp_enqueue_style('fontawesome', 'https://' . 'maxcdn' . '.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
+    return;
   }
 
-  wp_enqueue_style($handle, $fontAwesomeLink);
+  qucreative_enqueue_theme_style('qucreative-fontawesome', 'libs/fontawesome/font-awesome.min.css');
 }
 include_once 'php/view/generate-logo.php';
 function qucreative_view_footerEnqueueScripts() {
@@ -59,19 +57,11 @@ function qucreative_view_footerEnqueueScripts() {
   ?><!--start footer()--><?php
 
 
-// -- qucreative has own implementation of comment reply
-
-  if (!defined('QUCREATIVE_VERSION')) {
-
-    wp_enqueue_script('qucreative-comment-reply', QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.js', array('jquery'), false, true);
-  }
-
-
   qucreative_view_enqueue_fontAwesome();
 
 
 
-  wp_enqueue_style('qucreative-et-line-font', QUCREATIVE_THEME_URL . 'libs/qucreative/include_et.css');
+  qucreative_enqueue_theme_style('qucreative-et-line-font', 'libs/qucreative/include_et.css');
 
 
 }

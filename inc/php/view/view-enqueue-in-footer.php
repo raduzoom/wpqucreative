@@ -11,11 +11,11 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
 
 
   $qucreative_main = $quView->quMain;
-  wp_enqueue_script(QUCREATIVE_ID, QUCREATIVE_THEME_URL . 'libs/qucreative/qucreative.js', array('jquery'));
+  qucreative_enqueue_theme_script(QUCREATIVE_ID, 'libs/qucreative/qucreative.js', array('jquery'));
   qucreative_enqueue_theme_style(QUCREATIVE_ID.'-misc', 'libs/qucreative/qu-misc.css');
 
   // Accessibility: Skip link focus fix
-  wp_enqueue_script('qucreative-skip-link-focus-fix', QUCREATIVE_THEME_URL . 'inc/js/skip-link-focus-fix.js', array(), QUCREATIVE_VERSION, true);
+  qucreative_enqueue_theme_script('qucreative-skip-link-focus-fix', 'inc/js/skip-link-focus-fix.js');
 
 
   // -- single post types
@@ -35,11 +35,11 @@ function qucreative_view_enqueue_in_footer(QuCreativeView $quView){
   $enqueueMenus56 = array('menu-type-5', 'menu-type-6');
   if (in_array($quView->quMain->theme_data['menu_type'], $enqueueMenus56)) {
 
-    wp_enqueue_script('qu-menu-type-5-6', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . 'menu-type-5-6' . '.js', array());
+    qucreative_enqueue_theme_script('qu-menu-type-5-6', 'libs/qucreative/parts/menus/' . 'menu-type-5-6' . '.js');
   }
   $enqueueMenus56 = array('menu-type-11', 'menu-type-12');
   if (in_array($quView->quMain->theme_data['menu_type'], $enqueueMenus56)) {
 
-    wp_enqueue_script('qu-menu-type-11-12', QUCREATIVE_THEME_URL . 'libs/qucreative/parts/menus/' . 'menu-type-11-12' . '.js', array());
+    qucreative_enqueue_theme_script('qu-menu-type-11-12', 'libs/qucreative/parts/menus/' . 'menu-type-11-12' . '.js');
   }
 }

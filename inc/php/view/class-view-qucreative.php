@@ -18,6 +18,22 @@ class QuCreativeView {
     $this->quMain = $quMain;
     add_action('init', array($this, 'handle_init'));
     add_action('wp_enqueue_scripts', array($this,'qucreative_wp_enqueue_scripts'));
+    add_filter('wp_resource_hints', array($this, 'filter_resource_hints'), 10, 2);
+  }
+
+  /**
+   * Preconnect to Google Fonts: both font paths in qucreative_wp_enqueue_scripts() load from there.
+   *
+   * @param array $urls
+   * @param string $relationType
+   * @return array
+   */
+  public function filter_resource_hints($urls, $relationType) {
+    if ($relationType === 'preconnect') {
+      $urls[] = 'https://fonts.googleapis.com';
+      $urls[] = array('href' => 'https://fonts.gstatic.com', 'crossorigin');
+    }
+    return $urls;
   }
 
   /**
@@ -25,11 +41,6 @@ class QuCreativeView {
    * @return void
    */
   public function qucreative_wp_enqueue_scripts() {
-
-
-    // Connection hints (keep them – they help)
-    echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
-    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
 
 
     if(class_exists(QUCREATIVE_QUEXTEND_PLUGIN_NAME)){

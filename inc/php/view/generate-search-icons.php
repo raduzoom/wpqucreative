@@ -43,21 +43,10 @@ function qucreative_header_generateSearchIcon() {
 
     let requestVersion = 0;
 
-    console.log('doc ready');
-
 
 
       window.dzs_initDzsSearchExpand(document.querySelector('.search-expand.auto-init'), {
-        /**
-         *
-         * @param {ChipSelectorItem[]} allOptions
-         */
-        onUpdateFunction: (allOptions) => {
-          const selectedOptions = allOptions.filter((el) => el.currentStatus === 'checked');
-          console.log({selectedOptions});
-        },
         onSubmitSearch: (query) => {
-          console.log('onSubmitSearch()', { query });
           window.location.href = window.quCreative_main.mainOptions.site_url + '/?s=' + query;
         }
       })
@@ -69,8 +58,8 @@ function qucreative_header_generateSearchIcon() {
     </div><?php
 
 
-    wp_enqueue_style('qu-libs-search-expand', QUCREATIVE_THEME_URL . 'libs/search-expand/dist/dzs-search-expand.css');
-    wp_enqueue_script('qu-libs-search-expand', QUCREATIVE_THEME_URL . 'libs/search-expand/dist/index.umd.min.js', array());
+    qucreative_enqueue_theme_style('qu-libs-search-expand', 'libs/search-expand/dist/dzs-search-expand.css');
+    qucreative_enqueue_theme_script('qu-libs-search-expand', 'libs/search-expand/dist/index.umd.min.js');
   }
 
 }
