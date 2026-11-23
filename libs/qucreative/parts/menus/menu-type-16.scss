@@ -15,3 +15,14 @@ body.menu-type-16 {
     }
   }
 }
+
+// -- dark links on the white overlay; the shared 13-18 and submenu-style rules set them white with
+// the same specificity. The current item and hover keep the highlight background and its text colour
+// (docs/design.md in wpqucreative)
+body.menu-type-16 nav.qucreative--nav-con ul.the-actual-nav > li:not(.current-menu-item):not(.current-menu-ancestor) > a {
+  color: #222222;
+}
+
+body.menu-type-16 nav.qucreative--nav-con ul.the-actual-nav > li:not(.current-menu-item):not(.current-menu-ancestor):hover > a {
+  color: var(--qu-color-on-highlight);
+}
