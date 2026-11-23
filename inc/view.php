@@ -69,29 +69,16 @@ function qucreative_view_footerEnqueueScripts() {
 
 if(!function_exists('qucreative_enqueue_google_font')){
   function qucreative_enqueue_google_font($fontName, $family, $weights){
-    $weightsArr = array('normal'=>array(), 'italic'=>array());
-    $tempWeights = explode(',',$weights);
-
-    foreach ($tempWeights as $tempWeight){
-      $val = $tempWeight;
-      $targetLab = 'normal';
-      if (strpos($tempWeight, 'italic') !== false){
-        $targetLab = 'italic';
-        $val = str_replace('italic','',$val);
-      }
-      // Normalize to integer when possible
-      $val = trim($val);
-      if ($val !== '') {
-        $weightsArr[$targetLab][] = (int)$val;
-      }
-    }
-
     $fontNameSplit = explode(':', $fontName);
     $fontName = $fontNameSplit[0];
 
-    echo dzsCommon_enqueueGoogleFont($fontName, $weightsArr);
+    // -- QuCreativeView::filter_resource_hints() preconnects to Google only when this ran
+    $GLOBALS['qucreative_google_fonts_printed'] = true;
+
+    echo dzsCommon_enqueueGoogleFont($fontName, qucreative_google_font_weights($weights));
   }
 }
+
 
 include_once 'php/view/generate-footer-for-portfolio-item.php';
 include_once 'php/view/generate-qu-nav.php';

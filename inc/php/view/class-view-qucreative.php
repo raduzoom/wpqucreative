@@ -19,21 +19,62 @@ class QuCreativeView {
     add_action('init', array($this, 'handle_init'));
     add_action('wp_enqueue_scripts', array($this,'qucreative_wp_enqueue_scripts'));
     add_filter('wp_resource_hints', array($this, 'filter_resource_hints'), 10, 2);
+    add_filter('wp_preload_resources', array($this, 'filter_preload_resources'));
   }
 
   /**
-   * Preconnect to Google Fonts: both font paths in qucreative_wp_enqueue_scripts() load from there.
+   * Whether the page uses the default typography, whose fonts ship with the theme, rather
+   * than fonts picked in the Customizer, which qu-extend loads from Google Fonts. Mirrors the
+   * test in QuExtend_View::embedGoogleFonts().
+   *
+   * @return bool
+   */
+  function usesDefaultFonts(): bool {
+    if (!class_exists(QUCREATIVE_QUEXTEND_PLUGIN_NAME)) {
+      return true;
+    }
+    $fontData = $this->quMain->get_theme_mod_and_sanitize('font_data');
+
+    return !$fontData || (defined('QUEXTEND_QU_DEFAULT_TYPOGRAPHY') && $fontData == QUEXTEND_QU_DEFAULT_TYPOGRAPHY);
+  }
+
+  /**
+   * Preconnect to Google Fonts when the page loads fonts from there: Customizer fonts that
+   * qu-extend hasn't downloaded yet (qucreative_enqueue_google_font() records it; fonts print
+   * at wp_head priority 1, resource hints at 2).
    *
    * @param array $urls
    * @param string $relationType
    * @return array
    */
   public function filter_resource_hints($urls, $relationType) {
-    if ($relationType === 'preconnect') {
+    if ($relationType === 'preconnect' && !empty($GLOBALS['qucreative_google_fonts_printed'])) {
       $urls[] = 'https://fonts.googleapis.com';
       $urls[] = array('href' => 'https://fonts.gstatic.com', 'crossorigin');
     }
     return $urls;
+  }
+
+  /**
+   * Preload the self-hosted fonts the first screen needs: body text (Open Sans, variable, so
+   * one file for 400/600/800) and the page title (Lato 900). Latin subset only.
+   *
+   * @param array $resources
+   * @return array
+   */
+  public function filter_preload_resources($resources) {
+    if (is_admin() || !$this->usesDefaultFonts()) {
+      return $resources;
+    }
+    foreach (array('open-sans-normal-var-latin.woff2', 'lato-normal-900-latin.woff2') as $file) {
+      $resources[] = array(
+        'href' => QUCREATIVE_THEME_URL . QUCREATIVE_VIEW_DEFAULT_FONTS_DIR . $file,
+        'as' => 'font',
+        'type' => 'font/woff2',
+        'crossorigin' => 'anonymous',
+      );
+    }
+    return $resources;
   }
 
   /**
@@ -583,8 +624,13 @@ class QuCreativeView {
 
 function qucreative_wp_enqueue_scripts__defaultFonts() {
 
-  // -- default typography (unchanged list, but the printer becomes non-blocking)
-  qucreative_enqueue_google_font('Open+Sans:400,600italic,600,400italic,800', 'Open+Sans', '400,600italic,600,400italic,800');
-  qucreative_enqueue_google_font('Lato:700,400,900italic,700italic,900', 'Lato', '700,400,900italic,700italic,900');
-  qucreative_enqueue_google_font('Playfair+Display:900italic', 'Playfair+Display', '900italic');
+  // -- default typography (Open Sans, Lato, Playfair Display), self-hosted: the woff2 files and
+  // their @font-face rules ship in libs/qucreative/fonts/google/ (wpqucreative/compile-files/download-fonts.mjs).
+  // The rules are inlined so the browser knows the fonts without another request.
+  $css = file_get_contents(QUCREATIVE_THEME_DIR . QUCREATIVE_VIEW_DEFAULT_FONTS_DIR . 'fonts.css');
+  $css = str_replace('url(', 'url(' . QUCREATIVE_THEME_URL . QUCREATIVE_VIEW_DEFAULT_FONTS_DIR, $css);
+
+  wp_register_style('qucreative-default-fonts', false, array(), QUCREATIVE_VERSION);
+  wp_enqueue_style('qucreative-default-fonts');
+  wp_add_inline_style('qucreative-default-fonts', $css);
 }

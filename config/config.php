@@ -12,6 +12,8 @@ const QUCREATIVE_VIEW_MENU_STYLE_LIGHT = array('menu-type-2','menu-type-4', 'men
 const QUCREATIVE_VIEW_FONT_PARSED = 'font_vals';
 const QUCREATIVE_VIEW_FONT_FOR_ECHO = 'css_data_typography';
 const QUCREATIVE_VIEW_STYLE_ID = 'qucreative-style';
+// -- self-hosted fonts of the default typography, relative to the theme
+const QUCREATIVE_VIEW_DEFAULT_FONTS_DIR = 'libs/qucreative/fonts/google/';
 const QUCREATIVE_MENU_PRIMARY_MENU_ID = 'primary';
 const QUCREATIVE_QUEXTEND_PLUGIN_NAME = 'QuExtend_View';
 
