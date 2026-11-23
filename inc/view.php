@@ -44,12 +44,6 @@ function qucreative_view_generateMainPageTitle($qucreative_main, $page_title_ali
 
 function qucreative_view_enqueue_fontAwesome() {
 
-  if (defined("QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN") && QUCREATIVE_UPLOAD_FONTAWESOME_FROM_CDN == "ON") {
-    // 3rd-party CDN can use original handle
-    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
-    return;
-  }
-
   qucreative_enqueue_theme_style('qucreative-fontawesome', 'libs/fontawesome/font-awesome.min.css');
 }
 include_once 'php/view/generate-logo.php';
