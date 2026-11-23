@@ -399,16 +399,79 @@ if (!function_exists('qucreative_asset_version')) {
   }
 }
 
+if (!function_exists('qucreative_enqueue_style_with_critical')) {
+  /**
+   * Enqueue a stylesheet. When the build generated a <name>.critical.css next to it
+   * (wpqucreative/perf/build-critical.mjs), print that first-screen part inline in <head> and
+   * load the full file without blocking rendering; a critical file marked complete holds every
+   * rule, so the full file isn't requested at all. Without a critical file, and in the
+   * Customizer preview, the stylesheet loads as a normal blocking one.
+   *
+   * @param string $handle
+   * @param string $url
+   * @param string $file absolute path of the stylesheet
+   * @param string $version
+   * @return void
+   */
+  function qucreative_enqueue_style_with_critical($handle, $url, $file, $version) {
+    if (wp_style_is($handle, 'registered')) {
+      wp_enqueue_style($handle);
+      return;
+    }
+
+    $criticalFile = preg_replace('/\.css$/', '.critical.css', $file);
+    if (is_admin() || is_customize_preview() || !file_exists($criticalFile)) {
+      wp_enqueue_style($handle, $url, array(), $version);
+      return;
+    }
+
+    $critical = str_replace('__QUCREATIVE_WP_CONTENT_URL__', untrailingslashit(content_url()), file_get_contents($criticalFile));
+
+    if (strpos($critical, '/*qucreative-critical:complete*/') !== false) {
+      wp_register_style($handle, false, array(), $version);
+      wp_enqueue_style($handle);
+      wp_add_inline_style($handle, $critical);
+      return;
+    }
+
+    wp_register_style($handle . '-critical', false, array(), $version);
+    wp_add_inline_style($handle . '-critical', $critical);
+    wp_enqueue_style($handle, $url, array($handle . '-critical'), $version);
+    $GLOBALS['qucreative_non_blocking_styles'][$handle] = true;
+  }
+
+  /**
+   * Print the <link> of a stylesheet whose first-screen rules are inlined as non-blocking:
+   * it loads as media="print" and switches to all once loaded; <noscript> keeps it for
+   * visitors without JavaScript.
+   *
+   * @param string $tag
+   * @param string $handle
+   * @return string
+   */
+  function qucreative_filter_non_blocking_style_tag($tag, $handle) {
+    if (empty($GLOBALS['qucreative_non_blocking_styles'][$handle])) {
+      return $tag;
+    }
+    $nonBlocking = preg_replace("/media=(['\"])all\\1/", "media='print' onload=\"this.media='all'\"", $tag, 1);
+
+    return $nonBlocking . '<noscript>' . trim($tag) . "</noscript>\n";
+  }
+
+  add_filter('style_loader_tag', 'qucreative_filter_non_blocking_style_tag', 10, 2);
+}
+
 if (!function_exists('qucreative_enqueue_theme_style')) {
   /**
-   * Enqueue a stylesheet that ships with the theme, versioned by its modification time.
+   * Enqueue a stylesheet that ships with the theme, versioned by its modification time, with
+   * its first-screen rules inlined when the build generated them.
    *
    * @param string $handle
    * @param string $relativePath path inside the theme, e.g. 'libs/qucreative/qucreative.css'
    * @return void
    */
   function qucreative_enqueue_theme_style($handle, $relativePath) {
-    wp_enqueue_style($handle, QUCREATIVE_THEME_URL . $relativePath, array(), qucreative_asset_version($relativePath));
+    qucreative_enqueue_style_with_critical($handle, QUCREATIVE_THEME_URL . $relativePath, QUCREATIVE_THEME_DIR . $relativePath, qucreative_asset_version($relativePath));
   }
 }
 
