@@ -844,13 +844,6 @@ function do_transition_really_do_it(margs) {
         });
       }
 
-      if (
-          is_chrome() &&
-          String(window.location.href).indexOf("file://") == 0
-      ) {
-      } else {
-      }
-
       _mainGalleryDescs.css({
         width: _mainGalleryDescs.children().eq(margs.arg).width() + "px",
         height: _mainGalleryDescs.children().eq(margs.arg).height() + "px",
