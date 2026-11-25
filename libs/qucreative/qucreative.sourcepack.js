@@ -66,7 +66,6 @@ jQuery(document).ready(function ($) {
   var page = 3;
   const _body = $("body");
 
-  var newclass_content_con = "";
 
 
 
@@ -158,7 +157,7 @@ jQuery(document).ready(function ($) {
     }
     qcm.$cssFromJs = $("#qucreative-css-from-js").eq(0);
 
-    newclass_content_con = $(".the-content-con").eq(0).attr("class");
+    qcm.newclass_content_con = $(".the-content-con").eq(0).attr("class") || "";
 
 
 

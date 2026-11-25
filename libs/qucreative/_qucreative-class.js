@@ -45,6 +45,7 @@ export class QuCreative{
   content_width= 1122;
   force_content_width= 1122;
   newclass_body_page= "";
+  newclass_content_con= ""; // -- classes of the new page's .the-content-con
   reinit= null;
   curr_html= ""; // -- todo: why do we need it ?
   curr_html_with_clear_cache= false;
